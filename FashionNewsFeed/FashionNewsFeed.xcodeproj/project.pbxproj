@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8362508F1AC5E39400370340 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8362508E1AC5E39400370340 /* main.m */; };
+		836250921AC5E39400370340 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250911AC5E39400370340 /* AppDelegate.m */; };
+		836250951AC5E39400370340 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250941AC5E39400370340 /* MainViewController.m */; };
+		836250981AC5E39400370340 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 836250961AC5E39400370340 /* Main.storyboard */; };
+		8362509A1AC5E39400370340 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 836250991AC5E39400370340 /* Images.xcassets */; };
+		8362509D1AC5E39400370340 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8362509B1AC5E39400370340 /* LaunchScreen.xib */; };
+		836250A91AC5E39400370340 /* FashionNewsFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250A81AC5E39400370340 /* FashionNewsFeedTests.m */; };
+		836250B41AC5E4A200370340 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250B31AC5E4A200370340 /* PageContentViewController.m */; };
+		83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC6B821AC7E186001544A6 /* SWRevealViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		836250A31AC5E39400370340 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 836250811AC5E39400370340 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 836250881AC5E39400370340;
+			remoteInfo = FashionNewsFeed;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		836250891AC5E39400370340 /* FashionNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8362508D1AC5E39400370340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8362508E1AC5E39400370340 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		836250901AC5E39400370340 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		836250911AC5E39400370340 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		836250931AC5E39400370340 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		836250941AC5E39400370340 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		836250971AC5E39400370340 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		836250991AC5E39400370340 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8362509C1AC5E39400370340 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		836250A21AC5E39400370340 /* FashionNewsFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FashionNewsFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		836250A71AC5E39400370340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		836250A81AC5E39400370340 /* FashionNewsFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FashionNewsFeedTests.m; sourceTree = "<group>"; };
+		836250B21AC5E4A200370340 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		836250B31AC5E4A200370340 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		83AC6B811AC7E186001544A6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		83AC6B821AC7E186001544A6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		836250861AC5E39400370340 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8362509F1AC5E39400370340 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		836250801AC5E39400370340 = {
+			isa = PBXGroup;
+			children = (
+				8362508B1AC5E39400370340 /* FashionNewsFeed */,
+				836250A51AC5E39400370340 /* FashionNewsFeedTests */,
+				8362508A1AC5E39400370340 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8362508A1AC5E39400370340 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				836250891AC5E39400370340 /* FashionNewsFeed.app */,
+				836250A21AC5E39400370340 /* FashionNewsFeedTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8362508B1AC5E39400370340 /* FashionNewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				836250901AC5E39400370340 /* AppDelegate.h */,
+				836250911AC5E39400370340 /* AppDelegate.m */,
+				836250931AC5E39400370340 /* MainViewController.h */,
+				836250941AC5E39400370340 /* MainViewController.m */,
+				836250961AC5E39400370340 /* Main.storyboard */,
+				836250B21AC5E4A200370340 /* PageContentViewController.h */,
+				836250B31AC5E4A200370340 /* PageContentViewController.m */,
+				836250991AC5E39400370340 /* Images.xcassets */,
+				8362509B1AC5E39400370340 /* LaunchScreen.xib */,
+				83AC6B801AC7E186001544A6 /* SWRevealViewController */,
+				8362508C1AC5E39400370340 /* Supporting Files */,
+			);
+			path = FashionNewsFeed;
+			sourceTree = "<group>";
+		};
+		8362508C1AC5E39400370340 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8362508D1AC5E39400370340 /* Info.plist */,
+				8362508E1AC5E39400370340 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		836250A51AC5E39400370340 /* FashionNewsFeedTests */ = {
+			isa = PBXGroup;
+			children = (
+				836250A81AC5E39400370340 /* FashionNewsFeedTests.m */,
+				836250A61AC5E39400370340 /* Supporting Files */,
+			);
+			path = FashionNewsFeedTests;
+			sourceTree = "<group>";
+		};
+		836250A61AC5E39400370340 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				836250A71AC5E39400370340 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83AC6B801AC7E186001544A6 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				83AC6B811AC7E186001544A6 /* SWRevealViewController.h */,
+				83AC6B821AC7E186001544A6 /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		836250881AC5E39400370340 /* FashionNewsFeed */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 836250AC1AC5E39400370340 /* Build configuration list for PBXNativeTarget "FashionNewsFeed" */;
+			buildPhases = (
+				836250851AC5E39400370340 /* Sources */,
+				836250861AC5E39400370340 /* Frameworks */,
+				836250871AC5E39400370340 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FashionNewsFeed;
+			productName = FashionNewsFeed;
+			productReference = 836250891AC5E39400370340 /* FashionNewsFeed.app */;
+			productType = "com.apple.product-type.application";
+		};
+		836250A11AC5E39400370340 /* FashionNewsFeedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 836250AF1AC5E39400370340 /* Build configuration list for PBXNativeTarget "FashionNewsFeedTests" */;
+			buildPhases = (
+				8362509E1AC5E39400370340 /* Sources */,
+				8362509F1AC5E39400370340 /* Frameworks */,
+				836250A01AC5E39400370340 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				836250A41AC5E39400370340 /* PBXTargetDependency */,
+			);
+			name = FashionNewsFeedTests;
+			productName = FashionNewsFeedTests;
+			productReference = 836250A21AC5E39400370340 /* FashionNewsFeedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		836250811AC5E39400370340 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Anton Dosov";
+				TargetAttributes = {
+					836250881AC5E39400370340 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					836250A11AC5E39400370340 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 836250881AC5E39400370340;
+					};
+				};
+			};
+			buildConfigurationList = 836250841AC5E39400370340 /* Build configuration list for PBXProject "FashionNewsFeed" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 836250801AC5E39400370340;
+			productRefGroup = 8362508A1AC5E39400370340 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				836250881AC5E39400370340 /* FashionNewsFeed */,
+				836250A11AC5E39400370340 /* FashionNewsFeedTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		836250871AC5E39400370340 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836250981AC5E39400370340 /* Main.storyboard in Resources */,
+				8362509D1AC5E39400370340 /* LaunchScreen.xib in Resources */,
+				8362509A1AC5E39400370340 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836250A01AC5E39400370340 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		836250851AC5E39400370340 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836250B41AC5E4A200370340 /* PageContentViewController.m in Sources */,
+				836250951AC5E39400370340 /* MainViewController.m in Sources */,
+				83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */,
+				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
+				8362508F1AC5E39400370340 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8362509E1AC5E39400370340 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836250A91AC5E39400370340 /* FashionNewsFeedTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		836250A41AC5E39400370340 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 836250881AC5E39400370340 /* FashionNewsFeed */;
+			targetProxy = 836250A31AC5E39400370340 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		836250961AC5E39400370340 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				836250971AC5E39400370340 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8362509B1AC5E39400370340 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8362509C1AC5E39400370340 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		836250AA1AC5E39400370340 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		836250AB1AC5E39400370340 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		836250AD1AC5E39400370340 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		836250AE1AC5E39400370340 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		836250B01AC5E39400370340 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FashionNewsFeedTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FashionNewsFeed.app/FashionNewsFeed";
+			};
+			name = Debug;
+		};
+		836250B11AC5E39400370340 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FashionNewsFeedTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FashionNewsFeed.app/FashionNewsFeed";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		836250841AC5E39400370340 /* Build configuration list for PBXProject "FashionNewsFeed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836250AA1AC5E39400370340 /* Debug */,
+				836250AB1AC5E39400370340 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		836250AC1AC5E39400370340 /* Build configuration list for PBXNativeTarget "FashionNewsFeed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836250AD1AC5E39400370340 /* Debug */,
+				836250AE1AC5E39400370340 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		836250AF1AC5E39400370340 /* Build configuration list for PBXNativeTarget "FashionNewsFeedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836250B01AC5E39400370340 /* Debug */,
+				836250B11AC5E39400370340 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 836250811AC5E39400370340 /* Project object */;
+}
