@@ -8,7 +8,9 @@
 
 
 /*
- Main ViewConroller. -- Wrapper for all other contollers. EntryPoint
+ Main ViewConroller. -- Wrapper for PageViewController.
+ Goes Here
+ 
 */
 
 #import <UIKit/UIKit.h>

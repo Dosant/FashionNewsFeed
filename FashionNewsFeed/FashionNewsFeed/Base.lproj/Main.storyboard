@@ -25,13 +25,13 @@
         <!--SideBarMenu-->
         <scene sceneID="p4V-BX-SFs">
             <objects>
-                <tableViewController title="SideBarMenu" id="vU3-yI-uyj" sceneMemberID="viewController">
+                <tableViewController title="SideBarMenu" id="vU3-yI-uyj" customClass="SideBarMenuTableViewContoller" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nyn-wm-mzL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jEu-J4-BOB">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="jEu-J4-BOB">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jEu-J4-BOB" id="akh-SM-mBU">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -125,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="1211" y="1010"/>
         </scene>
-        <!--newsContentConroller-->
+        <!--NewsContentContoller-->
         <scene sceneID="0sM-Kz-DUe">
             <objects>
-                <viewController title="newsContentConroller" id="WVd-OM-PCO" sceneMemberID="viewController">
+                <viewController title="NewsContentContoller" id="WVd-OM-PCO" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zhR-2X-shM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
                                 <rect key="frame" x="89" y="263" width="142" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
