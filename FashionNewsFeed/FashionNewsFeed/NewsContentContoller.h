@@ -6,6 +6,11 @@
 //  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
+
+/* 
+ News Content Presetation goes here
+*/ 
+ 
 #import <UIKit/UIKit.h>
 
 @interface NewsContentContoller : UIViewController

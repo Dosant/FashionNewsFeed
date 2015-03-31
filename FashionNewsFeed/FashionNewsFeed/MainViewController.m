@@ -142,9 +142,7 @@
     
 }
 
-- (void)revealControllerPanGestureBegan:(SWRevealViewController *)revealController{
-    NSLog(@"BEGIN");
-}
+
 
     
 
@@ -325,8 +323,6 @@
         } else {
             isPageToBounce = YES;
         }
-        // _currentPage = ((PageContentViewController*)previousViewControllers.lastObject).pageIndex;
-        NSLog(@"%d",_currentPage);
         
     }
     

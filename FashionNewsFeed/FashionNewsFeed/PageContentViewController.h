@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+/*
+ Page representating news list (One page for each category + all news)
+*/
+
 @class PageContentViewController;
 @protocol PageContentViewControllerDelegate <NSObject>
 
