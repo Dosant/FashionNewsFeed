@@ -72,6 +72,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		831008DC1ACADC6900270301 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		831008DD1ACADC7000270301 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				836250931AC5E39400370340 /* MainViewController.h */,
+				836250941AC5E39400370340 /* MainViewController.m */,
+				836250B21AC5E4A200370340 /* PageContentViewController.h */,
+				836250B31AC5E4A200370340 /* PageContentViewController.m */,
+				832B3A881ACA918B00D34619 /* SideBarMenuTableViewContoller.h */,
+				832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */,
+				832B3A8B1ACA922900D34619 /* NewsContentContoller.h */,
+				832B3A8C1ACA922900D34619 /* NewsContentContoller.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		831008DE1ACADC7700270301 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		831008DF1ACADC7A00270301 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		836250801AC5E39400370340 = {
 			isa = PBXGroup;
 			children = (
@@ -94,14 +130,10 @@
 			isa = PBXGroup;
 			children = (
 				836250961AC5E39400370340 /* Main.storyboard */,
-				836250931AC5E39400370340 /* MainViewController.h */,
-				836250941AC5E39400370340 /* MainViewController.m */,
-				836250B21AC5E4A200370340 /* PageContentViewController.h */,
-				836250B31AC5E4A200370340 /* PageContentViewController.m */,
-				832B3A8B1ACA922900D34619 /* NewsContentContoller.h */,
-				832B3A8C1ACA922900D34619 /* NewsContentContoller.m */,
-				832B3A881ACA918B00D34619 /* SideBarMenuTableViewContoller.h */,
-				832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */,
+				831008DF1ACADC7A00270301 /* Model */,
+				831008DE1ACADC7700270301 /* View */,
+				831008DD1ACADC7000270301 /* Controller */,
+				831008DC1ACADC6900270301 /* API */,
 				8362508C1AC5E39400370340 /* Supporting Files */,
 			);
 			path = FashionNewsFeed;

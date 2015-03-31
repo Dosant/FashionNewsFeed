@@ -12,22 +12,34 @@
 	<dict>
 		<key>3B77F90292AC5E7C9B22C8DF6ECCC85D196457D6</key>
 		<string>https://github.com/Dosant/iosCourse.git</string>
+		<key>F98AE1553721846BE229AE99073E10BA9B32F905</key>
+		<string>https://github.com/Dosant/FashionNewsFeed.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>FashionNewsFeed/FashionNewsFeed.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3B77F90292AC5E7C9B22C8DF6ECCC85D196457D6</key>
+		<string>../../../../iosCourse</string>
+		<key>F98AE1553721846BE229AE99073E10BA9B32F905</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Dosant/iosCourse.git</string>
+	<string>https://github.com/Dosant/FashionNewsFeed.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3B77F90292AC5E7C9B22C8DF6ECCC85D196457D6</string>
+	<string>F98AE1553721846BE229AE99073E10BA9B32F905</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F98AE1553721846BE229AE99073E10BA9B32F905</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FashionNewsFeed</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
