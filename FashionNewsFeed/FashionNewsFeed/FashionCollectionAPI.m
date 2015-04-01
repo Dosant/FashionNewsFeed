@@ -1,18 +1,18 @@
 //
-//  NewsAPI.m
+//  FashionCollectionAPI.m
 //  FashionNewsFeed
 //
 //  Created by Anton Dosov on 01.04.15.
 //  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
-#import "NewsAPI.h"
+#import "FashionCollectionAPI.h"
 
 #import "HTTPClient.h"
 #import "PersistencyManager.h"
 
 
-@interface NewsAPI ()
+@interface FashionCollectionAPI ()
 {
     PersistencyManager * persistencyManager;
     HTTPClient * httpClient;
@@ -21,16 +21,16 @@
 @end
 
 
-@implementation NewsAPI
+@implementation FashionCollectionAPI
 
-+ (NewsAPI *) sharedInstance{
++ (FashionCollectionAPI *) sharedInstance{
     
-    static NewsAPI * _sharedInstance = nil;
+    static FashionCollectionAPI * _sharedInstance = nil;
     
     static dispatch_once_t oncePredicate;
     
     dispatch_once(&oncePredicate, ^{
-        _sharedInstance = [[NewsAPI alloc] init];
+        _sharedInstance = [[FashionCollectionAPI alloc] init];
     });
     
     return _sharedInstance;

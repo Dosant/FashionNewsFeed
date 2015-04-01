@@ -35,7 +35,7 @@
     [super viewDidLoad];
     
     
-    self.pageTitles = [[NewsAPI sharedInstance] getCategories];
+    self.pageTitles = [[FashionCollectionAPI sharedInstance] getCategories];
     
     
     // Create page view controller
