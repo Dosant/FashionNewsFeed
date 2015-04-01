@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 /*
  Page representating news list (One page for each category + all news)
 */
@@ -20,8 +21,12 @@
 @end
 
 @interface PageContentViewController : UITableViewController
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonMenuIcon;
+
 @property NSUInteger pageIndex;
+@property NSString* pageTitle;
+
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonMenuIcon;
 @property (weak,nonatomic) id<PageContentViewControllerDelegate> delegate;
 
 @end

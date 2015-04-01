@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = [NSString stringWithFormat: @"NEWS %d", _pageIndex];
+    self.title = _pageTitle;
   
 }
 

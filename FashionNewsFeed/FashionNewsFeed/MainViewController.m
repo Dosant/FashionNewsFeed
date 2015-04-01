@@ -34,7 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.pageTitles = @[@"page1",@"page2",@"page3",@"page4"];
+    
+    self.pageTitles = [[NewsAPI sharedInstance] getCategories];
     
     
     // Create page view controller
@@ -186,11 +187,14 @@
         return nil;
     }
     
+    
+    
     index++;
     
-    if (index == [self.pageTitles count]) {
+    if (index == [self.pageTitles count] ) {
         return nil;
     }
+    
     return [self viewControllerAtIndex:index];
 }
 
@@ -252,6 +256,7 @@
     
     
     pageContentViewContoller.pageIndex = index;
+    pageContentViewContoller.pageTitle = self.pageTitles[index];
     pageContentViewContoller.delegate = self;
     [self setupRevealControllerContentPage:pageContentViewContoller];
     
@@ -276,7 +281,7 @@
         if (_currentPage == 0 && scrollView.contentOffset.x < scrollView.bounds.size.width) {
             scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
         }
-        if (_currentPage == 3 && scrollView.contentOffset.x > scrollView.bounds.size.width) {
+        if (_currentPage == ([self.pageTitles count] - 1) && scrollView.contentOffset.x > scrollView.bounds.size.width) {
             scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
         }
     }
@@ -297,7 +302,7 @@
             velocity = CGPointZero;
             *targetContentOffset = CGPointMake(scrollView.bounds.size.width, 0);
         }
-        if (_currentPage == 3 && scrollView.contentOffset.x >= scrollView.bounds.size.width) {
+        if (_currentPage == ([self.pageTitles count] - 1) && scrollView.contentOffset.x >= scrollView.bounds.size.width) {
             velocity = CGPointZero;
             *targetContentOffset = CGPointMake(scrollView.bounds.size.width, 0);
         }
@@ -318,7 +323,7 @@
     if(completed){
         
         _currentPage = [ self pageContentControllerInNavigationController:((UINavigationController*)pageViewController.viewControllers.lastObject) ].pageIndex;
-        if(_currentPage == 0 || _currentPage == 3){
+        if(_currentPage == 0 || _currentPage == ([self.pageTitles count] - 1)){
             isPageToBounce = NO;
         } else {
             isPageToBounce = YES;
