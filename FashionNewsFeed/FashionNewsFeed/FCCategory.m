@@ -1,19 +1,31 @@
+//
+//  FCCategory.m
+//  FashionNewsFeed
+//
+//  Created by Anton Chugunov on 27.03.15.
+//  Copyright (c) 2015 Anton Chugunov. All rights reserved.
+//
+
+
+
 #import <Foundation/Foundation.h>
 #import "FCCategory.h"
 
+
+
 @implementation FCCategory
 
-@synthesize categoryId;
-@synthesize categoryName;
 
--(id)initWithNameAndId:(NSString *)categoryName_ categoryId:(int)categoryId_
+
+-(id)initWithNameAndId:(NSString *)categoryName categoryId:(NSUInteger)categoryId
 {
     self = [super init];
     if (self) {
-        self.categoryName = categoryName_;
-        self.categoryId = categoryId_;
+        self.categoryName = categoryName;
+        self.categoryId = categoryId;
     }
     return self;
 }
+
 
 @end
