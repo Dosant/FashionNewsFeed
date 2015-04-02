@@ -13,9 +13,9 @@
     NSString* categoryName;
 }
 
-@property (nonatomic) NSUInteger categoryId;
+@property (assign, nonatomic) NSUInteger categoryId;
 @property (strong, nonatomic) NSString* categoryName;
 
-- (id)initWithNameAndId:(NSString*)categoryName categoryId:(NSUInteger)categoryId;
+- (id)initWithName:(NSString *)categoryName andCategoryId:(NSUInteger)categoryId;
 
 @end
