@@ -18,7 +18,6 @@
 @interface PersistencyManager : NSObject
 
 @property (strong, nonatomic) NSArray * categoriesList;
-
-
+@property (strong, nonatomic) NSMutableArray *arrayOfPost;
 
 @end
