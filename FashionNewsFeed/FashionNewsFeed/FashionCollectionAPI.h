@@ -10,17 +10,16 @@
 
 
 #import <Foundation/Foundation.h>
-
+#import "FCPost.h"
 
 @interface FashionCollectionAPI : NSObject
 
-+(FashionCollectionAPI *)sharedInstance;
-- (NSArray *)getCategories;
++ (FashionCollectionAPI *)sharedInstance;
 
-/*
-- (void)addNewsItem:(NewsItem *)newsItem;
-- (void)saveNews;
-- (NewsItem *)getNewsItemWithId:(NSUInteger)id;
-*/
+- (NSArray *)getCategories;
+- (void)addNewsItem:(FCPost *)newsItem;
+- (FCPost *)getNewsItemWithId:(NSUInteger)id;
+
+//- (void)saveNews;
 
 @end

@@ -54,4 +54,22 @@
     return persistencyManager.categoriesList;
 }
 
+- (void) addNewsItem:(FCPost *)post {
+    
+    [[persistencyManager arrayOfPost] addObject: post];
+}
+
+- (FCPost *)getNewsItemWithId:(NSUInteger)newsId {
+    
+    for (FCPost *post in [persistencyManager arrayOfPost] ) {
+        
+        if (newsId == [post postId]) {
+            
+            return post;
+        }
+    }
+    
+    return nil;
+}
+
 @end
