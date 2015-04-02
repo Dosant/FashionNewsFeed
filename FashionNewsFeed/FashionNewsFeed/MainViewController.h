@@ -16,7 +16,7 @@
 #import <UIKit/UIKit.h>
 #import "PageContentViewController.h"
 #import "SWRevealViewController.h"
-#import "NewsAPI.h"
+#import "FashionCollectionAPI.h"
 
 
 @interface MainViewController : UIViewController <UIPageViewControllerDataSource, UIScrollViewDelegate, UIPageViewControllerDelegate , PageContentViewControllerDelegate, SWRevealViewControllerDelegate>
