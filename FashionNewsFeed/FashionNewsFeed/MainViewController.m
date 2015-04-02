@@ -34,9 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.pageTitles = [[FashionCollectionAPI sharedInstance] getCategories];
-    
     
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];

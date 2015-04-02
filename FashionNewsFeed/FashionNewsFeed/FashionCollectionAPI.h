@@ -16,8 +16,8 @@
 
 + (FashionCollectionAPI *)sharedInstance;
 
-- (NSArray *)getCategories;
 - (void)addNewsItem:(FCPost *)newsItem;
+- (NSArray *)getCategories;
 - (FCPost *)getNewsItemWithId:(NSUInteger)id;
 
 //- (void)saveNews;

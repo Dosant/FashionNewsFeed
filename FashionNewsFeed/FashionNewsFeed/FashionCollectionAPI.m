@@ -45,6 +45,7 @@
         persistencyManager = [[PersistencyManager alloc] init];
         httpClient = [[HTTPClient alloc] init];
         
+        
     }
     return self;
 }
