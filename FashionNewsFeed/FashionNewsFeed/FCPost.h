@@ -38,7 +38,7 @@
 @property (strong, nonatomic) NSMutableArray *postTags;
 @property (strong, nonatomic) NSMutableArray *postAttachments;
 
-- (instancetype)initPostWithId:(NSUInteger)postId
+- (id)initPostWithId:(NSUInteger)postId
                           type:(NSString *)postType
                      urlString:(NSURL *)postUrlString
                          title:(NSString *)postTitle
