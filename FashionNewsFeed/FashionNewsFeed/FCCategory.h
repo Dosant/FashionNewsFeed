@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FCCategory : NSObject {
-    NSUInteger categoryId;
-    NSString* categoryName;
-}
+@interface FCCategory : NSObject
 
 @property (assign, nonatomic) NSUInteger categoryId;
 @property (strong, nonatomic) NSString* categoryName;
