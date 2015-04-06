@@ -21,7 +21,6 @@
 
 @interface MainViewController : UIViewController <UIPageViewControllerDataSource, UIScrollViewDelegate, UIPageViewControllerDelegate , PageContentViewControllerDelegate, SWRevealViewControllerDelegate>
 
-
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *pageTitles;
 

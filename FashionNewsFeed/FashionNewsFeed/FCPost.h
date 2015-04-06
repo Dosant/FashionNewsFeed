@@ -25,23 +25,36 @@
 
 #import <Foundation/Foundation.h>
 
-// Имхо лучше здесь у всех пропертис в начале в название "post". чтобы сразу автокомплитом видеть все поля, а не бегать по ним и искать.. тут их реально много.
-// У некоторых дописанно String -- так лучше, потому что в итоге url будет NSURL, а date -- NSDate. чтобы не запутаться
-// Ну и инит тут будет понятно всеми полями. Или лучше инитить передавать Dictionary, который получиться при парсе json
-
 @interface FCPost : NSObject
 
-@property(nonatomic) NSUInteger postId;
-@property(strong, nonatomic) NSString* postType;
-@property(strong, nonatomic) NSString* postUrlString;
-@property(strong, nonatomic) NSString* postTitle;
-@property(strong, nonatomic) NSString* postContentString;
-@property(strong, nonatomic) NSString* postDateString;
+@property (assign, nonatomic) NSUInteger postId;
+@property (strong, nonatomic) NSString  *postType;
+@property (strong, nonatomic) NSURL     *postUrlString;
+@property (strong, nonatomic) NSString  *postTitle;
+@property (strong, nonatomic) NSString  *postContentString;
+@property (strong, nonatomic) NSDate    *postDateString;
 
-@property(strong, nonatomic) NSArray* postCategories;
-@property(strong, nonatomic) NSArray* postTags;
-@property(strong, nonatomic) NSArray* postAttachments;
+@property (strong, nonatomic) NSMutableArray *postCategories;
+@property (strong, nonatomic) NSMutableArray *postTags;
+@property (strong, nonatomic) NSMutableArray *postAttachments;
 
-- (id)initWithContentAndId:(NSString*)content postId:(NSUInteger)postId;
+- (id)initPostWithId:(NSUInteger)postId
+                          type:(NSString *)postType
+                     urlString:(NSURL *)postUrlString
+                         title:(NSString *)postTitle
+                 contentString:(NSString *)postContentString
+                    dateString:(NSDate *)postDateString;
+
+//This methods added to MutableArray inf in current post
+
+- (BOOL)addCategory:(NSString *)category;
+- (void)addTag:(NSString *)tag;
+- (void)addAttachment:(id) attachment;
+
+//This methods get inf from current post
+
+- (NSArray *)getCurrentPostCategories;
+- (NSArray *)getCurrentPostTags;
+- (id)getCurrentPostAttachments;
 
 @end

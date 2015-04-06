@@ -15,9 +15,7 @@
 
 @implementation FCCategory
 
-
-
--(id)initWithNameAndId:(NSString *)categoryName categoryId:(NSUInteger)categoryId
+- (id)initWithName:(NSString *)categoryName andCategoryId:(NSUInteger)categoryId
 {
     self = [super init];
     if (self) {

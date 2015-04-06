@@ -45,6 +45,7 @@
         persistencyManager = [[PersistencyManager alloc] init];
         httpClient = [[FCHTTPClient alloc] init];
         
+        
     }
     return self;
 }
