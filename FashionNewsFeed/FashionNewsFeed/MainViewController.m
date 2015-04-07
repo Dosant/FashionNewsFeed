@@ -29,6 +29,11 @@
     BOOL isSideBarOpen;
     UIView* overlayViewToDisableMainController;
     
+    PageContentViewController* firstPageContentConroller;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog([self description]);
 }
 
 - (void)viewDidLoad {
@@ -96,7 +101,7 @@
         if(contollerToSetup.pageIndex == 0){
             
             [contollerToSetup.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-        
+            firstPageContentConroller = contollerToSetup;
         }
         
     }
@@ -107,6 +112,8 @@
 
 - (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position{
 
+    NSLog(@"%d",position);
+    
     if (position == 3 || position == 4){
         
         
@@ -114,10 +121,14 @@
         PageContentViewController* pc = [self pageContentControllerInNavigationController:nav];
         
         if(!overlayViewToDisableMainController){
-            overlayViewToDisableMainController = [[UIView alloc]initWithFrame:pc.view.frame];
+            overlayViewToDisableMainController = [[UIView alloc]initWithFrame:self.view.frame];
             overlayViewToDisableMainController.alpha = 0.2;
             overlayViewToDisableMainController.backgroundColor = [UIColor blackColor];
+            
             [overlayViewToDisableMainController addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
+            
+            //UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] init];
+            //[overlayViewToDisableMainController addGestureRecognizer: pan];
         }
         
         
@@ -125,14 +136,19 @@
         if(position == 3){ // SideBar is Closed
             
             isSideBarOpen = NO;
+            isDisableScroll = NO;
             [overlayViewToDisableMainController removeFromSuperview];
         
-        
-        
-        
+            [firstPageContentConroller.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+            
         } else if(position == 4) { // SideBar is Opened
             
             isSideBarOpen = YES;
+            isDisableScroll = YES;
+            
+            [overlayViewToDisableMainController addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+            
+            
             [pc.view addSubview:overlayViewToDisableMainController];
             
         }
@@ -218,27 +234,26 @@
         return nil;
     }
     
+//  
+//    //if cache array not initialized yet
+//    if(contentPages == nil) {
+//        contentPages = [NSMutableArray array];
+//        [contentPages addObject: [self initializePageContentController:index]];
+//    }
+//    
+//    //initialize next after next
+//    if (contentPages.count <= index + 1) {
+//        
+//        UINavigationController* nextNextPage = (UINavigationController *)[self initializePageContentController:index + 1];
+//        if (nextNextPage != nil){
+//            
+//            [contentPages addObject: nextNextPage];
+//        }
+//    }
     
-    //if cache array not initialized yet
-    if(contentPages == nil) {
-        contentPages = [NSMutableArray array];
-        [contentPages addObject: [self initializePageContentController:index]];
-    }
-    
-    //initialize next after next
-    if (contentPages.count <= index + 1) {
-        
-        UINavigationController* nextNextPage = (UINavigationController *)[self initializePageContentController:index + 1];
-        if (nextNextPage != nil){
-            
-            [contentPages addObject: nextNextPage];
-        }
-    }
-    
-    
-    
-    
-    return contentPages[index];
+    UINavigationController* pageToPresent = (UINavigationController *)[self initializePageContentController:index];
+
+    return pageToPresent;
 }
 
 -(UIViewController *) initializePageContentController:(NSUInteger)index{
@@ -266,7 +281,19 @@
 
 
 
-
+-(void)showPageAtIndex: (NSUInteger)index{
+    
+    NSArray* vc = @[[self viewControllerAtIndex:index]];
+    _currentPage = index;
+    if(_currentPage == 0 || _currentPage == ([self.pageTitles count] - 1)){
+        isPageToBounce = NO;
+    } else {
+        isPageToBounce = YES;
+    }
+    
+    
+    [self.pageViewController setViewControllers:vc direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
 
 
 
@@ -341,6 +368,9 @@
     
     
 }
+
+
+
 
 
 

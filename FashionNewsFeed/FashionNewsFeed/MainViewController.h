@@ -24,5 +24,7 @@
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *pageTitles;
 
+-(void)showPageAtIndex:(NSUInteger)index;
+
 @end
 

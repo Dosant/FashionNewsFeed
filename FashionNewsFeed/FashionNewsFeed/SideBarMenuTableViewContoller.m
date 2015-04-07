@@ -56,6 +56,25 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    if([self.revealViewController.frontViewController isKindOfClass:[MainViewController class]]){
+        MainViewController* mvc = (MainViewController*)self.revealViewController.frontViewController;
+        if(indexPath.row < [[mvc pageTitles] count]){
+        [mvc showPageAtIndex:indexPath.row];
+        }
+    }
+    
+    
+    [self.revealViewController revealToggleAnimated:YES];
+    
+    
+}
+
+
+
 
 /*
 // Override to support conditional editing of the table view.

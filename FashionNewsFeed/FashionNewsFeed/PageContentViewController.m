@@ -37,7 +37,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell* cell = (UITableViewCell * )[tableView dequeueReusableCellWithIdentifier: @"newsCell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"Hey, %ld", indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Hey, %d", indexPath.row];
     return cell;
     
 }

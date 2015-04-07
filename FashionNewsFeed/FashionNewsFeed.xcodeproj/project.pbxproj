@@ -20,10 +20,10 @@
 		836250B41AC5E4A200370340 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250B31AC5E4A200370340 /* PageContentViewController.m */; };
 		838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */; };
 		838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C91ACBE4AD004F3298 /* PersistencyManager.m */; };
-		838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */; };
+		838A28CD1ACBE4C4004F3298 /* HTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28CC1ACBE4C4004F3298 /* HTTPClient.m */; };
 		838A28D31ACBE58D004F3298 /* FCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28D11ACBE58D004F3298 /* FCPost.m */; };
 		83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC6B821AC7E186001544A6 /* SWRevealViewController.m */; };
-		8505FBD5CEFF5EE843A393DD /* libPods-FashionNewsFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */; };
+		83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11172E0DC9B8ACB18D45F871 /* Pods-FashionNewsFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeed/Pods-FashionNewsFeed.release.xcconfig"; sourceTree = "<group>"; };
 		2AEE7E561ACC893800A53CD3 /* FCCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCategory.m; sourceTree = "<group>"; };
 		2AEE7E591ACC8A5700A53CD3 /* FCCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCategory.h; sourceTree = "<group>"; };
-		771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F1612489324A6B0BE012158 /* Pods-FashionNewsFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeed/Pods-FashionNewsFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		832B3A881ACA918B00D34619 /* SideBarMenuTableViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarMenuTableViewContoller.h; sourceTree = "<group>"; };
 		832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarMenuTableViewContoller.m; sourceTree = "<group>"; };
 		832B3A8B1ACA922900D34619 /* NewsContentContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentContoller.h; sourceTree = "<group>"; };
@@ -65,12 +62,14 @@
 		838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FashionCollectionAPI.m; sourceTree = "<group>"; };
 		838A28C81ACBE4AD004F3298 /* PersistencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistencyManager.h; sourceTree = "<group>"; };
 		838A28C91ACBE4AD004F3298 /* PersistencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistencyManager.m; sourceTree = "<group>"; };
-		838A28CB1ACBE4C4004F3298 /* FCHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCHTTPClient.h; sourceTree = "<group>"; };
-		838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCHTTPClient.m; sourceTree = "<group>"; };
+		838A28CB1ACBE4C4004F3298 /* HTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPClient.h; sourceTree = "<group>"; };
+		838A28CC1ACBE4C4004F3298 /* HTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPClient.m; sourceTree = "<group>"; };
 		838A28D01ACBE58D004F3298 /* FCPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCPost.h; sourceTree = "<group>"; };
 		838A28D11ACBE58D004F3298 /* FCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCPost.m; sourceTree = "<group>"; };
 		83AC6B811AC7E186001544A6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		83AC6B821AC7E186001544A6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarWithBottomStroke.h; sourceTree = "<group>"; };
+		83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarWithBottomStroke.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8505FBD5CEFF5EE843A393DD /* libPods-FashionNewsFeed.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,8 +97,8 @@
 				838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */,
 				838A28C81ACBE4AD004F3298 /* PersistencyManager.h */,
 				838A28C91ACBE4AD004F3298 /* PersistencyManager.m */,
-				838A28CB1ACBE4C4004F3298 /* FCHTTPClient.h */,
-				838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */,
+				838A28CB1ACBE4C4004F3298 /* HTTPClient.h */,
+				838A28CC1ACBE4C4004F3298 /* HTTPClient.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -123,6 +121,8 @@
 		831008DE1ACADC7700270301 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */,
+				83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -144,8 +144,6 @@
 				8362508B1AC5E39400370340 /* FashionNewsFeed */,
 				836250A51AC5E39400370340 /* FashionNewsFeedTests */,
 				8362508A1AC5E39400370340 /* Products */,
-				BB9F83F7CD4947F62BD8A65C /* Pods */,
-				F55857680260D0997B01C85F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,23 +209,6 @@
 			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
-		BB9F83F7CD4947F62BD8A65C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7F1612489324A6B0BE012158 /* Pods-FashionNewsFeed.debug.xcconfig */,
-				11172E0DC9B8ACB18D45F871 /* Pods-FashionNewsFeed.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		F55857680260D0997B01C85F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,11 +216,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 836250AC1AC5E39400370340 /* Build configuration list for PBXNativeTarget "FashionNewsFeed" */;
 			buildPhases = (
-				DF226C9AF1346A8EFB4F53D3 /* Check Pods Manifest.lock */,
 				836250851AC5E39400370340 /* Sources */,
 				836250861AC5E39400370340 /* Frameworks */,
 				836250871AC5E39400370340 /* Resources */,
-				E284822E391C1ADC87A45BDE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -325,39 +304,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		DF226C9AF1346A8EFB4F53D3 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E284822E391C1ADC87A45BDE /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FashionNewsFeed/Pods-FashionNewsFeed-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		836250851AC5E39400370340 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -372,8 +318,9 @@
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
 				83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */,
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
+				83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
-				838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */,
+				838A28CD1ACBE4C4004F3298 /* HTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,7 +441,6 @@
 		};
 		836250AD1AC5E39400370340 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F1612489324A6B0BE012158 /* Pods-FashionNewsFeed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
@@ -505,7 +451,6 @@
 		};
 		836250AE1AC5E39400370340 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11172E0DC9B8ACB18D45F871 /* Pods-FashionNewsFeed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
