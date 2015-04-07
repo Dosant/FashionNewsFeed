@@ -23,6 +23,7 @@
 		838A28CD1ACBE4C4004F3298 /* HTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28CC1ACBE4C4004F3298 /* HTTPClient.m */; };
 		838A28D31ACBE58D004F3298 /* FCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28D11ACBE58D004F3298 /* FCPost.m */; };
 		83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC6B821AC7E186001544A6 /* SWRevealViewController.m */; };
+		83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		838A28D11ACBE58D004F3298 /* FCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCPost.m; sourceTree = "<group>"; };
 		83AC6B811AC7E186001544A6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		83AC6B821AC7E186001544A6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarWithBottomStroke.h; sourceTree = "<group>"; };
+		83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarWithBottomStroke.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 		831008DE1ACADC7700270301 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */,
+				83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
 				83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */,
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
+				83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
 				838A28CD1ACBE4C4004F3298 /* HTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,
