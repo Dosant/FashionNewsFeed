@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A88DA6A1AD32328007A618C /* FCAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA691AD32328007A618C /* FCAuthor.m */; };
+		2A88DA6D1AD32352007A618C /* FCFeaturedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA6C1AD32352007A618C /* FCFeaturedImage.m */; };
+		2A88DA701AD3237B007A618C /* FCAttachmentMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA6F1AD3237B007A618C /* FCAttachmentMeta.m */; };
+		2A88DA731AD32393007A618C /* FCTerms.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA721AD32393007A618C /* FCTerms.m */; };
+		2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA751AD323B7007A618C /* FCPostTag.m */; };
 		2AEE7E571ACC893800A53CD3 /* FCCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE7E561ACC893800A53CD3 /* FCCategory.m */; };
 		832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */; };
 		832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A8C1ACA922900D34619 /* NewsContentContoller.m */; };
@@ -38,6 +43,16 @@
 
 /* Begin PBXFileReference section */
 		11172E0DC9B8ACB18D45F871 /* Pods-FashionNewsFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeed/Pods-FashionNewsFeed.release.xcconfig"; sourceTree = "<group>"; };
+		2A88DA681AD32328007A618C /* FCAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCAuthor.h; path = Model/FCAuthor.h; sourceTree = "<group>"; };
+		2A88DA691AD32328007A618C /* FCAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCAuthor.m; path = Model/FCAuthor.m; sourceTree = "<group>"; };
+		2A88DA6B1AD32352007A618C /* FCFeaturedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCFeaturedImage.h; path = Model/FCFeaturedImage.h; sourceTree = "<group>"; };
+		2A88DA6C1AD32352007A618C /* FCFeaturedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCFeaturedImage.m; path = Model/FCFeaturedImage.m; sourceTree = "<group>"; };
+		2A88DA6E1AD3237B007A618C /* FCAttachmentMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCAttachmentMeta.h; path = Model/FCAttachmentMeta.h; sourceTree = "<group>"; };
+		2A88DA6F1AD3237B007A618C /* FCAttachmentMeta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCAttachmentMeta.m; path = Model/FCAttachmentMeta.m; sourceTree = "<group>"; };
+		2A88DA711AD32393007A618C /* FCTerms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCTerms.h; path = Model/FCTerms.h; sourceTree = "<group>"; };
+		2A88DA721AD32393007A618C /* FCTerms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCTerms.m; path = Model/FCTerms.m; sourceTree = "<group>"; };
+		2A88DA741AD323B7007A618C /* FCPostTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCPostTag.h; path = Model/FCPostTag.h; sourceTree = "<group>"; };
+		2A88DA751AD323B7007A618C /* FCPostTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCPostTag.m; path = Model/FCPostTag.m; sourceTree = "<group>"; };
 		2AEE7E561ACC893800A53CD3 /* FCCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCategory.m; sourceTree = "<group>"; };
 		2AEE7E591ACC8A5700A53CD3 /* FCCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCategory.h; sourceTree = "<group>"; };
 		771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +149,16 @@
 				838A28D11ACBE58D004F3298 /* FCPost.m */,
 				2AEE7E591ACC8A5700A53CD3 /* FCCategory.h */,
 				2AEE7E561ACC893800A53CD3 /* FCCategory.m */,
+				2A88DA681AD32328007A618C /* FCAuthor.h */,
+				2A88DA691AD32328007A618C /* FCAuthor.m */,
+				2A88DA6B1AD32352007A618C /* FCFeaturedImage.h */,
+				2A88DA6C1AD32352007A618C /* FCFeaturedImage.m */,
+				2A88DA6E1AD3237B007A618C /* FCAttachmentMeta.h */,
+				2A88DA6F1AD3237B007A618C /* FCAttachmentMeta.m */,
+				2A88DA711AD32393007A618C /* FCTerms.h */,
+				2A88DA721AD32393007A618C /* FCTerms.m */,
+				2A88DA741AD323B7007A618C /* FCPostTag.h */,
+				2A88DA751AD323B7007A618C /* FCPostTag.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -363,18 +388,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A88DA6D1AD32352007A618C /* FCFeaturedImage.m in Sources */,
 				836250B41AC5E4A200370340 /* PageContentViewController.m in Sources */,
 				838A28D31ACBE58D004F3298 /* FCPost.m in Sources */,
 				2AEE7E571ACC893800A53CD3 /* FCCategory.m in Sources */,
 				836250951AC5E39400370340 /* MainViewController.m in Sources */,
+				2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */,
 				838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */,
 				832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */,
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
+				2A88DA731AD32393007A618C /* FCTerms.m in Sources */,
 				83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */,
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
 				838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,
+				2A88DA6A1AD32328007A618C /* FCAuthor.m in Sources */,
+				2A88DA701AD3237B007A618C /* FCAttachmentMeta.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
