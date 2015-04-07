@@ -2,77 +2,38 @@
 //  FCPost.m
 //  FashionNewsFeed
 //
-//  Created by Anton Dosov on 27.03.15.
-//  Copyright (c) 2015 Anton Dosov. All rights reserved.
-//
 
 #import "FCPost.h"
-#import "PersistencyManager.h"
-
 
 @implementation FCPost
 
 - (instancetype)initPostWithId:(NSUInteger)postId
-                          type:(NSString *)postType
-                     urlString:(NSURL *)postUrlString
-                         title:(NSString *)postTitle
-                 contentString:(NSString *)postContentString
-                    dateString:(NSDate *)postDateString
+                      andTitle:(NSString *)postTitle
+                     andAuthor:(FCAuthor *)postAuthor
+                    andContent:(NSString *)postContent
+                       andLink:(NSString *)postLink
+                       andDate:(NSDate *)postDate
+               andDateModified:(NSDate *)postDateModified
+                    andExcerpt:(NSString *)postExcerpt
+                       andMeta:(NSMutableDictionary *)postMeta
+              andFeaturedImage:(FCFeaturedImage *)postFeaturedImage
+                      andTerms:(FCTerms *)postTerms
 {
     self = [super init];
-    if (self) {
-        
+    if (self) {        
         self.postId = postId;
-        self.postType = postType;
-        self.postUrlString = postUrlString;
         self.postTitle = postTitle;
-        self.postContentString = postContentString;
-        self.postDateString = postDateString;
+        self.postAuthor = postAuthor;
+        self.postContent = postContent;
+        self.postLink = postLink;
+        self.postDate = postDate;
+        self.postDateModified = postDateModified;
+        self.postExcerpt = postExcerpt;
+        self.postMeta = postMeta;
+        self.postFeaturedImage = postFeaturedImage;
+        self.postTerms = postTerms;
     }
     return self;
-}
-
-#pragma mark - addOtherInPost
-
-- (BOOL)addCategory:(NSString *)category {
-    
-    PersistencyManager *manager = [[PersistencyManager alloc] init];
-    
-    if (![[manager categoriesList] containsObject: category]) {
-        
-        return NO;
-    }
-    
-    [self.postCategories addObject: category];
-    
-    return YES;
-}
-
-- (void)addTag:(NSString *)tag {
-    
-    [self.postTags addObject: tag];
-}
-
-- (void)addAttachment:(id) attachment {
-    
-    [self.postAttachments addObject: attachment];
-}
-
-#pragma mark - getOtherInPost
-
-- (NSArray *)getCurrentPostCategories {
-    
-    return self.postCategories;
-}
-
-- (NSArray *)getCurrentPostTags {
-    
-    return self.postTags;
-}
-
-- (id)getCurrentPostAttachments {
-    
-    return nil;
 }
 
 @end
