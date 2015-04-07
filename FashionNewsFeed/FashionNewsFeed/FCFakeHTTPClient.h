@@ -1,6 +1,9 @@
 //
-//  FashionCollectionAPI.h
+//  FCFakeHTTPClient.h
 //  FashionNewsFeed
+//
+//  Created by anch on 4/7/15.
+//  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,13 +15,11 @@
 #import "FCTerms.h"
 #import "FCPostTag.h"
 
-@interface FashionCollectionAPI : NSObject
+@interface FCFakeHTTPClient : NSObject
 
-+ (FashionCollectionAPI *)sharedInstance;
++ (FCFakeHTTPClient *)sharedInstance;
 
+- (NSMutableArray *)getPosts;
 - (NSMutableArray *)getCategories;
-- (NSMutableArray *)getLatestsPosts;
-
-- (FCPost *)getPostWithId:(NSUInteger)id;
 
 @end

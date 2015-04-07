@@ -9,13 +9,13 @@
 
 @property (assign, nonatomic) NSUInteger categoryId;
 @property (strong, nonatomic) NSString* categoryName;
-@property (assign, nonatomic) NSUInteger* categoryCount;
+@property (assign, nonatomic) NSUInteger categoryCount;
 @property (strong, nonatomic) NSString* categoryLink;
 @property (strong, nonatomic) NSMutableDictionary* categoryMeta;
 
 - (id)initCategoryWithId:(NSUInteger)categoryId
                  andName:(NSString *)categoryName
-                andCount:(NSUInteger *)categoryCount
+                andCount:(NSUInteger) categoryCount
                  andLink:(NSString *)categoryLink
                  andMeta:(NSMutableDictionary *)categoryMeta;
 @end

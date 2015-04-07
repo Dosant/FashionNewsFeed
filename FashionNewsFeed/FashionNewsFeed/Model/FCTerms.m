@@ -7,6 +7,7 @@
 
 @implementation FCTerms
 
+
 - (id)initTermsWithId:(NSUInteger)termsId
            andPostTag:(NSMutableArray *)termsPostTag
           andCategory:(NSMutableArray *)termsCategory

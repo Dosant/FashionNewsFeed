@@ -9,9 +9,9 @@
 
 - (id)initPostTagWithId:(NSUInteger)postTagId
                 andName:(NSString *)postTagName
-               andCount:(NSUInteger *)postTagCount
+               andCount:(NSUInteger)postTagCount
                 andLink:(NSString *)postTagLink
-                andMeta:(NSDictionary *)postTagMeta
+                andMeta:(NSMutableDictionary *)postTagMeta
 {
     self = [super init];
     if (self) {

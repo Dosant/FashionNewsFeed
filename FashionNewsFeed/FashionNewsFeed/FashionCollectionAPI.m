@@ -9,14 +9,14 @@
 #import "FashionCollectionAPI.h"
 
 #import "FCHTTPClient.h"
+#import "FCFakeHTTPClient.h"
 #import "PersistencyManager.h"
-
 
 @interface FashionCollectionAPI ()
 {
     PersistencyManager * persistencyManager;
     FCHTTPClient * httpClient;
-    
+    FCFakeHTTPClient * fakeClient;
 }
 @end
 
@@ -44,32 +44,41 @@
     {
         persistencyManager = [[PersistencyManager alloc] init];
         httpClient = [[FCHTTPClient alloc] init];
-        
-        
+        fakeClient = [[FCFakeHTTPClient alloc] init];
     }
+    
     return self;
 }
 
--(NSArray *)getCategories{
+-(NSMutableArray *)getCategories{
     
-    return persistencyManager.categoriesList;
+    //Load data from PersistencyManager
+    //if it is not null - return
+    //otherwise load it from FCHttpClient
+    
+    //TODO Remove fake implementation
+    NSMutableArray *categories = [fakeClient getCategories];
+    
+    //Save data to PersistencyManager
+    
+    return categories;
 }
 
-- (void) addNewsItem:(FCPost *)post {
+-(NSMutableArray *)getLatestsPosts{
     
-    [[persistencyManager arrayOfPost] addObject: post];
+    //Load data from PersistencyManager
+    //if it is not null - return
+    //otherwise load it from FCHttpClient
+    
+    //TODO Remove fake implementation
+    NSMutableArray *posts = [fakeClient getPosts];
+    
+    //Save data to PersistencyManager
+    
+    return posts;
 }
 
-- (FCPost *)getNewsItemWithId:(NSUInteger)newsId {
-    
-    for (FCPost *post in [persistencyManager arrayOfPost] ) {
-        
-        if (newsId == [post postId]) {
-            
-            return post;
-        }
-    }
-    
+- (FCPost *)getPostWithId:(NSUInteger)postId {    
     return nil;
 }
 

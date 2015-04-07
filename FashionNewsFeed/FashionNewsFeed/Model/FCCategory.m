@@ -10,7 +10,7 @@
 
 - (instancetype)initCategoryWithId:(NSUInteger)categoryId
                            andName:(NSString *)categoryName
-                          andCount:(NSUInteger*)categoryCount
+                          andCount:(NSUInteger)categoryCount
                            andLink:(NSString *)categoryLink
                            andMeta:(NSMutableDictionary *)categoryMeta
 {

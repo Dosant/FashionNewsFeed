@@ -1,0 +1,311 @@
+{
+"ID": 1000,
+"title": "CDG_0173.450×675",
+"status": "inherit",
+"type": "attachment",
+"author": {
+"ID": 1,
+"username": "admin",
+"name": "Ирина Карелина",
+"first_name": "Ирина",
+"last_name": "Карелина",
+"nickname": "lina_kare",
+"slug": "admin",
+"URL": "",
+"avatar": "http://1.gravatar.com/avatar/7a5bc1fb723eb8b32dc3990f3af7cc52?s=96",
+"description": "",
+"registered": "2012-09-03T15:18:15+00:00",
+"meta": {
+"links": {
+"self": "http://fcollection.by/wp-json/users/1",
+"archives": "http://fcollection.by/wp-json/users/1/posts"
+}
+}
+},
+"content": "<p class=\"attachment\"><a href='http://fcollection.by/wp-content/uploads/2012/11/CDG_0173.45ٵ.jpg'><img width=\"199\" height=\"300\" src=\"http://fcollection.by/wp-content/uploads/2012/11/CDG_0173.45ٵ-199x300.jpg\" class=\"attachment-medium\" alt=\"CDG_0173.45ٵ\" /></a></p>\n",
+"parent": {
+"ID": 989,
+"title": "Comme des Garçons: энергия взрыва",
+"status": "publish",
+"type": "post",
+"author": {
+"ID": 6,
+"username": "Nastia",
+"name": "Настя Пивень",
+"first_name": "Настя",
+"last_name": "Пивень",
+"nickname": "Nasty",
+"slug": "nastia",
+"URL": "",
+"avatar": "http://1.gravatar.com/avatar/3f37e0484624b6620c833104031bf056?s=96",
+"description": "",
+"registered": "2012-10-24T09:31:13+00:00",
+"meta": {
+"links": {
+"self": "http://fcollection.by/wp-json/users/6",
+"archives": "http://fcollection.by/wp-json/users/6/posts"
+}
+}
+},
+"content": "<p>Показывать нужно только то, чего еще никогда не было — это философия дизайнера Рей Кавакубо.<!--more--></p>\n<blockquote><p>«Я всегда начинаю с того, что забываю все, что делала раньше, и игнорирую все, что уже существует. Меня может вдохновить случайная фотография, человек на улице, чувство или ощущение, ничего не значащий, может быть, даже бесполезный и выброшенный в мусорную корзину предмет – все, что угодно. Самое трудное – начало, концепция коллекции. Самое интересное – закончить коллекцию вовремя», — говорит дизайнер.</p></blockquote>\n<p>«Сокрушающая. Это энергия взрыва», — вкратце описала свою коллекцию Comme des Garçons весна-лето 2013 Рей Кавакубо.</p>\n<p>[simple_slideshow]</p>\n",
+"parent": null,
+"link": "http://fcollection.by/archives/989",
+"date": "2012-11-02T16:00:58",
+"modified": "2012-11-02T10:59:07",
+"format": "standard",
+"slug": "comme-des-garcons-энергия-взрыва",
+"guid": "http://fcollection.by/?p=989",
+"excerpt": "<p>Показывать нужно только то, чего еще никогда не было — это философия дизайнера Рей Кавакубо.</p>\n",
+"menu_order": 0,
+"comment_status": "open",
+"ping_status": "open",
+"sticky": false,
+"date_tz": "Europe/Minsk",
+"date_gmt": "2012-11-02T13:00:58",
+"modified_tz": "Europe/Minsk",
+"modified_gmt": "2012-11-02T07:59:07",
+"meta": {
+"links": {
+"self": "http://fcollection.by/wp-json/posts/989",
+"author": "http://fcollection.by/wp-json/users/6",
+"collection": "http://fcollection.by/wp-json/posts",
+"replies": "http://fcollection.by/wp-json/posts/989/comments",
+"version-history": "http://fcollection.by/wp-json/posts/989/revisions"
+}
+},
+"featured_image": 1025,
+"terms": {
+"post_tag": [
+{
+"ID": 128,
+"name": "Comme des Garçons",
+"slug": "comme-des-garcons",
+"description": "",
+"taxonomy": "post_tag",
+"parent": null,
+"count": 2,
+"link": "http://fcollection.by/archives/tag/comme-des-garcons",
+"meta": {
+"links": {
+"collection": "http://fcollection.by/wp-json/taxonomies/post_tag/terms",
+"self": "http://fcollection.by/wp-json/taxonomies/post_tag/terms/128"
+}
+}
+}
+],
+"category": [
+{
+"ID": 27,
+"name": "Коллекции",
+"slug": "collections",
+"description": "",
+"taxonomy": "category",
+"parent": null,
+"count": 199,
+"link": "http://fcollection.by/archives/category/collections",
+"meta": {
+"links": {
+"collection": "http://fcollection.by/wp-json/taxonomies/category/terms",
+"self": "http://fcollection.by/wp-json/taxonomies/category/terms/27"
+}
+}
+}
+]
+}
+},
+"link": "http://fcollection.by/archives/989/cdg_0173-45ٵ",
+"date": "2012-11-01T23:28:14",
+"modified": "2012-11-01T23:28:14",
+"format": "standard",
+"slug": "cdg_0173-45ٵ",
+"guid": "http://fcollection.by/wp-content/uploads/2012/11/CDG_0173.45ٵ.jpg",
+"excerpt": null,
+"menu_order": 0,
+"comment_status": "open",
+"ping_status": "open",
+"sticky": false,
+"date_tz": "Europe/Minsk",
+"date_gmt": "2012-11-01T20:28:14",
+"modified_tz": "Europe/Minsk",
+"modified_gmt": "2012-11-01T20:28:14",
+"meta": {
+"links": {
+"self": "http://fcollection.by/wp-json/posts/1000",
+"author": "http://fcollection.by/wp-json/users/1",
+"collection": "http://fcollection.by/wp-json/posts",
+"replies": "http://fcollection.by/wp-json/posts/1000/comments",
+"version-history": "http://fcollection.by/wp-json/posts/1000/revisions",
+"up": "http://fcollection.by/wp-json/posts/989"
+}
+},
+"terms": []
+}
+
+
+
+
+{
+"ID": 1200,
+"title": "zara5",
+"status": "inherit",
+"type": "attachment",
+"author": {
+"ID": 1,
+"username": "admin",
+"name": "Ирина Карелина",
+"first_name": "Ирина",
+"last_name": "Карелина",
+"nickname": "lina_kare",
+"slug": "admin",
+"URL": "",
+"avatar": "http://1.gravatar.com/avatar/7a5bc1fb723eb8b32dc3990f3af7cc52?s=96",
+"description": "",
+"registered": "2012-09-03T15:18:15+00:00",
+"meta": {
+"links": {
+"self": "http://fcollection.by/wp-json/users/1",
+"archives": "http://fcollection.by/wp-json/users/1/posts"
+}
+}
+},
+"content": "<p class=\"attachment\"><a href='http://fcollection.by/wp-content/uploads/2012/11/zara5.jpg'><img width=\"200\" height=\"300\" src=\"http://fcollection.by/wp-content/uploads/2012/11/zara5-20̀.jpg\" class=\"attachment-medium\" alt=\"zara5\" /></a></p>\n",
+"parent": {
+"ID": 1195,
+"title": "Lookbook: Zara ноябрь 2012",
+"status": "publish",
+"type": "post",
+"author": {
+"ID": 1,
+"username": "admin",
+"name": "Ирина Карелина",
+"first_name": "Ирина",
+"last_name": "Карелина",
+"nickname": "lina_kare",
+"slug": "admin",
+"URL": "",
+"avatar": "http://1.gravatar.com/avatar/7a5bc1fb723eb8b32dc3990f3af7cc52?s=96",
+"description": "",
+"registered": "2012-09-03T15:18:15+00:00",
+"meta": {
+"links": {
+"self": "http://fcollection.by/wp-json/users/1",
+"archives": "http://fcollection.by/wp-json/users/1/posts"
+}
+}
+},
+"content": "<p>Испанский бренд представил лукбук практичный и выдержанный в стиле военной парадной тематики: жакеты с воротничками, леггинсы с полосками и многое другое.<!--more--></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara1.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara1.jpg\" alt=\"\" title=\"zara1\" width=\"400\" height=\"601\" class=\"aligncenter size-full wp-image-1196\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara2.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara2.jpg\" alt=\"\" title=\"zara2\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1197\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara3.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara3.jpg\" alt=\"\" title=\"zara3\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1198\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara4.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara4.jpg\" alt=\"\" title=\"zara4\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1199\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara5.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara5.jpg\" alt=\"\" title=\"zara5\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1200\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara6.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara6.jpg\" alt=\"\" title=\"zara6\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1201\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara7.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara7.jpg\" alt=\"\" title=\"zara7\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1202\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara8.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara8.jpg\" alt=\"\" title=\"zara8\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1203\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara9.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara9.jpg\" alt=\"\" title=\"zara9\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1204\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara10.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara10.jpg\" alt=\"\" title=\"zara10\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1205\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara11.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara11.jpg\" alt=\"\" title=\"zara11\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1206\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara12.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara12.jpg\" alt=\"\" title=\"zara12\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1207\" /></a></p>\n<p><a href=\"http://fcollection.by/wp-content/uploads/2012/11/zara13.jpg\"><img src=\"http://fcollection.by/wp-content/uploads/2012/11/zara13.jpg\" alt=\"\" title=\"zara13\" width=\"400\" height=\"600\" class=\"aligncenter size-full wp-image-1208\" /></a></p>\n",
+"parent": null,
+"link": "http://fcollection.by/archives/1195",
+"date": "2012-11-06T17:00:14",
+"modified": "2012-11-06T12:25:09",
+"format": "standard",
+"slug": "lookbook-zara-ноябрь-2012",
+"guid": "http://fcollection.by/?p=1195",
+"excerpt": "<p>Испанский бренд представил лукбук практичный и выдержанный в стиле военной парадной тематики: жакеты с воротничками, леггинсы с полосками и многое другое.</p>\n",
+"menu_order": 0,
+"comment_status": "open",
+"ping_status": "open",
+"sticky": false,
+"date_tz": "Europe/Minsk",
+"date_gmt": "2012-11-06T14:00:14",
+"modified_tz": "Europe/Minsk",
+"modified_gmt": "2012-11-06T09:25:09",
+"meta": {
+"links": {
+"self": "http://fcollection.by/wp-json/posts/1195",
+"author": "http://fcollection.by/wp-json/users/1",
+"collection": "http://fcollection.by/wp-json/posts",
+"replies": "http://fcollection.by/wp-json/posts/1195/comments",
+"version-history": "http://fcollection.by/wp-json/posts/1195/revisions"
+}
+},
+"featured_image": 1200,
+"terms": {
+"post_tag": [
+{
+"ID": 57,
+"name": "lookbook",
+"slug": "lookbook",
+"description": "",
+"taxonomy": "post_tag",
+"parent": null,
+"count": 12,
+"link": "http://fcollection.by/archives/tag/lookbook",
+"meta": {
+"links": {
+"collection": "http://fcollection.by/wp-json/taxonomies/post_tag/terms",
+"self": "http://fcollection.by/wp-json/taxonomies/post_tag/terms/57"
+}
+}
+},
+{
+"ID": 156,
+"name": "Zara",
+"slug": "zara",
+"description": "",
+"taxonomy": "post_tag",
+"parent": null,
+"count": 1,
+"link": "http://fcollection.by/archives/tag/zara",
+"meta": {
+"links": {
+"collection": "http://fcollection.by/wp-json/taxonomies/post_tag/terms",
+"self": "http://fcollection.by/wp-json/taxonomies/post_tag/terms/156"
+}
+}
+}
+],
+"category": [
+{
+"ID": 27,
+"name": "Коллекции",
+"slug": "collections",
+"description": "",
+"taxonomy": "category",
+"parent": null,
+"count": 199,
+"link": "http://fcollection.by/archives/category/collections",
+"meta": {
+"links": {
+"collection": "http://fcollection.by/wp-json/taxonomies/category/terms",
+"self": "http://fcollection.by/wp-json/taxonomies/category/terms/27"
+}
+}
+}
+]
+}
+},
+"link": "http://fcollection.by/archives/1195/zara5",
+"date": "2012-11-06T12:19:05",
+"modified": "2012-11-06T12:19:05",
+"format": "standard",
+"slug": "zara5",
+"guid": "http://fcollection.by/wp-content/uploads/2012/11/zara5.jpg",
+"excerpt": null,
+"menu_order": 0,
+"comment_status": "open",
+"ping_status": "open",
+"sticky": false,
+"date_tz": "Europe/Minsk",
+"date_gmt": "2012-11-06T09:19:05",
+"modified_tz": "Europe/Minsk",
+"modified_gmt": "2012-11-06T09:19:05",
+"meta": {
+"links": {
+"self": "http://fcollection.by/wp-json/posts/1200",
+"author": "http://fcollection.by/wp-json/users/1",
+"collection": "http://fcollection.by/wp-json/posts",
+"replies": "http://fcollection.by/wp-json/posts/1200/comments",
+"version-history": "http://fcollection.by/wp-json/posts/1200/revisions",
+"up": "http://fcollection.by/wp-json/posts/1195"
+}
+},
+"terms": []
+}
+
+
+
+
+
+
+
