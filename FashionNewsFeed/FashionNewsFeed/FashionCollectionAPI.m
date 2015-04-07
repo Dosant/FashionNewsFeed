@@ -8,14 +8,14 @@
 
 #import "FashionCollectionAPI.h"
 
-#import "FCHTTPClient.h"
+#import "HTTPClient.h"
 #import "PersistencyManager.h"
 
 
 @interface FashionCollectionAPI ()
 {
     PersistencyManager * persistencyManager;
-    FCHTTPClient * httpClient;
+    HTTPClient * httpClient;
     
 }
 @end
@@ -43,7 +43,7 @@
     if (self)
     {
         persistencyManager = [[PersistencyManager alloc] init];
-        httpClient = [[FCHTTPClient alloc] init];
+        httpClient = [[HTTPClient alloc] init];
         
         
     }
