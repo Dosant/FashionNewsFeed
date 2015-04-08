@@ -1,10 +1,8 @@
 //
 // Implementation.
 // Downloading the news from web site.
-// http://fcollection.by
 //
 
-// Test urls
 // http://fcollection.by/wp-json/
 // /posts/<id>
 // /posts/<id>/revisions
@@ -32,7 +30,7 @@
 
 #import "FCHTTPClient.h"
 
-static NSString * const kFCollectionBaseURLString = @"http://fcollection.by";
+static NSString * const kFCollectionBaseURLString = @"http://fcollection.by/wp-json/";
 
 @implementation FCHTTPClient
 
@@ -57,14 +55,11 @@ static NSString * const kFCollectionBaseURLString = @"http://fcollection.by";
     return self;
 }
 
-- (void)getLatestPosts:(int)numberOfPosts
-               success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
-               failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure
+- (void)getPostById:(NSUInteger)postId
+            success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
+            failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure
 {
-    //NSString* path = [NSString stringWithFormat:@"user/calendar/shows.json/%@/%@/%@/%d",
-    //                 kTraktAPIKey, username, dateString, numberOfDays];
-    
-    NSString* path = [NSString init];
+    NSString* path = [NSString stringWithFormat:@"%@posts/%lu", kFCollectionBaseURLString, (unsigned long)postId];
     
     [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
@@ -75,19 +70,6 @@ static NSString * const kFCollectionBaseURLString = @"http://fcollection.by";
             failure(task, error);
         }
     }];
-    
-    
-// How to call
-//    FCHTTPClient *client = [FCHTTPClient sharedClient];
-//    
-//    [client getLatestPosts:10
-//                   success:^(NSURLSessionDataTask *task, id responseObject) {
-//                       NSLog(@"Success -- %@", responseObject);
-//                    }
-//                   failure:^(NSURLSessionDataTask *task, NSError *error) {
-//                       NSLog(@"Failure -- %@", error);
-//                    }];
-    
 }
 
 @end

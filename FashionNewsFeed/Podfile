@@ -6,6 +6,6 @@ pod 'AFNetworking', '~> 2.5.0'
 end
 
 target 'FashionNewsFeedTests' do
-
+pod 'AFNetworking', '~> 2.5.0'
 end
 

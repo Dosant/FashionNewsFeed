@@ -13,8 +13,8 @@ extern NSString * const kFCBaseURLString;
 
 + (FCHTTPClient *)sharedClient;
 
-- (void)getLatestPosts:(int)numberOfPosts
-               success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
-               failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
+- (void)getPostById:(NSUInteger)postId
+            success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
+            failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
 
 @end
