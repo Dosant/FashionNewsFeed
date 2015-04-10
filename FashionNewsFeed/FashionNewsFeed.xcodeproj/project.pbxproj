@@ -34,6 +34,8 @@
 		83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC6B821AC7E186001544A6 /* SWRevealViewController.m */; };
 		83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */; };
 		8505FBD5CEFF5EE843A393DD /* libPods-FashionNewsFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */; };
+		866336C41AD85C02003CE4DC /* FCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 866336C31AD85C02003CE4DC /* FCTableViewCell.m */; };
+		868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868C1E161AD85F4700AEEBFF /* coreData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,9 @@
 		83AC6B821AC7E186001544A6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarWithBottomStroke.h; sourceTree = "<group>"; };
 		83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarWithBottomStroke.m; sourceTree = "<group>"; };
+		866336C21AD85C02003CE4DC /* FCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCTableViewCell.h; path = View/FCTableViewCell.h; sourceTree = "<group>"; };
+		866336C31AD85C02003CE4DC /* FCTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCTableViewCell.m; path = View/FCTableViewCell.m; sourceTree = "<group>"; };
+		868C1E171AD85F4700AEEBFF /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
 		9FDD1CC86E81D5154F3E3DAF /* libPods-FashionNewsFeedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A805F0CB9ED6D9B769622224 /* Pods-FashionNewsFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeedTests/Pods-FashionNewsFeedTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +163,8 @@
 			children = (
 				83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */,
 				83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */,
+				866336C21AD85C02003CE4DC /* FCTableViewCell.h */,
+				866336C31AD85C02003CE4DC /* FCTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -206,6 +213,7 @@
 		8362508B1AC5E39400370340 /* FashionNewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				868C1E161AD85F4700AEEBFF /* coreData.xcdatamodeld */,
 				836250961AC5E39400370340 /* Main.storyboard */,
 				831008DF1ACADC7A00270301 /* Model */,
 				831008DE1ACADC7700270301 /* View */,
@@ -457,12 +465,14 @@
 				83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */,
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
 				83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */,
+				866336C41AD85C02003CE4DC /* FCTableViewCell.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
 				838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */,
 				2AFD71771AD46EB400DA1FA2 /* FCFakeHTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,
 				2A88DA6A1AD32328007A618C /* FCAuthor.m in Sources */,
 				2AFD71741AD46B3300DA1FA2 /* FCPost.m in Sources */,
+				868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */,
 				2A88DA701AD3237B007A618C /* FCAttachmentMeta.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,6 +681,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		868C1E161AD85F4700AEEBFF /* coreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				868C1E171AD85F4700AEEBFF /* coreData.xcdatamodel */,
+			);
+			currentVersion = 868C1E171AD85F4700AEEBFF /* coreData.xcdatamodel */;
+			name = coreData.xcdatamodeld;
+			path = Data/coreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 836250811AC5E39400370340 /* Project object */;
 }

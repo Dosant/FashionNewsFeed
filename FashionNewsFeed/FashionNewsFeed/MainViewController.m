@@ -33,7 +33,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSLog([self description]);
+   // NSLog([self description]);
 }
 
 - (void)viewDidLoad {
@@ -112,7 +112,7 @@
 
 - (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position{
 
-    NSLog(@"%d",position);
+    NSLog(@"%ld",position);
     
     if (position == 3 || position == 4){
         
@@ -297,7 +297,6 @@
     
     [self.pageViewController setViewControllers:vc direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
-
 
 
 #pragma mark - UIScrollViewConroller DELEGATE

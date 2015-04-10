@@ -8,6 +8,7 @@
 
 #import "SideBarMenuTableViewContoller.h"
 #import "FashionCollectionAPI.h"
+#import "FCTableViewCell.h"
 
 @interface SideBarMenuTableViewContoller ()
 
@@ -48,10 +49,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    UITableViewCell* cell = (UITableViewCell * )[tableView dequeueReusableCellWithIdentifier: @"menuCell"];
+    FCTableViewCell* cell = [[FCTableViewCell alloc] init];
     cell.textLabel.text = [[[FashionCollectionAPI sharedInstance] getCategories] objectAtIndex:indexPath.row];
-    
-
     
     return cell;
 }

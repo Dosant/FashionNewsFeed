@@ -60,7 +60,7 @@
     post2.postFeaturedImage = nil;
     post2.postTerms = nil;
     
-    NSMutableArray *posts = [NSMutableArray arrayWithObjects: post1, post1, nil];
+    NSMutableArray *posts = [NSMutableArray arrayWithObjects: post1, post2, nil];
     return posts;
 }
 
