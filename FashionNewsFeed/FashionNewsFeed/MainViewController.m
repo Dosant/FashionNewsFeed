@@ -269,7 +269,10 @@
     
     
     pageContentViewContoller.pageIndex = index;
-    pageContentViewContoller.pageTitle = self.pageTitles[index];
+
+    //TODO Update properties with new models
+    //pageContentViewContoller.pageTitle = self.pageTitles[index];
+    
     pageContentViewContoller.delegate = self;
     [self setupRevealControllerContentPage:pageContentViewContoller];
     
