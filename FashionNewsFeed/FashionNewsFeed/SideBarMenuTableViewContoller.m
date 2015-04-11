@@ -50,7 +50,7 @@
     
     
     FCTableViewCell* cell = [[FCTableViewCell alloc] init];
-    cell.textLabel.text = [[[FashionCollectionAPI sharedInstance] getCategories] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[[[FashionCollectionAPI sharedInstance] getCategories] objectAtIndex:indexPath.row] categoryName];
     
     return cell;
 }

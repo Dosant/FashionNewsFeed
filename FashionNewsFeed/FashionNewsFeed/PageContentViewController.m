@@ -13,7 +13,7 @@
 
 @interface PageContentViewController ()
 
-@property (strong, nonatomic) FashionCollectionAPI *fCollectionAPI;
+@property (weak, nonatomic) FashionCollectionAPI *fCollectionAPI;
 
 @end
 
@@ -37,10 +37,16 @@
 }
 
 #pragma mark - tableViewDataSource
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    FCTableViewCell* cell = [[FCTableViewCell alloc] init];
+<<<<<<< HEAD
+    FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell"];
     
+=======
+    FCTableViewCell* cell = (FCTableViewCell * )[tableView dequeueReusableCellWithIdentifier: @"tableViewCell"];
+        
+>>>>>>> origin/master
     switch (self.pageIndex) {
             
         case 0:
@@ -77,8 +83,19 @@
     return  [[self.fCollectionAPI getLatestsPosts] count];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier: @"moveToContent" sender: indexPath];
+<<<<<<< HEAD
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString: @"moveToContent"]){
+=======
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if([segue.identifier isEqualToString: @"showNewsContent"]){
+>>>>>>> origin/master
+        
+        [[self delegate] setScrollEnabled:self enabled: NO];
+        
+    }
 }
+
 
 @end

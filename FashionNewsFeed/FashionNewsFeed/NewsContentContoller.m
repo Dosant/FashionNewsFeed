@@ -9,6 +9,8 @@
 #import "NewsContentContoller.h"
 
 @interface NewsContentContoller ()
+@property (weak, nonatomic) IBOutlet UIWebView *contentView;
+@property (strong,nonatomic) NSString* contentString;
 
 @end
 
