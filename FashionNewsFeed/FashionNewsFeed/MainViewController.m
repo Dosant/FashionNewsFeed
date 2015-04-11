@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.pageTitles = [[FashionCollectionAPI sharedInstance] getCategories];
+    self.pageTitles = [[FashionCollectionAPI sharedInstance] getCategories] ;
     
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -271,7 +271,7 @@
     pageContentViewContoller.pageIndex = index;
 
     //TODO Update properties with new models
-    //pageContentViewContoller.pageTitle = self.pageTitles[index];
+    pageContentViewContoller.pageTitle = [self.pageTitles[index] categoryName];
     
     pageContentViewContoller.delegate = self;
     [self setupRevealControllerContentPage:pageContentViewContoller];

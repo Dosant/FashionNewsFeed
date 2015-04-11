@@ -40,13 +40,9 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-<<<<<<< HEAD
+
     FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell"];
-    
-=======
-    FCTableViewCell* cell = (FCTableViewCell * )[tableView dequeueReusableCellWithIdentifier: @"tableViewCell"];
-        
->>>>>>> origin/master
+
     switch (self.pageIndex) {
             
         case 0:
@@ -83,14 +79,11 @@
     return  [[self.fCollectionAPI getLatestsPosts] count];
 }
 
-<<<<<<< HEAD
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString: @"moveToContent"]){
-=======
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     if([segue.identifier isEqualToString: @"showNewsContent"]){
->>>>>>> origin/master
+
         
         [[self delegate] setScrollEnabled:self enabled: NO];
         

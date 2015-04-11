@@ -108,13 +108,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-<<<<<<< HEAD
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FCCell" id="S4K-lQ-6ss" customClass="FCTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-=======
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="100" id="S4K-lQ-6ss" customClass="FCTableViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
->>>>>>> origin/master
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S4K-lQ-6ss" id="Mgr-Sa-cQQ">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
