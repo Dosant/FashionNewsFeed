@@ -37,10 +37,11 @@
 }
 
 #pragma mark - tableViewDataSource
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    FCTableViewCell* cell = [[FCTableViewCell alloc] init];
-    
+    FCTableViewCell* cell = (FCTableViewCell * )[tableView dequeueReusableCellWithIdentifier: @"tableViewCell"];
+        
     switch (self.pageIndex) {
             
         case 0:
@@ -77,8 +78,13 @@
     return  [[self.fCollectionAPI getLatestsPosts] count];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier: @"moveToContent" sender: indexPath];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if([segue.identifier isEqualToString: @"showNewsContent"]){
+        
+        [[self delegate] setScrollEnabled:self enabled: NO];
+        
+    }
 }
 
 @end
