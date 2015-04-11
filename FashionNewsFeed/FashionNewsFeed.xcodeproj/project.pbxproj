@@ -13,6 +13,7 @@
 		2A88DA731AD32393007A618C /* FCTerms.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA721AD32393007A618C /* FCTerms.m */; };
 		2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA751AD323B7007A618C /* FCPostTag.m */; };
 		2AA8A5431AD5C70600530047 /* FCHTTPClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8A5421AD5C70600530047 /* FCHTTPClientTests.m */; };
+		2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */ = {isa = PBXBuildFile; fileRef = 2AF330C71AD91E5E00E1CB68 /* ExampleContent */; };
 		2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD71711AD46B3300DA1FA2 /* FCCategory.m */; };
 		2AFD71741AD46B3300DA1FA2 /* FCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD71721AD46B3300DA1FA2 /* FCPost.m */; };
 		2AFD71771AD46EB400DA1FA2 /* FCFakeHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD71761AD46EB400DA1FA2 /* FCFakeHTTPClient.m */; };
@@ -61,6 +62,7 @@
 		2A88DA741AD323B7007A618C /* FCPostTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCPostTag.h; path = Model/FCPostTag.h; sourceTree = "<group>"; };
 		2A88DA751AD323B7007A618C /* FCPostTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCPostTag.m; path = Model/FCPostTag.m; sourceTree = "<group>"; };
 		2AA8A5421AD5C70600530047 /* FCHTTPClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCHTTPClientTests.m; sourceTree = "<group>"; };
+		2AF330C71AD91E5E00E1CB68 /* ExampleContent */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ExampleContent; sourceTree = "<group>"; };
 		2AFD716F1AD46B3300DA1FA2 /* FCCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCCategory.h; path = Model/FCCategory.h; sourceTree = "<group>"; };
 		2AFD71701AD46B3300DA1FA2 /* FCPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCPost.h; path = Model/FCPost.h; sourceTree = "<group>"; };
 		2AFD71711AD46B3300DA1FA2 /* FCCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCCategory.m; path = Model/FCCategory.m; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */,
 				838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */,
 				2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */,
+				2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */,
 				832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */,
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
 				2A88DA731AD32393007A618C /* FCTerms.m in Sources */,
