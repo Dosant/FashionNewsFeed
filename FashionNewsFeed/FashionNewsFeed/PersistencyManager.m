@@ -7,10 +7,9 @@
 //
 
 #import "PersistencyManager.h"
-#import "FCPost.h"
+
 
 @implementation PersistencyManager
-
 
 - (id)init
 {
