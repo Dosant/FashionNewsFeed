@@ -64,42 +64,23 @@
     return posts;
 }
 
-- (NSMutableArray *)getCategories{
+- (NSMutableArray *)getCategories{    
+
+    NSMutableDictionary *dict1 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"self",@"http://fcollection.by/test1", nil];
+    FCCategory *category1 = [[FCCategory alloc] initCategoryWithId:1 andName:@"НОВОСТИ" andCount:100 andLink:@"http://fcollection.by/archives/category/news" andMeta:dict1];
     
-
-    FCCategory *category1 = [[FCCategory alloc] init];
-    category1.categoryId = 1;
-    category1.categoryName = @"НОВОСТИ";
-    category1.categoryCount = 100;
-    category1.categoryLink = @"http://fcollection.by/archives/category/news";
-    category1.categoryMeta = nil;
-
-    FCCategory *category2 = [[FCCategory alloc] init];
-    category2.categoryId = 2;
-    category2.categoryName = @"МОДА";
-    category2.categoryCount = 200;
-    category2.categoryLink = @"http://fcollection.by/archives/category/fashion";
-    category2.categoryMeta = nil;
-
-    FCCategory *category3 = [[FCCategory alloc] init];
-    category3.categoryId = 3;
-    category3.categoryName = @"СОБЫТИЯ";
-    category3.categoryCount = 300;
-    category3.categoryLink = @"http://fcollection.by/archives/category/events";
-    category3.categoryMeta = nil;
-
-    FCCategory *category4 = [[FCCategory alloc] init];
-    category4.categoryId = 4;
-    category4.categoryName = @"FC BEAUTY BOX";
-    category4.categoryCount = 400;
-    category4.categoryLink = @"http://fcollection.by/archives/category/beauty_box";
-    category4.categoryMeta = nil;
-
+    NSMutableDictionary *dict2 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"self",@"http://fcollection.by/test2", nil];
+    FCCategory *category2 = [[FCCategory alloc] initCategoryWithId:2 andName:@"МОДА" andCount:200 andLink:@"http://fcollection.by/archives/category/fashion" andMeta:dict2];
+    
+    NSMutableDictionary *dict3 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"self",@"http://fcollection.by/test3", nil];
+    FCCategory *category3 = [[FCCategory alloc] initCategoryWithId:3 andName:@"КОЛЛЕКЦИИ" andCount:300 andLink:@"http://fcollection.by/archives/category/collections" andMeta:dict3];
+    
+    NSMutableDictionary *dict4 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"self",@"http://fcollection.by/test4", nil];
+    FCCategory *category4 = [[FCCategory alloc] initCategoryWithId:4 andName:@"ЛИЦА" andCount:400 andLink:@"http://fcollection.by/archives/category/face" andMeta:dict4];
     
     NSMutableArray *categories = [NSMutableArray arrayWithObjects: category1, category2, category3, nil];
     [categories addObject:category4];
     
-    return categories;
-}
+    return categories;}
 
 @end
