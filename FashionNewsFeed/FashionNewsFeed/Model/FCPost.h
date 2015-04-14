@@ -22,16 +22,18 @@
 @property (strong, nonatomic) FCFeaturedImage *postFeaturedImage;
 @property (strong, nonatomic) FCTerms *postTerms;
 
-- (id)initPostWithId:(NSUInteger)postId
-            andTitle:(NSString *)postTitle
-           andAuthor:(FCAuthor *)postAuthor
-          andContent:(NSString *)postContent
-             andLink:(NSString *)postLink
-             andDate:(NSDate *)postDate
-     andDateModified:(NSDate *)postDateModified
-          andExcerpt:(NSString *)postExcerpt
-             andMeta:(NSMutableDictionary *)postMeta
-    andFeaturedImage:(FCFeaturedImage *)postFeaturedImage
-            andTerms:(FCTerms *)postTerms;
+- (instancetype)initPostWithId:(NSUInteger)postId
+                      andTitle:(NSString *)postTitle
+                     andAuthor:(FCAuthor *)postAuthor
+                    andContent:(NSString *)postContent
+                       andLink:(NSString *)postLink
+                       andDate:(NSDate *)postDate
+               andDateModified:(NSDate *)postDateModified
+                    andExcerpt:(NSString *)postExcerpt
+                       andMeta:(NSMutableDictionary *)postMeta
+              andFeaturedImage:(FCFeaturedImage *)postFeaturedImage
+                      andTerms:(FCTerms *)postTerms;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
 @end

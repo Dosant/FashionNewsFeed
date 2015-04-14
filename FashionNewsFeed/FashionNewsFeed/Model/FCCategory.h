@@ -13,9 +13,12 @@
 @property (strong, nonatomic) NSString* categoryLink;
 @property (strong, nonatomic) NSMutableDictionary* categoryMeta;
 
-- (id)initCategoryWithId:(NSUInteger)categoryId
-                 andName:(NSString *)categoryName
-                andCount:(NSUInteger) categoryCount
-                 andLink:(NSString *)categoryLink
-                 andMeta:(NSMutableDictionary *)categoryMeta;
+- (instancetype)initCategoryWithId:(NSUInteger)categoryId
+                           andName:(NSString *)categoryName
+                          andCount:(NSUInteger) categoryCount
+                           andLink:(NSString *)categoryLink
+                           andMeta:(NSMutableDictionary *)categoryMeta;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
 @end

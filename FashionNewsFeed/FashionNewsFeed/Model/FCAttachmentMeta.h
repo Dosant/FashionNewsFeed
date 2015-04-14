@@ -13,9 +13,12 @@
 @property (strong, nonatomic) NSString *attachmentMetaHeight;
 @property (strong, nonatomic) NSString *attachmentMetaUrl;
 
-- (id)initAttachmentMetaWithId:(NSUInteger)attachmentMetaId
-                       andFile:(NSString *)attachmentMetaFile
-                      andWidth:(NSString *)attachmentMetaWidth
-                     andHeight:(NSString *)attachmentMetaHeight
-                        andUrl:(NSString *)attachmentMetaUrl;
+- (instancetype)initAttachmentMetaWithId:(NSUInteger)attachmentMetaId
+                                 andFile:(NSString *)attachmentMetaFile
+                                andWidth:(NSString *)attachmentMetaWidth
+                               andHeight:(NSString *)attachmentMetaHeight
+                                  andUrl:(NSString *)attachmentMetaUrl;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
 @end

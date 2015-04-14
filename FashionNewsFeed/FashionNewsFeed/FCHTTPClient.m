@@ -39,6 +39,7 @@ static NSString * const kFCollectionBaseURLString = @"http://fcollection.by/wp-j
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kFCollectionBaseURLString]];
+        _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     });
     return _sharedClient;
 }
@@ -53,6 +54,40 @@ static NSString * const kFCollectionBaseURLString = @"http://fcollection.by/wp-j
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     self.requestSerializer = [AFJSONRequestSerializer serializer];
     return self;
+}
+
+//Посты по категориям
+//http://fcollection.by/wp-json/posts?filter[category_name]=beauty_box
+//http://fcollection.by/wp-json/posts?page=2&posts_per_page=12&status=publish&filter[category_name]=news
+
+- (void)getCategories:(void(^)(NSURLSessionDataTask *task, id responseObject))success
+              failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure
+{
+    //http://fcollection.by/wp-json/taxonomies/category/terms
+    
+    NSString* path = [NSString stringWithFormat:@"%@/%@/", kFCollectionBaseURLString, @"taxonomies/category/terms"];
+    
+    [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (success) {
+            
+//            NSArray *postsFromResponse = [JSON valueForKeyPath:@"data"];
+//            NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
+//            for (NSDictionary *attributes in postsFromResponse) {
+//                Post *post = [[Post alloc] initWithAttributes:attributes];
+//                [mutablePosts addObject:post];
+//            }
+//            
+//            if (block) {
+//                block([NSArray arrayWithArray:mutablePosts], nil);
+//            }
+            
+            success(task, responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failure) {
+            failure(task, error);
+        }
+    }];
 }
 
 - (void)getPostById:(NSUInteger)postId

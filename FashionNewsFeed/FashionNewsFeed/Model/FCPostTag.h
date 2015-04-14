@@ -13,9 +13,12 @@
 @property (strong, nonatomic) NSString *postTagLink;
 @property (strong, nonatomic) NSMutableDictionary *postTagMeta;
 
-- (id)initPostTagWithId:(NSUInteger)postTagId
-                andName:(NSString *)postTagName
-               andCount:(NSUInteger)postTagCount
-                andLink:(NSString *)postTagLink
-                andMeta:(NSDictionary *)postTagMeta;
+- (instancetype)initPostTagWithId:(NSUInteger)postTagId
+                          andName:(NSString *)postTagName
+                         andCount:(NSUInteger)postTagCount
+                          andLink:(NSString *)postTagLink
+                          andMeta:(NSDictionary *)postTagMeta;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
 @end

@@ -18,7 +18,6 @@
 
 - (NSMutableArray *)getCategories;
 - (NSMutableArray *)getLatestsPosts;
-
 - (FCPost *)getPostWithId:(NSUInteger)id;
 
 @end

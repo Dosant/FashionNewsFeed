@@ -30,4 +30,21 @@
     return self;
 }
 
+- (instancetype)initWithAttributes:(NSDictionary *)attributes
+{
+    self = [super init];
+    if (self) {
+        self.authorId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
+        self.authorUsername = [attributes valueForKeyPath:@"text"];
+        self.authorFirstName = [attributes valueForKeyPath:@"text"];
+        self.authorLastName = [attributes valueForKeyPath:@"text"];
+        self.authorNickname = [attributes valueForKeyPath:@"text"];
+        self.authorAvatar = [attributes valueForKeyPath:@"text"];
+        self.authorRegistered = [attributes valueForKeyPath:@"text"];
+        self.authorMeta = [attributes valueForKeyPath:@"text"];
+        
+    }
+    return self;
+}
+
 @end

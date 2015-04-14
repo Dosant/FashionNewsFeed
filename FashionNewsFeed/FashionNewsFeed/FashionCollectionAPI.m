@@ -50,31 +50,22 @@
     return self;
 }
 
+//-(NSMutableArray *)getCategories{
+// NSMutableArray *categories = [[NSMutableArray alloc] init];
+//[httpClient getCategories:^(NSURLSessionDataTask *task, id responseObject){
+// }
+//                  failure:^(NSURLSessionDataTask *task, NSError *error){
+//                  }];
+//    return categories;
+//}
+
 -(NSMutableArray *)getCategories{
-    
-    //Load data from PersistencyManager
-    //if it is not null - return
-    //otherwise load it from FCHttpClient
-    
-    //TODO Remove fake implementation
     NSMutableArray *categories = [fakeClient getCategories];
-    
-    //Save data to PersistencyManager
-    
     return categories;
 }
 
 -(NSMutableArray *)getLatestsPosts{
-    
-    //Load data from PersistencyManager
-    //if it is not null - return
-    //otherwise load it from FCHttpClient
-    
-    //TODO Remove fake implementation
     NSMutableArray *posts = [fakeClient getPosts];
-    
-    //Save data to PersistencyManager
-    
     return posts;
 }
 

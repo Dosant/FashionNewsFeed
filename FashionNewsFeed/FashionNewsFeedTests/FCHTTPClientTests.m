@@ -32,7 +32,7 @@
 
 - (void)testGetPostWithId
 {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method Works!"];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method"];
     
     FCHTTPClient *client = [FCHTTPClient sharedClient];
     
@@ -45,6 +45,34 @@
                 }
                 failure:^(NSURLSessionDataTask *task, NSError *error){
                 }];
+    
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        else
+        {
+            XCTAssertNotNil(receivedData, @"Received data should not be nil");
+        }
+    }];
+    
+}
+
+- (void)testGetCategories
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method"];
+    
+    FCHTTPClient *client = [FCHTTPClient sharedClient];
+    
+    __block NSData* receivedData = nil;
+    
+    [client getCategories:^(NSURLSessionDataTask *task, id responseObject){
+        receivedData = responseObject;
+        [expectation fulfill];
+    }
+                  failure:^(NSURLSessionDataTask *task, NSError *error){
+                  }];
     
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
         if(error)

@@ -16,12 +16,15 @@
 @property (strong, nonatomic) NSDate *authorRegistered;
 @property (strong, nonatomic) NSMutableDictionary *authorMeta;
 
-- (id)initAuthorWithId:(NSUInteger)authorId
-           andUsername:(NSString *)authorUsername
-          andFirstName:(NSString *)authorFirstName
-           andLastName:(NSString *)authorLastName
-           andNickname:(NSString *)authorNickname
-             andAvatar:(NSString *)authorAvatar
-         andRegistered:(NSDate *)authorRegistered
-               andMeta:(NSMutableDictionary *)authorMeta;
+- (instancetype)initAuthorWithId:(NSUInteger)authorId
+                     andUsername:(NSString *)authorUsername
+                    andFirstName:(NSString *)authorFirstName
+                     andLastName:(NSString *)authorLastName
+                     andNickname:(NSString *)authorNickname
+                       andAvatar:(NSString *)authorAvatar
+                   andRegistered:(NSDate *)authorRegistered
+                         andMeta:(NSMutableDictionary *)authorMeta;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
 @end

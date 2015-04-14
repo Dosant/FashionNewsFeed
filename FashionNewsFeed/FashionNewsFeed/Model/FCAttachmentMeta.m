@@ -24,4 +24,17 @@
     return self;
 }
 
+- (instancetype)initWithAttributes:(NSDictionary *)attributes
+{
+    self = [super init];
+    if (self) {
+        self.attachmentMetaId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
+        self.attachmentMetaFile = [attributes valueForKeyPath:@"text"];
+        self.attachmentMetaWidth = [attributes valueForKeyPath:@"text"];
+        self.attachmentMetaHeight = [attributes valueForKeyPath:@"text"];
+        self.attachmentMetaUrl = [attributes valueForKeyPath:@"text"];
+    }
+    return self;
+}
+
 @end

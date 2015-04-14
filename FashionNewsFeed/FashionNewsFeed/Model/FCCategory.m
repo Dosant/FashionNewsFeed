@@ -25,4 +25,17 @@
     return self;
 }
 
+- (instancetype)initWithAttributes:(NSDictionary *)attributes
+{
+    self = [super init];
+    if (self) {
+        self.categoryId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
+        self.categoryName = [attributes valueForKeyPath:@"text"];
+        self.categoryCount = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
+        self.categoryLink = [attributes valueForKeyPath:@"text"];
+        self.categoryMeta = [attributes valueForKeyPath:@"text"];
+    }
+    return self;
+}
+
 @end
