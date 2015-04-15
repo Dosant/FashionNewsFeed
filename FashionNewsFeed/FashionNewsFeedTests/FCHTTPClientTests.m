@@ -7,16 +7,14 @@
 #import <XCTest/XCTest.h>
 #import "FCHTTPClient.h"
 
-@interface FCHTTPClientTests : XCTestCase
-{
-    
+@interface FCHTTPClientTests : XCTestCase {
+
 }
 @end
 
 @implementation FCHTTPClientTests : XCTestCase
 
-- (FCHTTPClient *)getsharedClient
-{
+- (FCHTTPClient *)getsharedClient {
     return [FCHTTPClient sharedClient];
 }
 
@@ -30,67 +28,58 @@
     [super tearDown];
 }
 
-- (void)testGetPostWithId
-{
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method"];
-    
-    FCHTTPClient *client = [FCHTTPClient sharedClient];
-    
-    __block NSData* receivedData = nil;
-    
-    [client getPostById:1000
-                success:^(NSURLSessionDataTask *task, id responseObject){
-                    receivedData = responseObject;
-                    [expectation fulfill];
-                }
-                failure:^(NSURLSessionDataTask *task, NSError *error){
-                }];
-    
-    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
-        if(error)
-        {
-            XCTFail(@"Expectation Failed with error: %@", error);
-        }
-        else
-        {
-            XCTAssertNotNil(receivedData, @"Received data should not be nil");
-        }
-    }];
-    
-}
-
-- (void)testGetCategories
-{
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method"];
-    
-    FCHTTPClient *client = [FCHTTPClient sharedClient];
-    
-    __block NSData* receivedData = nil;
-    
-    [client getCategories:^(NSURLSessionDataTask *task, id responseObject){
-        receivedData = responseObject;
-        [expectation fulfill];
-    }
-                  failure:^(NSURLSessionDataTask *task, NSError *error){
-                  }];
-    
-    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
-        if(error)
-        {
-            XCTFail(@"Expectation Failed with error: %@", error);
-        }
-        else
-        {
-            XCTAssertNotNil(receivedData, @"Received data should not be nil");
-        }
-    }];
-    
-}
-
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
+    }];
+}
+
+- (void)testGetPostWithId {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method"];
+    FCHTTPClient *client = [self getsharedClient];
+    __block NSData *receivedData = nil;
+
+    [client getPostById:1000
+                success:^(NSURLSessionDataTask *task, id responseObject) {
+                    receivedData = responseObject;
+                    [expectation fulfill];
+                }
+                failure:^(NSURLSessionDataTask *task, NSError *error) {
+                }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        if (error) {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        else {
+            XCTAssertNotNil(receivedData, @"Received data should not be nil");
+        }
+    }];
+}
+
+- (void)testGetCategories {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method"];
+    FCHTTPClient *client = [self getsharedClient];
+    __block NSData *receivedData = nil;
+
+    [client getCategories:1
+                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                      receivedData = responseObject;
+                      [expectation fulfill];
+                  }
+                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        if (error) {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        else {
+            XCTAssertNotNil(receivedData, @"Received data should not be nil");
+        }
     }];
 }
 

@@ -7,17 +7,18 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 
-extern NSString * const kFCBaseURLString;
+extern NSString *const kFCBaseURLString;
 
 @interface FCHTTPClient : AFHTTPSessionManager
 
 + (FCHTTPClient *)sharedClient;
 
-- (void)getCategories:(void(^)(NSURLSessionDataTask *task, id responseObject))success
-              failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
+- (void)getCategories:(NSUInteger)categoryId
+              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
 - (void)getPostById:(NSUInteger)postId
-            success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
-            failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
+            success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+            failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
 @end
