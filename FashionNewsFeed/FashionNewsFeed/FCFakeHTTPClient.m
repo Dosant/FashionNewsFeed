@@ -66,6 +66,8 @@
 
 - (NSMutableArray *)getCategories{    
 
+    //Вот конкретно эти 4 рубрики пусть и будут в итоге
+    
     NSMutableDictionary *dict1 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"self",@"http://fcollection.by/test1", nil];
     FCCategory *category1 = [[FCCategory alloc] initCategoryWithId:1 andName:@"НОВОСТИ" andCount:100 andLink:@"http://fcollection.by/archives/category/news" andMeta:dict1];
     
@@ -73,10 +75,10 @@
     FCCategory *category2 = [[FCCategory alloc] initCategoryWithId:2 andName:@"МОДА" andCount:200 andLink:@"http://fcollection.by/archives/category/fashion" andMeta:dict2];
     
     NSMutableDictionary *dict3 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"self",@"http://fcollection.by/test3", nil];
-    FCCategory *category3 = [[FCCategory alloc] initCategoryWithId:3 andName:@"КОЛЛЕКЦИИ" andCount:300 andLink:@"http://fcollection.by/archives/category/collections" andMeta:dict3];
+    FCCategory *category3 = [[FCCategory alloc] initCategoryWithId:3 andName:@"СОБЫТИЯ" andCount:300 andLink:@"http://fcollection.by/archives/category/events" andMeta:dict3];
     
     NSMutableDictionary *dict4 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"self",@"http://fcollection.by/test4", nil];
-    FCCategory *category4 = [[FCCategory alloc] initCategoryWithId:4 andName:@"ЛИЦА" andCount:400 andLink:@"http://fcollection.by/archives/category/face" andMeta:dict4];
+    FCCategory *category4 = [[FCCategory alloc] initCategoryWithId:4 andName:@"Beauty Box" andCount:400 andLink:@"http://fcollection.by/archives/category/beauty_box" andMeta:dict4];
     
     NSMutableArray *categories = [NSMutableArray arrayWithObjects: category1, category2, category3, nil];
     [categories addObject:category4];

@@ -7,7 +7,7 @@
 #import <XCTest/XCTest.h>
 #import "FCHTTPClient.h"
 
-@interface FCHTTPClientTests : XCTestCase {
+@interface FCHTTPClientTests : XCTestCase
 
 
 
@@ -87,29 +87,7 @@
     }];
 }
 
-- (void)testGetPostWithId {
 
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method"];
-    FCHTTPClient *client = [self getsharedClient];
-    __block NSData *receivedData = nil;
-
-    [client getPostById:1000
-                success:^(NSURLSessionDataTask *task, id responseObject) {
-                    receivedData = responseObject;
-                    [expectation fulfill];
-                }
-                failure:^(NSURLSessionDataTask *task, NSError *error) {
-                }];
-
-    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
-        if (error) {
-            XCTFail(@"Expectation Failed with error: %@", error);
-        }
-        else {
-            XCTAssertNotNil(receivedData, @"Received data should not be nil");
-        }
-    }];
-}
 
 - (void)testGetCategories {
 
