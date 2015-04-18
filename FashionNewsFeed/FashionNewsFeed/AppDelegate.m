@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PersistencyManager.h"
 
 @interface AppDelegate ()
 
@@ -20,9 +21,6 @@
       
  [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:4.0 forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:4 forBarMetrics:UIBarMetricsDefault];
-    
-   
-    
     
   return YES;
 }
@@ -46,7 +44,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-  // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
 }
 
 @end

@@ -17,8 +17,8 @@
 + (FashionCollectionAPI *)sharedInstance;
 
 - (NSMutableArray *)getCategories;
-- (NSMutableArray *)getLatestsPosts;
+- (NSMutableArray *)getCategoriesNew;
 
-- (FCPost *)getPostWithId:(NSUInteger)id;
+- (NSMutableArray *)getLatestsPosts;
 
 @end

@@ -30,7 +30,7 @@
 
 #import "FCHTTPClient.h"
 
-static NSString * const kFCollectionBaseURLString = @"http://fcollection.by/wp-json/";
+static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-json/";
 
 @implementation FCHTTPClient
 
@@ -39,28 +39,29 @@ static NSString * const kFCollectionBaseURLString = @"http://fcollection.by/wp-j
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kFCollectionBaseURLString]];
+        _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     });
     return _sharedClient;
 }
 
 - (instancetype)initWithBaseURL:(NSURL *)url {
-    
+
     self = [super initWithBaseURL:url];
     if (!self) {
         return nil;
     }
-    
+
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     self.requestSerializer = [AFJSONRequestSerializer serializer];
     return self;
 }
 
-- (void)getPostById:(NSUInteger)postId
-            success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
-            failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure
-{
-    NSString* path = [NSString stringWithFormat:@"%@posts/%lu", kFCollectionBaseURLString, (unsigned long)postId];
-    
+- (void)getCategories:(NSUInteger)categoryId
+              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    NSString *path = [NSString stringWithFormat:@"%@%@", kFCollectionBaseURLString, @"taxonomies/category/terms"];
+
     [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success(task, responseObject);
@@ -71,5 +72,26 @@ static NSString * const kFCollectionBaseURLString = @"http://fcollection.by/wp-j
         }
     }];
 }
+
+- (void)getPostById:(NSUInteger)postId
+            success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+            failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    NSString *path = [NSString stringWithFormat:@"%@posts/%lu", kFCollectionBaseURLString, (unsigned long) postId];
+
+    [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (success) {
+            success(task, responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failure) {
+            failure(task, error);
+        }
+    }];
+}
+
+//Посты по категориям
+//http://fcollection.by/wp-json/posts?filter[category_name]=beauty_box
+//http://fcollection.by/wp-json/posts?page=2&posts_per_page=12&status=publish&filter[category_name]=news
 
 @end

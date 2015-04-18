@@ -8,13 +8,13 @@
 @interface FCTerms : NSObject
 
 @property (assign, nonatomic) NSUInteger termsId;
-//Please use FCPostTag class for termsPostTag array
-@property (strong, nonatomic) NSMutableArray *termsPostTag;
-//Please use FCCategory for termsCategory array
-@property (strong, nonatomic) NSMutableArray *termsCategory;
+@property (strong, nonatomic) NSMutableArray *termsPostTag; //FCPostTag
+@property (strong, nonatomic) NSMutableArray *termsCategory; //FCCategory
 
-- (id)initTermsWithId:(NSUInteger)termsId
-           andPostTag:(NSMutableArray *)termsPostTag
-          andCategory:(NSMutableArray *)termsCategory;
+- (instancetype)initTermsWithId:(NSUInteger)termsId
+                     andPostTag:(NSMutableArray *)termsPostTag
+                    andCategory:(NSMutableArray *)termsCategory;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
 @end

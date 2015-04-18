@@ -22,4 +22,17 @@
     return self;
 }
 
+- (instancetype)initWithAttributes:(NSDictionary *)attributes
+{
+    self = [super init];
+    if (self) {
+        
+        self.imageId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
+        self.imageTitle = [attributes valueForKeyPath:@"text"];
+        self.imageSource = [attributes valueForKeyPath:@"text"];
+        self.imageAttachmentMeta = [attributes valueForKeyPath:@"text"];
+    }
+    return self;
+}
+
 @end

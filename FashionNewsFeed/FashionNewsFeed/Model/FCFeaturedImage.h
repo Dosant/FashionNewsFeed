@@ -10,11 +10,13 @@
 @property (assign, nonatomic) NSUInteger imageId;
 @property (strong, nonatomic) NSString *imageTitle;
 @property (strong, nonatomic) NSString *imageSource;
-//Please use FCAttachmentMeta for imageAttachmentMeta array
-@property (strong, nonatomic) NSMutableArray *imageAttachmentMeta;
+@property (strong, nonatomic) NSMutableArray *imageAttachmentMeta; //FCAttachmentMeta
 
-- (id)initImageWithId:(NSUInteger)imageId
-             andTitle:(NSString *)imageTitle
-            andAuthor:(NSString *)imageSource
-           andContent:(NSMutableArray *)imageAttachmentMeta;
+- (instancetype)initImageWithId:(NSUInteger)imageId
+                       andTitle:(NSString *)imageTitle
+                      andAuthor:(NSString *)imageSource
+                     andContent:(NSMutableArray *)imageAttachmentMeta;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
 @end
