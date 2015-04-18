@@ -7,22 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FCAuthor.h"
 #import "FCFeaturedImage.h"
-#import "FCTerms.h"
+#import "FCCategory.h"
+#import "FCPost.h"
+
 
 
 @interface FCTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *FCCellTitle;
 
+@property (weak, nonatomic) IBOutlet UILabel *FCCellCategoryAndDate;
+
+@property (weak, nonatomic) IBOutlet UIImageView *FCCellFeaturedImage;
+
+@property(strong,nonatomic) FCPost* post;
 
 - (void) setPostTitle:(NSString *)postTitle
-           postAuthor:(FCAuthor *)postAuthor
              postDate:(NSDate *)postDate
-     postDateModified:(NSDate *)postDateModified
-          postExcerpt:(NSString *)postExcerpt
-             postMeta:(NSMutableDictionary *)postMeta
     postFeaturedImage:(FCFeaturedImage *)postFeaturedImage
-            postTerms:(FCTerms *)postTerms;
+         postCategory:(FCCategory*)postCategory;
 
 @end

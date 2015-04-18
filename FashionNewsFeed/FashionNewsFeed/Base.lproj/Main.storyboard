@@ -103,19 +103,51 @@
         <scene sceneID="4lD-Ak-sga">
             <objects>
                 <tableViewController storyboardIdentifier="pageContentConroller" id="vbT-r0-ggN" customClass="PageContentViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qwr-yC-NoG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="350" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qwr-yC-NoG">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94499540328979492" green="0.94515722990036011" blue="0.94498521089553833" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FCCell" id="S4K-lQ-6ss" customClass="FCTableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell" rowHeight="350" id="S4K-lQ-6ss" customClass="FCTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="350"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S4K-lQ-6ss" id="Mgr-Sa-cQQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="GDZ-m2-0cP">
+                                            <rect key="frame" x="8" y="0.0" width="304" height="334"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dHy-Ok-aMS">
+                                            <rect key="frame" x="16" y="8" width="288" height="256"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bHZ-SO-fji">
+                                            <rect key="frame" x="16" y="272" width="288" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dDg-ij-0If">
+                                            <rect key="frame" x="188" y="308" width="116" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="FCCellCategoryAndDate" destination="dDg-ij-0If" id="O0f-Rt-dMQ"/>
+                                    <outlet property="FCCellFeaturedImage" destination="dHy-Ok-aMS" id="xfu-D9-YXs"/>
+                                    <outlet property="FCCellTitle" destination="bHZ-SO-fji" id="Cej-E3-ela"/>
                                     <segue destination="WVd-OM-PCO" kind="push" identifier="moveToContent" id="En6-Jd-VVc"/>
                                 </connections>
                             </tableViewCell>
@@ -126,6 +158,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="NEWS" id="DWE-YW-foL">
+                        <barButtonItem key="backBarButtonItem" title=" " id="5Qa-Dg-dbN"/>
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="S5A-r3-lhn"/>
                     </navigationItem>
                     <connections>
@@ -152,9 +185,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Content" id="eVO-Ji-NJQ"/>
+                    <navigationItem key="navigationItem" title="Content" id="eVO-Ji-NJQ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="nEu-YI-zcu"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="aJg-wK-cia" id="5ID-3g-c9o"/>
+                        <outlet property="tempWebView" destination="aJg-wK-cia" id="5yu-iv-BMl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZu-xL-s98" userLabel="First Responder" sceneMemberID="firstResponder"/>

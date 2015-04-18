@@ -9,6 +9,7 @@
 #import "PageContentViewController.h"
 #import "FashionCollectionAPI.h"
 #import "FCTableViewCell.h"
+#import "NewsContentContoller.h"
 
 
 @interface PageContentViewController ()
@@ -17,17 +18,18 @@
 
 @end
 
-@implementation PageContentViewController
+@implementation PageContentViewController{
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.rowHeight = 100;
-
+    
+    
     self.title = _pageTitle;
     self.fCollectionAPI = [FashionCollectionAPI sharedInstance];
-  
+   
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -43,32 +45,15 @@
 
     FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell"];
 
-    switch (self.pageIndex) {
-            
-        case 0:
-            
-            [cell setPostTitle: [[[self.fCollectionAPI getLatestsPosts] objectAtIndex: indexPath.row] postTitle]
-                    postAuthor:[[[self.fCollectionAPI getLatestsPosts] objectAtIndex: indexPath.row] postAuthor]
-                      postDate:[[[self.fCollectionAPI getLatestsPosts] objectAtIndex: indexPath.row] postDate]
-              postDateModified:[[[self.fCollectionAPI getLatestsPosts] objectAtIndex: indexPath.row] postDateModified]
-                   postExcerpt:[[[self.fCollectionAPI getLatestsPosts] objectAtIndex: indexPath.row] postExcerpt]
-                      postMeta:[[[self.fCollectionAPI getLatestsPosts] objectAtIndex: indexPath.row] postMeta]
-             postFeaturedImage:[[[self.fCollectionAPI getLatestsPosts] objectAtIndex: indexPath.row] postFeaturedImage]
-                     postTerms:[[[self.fCollectionAPI getLatestsPosts] objectAtIndex: indexPath.row] postTerms] ];
-                        
-            break;
-            
-        case 1:
-            cell.textLabel.text = [[[self.fCollectionAPI getCategories] objectAtIndex: 1] categoryName];
-            break;
-        case 2:
-            cell.textLabel.text = [[[self.fCollectionAPI getCategories] objectAtIndex: 2] categoryName];
-            break;
-        case 3:
-            cell.textLabel.text = [[[self.fCollectionAPI getCategories] objectAtIndex: 3] categoryName];
-            break;
-            
-    }
+    FCPost* post = (FCPost*)[[self.fCollectionAPI getLatestsPosts] objectAtIndex:indexPath.row];
+    
+    
+    cell.post = post;
+    
+    cell.FCCellTitle.text = post.postTitle;
+   // cell.FCCellFeaturedImage.image = post.postFeaturedImage;
+    cell.FCCellCategoryAndDate.text = @"вчера";
+    
     
     return cell;
 
@@ -80,12 +65,31 @@
 }
 
 
+#pragma mark - tableViewDelegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+}
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     if([segue.identifier isEqualToString: @"showNewsContent"]){
 
         
         [[self delegate] setScrollEnabled:self enabled: NO];
+        
+    }
+    
+    if([segue.identifier isEqualToString: @"moveToContent"]){
+        
+        //Pass post to the contentView
+        
+        NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
+        NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
+        dvt.post = ((FCTableViewCell*)[self.tableView cellForRowAtIndexPath:ip]).post;
         
     }
 }

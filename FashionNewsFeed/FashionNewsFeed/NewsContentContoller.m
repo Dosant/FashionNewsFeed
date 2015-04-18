@@ -16,8 +16,11 @@
 
 @implementation NewsContentContoller
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.contentView loadHTMLString:_post.postContent baseURL:nil];
     // Do any additional setup after loading the view.
 }
 
