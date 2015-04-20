@@ -18,7 +18,6 @@
 		2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */ = {isa = PBXBuildFile; fileRef = 2AF330C71AD91E5E00E1CB68 /* ExampleContent */; };
 		2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD71711AD46B3300DA1FA2 /* FCCategory.m */; };
 		2AFD71741AD46B3300DA1FA2 /* FCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD71721AD46B3300DA1FA2 /* FCPost.m */; };
-		2AFD71771AD46EB400DA1FA2 /* FCFakeHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD71761AD46EB400DA1FA2 /* FCFakeHTTPClient.m */; };
 		34B828F12837BAB923F3D16B /* libPods-FashionNewsFeedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FDD1CC86E81D5154F3E3DAF /* libPods-FashionNewsFeedTests.a */; };
 		832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */; };
 		832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A8C1ACA922900D34619 /* NewsContentContoller.m */; };
@@ -78,8 +77,6 @@
 		2AFD71701AD46B3300DA1FA2 /* FCPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCPost.h; path = Model/FCPost.h; sourceTree = "<group>"; };
 		2AFD71711AD46B3300DA1FA2 /* FCCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCCategory.m; path = Model/FCCategory.m; sourceTree = "<group>"; };
 		2AFD71721AD46B3300DA1FA2 /* FCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCPost.m; path = Model/FCPost.m; sourceTree = "<group>"; };
-		2AFD71751AD46EB400DA1FA2 /* FCFakeHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCFakeHTTPClient.h; sourceTree = "<group>"; };
-		2AFD71761AD46EB400DA1FA2 /* FCFakeHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCFakeHTTPClient.m; sourceTree = "<group>"; };
 		771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1612489324A6B0BE012158 /* Pods-FashionNewsFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeed/Pods-FashionNewsFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		832B3A881ACA918B00D34619 /* SideBarMenuTableViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarMenuTableViewContoller.h; sourceTree = "<group>"; };
@@ -159,8 +156,6 @@
 				838A28C91ACBE4AD004F3298 /* PersistencyManager.m */,
 				838A28CB1ACBE4C4004F3298 /* FCHTTPClient.h */,
 				838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */,
-				2AFD71751AD46EB400DA1FA2 /* FCFakeHTTPClient.h */,
-				2AFD71761AD46EB400DA1FA2 /* FCFakeHTTPClient.m */,
 				2A2B634B1ADD9FB7004C6CCB /* FCResponseDeserializer.h */,
 				2A2B634C1ADD9FB7004C6CCB /* FCResponseDeserializer.m */,
 			);
@@ -519,7 +514,6 @@
 				8618D13D1ADC3D22005A341C /* DataPost.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
 				838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */,
-				2AFD71771AD46EB400DA1FA2 /* FCFakeHTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,
 				2A88DA6A1AD32328007A618C /* FCAuthor.m in Sources */,
 				2AFD71741AD46B3300DA1FA2 /* FCPost.m in Sources */,

@@ -35,15 +35,14 @@
 - (void)getCategories:(void (^)(NSURLSessionDataTask *task, NSMutableArray *categories))success
               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
-    [httpClient getCategories:@"empty"
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
-                          NSMutableArray *categories = [[NSMutableArray alloc] init];
-                          for (NSDictionary *attributes in responseObject) {
-                              FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
-                              [categories addObject:category];
-                          }
-                          success(task, categories);
-                      }
+    [httpClient getCategories:^(NSURLSessionDataTask *task, id responseObject) {
+                NSMutableArray *categories = [[NSMutableArray alloc] init];
+                for (NSDictionary *attributes in responseObject) {
+                    FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                    [categories addObject:category];
+                }
+                success(task, categories);
+            }
                       failure:^(NSURLSessionDataTask *task, NSError *error) {
                           failure(task, error);
                       }];
@@ -62,7 +61,6 @@
                     failure:^(NSURLSessionDataTask *task, NSError *error) {
                         failure(task, error);
                     }];
-
 }
 
 - (void)getBeautyBoxPosts:(NSUInteger)pageNumber
@@ -74,17 +72,35 @@
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
                            success:^(NSURLSessionDataTask *task, id responseObject) {
-                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               NSMutableArray *posts = [[NSMutableArray alloc] init];
                                for (NSDictionary *attributes in responseObject) {
-                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
-                                   [categories addObject:category];
+                                   FCPost *post = [[FCPost alloc] initWithAttributes:attributes];
+                                   [posts addObject:post];
                                }
-                               success(task, categories);
+                               success(task, posts);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
                            }];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)getLifestylePosts:(NSUInteger)pageNumber
              postsPerPage:(NSUInteger)postsPerPage

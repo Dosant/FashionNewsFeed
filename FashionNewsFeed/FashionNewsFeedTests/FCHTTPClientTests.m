@@ -10,9 +10,7 @@
 @interface FCHTTPClientTests : XCTestCase
 @end
 
-@implementation FCHTTPClientTests : XCTestCase {
-    NSObject *temp;
-}
+@implementation FCHTTPClientTests
 
 - (FCHTTPClient *)getsharedClient {
     return [FCHTTPClient sharedClient];
@@ -28,89 +26,74 @@
     [super tearDown];
 }
 
+- (void)testExample {
+    // This is an example of a functional test case.
+    XCTAssert(YES, @"Pass");
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
+        XCTAssert(YES, @"Pass");
         // Put the code you want to measure the time of here.
     }];
 }
 
-- (void)debug:(id)response {
-    NSLog([response description]);
-}
-
 - (void)testGetAllCategories {
 
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method"];
+    XCTestExpectation *downloadedDataExpectation = [self expectationWithDescription:@"Data downloaded"];
     FCHTTPClient *client = [self getsharedClient];
-    __block NSData *receivedData = nil;
 
-    [client getCategories:@"news"
-                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                      XCTAssert([responseObject description] > 0);
-                      [expectation fulfill];
-                      temp = responseObject;
-                      ([responseObject description]);
-                      [self debug:responseObject];
-                      NSString *str = [responseObject description];
-                      XCTAssert(YES, @"%@", str);
-                  }
+    [client getCategories:^(NSURLSessionDataTask *task, id responseObject) {
+                XCTAssert(YES, @"Pass");
+                [downloadedDataExpectation fulfill];
+            }
                   failure:^(NSURLSessionDataTask *task, NSError *error) {
                       XCTAssertFalse(@"Failed");
                   }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
 }
 
 - (void)testGetPostById {
 
-    XCTestExpectation *expectation = [self expectationWithDescription:@"High Expectations"];
-    FCHTTPClient *client = [FCHTTPClient sharedClient];
+    XCTestExpectation *downloadedDataExpectation = [self expectationWithDescription:@"Data downloaded"];
+    FCHTTPClient *client = [self getsharedClient];
 
     [client getPostById:1000
                 success:^(NSURLSessionDataTask *task, id responseObject) {
-                    XCTAssert([responseObject description] > 0);
-                    [expectation fulfill];
-                    temp = responseObject;
-                    ([responseObject description]);
-                    [self debug:responseObject];
-                    NSString *str = [responseObject description];
-                    XCTAssert(YES, @"%@", str);
+                    XCTAssert(YES, @"Pass");
+                    [downloadedDataExpectation fulfill];
                 }
                 failure:^(NSURLSessionDataTask *task, NSError *error) {
                     XCTAssertFalse(@"Failed");
                 }];
 
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
-        if (error) {
-            NSLog(@"Timeout Error: %@", error);
-        }
+        XCTAssertNil(error, "Error");
     }];
 }
 
 - (void)getPostsByCategory {
 
-    XCTestExpectation *expectation = [self expectationWithDescription:@"High Expectations"];
-    FCHTTPClient *client = [FCHTTPClient sharedClient];
+    XCTestExpectation *downloadedDataExpectation = [self expectationWithDescription:@"Data downloaded"];
+    FCHTTPClient *client = [self getsharedClient];
 
-    [client getPostsByCategory:@"NEWS"
+    [client getPostsByCategory:@"beauty_box"
                  andPageNumber:5
                andPostsPerPage:12
                        success:^(NSURLSessionDataTask *task, id responseObject) {
-                           XCTAssert([responseObject description] > 0);
-                           [expectation fulfill];
-                           temp = responseObject;
-                           ([responseObject description]);
-                           [self debug:responseObject];
-                           NSString *str = [responseObject description];
-                           XCTAssert(YES, @"%@", str);
+                           XCTAssert(YES, @"Pass");
+                           [downloadedDataExpectation fulfill];
                        }
                        failure:^(NSURLSessionDataTask *task, NSError *error) {
                            XCTAssertFalse(@"Failed");
                        }];
 
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
-        if (error) {
-            NSLog(@"Timeout Error: %@", error);
-        }
+        XCTAssertNil(error, "Error");
     }];
 }
 

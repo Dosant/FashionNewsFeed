@@ -2,15 +2,11 @@
 //  FashionNewsFeedTests.m
 //  FashionNewsFeedTests
 //
-//  Created by Anton Dosov on 27.03.15.
-//  Copyright (c) 2015 Anton Dosov. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
 @interface FashionNewsFeedTests : XCTestCase
-
 @end
 
 @implementation FashionNewsFeedTests

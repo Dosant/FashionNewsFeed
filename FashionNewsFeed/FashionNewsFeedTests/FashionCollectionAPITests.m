@@ -7,14 +7,12 @@
 #import <XCTest/XCTest.h>
 #import "FashionCollectionAPI.h"
 
-@interface FashionCollectionAPITests : XCTestCase {
-
-}
+@interface FashionCollectionAPITests : XCTestCase
 @end
 
-@implementation FashionCollectionAPITests : XCTestCase
+@implementation FashionCollectionAPITests
 
-- (FashionCollectionAPI *)sharedInstance {
+- (FashionCollectionAPI *)getsharedInstance {
     return [FashionCollectionAPI sharedInstance];
 }
 
@@ -28,10 +26,72 @@
     [super tearDown];
 }
 
+- (void)testExample {
+    // This is an example of a functional test case.
+    XCTAssert(YES, @"Pass");
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
+    }];
+}
+
+- (void)testGetCategories {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getCategories:^(NSURLSessionDataTask *task, id responseObject) {
+                XCTAssert(YES, @"Pass");
+                [expectation fulfill];
+            }
+                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                      XCTAssertFalse(@"Failed");
+                  }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetPostById {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getPostById:1000
+                success:^(NSURLSessionDataTask *task, id responseObject) {
+                    XCTAssert(YES, @"Pass");
+                    [expectation fulfill];
+                }
+                failure:^(NSURLSessionDataTask *task, NSError *error) {
+                    XCTAssertFalse(@"Failed");
+                }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetBeautyBoxPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getBeautyBoxPosts:1
+                 postsPerPage:5
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          XCTAssert(YES, @"Pass");
+                          [expectation fulfill];
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          XCTAssertFalse(@"Failed");
+                      }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
     }];
 }
 

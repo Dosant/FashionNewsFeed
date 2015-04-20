@@ -17,8 +17,7 @@
                     andExcerpt:(NSString *)postExcerpt
                        andMeta:(NSMutableDictionary *)postMeta
               andFeaturedImage:(FCFeaturedImage *)postFeaturedImage
-                      andTerms:(FCTerms *)postTerms
-{
+                      andTerms:(FCTerms *)postTerms {
     self = [super init];
     if (self) {
         self.postId = postId;
@@ -36,20 +35,30 @@
     return self;
 }
 
-- (instancetype)initWithAttributes:(NSDictionary *)attributes
-{
+- (instancetype)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
     if (self) {
-        self.postId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue]; self.postTitle = [attributes valueForKeyPath:@"text"];
-        self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"user"]];;
-        self.postContent = [attributes valueForKeyPath:@"text"];
-        self.postLink = [attributes valueForKeyPath:@"text"];
-        self.postDate = [attributes valueForKeyPath:@"text"];
-        self.postDateModified = [attributes valueForKeyPath:@"text"];
-        self.postExcerpt = [attributes valueForKeyPath:@"text"];
-        self.postMeta = [attributes valueForKeyPath:@"text"];
-        self.postFeaturedImage = [[FCFeaturedImage alloc] initWithAttributes:[attributes valueForKeyPath:@"user"]];;
-        self.postTerms = [[FCTerms alloc] initWithAttributes:[attributes valueForKeyPath:@"user"]];;
+        self.postId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
+        self.postTitle = [attributes valueForKeyPath:@"title"];
+        self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"author"]];;
+        self.postContent = [attributes valueForKeyPath:@"content"];
+        self.postLink = [attributes valueForKeyPath:@"link"];
+        self.postDate = [attributes valueForKeyPath:@"date"];
+        self.postDateModified = [attributes valueForKeyPath:@"modified"];
+        self.postExcerpt = [attributes valueForKeyPath:@"excerpt"];
+
+        NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
+        for (NSString *i in [attributes valueForKeyPath:@"meta"]) {
+            id v = [[attributes valueForKeyPath:@"meta"] objectForKey:i];
+            for (NSString *k in v) {
+                id value = [v objectForKey:k];
+                meta[k] = value;
+            }
+        }
+        self.postMeta = meta;
+
+        self.postFeaturedImage = [[FCFeaturedImage alloc] initWithAttributes:[attributes valueForKeyPath:@"featured_image"]];
+        self.postTerms = [[FCTerms alloc] initWithAttributes:[attributes valueForKeyPath:@"terms"]];;
     }
     return self;
 }

@@ -10,8 +10,7 @@
 
 + (FCHTTPClient *)sharedClient;
 
-- (void)getCategories:(NSString *)categoryName
-              success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+- (void)getCategories:(void (^)(NSURLSessionDataTask *task, id responseObject))success
               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
 - (void)getPostById:(NSUInteger)postId
