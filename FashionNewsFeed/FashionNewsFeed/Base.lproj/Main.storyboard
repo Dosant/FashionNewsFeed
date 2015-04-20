@@ -121,7 +121,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dHy-Ok-aMS">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dHy-Ok-aMS" customClass="newsFeaturedImageView">
                                             <rect key="frame" x="16" y="8" width="288" height="256"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,7 +146,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="FCCellCategoryAndDate" destination="dDg-ij-0If" id="O0f-Rt-dMQ"/>
-                                    <outlet property="FCCellFeaturedImage" destination="dHy-Ok-aMS" id="xfu-D9-YXs"/>
+                                    <outlet property="FCCellFeaturedImage" destination="dHy-Ok-aMS" id="Wop-KG-HjX"/>
                                     <outlet property="FCCellTitle" destination="bHZ-SO-fji" id="Cej-E3-ela"/>
                                     <segue destination="WVd-OM-PCO" kind="push" identifier="moveToContent" id="En6-Jd-VVc"/>
                                 </connections>

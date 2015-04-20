@@ -10,6 +10,7 @@
 #import "FCFeaturedImage.h"
 #import "FCCategory.h"
 #import "FCPost.h"
+#import "newsFeaturedImageView.h"
 
 
 
@@ -19,7 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *FCCellCategoryAndDate;
 
-@property (weak, nonatomic) IBOutlet UIImageView *FCCellFeaturedImage;
+@property (weak, nonatomic) IBOutlet  newsFeaturedImageView* FCCellFeaturedImage;
 
 @property(strong,nonatomic) FCPost* post;
 
