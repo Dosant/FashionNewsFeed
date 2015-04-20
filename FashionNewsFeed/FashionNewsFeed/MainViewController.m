@@ -39,7 +39,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.pageTitles = [[FashionCollectionAPI sharedInstance] getCategories] ;
+    //TODO
+    //self.pageTitles = [[FashionCollectionAPI sharedInstance] getCategories] ;
+    NSMutableArray *categories = [NSMutableArray arrayWithObjects: @"category1", @"category2", @"category3", nil];
+    self.pageTitles = categories;
     
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -270,8 +273,9 @@
     
     pageContentViewContoller.pageIndex = index;
 
-    //TODO Update properties with new models
-    pageContentViewContoller.pageTitle = [self.pageTitles[index] categoryName];
+    //TODO
+    //pageContentViewContoller.pageTitle = [self.pageTitles[index] categoryName];
+    pageContentViewContoller.pageTitle = @"Test";
     
     pageContentViewContoller.delegate = self;
     [self setupRevealControllerContentPage:pageContentViewContoller];

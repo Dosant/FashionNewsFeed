@@ -41,8 +41,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
+    //TODO
     // Return the number of rows in the section.
-    return [[[FashionCollectionAPI sharedInstance] getCategories] count];
+    //return [[[FashionCollectionAPI sharedInstance] getCategories] count];
+    return 12;
 }
 
 
@@ -50,7 +52,9 @@
     
     
     FCTableViewCell* cell = [[FCTableViewCell alloc] init];
-    cell.textLabel.text = [[[[FashionCollectionAPI sharedInstance] getCategories] objectAtIndex:indexPath.row] categoryName];
+    //TODO
+    //cell.textLabel.text = [[[[FashionCollectionAPI sharedInstance] getCategories] objectAtIndex:indexPath.row] categoryName];
+    cell.textLabel.text = @"Test";
     
     return cell;
 }

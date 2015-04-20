@@ -45,8 +45,9 @@
 
     FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell"];
 
-    FCPost* post = (FCPost*)[[self.fCollectionAPI getLatestsPosts] objectAtIndex:indexPath.row];
-    
+    //TODO
+    //FCPost* post = (FCPost*)[[self.fCollectionAPI getLatestsPosts] objectAtIndex:indexPath.row];
+    FCPost *post = [[FCPost alloc] init];
     
     cell.post = post;
     
@@ -61,7 +62,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return  [[self.fCollectionAPI getLatestsPosts] count];
+    //TODO
+    //return  [[self.fCollectionAPI getLatestsPosts] count];
+    return 12;
 }
 
 
