@@ -2,19 +2,13 @@
 //  FashionCollectionAPI.m
 //  FashionNewsFeed
 //
-//  Created by Anton Dosov on 01.04.15.
-//  Copyright (c) 2015 Anton Dosov. All rights reserved.
-//
 
 #import "FashionCollectionAPI.h"
 #import "FCHTTPClient.h"
-#import "FCFakeHTTPClient.h"
-#import "PersistencyManager.h"
+#import "FCCategory.h"
 
 @interface FashionCollectionAPI () {
-    PersistencyManager *persistencyManager;
     FCHTTPClient *httpClient;
-    FCFakeHTTPClient *fakeClient;
 }
 @end
 
@@ -33,39 +27,252 @@
 - (id)init {
     self = [super init];
     if (self) {
-        persistencyManager = [[PersistencyManager alloc] init];
         httpClient = [[FCHTTPClient alloc] init];
-        fakeClient = [[FCFakeHTTPClient alloc] init];
     }
     return self;
 }
 
-- (NSMutableArray *)getCategoriesNew {
+- (void)getCategories:(void (^)(NSURLSessionDataTask *task, NSMutableArray *categories))success
+              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
-    NSMutableArray *categories = [[NSMutableArray alloc] init];
-
-    [httpClient getCategories:1
+    [httpClient getCategories:@"empty"
                       success:^(NSURLSessionDataTask *task, id responseObject) {
-                          NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[responseObject count]];
+                          NSMutableArray *categories = [[NSMutableArray alloc] init];
                           for (NSDictionary *attributes in responseObject) {
-                              FCCategory *post = [[FCCategory alloc] initWithAttributes:attributes];
-                              [mutablePosts addObject:post];
+                              FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                              [categories addObject:category];
                           }
+                          success(task, categories);
                       }
                       failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          failure(task, error);
                       }];
-
-    return categories;
 }
 
-- (NSMutableArray *)getCategories {
-    NSMutableArray *categories = [fakeClient getCategories];
-    return categories;
+
+- (void)getPostById:(NSUInteger)postId
+            success:(void (^)(NSURLSessionDataTask *task, FCPost *post))success
+            failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostById:postId
+                    success:^(NSURLSessionDataTask *task, id responseObject) {
+                        FCPost *post = [[FCPost alloc] initWithAttributes:responseObject];
+                        success(task, post);
+                    }
+                    failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        failure(task, error);
+                    }];
+
 }
 
-- (NSMutableArray *)getLatestsPosts {
-    NSMutableArray *posts = [fakeClient getPosts];
-    return posts;
+- (void)getBeautyBoxPosts:(NSUInteger)pageNumber
+             postsPerPage:(NSUInteger)postsPerPage
+                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"beauty_box"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getLifestylePosts:(NSUInteger)pageNumber
+             postsPerPage:(NSUInteger)postsPerPage
+                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"lifestyle"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getBreakfastPosts:(NSUInteger)pageNumber
+             postsPerPage:(NSUInteger)postsPerPage
+                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                  failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"breakfast"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getKonkursPosts:(NSUInteger)pageNumber
+           postsPerPage:(NSUInteger)postsPerPage
+                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"konkurs"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getBeautyPosts:(NSUInteger)pageNumber
+          postsPerPage:(NSUInteger)postsPerPage
+               success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"beauty"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getFacePosts:(NSUInteger)pageNumber
+        postsPerPage:(NSUInteger)postsPerPage
+             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"face"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getBestPosts:(NSUInteger)pageNumber
+        postsPerPage:(NSUInteger)postsPerPage
+             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"best"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getFashionPosts:(NSUInteger)pageNumber
+           postsPerPage:(NSUInteger)postsPerPage
+                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"fashion"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getNewsPosts:(NSUInteger)pageNumber
+        postsPerPage:(NSUInteger)postsPerPage
+             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"news"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
+}
+
+- (void)getEventsPosts:(NSUInteger)pageNumber
+          postsPerPage:(NSUInteger)postsPerPage
+               success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsByCategory:@"events"
+                     andPageNumber:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *categories = [[NSMutableArray alloc] init];
+                               for (NSDictionary *attributes in responseObject) {
+                                   FCCategory *category = [[FCCategory alloc] initWithAttributes:attributes];
+                                   [categories addObject:category];
+                               }
+                               success(task, categories);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
 }
 
 @end

@@ -35,11 +35,4 @@
     }];
 }
 
-- (void)testGetCategories {
-
-    FashionCollectionAPI *api = [self sharedInstance];
-
-    [api getCategoriesNew];
-}
-
 @end

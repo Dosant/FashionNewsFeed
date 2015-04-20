@@ -1,6 +1,6 @@
 //
 // Implementation.
-// Downloading the news from web site.
+// Downloading posts from web site http://fcollection.by
 //
 
 // http://fcollection.by/wp-json/
@@ -45,18 +45,16 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
 }
 
 - (instancetype)initWithBaseURL:(NSURL *)url {
-
     self = [super initWithBaseURL:url];
     if (!self) {
         return nil;
     }
-
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     self.requestSerializer = [AFJSONRequestSerializer serializer];
     return self;
 }
 
-- (void)getCategories:(NSUInteger)categoryId
+- (void)getCategories:(NSString *)categoryName
               success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
@@ -90,8 +88,27 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
     }];
 }
 
-//Посты по категориям
-//http://fcollection.by/wp-json/posts?filter[category_name]=beauty_box
-//http://fcollection.by/wp-json/posts?page=2&posts_per_page=12&status=publish&filter[category_name]=news
+- (void)getPostsByCategory:(NSString *)categoryName
+             andPageNumber:(NSUInteger)pageNumber
+           andPostsPerPage:(NSUInteger)postsPerPage
+                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    NSString *path = [NSString stringWithFormat:@"%@posts?filter[category_name]=%@&page=%d&posts_per_page=%d&status=publish",
+                                                kFCollectionBaseURLString,
+                                                categoryName,
+                                                pageNumber,
+                                                postsPerPage];
+
+    [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (success) {
+            success(task, responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failure) {
+            failure(task, error);
+        }
+    }];
+}
 
 @end
