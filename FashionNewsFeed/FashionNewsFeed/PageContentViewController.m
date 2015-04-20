@@ -76,17 +76,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    if([segue.identifier isEqualToString: @"showNewsContent"]){
-
-        
-        [[self delegate] setScrollEnabled:self enabled: NO];
-        
-    }
+    
     
     if([segue.identifier isEqualToString: @"moveToContent"]){
         
-        //Pass post to the contentView
+        //Disable Nav scroll
+        [[self delegate] setScrollEnabled:self enabled: NO];
         
+        
+        //Pass post to the contentView
         NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
         NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
         dvt.post = ((FCTableViewCell*)[self.tableView cellForRowAtIndexPath:ip]).post;
