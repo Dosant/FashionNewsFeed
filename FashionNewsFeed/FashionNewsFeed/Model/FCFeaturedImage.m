@@ -10,8 +10,8 @@
 
 - (instancetype)initImageWithId:(NSUInteger)imageId
                        andTitle:(NSString *)imageTitle
-                      andAuthor:(NSString *)imageSource
-                     andContent:(NSMutableArray *)imageAttachmentMeta // FCAttachmentMeta
+                      andSource:(NSURL *)imageSource
+              andAttachmentMeta:(NSMutableArray *)imageAttachmentMeta // FCAttachmentMeta
 {
     self = [super init];
     if (self) {
@@ -28,7 +28,9 @@
     if (self) {
         self.imageId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
         self.imageTitle = [attributes valueForKeyPath:@"title"];
-        self.imageSource = [attributes valueForKeyPath:@"source"];
+
+        NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"source"]];
+        self.imageSource = url;
 
         NSMutableArray *meta = [[NSMutableArray alloc] init];
         for (NSString *attachment in [attributes valueForKeyPath:@"attachment_meta"]) {

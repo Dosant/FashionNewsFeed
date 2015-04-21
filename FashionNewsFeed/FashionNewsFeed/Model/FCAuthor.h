@@ -12,7 +12,7 @@
 @property(strong, nonatomic) NSString *authorFirstName;
 @property(strong, nonatomic) NSString *authorLastName;
 @property(strong, nonatomic) NSString *authorNickName;
-@property(strong, nonatomic) NSString *authorAvatar;
+@property(strong, nonatomic) NSURL *authorAvatar;
 @property(strong, nonatomic) NSDate *authorRegistered;
 @property(strong, nonatomic) NSMutableDictionary *authorMeta;
 
@@ -21,7 +21,7 @@
                     andFirstName:(NSString *)authorFirstName
                      andLastName:(NSString *)authorLastName
                      andNickName:(NSString *)authorNickName
-                       andAvatar:(NSString *)authorAvatar
+                       andAvatar:(NSURL *)authorAvatar
                    andRegistered:(NSDate *)authorRegistered
                          andMeta:(NSMutableDictionary *)authorMeta;
 

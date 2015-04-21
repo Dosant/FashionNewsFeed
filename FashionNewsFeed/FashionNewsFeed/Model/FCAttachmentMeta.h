@@ -8,14 +8,14 @@
 @interface FCAttachmentMeta : NSObject
 
 @property(strong, nonatomic) NSString *attachmentMetaFile;
-@property(strong, nonatomic) NSString *attachmentMetaWidth;
-@property(strong, nonatomic) NSString *attachmentMetaHeight;
-@property(strong, nonatomic) NSString *attachmentMetaUrl;
+@property(assign, nonatomic) NSUInteger attachmentMetaWidth;
+@property(assign, nonatomic) NSUInteger attachmentMetaHeight;
+@property(strong, nonatomic) NSURL *attachmentMetaUrl;
 
 - (instancetype)initAttachmentMetaWithFile:(NSString *)attachmentMetaFile
-                                  andWidth:(NSString *)attachmentMetaWidth
-                                 andHeight:(NSString *)attachmentMetaHeight
-                                    andUrl:(NSString *)attachmentMetaUrl;
+                                  andWidth:(NSUInteger)attachmentMetaWidth
+                                 andHeight:(NSUInteger)attachmentMetaHeight
+                                    andUrl:(NSURL *)attachmentMetaUrl;
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 

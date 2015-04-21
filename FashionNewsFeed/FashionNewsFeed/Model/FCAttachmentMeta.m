@@ -8,9 +8,9 @@
 @implementation FCAttachmentMeta
 
 - (instancetype)initAttachmentMetaWithFile:(NSString *)attachmentMetaFile
-                                  andWidth:(NSString *)attachmentMetaWidth
-                                 andHeight:(NSString *)attachmentMetaHeight
-                                    andUrl:(NSString *)attachmentMetaUrl {
+                                  andWidth:(NSUInteger)attachmentMetaWidth
+                                 andHeight:(NSUInteger)attachmentMetaHeight
+                                    andUrl:(NSURL *)attachmentMetaUrl {
     self = [super init];
     if (self) {
         self.attachmentMetaFile = attachmentMetaFile;
@@ -25,9 +25,11 @@
     self = [super init];
     if (self) {
         self.attachmentMetaFile = [attributes valueForKeyPath:@"file"];
-        self.attachmentMetaWidth = [attributes valueForKeyPath:@"width"];
-        self.attachmentMetaHeight = [attributes valueForKeyPath:@"height"];
-        self.attachmentMetaUrl = [attributes valueForKeyPath:@"url"];
+        self.attachmentMetaWidth = (NSUInteger) [[attributes valueForKeyPath:@"width"] integerValue];
+        self.attachmentMetaHeight = (NSUInteger) [[attributes valueForKeyPath:@"height"] integerValue];
+
+        NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"url"]];
+        self.attachmentMetaUrl = url;
     }
     return self;
 }

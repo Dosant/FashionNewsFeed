@@ -8,11 +8,11 @@
 @implementation FCAuthor
 
 - (instancetype)initAuthorWithId:(NSUInteger)authorId
-                     andUsername:(NSString *)authorUserName
+                     andUserName:(NSString *)authorUserName
                     andFirstName:(NSString *)authorFirstName
                      andLastName:(NSString *)authorLastName
                      andNickname:(NSString *)authorNickName
-                       andAvatar:(NSString *)authorAvatar
+                       andAvatar:(NSURL *)authorAvatar
                    andRegistered:(NSDate *)authorRegistered
                          andMeta:(NSMutableDictionary *)authorMeta {
     self = [super init];
@@ -37,15 +37,22 @@
         self.authorFirstName = [attributes valueForKeyPath:@"first_name"];
         self.authorLastName = [attributes valueForKeyPath:@"last_name"];
         self.authorNickName = [attributes valueForKeyPath:@"nickname"];
-        self.authorAvatar = [attributes valueForKeyPath:@"avatar"];
-        self.authorRegistered = [attributes valueForKeyPath:@"registered"];
+
+        NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"avatar"]];
+        self.authorAvatar = url;
+
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+        NSDate *dateFromString = [dateFormatter dateFromString:[attributes valueForKeyPath:@"registered"]];
+        self.authorRegistered = dateFromString;
 
         NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
         for (NSString *i in [attributes valueForKeyPath:@"meta"]) {
             id v = [[attributes valueForKeyPath:@"meta"] objectForKey:i];
             for (NSString *k in v) {
                 id value = [v objectForKey:k];
-                meta[k] = value;
+                NSURL *url = [NSURL URLWithString:value];
+                meta[k] = url;
             }
         }
         self.authorMeta = meta;

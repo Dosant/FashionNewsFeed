@@ -11,7 +11,7 @@
                       andTitle:(NSString *)postTitle
                      andAuthor:(FCAuthor *)postAuthor
                     andContent:(NSString *)postContent
-                       andLink:(NSString *)postLink
+                       andLink:(NSURL *)postLink
                        andDate:(NSDate *)postDate
                andDateModified:(NSDate *)postDateModified
                     andExcerpt:(NSString *)postExcerpt
@@ -42,9 +42,17 @@
         self.postTitle = [attributes valueForKeyPath:@"title"];
         self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"author"]];
         self.postContent = [attributes valueForKeyPath:@"content"];
-        self.postLink = [attributes valueForKeyPath:@"link"];
-        self.postDate = [attributes valueForKeyPath:@"date"];
-        self.postDateModified = [attributes valueForKeyPath:@"modified"];
+
+        NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"link"]];
+        self.postLink = url;
+
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+        NSDate *postDateFromString = [dateFormatter dateFromString:[attributes valueForKeyPath:@"date"]];
+        self.postDate = postDateFromString;
+        NSDate *postDateModifiedFromString = [dateFormatter dateFromString:[attributes valueForKeyPath:@"modified"]];
+        self.postDateModified = postDateModifiedFromString;
+
         self.postExcerpt = [attributes valueForKeyPath:@"excerpt"];
 
         NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
@@ -52,7 +60,8 @@
             id v = [[attributes valueForKeyPath:@"meta"] objectForKey:i];
             for (NSString *k in v) {
                 id value = [v objectForKey:k];
-                meta[k] = value;
+                NSURL *url = [NSURL URLWithString:value];
+                meta[k] = url;
             }
         }
         self.postMeta = meta;

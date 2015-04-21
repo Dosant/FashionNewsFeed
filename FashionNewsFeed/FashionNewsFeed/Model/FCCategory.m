@@ -11,7 +11,7 @@
 - (instancetype)initCategoryWithId:(NSUInteger)categoryId
                            andName:(NSString *)categoryName
                           andCount:(NSUInteger)categoryCount
-                           andLink:(NSString *)categoryLink
+                           andLink:(NSURL *)categoryLink
                            andMeta:(NSMutableDictionary *)categoryMeta {
     self = [super init];
     if (self) {
@@ -30,14 +30,17 @@
         self.categoryId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
         self.categoryName = [attributes valueForKeyPath:@"name"];
         self.categoryCount = (NSUInteger) [[attributes valueForKeyPath:@"count"] integerValue];
-        self.categoryLink = [attributes valueForKeyPath:@"link"];
+
+        NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"link"]];
+        self.categoryLink = url;
 
         NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
         for (NSString *category in [attributes valueForKeyPath:@"meta"]) {
             id v = [[attributes valueForKeyPath:@"meta"] objectForKey:category];
             for (NSString *k in v) {
                 id value = [v objectForKey:k];
-                meta[k] = value;
+                NSURL *url = [NSURL URLWithString:value];
+                meta[k] = url;
             }
         }
         self.categoryMeta = meta;

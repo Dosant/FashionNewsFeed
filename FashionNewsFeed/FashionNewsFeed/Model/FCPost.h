@@ -14,7 +14,7 @@
 @property(strong, nonatomic) NSString *postTitle;
 @property(strong, nonatomic) FCAuthor *postAuthor;
 @property(strong, nonatomic) NSString *postContent;
-@property(strong, nonatomic) NSString *postLink;
+@property(strong, nonatomic) NSURL *postLink;
 @property(strong, nonatomic) NSDate *postDate;
 @property(strong, nonatomic) NSDate *postDateModified;
 @property(strong, nonatomic) NSString *postExcerpt;
@@ -26,7 +26,7 @@
                       andTitle:(NSString *)postTitle
                      andAuthor:(FCAuthor *)postAuthor
                     andContent:(NSString *)postContent
-                       andLink:(NSString *)postLink
+                       andLink:(NSURL *)postLink
                        andDate:(NSDate *)postDate
                andDateModified:(NSDate *)postDateModified
                     andExcerpt:(NSString *)postExcerpt
