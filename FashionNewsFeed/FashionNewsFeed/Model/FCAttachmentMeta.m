@@ -7,15 +7,12 @@
 
 @implementation FCAttachmentMeta
 
-- (instancetype)initAttachmentMetaWithId:(NSUInteger)attachmentMetaId
-                                 andFile:(NSString *)attachmentMetaFile
-                                andWidth:(NSString *)attachmentMetaWidth
-                               andHeight:(NSString *)attachmentMetaHeight
-                                  andUrl:(NSString *)attachmentMetaUrl
-{
+- (instancetype)initAttachmentMetaWithFile:(NSString *)attachmentMetaFile
+                                  andWidth:(NSString *)attachmentMetaWidth
+                                 andHeight:(NSString *)attachmentMetaHeight
+                                    andUrl:(NSString *)attachmentMetaUrl {
     self = [super init];
     if (self) {
-        self.attachmentMetaId = attachmentMetaId;
         self.attachmentMetaFile = attachmentMetaFile;
         self.attachmentMetaWidth = attachmentMetaWidth;
         self.attachmentMetaHeight = attachmentMetaHeight;
@@ -24,15 +21,13 @@
     return self;
 }
 
-- (instancetype)initWithAttributes:(NSDictionary *)attributes
-{
+- (instancetype)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
     if (self) {
-        self.attachmentMetaId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
-        self.attachmentMetaFile = [attributes valueForKeyPath:@"text"];
-        self.attachmentMetaWidth = [attributes valueForKeyPath:@"text"];
-        self.attachmentMetaHeight = [attributes valueForKeyPath:@"text"];
-        self.attachmentMetaUrl = [attributes valueForKeyPath:@"text"];
+        self.attachmentMetaFile = [attributes valueForKeyPath:@"file"];
+        self.attachmentMetaWidth = [attributes valueForKeyPath:@"width"];
+        self.attachmentMetaHeight = [attributes valueForKeyPath:@"height"];
+        self.attachmentMetaUrl = [attributes valueForKeyPath:@"url"];
     }
     return self;
 }

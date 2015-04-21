@@ -4,31 +4,38 @@
 //
 
 #import "FCTerms.h"
+#import "FCPostTag.h"
+#import "FCCategory.h"
 
 @implementation FCTerms
 
-- (instancetype)initTermsWithId:(NSUInteger)termsId
-                     andPostTag:(NSMutableArray *)termsPostTag
-                    andCategory:(NSMutableArray *)termsCategory
+- (instancetype)initTermsWithPostTag:(NSMutableArray *)termsPostTag  // FCPostTag
+                         andCategory:(NSMutableArray *)termsCategory // FCCategory
 {
     self = [super init];
     if (self) {
-        self.termsId = termsId;
         self.termsPostTag = termsPostTag;
         self.termsCategory = termsCategory;
     }
-    
     return self;
 }
 
-- (instancetype)initWithAttributes:(NSDictionary *)attributes
-{
+- (instancetype)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
     if (self) {
-        
-        self.termsId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
-        self.termsPostTag = [attributes valueForKeyPath:@"text"];
-        self.termsCategory = [attributes valueForKeyPath:@"text"];
+        NSMutableArray *termsPostTags = [[NSMutableArray alloc] init];
+        for (NSDictionary *termsPostTag in [attributes valueForKeyPath:@"post_tag"]) {
+            FCPostTag *tag = [[FCPostTag alloc] initWithAttributes:termsPostTag];
+            [termsPostTags addObject:tag];
+        }
+        self.termsPostTag = termsPostTags;
+
+        NSMutableArray *termsCategories = [[NSMutableArray alloc] init];
+        for (NSDictionary *termsCategory in [attributes valueForKeyPath:@"category"]) {
+            FCCategory *category = [[FCCategory alloc] initWithAttributes:termsCategory];
+            [termsCategories addObject:category];
+        }
+        self.termsCategory = termsCategories;
     }
     return self;
 }

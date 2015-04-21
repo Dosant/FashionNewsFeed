@@ -11,8 +11,7 @@
                           andName:(NSString *)postTagName
                          andCount:(NSUInteger)postTagCount
                           andLink:(NSString *)postTagLink
-                          andMeta:(NSMutableDictionary *)postTagMeta
-{
+                          andMeta:(NSMutableDictionary *)postTagMeta {
     self = [super init];
     if (self) {
         self.postTagId = postTagId;
@@ -21,19 +20,27 @@
         self.postTagLink = postTagLink;
         self.postTagMeta = postTagMeta;
     }
-    
+
     return self;
 }
 
-- (instancetype)initWithAttributes:(NSDictionary *)attributes
-{
+- (instancetype)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
     if (self) {
-        self.postTagId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
-        self.postTagName = [attributes valueForKeyPath:@"text"];
-        self.postTagCount = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
-        self.postTagLink = [attributes valueForKeyPath:@"text"];
-        self.postTagMeta = [attributes valueForKeyPath:@"text"];
+        self.postTagId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
+        self.postTagName = [attributes valueForKeyPath:@"name"];
+        self.postTagCount = (NSUInteger) [[attributes valueForKeyPath:@"count"] integerValue];
+        self.postTagLink = [attributes valueForKeyPath:@"link"];
+
+        NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
+        for (NSString *attachment in [attributes valueForKeyPath:@"meta"]) {
+            id v = [[attributes valueForKeyPath:@"meta"] objectForKey:attachment];
+            for (NSString *k in v) {
+                id value = [v objectForKey:k];
+                meta[k] = value;
+            }
+        }
+        self.postTagMeta = meta;
     }
     return self;
 }

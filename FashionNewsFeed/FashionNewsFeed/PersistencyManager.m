@@ -102,14 +102,13 @@
     self.dataAuthor.authorFirstName = author.authorFirstName;
     self.dataAuthor.authorId        = [NSNumber numberWithInteger: author.authorId];
     self.dataAuthor.authorLastName  = author.authorLastName;
-    self.dataAuthor.authorNickName  = author.authorNickname;
+    self.dataAuthor.authorNickName  = author.authorNickName;
     self.dataAuthor.authorRegistered= author.authorRegistered;
-    self.dataAuthor.authorUserName  = author.authorUsername;
+    self.dataAuthor.authorUserName  = author.authorUserName;
     
     self.dataTerms = [NSEntityDescription insertNewObjectForEntityForName:@"DataTerms"
                                                    inManagedObjectContext: self.managedObjectContext];
-    
-    self.dataTerms.termsId = [NSNumber numberWithInteger: term.termsId];
+
     self.dataTerms.postTags = [NSSet setWithObject: self.dataPostTag];
     self.dataTerms.categories = [NSSet setWithObject: self.dataCategory];
     

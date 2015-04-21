@@ -40,7 +40,7 @@
     if (self) {
         self.postId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
         self.postTitle = [attributes valueForKeyPath:@"title"];
-        self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"author"]];;
+        self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"author"]];
         self.postContent = [attributes valueForKeyPath:@"content"];
         self.postLink = [attributes valueForKeyPath:@"link"];
         self.postDate = [attributes valueForKeyPath:@"date"];
@@ -58,7 +58,7 @@
         self.postMeta = meta;
 
         self.postFeaturedImage = [[FCFeaturedImage alloc] initWithAttributes:[attributes valueForKeyPath:@"featured_image"]];
-        self.postTerms = [[FCTerms alloc] initWithAttributes:[attributes valueForKeyPath:@"terms"]];;
+        self.postTerms = [[FCTerms alloc] initWithAttributes:[attributes valueForKeyPath:@"terms"]];
     }
     return self;
 }

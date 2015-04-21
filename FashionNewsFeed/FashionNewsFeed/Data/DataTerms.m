@@ -15,7 +15,6 @@
 @implementation DataTerms
 
 @dynamic termsCategory;
-@dynamic termsId;
 @dynamic termsPostTag;
 @dynamic categories;
 @dynamic post;

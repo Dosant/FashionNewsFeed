@@ -4,13 +4,14 @@
 //
 
 #import "FCFeaturedImage.h"
+#import "FCAttachmentMeta.h"
 
 @implementation FCFeaturedImage
 
 - (instancetype)initImageWithId:(NSUInteger)imageId
                        andTitle:(NSString *)imageTitle
                       andAuthor:(NSString *)imageSource
-                     andContent:(NSMutableArray *)imageAttachmentMeta
+                     andContent:(NSMutableArray *)imageAttachmentMeta // FCAttachmentMeta
 {
     self = [super init];
     if (self) {
@@ -22,15 +23,25 @@
     return self;
 }
 
-- (instancetype)initWithAttributes:(NSDictionary *)attributes
-{
+- (instancetype)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
     if (self) {
-        
-        self.imageId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
-        self.imageTitle = [attributes valueForKeyPath:@"text"];
-        self.imageSource = [attributes valueForKeyPath:@"text"];
-        self.imageAttachmentMeta = [attributes valueForKeyPath:@"text"];
+        self.imageId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
+        self.imageTitle = [attributes valueForKeyPath:@"title"];
+        self.imageSource = [attributes valueForKeyPath:@"source"];
+
+        NSMutableArray *meta = [[NSMutableArray alloc] init];
+        for (NSString *attachment in [attributes valueForKeyPath:@"attachment_meta"]) {
+            if ([attachment isEqualToString:@"sizes"]) {
+                id sizes = [[attributes valueForKeyPath:@"attachment_meta"] objectForKey:attachment];
+                for (NSString *size in sizes) {
+                    id values = [sizes objectForKey:size];
+                    FCAttachmentMeta *attachmentMeta = [[FCAttachmentMeta alloc] initWithAttributes:values];
+                    [meta addObject:attachmentMeta];
+                }
+            }
+        }
+        self.imageAttachmentMeta = meta;
     }
     return self;
 }

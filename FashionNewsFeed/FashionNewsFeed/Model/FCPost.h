@@ -10,17 +10,17 @@
 
 @interface FCPost : NSObject
 
-@property (assign, nonatomic) NSUInteger postId;
-@property (strong, nonatomic) NSString *postTitle;
-@property (strong, nonatomic) FCAuthor *postAuthor;
-@property (strong, nonatomic) NSString *postContent;
-@property (strong, nonatomic) NSString *postLink;
-@property (strong, nonatomic) NSDate *postDate;
-@property (strong, nonatomic) NSDate *postDateModified;
-@property (strong, nonatomic) NSString *postExcerpt;
-@property (strong, nonatomic) NSMutableDictionary *postMeta;
-@property (strong, nonatomic) FCFeaturedImage *postFeaturedImage;
-@property (strong, nonatomic) FCTerms *postTerms;
+@property(assign, nonatomic) NSUInteger postId;
+@property(strong, nonatomic) NSString *postTitle;
+@property(strong, nonatomic) FCAuthor *postAuthor;
+@property(strong, nonatomic) NSString *postContent;
+@property(strong, nonatomic) NSString *postLink;
+@property(strong, nonatomic) NSDate *postDate;
+@property(strong, nonatomic) NSDate *postDateModified;
+@property(strong, nonatomic) NSString *postExcerpt;
+@property(strong, nonatomic) NSMutableDictionary *postMeta;
+@property(strong, nonatomic) FCFeaturedImage *postFeaturedImage;
+@property(strong, nonatomic) FCTerms *postTerms;
 
 - (instancetype)initPostWithId:(NSUInteger)postId
                       andTitle:(NSString *)postTitle

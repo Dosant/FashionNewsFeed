@@ -14,7 +14,6 @@
 @interface DataTerms : NSManagedObject
 
 @property (nonatomic, retain) NSString * termsCategory;
-@property (nonatomic, retain) NSNumber * termsId;
 @property (nonatomic, retain) NSString * termsPostTag;
 @property (nonatomic, retain) NSSet *categories;
 @property (nonatomic, retain) DataPost *post;

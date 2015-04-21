@@ -12,8 +12,7 @@
                            andName:(NSString *)categoryName
                           andCount:(NSUInteger)categoryCount
                            andLink:(NSString *)categoryLink
-                           andMeta:(NSMutableDictionary *)categoryMeta
-{
+                           andMeta:(NSMutableDictionary *)categoryMeta {
     self = [super init];
     if (self) {
         self.categoryId = categoryId;
@@ -25,15 +24,23 @@
     return self;
 }
 
-- (instancetype)initWithAttributes:(NSDictionary *)attributes
-{
+- (instancetype)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
     if (self) {
-        self.categoryId = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
-        self.categoryName = [attributes valueForKeyPath:@"text"];
-        self.categoryCount = (NSUInteger)[[attributes valueForKeyPath:@"id"] integerValue];
-        self.categoryLink = [attributes valueForKeyPath:@"text"];
-        self.categoryMeta = [attributes valueForKeyPath:@"text"];
+        self.categoryId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
+        self.categoryName = [attributes valueForKeyPath:@"name"];
+        self.categoryCount = (NSUInteger) [[attributes valueForKeyPath:@"count"] integerValue];
+        self.categoryLink = [attributes valueForKeyPath:@"link"];
+
+        NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
+        for (NSString *category in [attributes valueForKeyPath:@"meta"]) {
+            id v = [[attributes valueForKeyPath:@"meta"] objectForKey:category];
+            for (NSString *k in v) {
+                id value = [v objectForKey:k];
+                meta[k] = value;
+            }
+        }
+        self.categoryMeta = meta;
     }
     return self;
 }
