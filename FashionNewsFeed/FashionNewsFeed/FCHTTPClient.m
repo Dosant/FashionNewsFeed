@@ -93,8 +93,7 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
                    success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                    failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
-    //TODO Fix posts per page
-    NSString *path = [NSString stringWithFormat:@"%@posts?filter[category_name]=%@&page=%lu&posts_per_page=%lu&status=publish",
+    NSString *path = [NSString stringWithFormat:@"%@posts?filter[category_name]=%@&page=%lu&filter[posts_per_page]=%lu&status=publish",
                                                 kFCollectionBaseURLString,
                                                 categoryName,
                                                 (unsigned long) pageNumber,

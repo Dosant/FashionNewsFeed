@@ -41,12 +41,12 @@
 
 - (void)testGetAllCategories {
 
-    XCTestExpectation *downloadedDataExpectation = [self expectationWithDescription:@"Data downloaded"];
+    XCTestExpectation *getAllCategoriesExpectation = [self expectationWithDescription:@"Data downloaded"];
     FCHTTPClient *client = [self getsharedClient];
 
     [client getCategories:^(NSURLSessionDataTask *task, id responseObject) {
                 XCTAssert(YES, @"Pass");
-                [downloadedDataExpectation fulfill];
+                [getAllCategoriesExpectation fulfill];
             }
                   failure:^(NSURLSessionDataTask *task, NSError *error) {
                       XCTAssertFalse(@"Failed");
@@ -59,13 +59,13 @@
 
 - (void)testGetPostById {
 
-    XCTestExpectation *downloadedDataExpectation = [self expectationWithDescription:@"Data downloaded"];
+    XCTestExpectation *getPostByIdExpectation = [self expectationWithDescription:@"Data downloaded"];
     FCHTTPClient *client = [self getsharedClient];
 
     [client getPostById:1000
                 success:^(NSURLSessionDataTask *task, id responseObject) {
                     XCTAssert(YES, @"Pass");
-                    [downloadedDataExpectation fulfill];
+                    [getPostByIdExpectation fulfill];
                 }
                 failure:^(NSURLSessionDataTask *task, NSError *error) {
                     XCTAssertFalse(@"Failed");
@@ -76,9 +76,9 @@
     }];
 }
 
-- (void)getPostsByCategory {
+- (void)testGetPostsByCategory {
 
-    XCTestExpectation *downloadedDataExpectation = [self expectationWithDescription:@"Data downloaded"];
+    XCTestExpectation *getPostsByCategoryExpectation = [self expectationWithDescription:@"Data downloaded"];
     FCHTTPClient *client = [self getsharedClient];
 
     [client getPostsByCategory:@"beauty_box"
@@ -86,7 +86,7 @@
                andPostsPerPage:12
                        success:^(NSURLSessionDataTask *task, id responseObject) {
                            XCTAssert(YES, @"Pass");
-                           [downloadedDataExpectation fulfill];
+                           [getPostsByCategoryExpectation fulfill];
                        }
                        failure:^(NSURLSessionDataTask *task, NSError *error) {
                            XCTAssertFalse(@"Failed");

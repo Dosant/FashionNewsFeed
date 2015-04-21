@@ -95,4 +95,185 @@
     }];
 }
 
+
+- (void)testGetLifestylePosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getLifestylePosts:1
+                 postsPerPage:5
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          XCTAssert(YES, @"Pass");
+                          [expectation fulfill];
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          XCTAssertFalse(@"Failed");
+                      }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetBreakfastPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getBreakfastPosts:1
+                 postsPerPage:5
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          XCTAssert(YES, @"Pass");
+                          [expectation fulfill];
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          XCTAssertFalse(@"Failed");
+                      }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetKonkursPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getKonkursPosts:1
+               postsPerPage:5
+                    success:^(NSURLSessionDataTask *task, id responseObject) {
+                        XCTAssert(YES, @"Pass");
+                        [expectation fulfill];
+                    }
+                    failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        XCTAssertFalse(@"Failed");
+                    }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetBeautyPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getBeautyPosts:1
+              postsPerPage:5
+                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                       XCTAssert(YES, @"Pass");
+                       [expectation fulfill];
+                   }
+                   failure:^(NSURLSessionDataTask *task, NSError *error) {
+                       XCTAssertFalse(@"Failed");
+                   }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetFacePosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getFacePosts:1
+            postsPerPage:5
+                 success:^(NSURLSessionDataTask *task, id responseObject) {
+                     XCTAssert(YES, @"Pass");
+                     [expectation fulfill];
+                 }
+                 failure:^(NSURLSessionDataTask *task, NSError *error) {
+                     XCTAssertFalse(@"Failed");
+                 }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetBestPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getBestPosts:1
+            postsPerPage:5
+                 success:^(NSURLSessionDataTask *task, id responseObject) {
+                     XCTAssert(YES, @"Pass");
+                     [expectation fulfill];
+                 }
+                 failure:^(NSURLSessionDataTask *task, NSError *error) {
+                     XCTAssertFalse(@"Failed");
+                 }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetFashionPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getFashionPosts:1
+               postsPerPage:5
+                    success:^(NSURLSessionDataTask *task, id responseObject) {
+                        XCTAssert(YES, @"Pass");
+                        [expectation fulfill];
+                    }
+                    failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        XCTAssertFalse(@"Failed");
+                    }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetNewsPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getNewsPosts:1
+            postsPerPage:5
+                 success:^(NSURLSessionDataTask *task, id responseObject) {
+                     XCTAssert(YES, @"Pass");
+                     [expectation fulfill];
+                 }
+                 failure:^(NSURLSessionDataTask *task, NSError *error) {
+                     XCTAssertFalse(@"Failed");
+                 }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetEventsPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getEventsPosts:1
+              postsPerPage:5
+                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                       XCTAssert(YES, @"Pass");
+                       [expectation fulfill];
+                   }
+                   failure:^(NSURLSessionDataTask *task, NSError *error) {
+                       XCTAssertFalse(@"Failed");
+                   }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
 @end
