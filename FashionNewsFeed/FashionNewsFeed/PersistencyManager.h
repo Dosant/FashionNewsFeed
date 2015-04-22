@@ -40,10 +40,13 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-- (void) setToDataPostTag:(FCPostTag *)postTag
-                 category:(FCCategory *)category
-                   author:(FCAuthor *)author
-                     term:(FCTerms *)term
-                     post:(FCPost *)post;
+- (void)deleteAllObjects;
+
+- (void) get;
+- (FCCategory *)getDataCategoryById:(NSUInteger)idCategory;
+- (FCPostTag *)getDataPostTagById:(NSUInteger)idPostTag;
+
+- (void) setToDataAuthor:(FCAuthor *)author terms:(FCTerms *)terms post:(FCPost *)post;
+
 
 @end

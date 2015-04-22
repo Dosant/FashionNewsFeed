@@ -2,7 +2,7 @@
 //  DataCategory.h
 //  FashionNewsFeed
 //
-//  Created by Владислав Станишевский on 13.04.15.
+//  Created by Владислав Станишевский on 22.04.15.
 //  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * categoryId;
 @property (nonatomic, retain) NSString * categoryLink;
 @property (nonatomic, retain) NSString * categoryName;
+@property (nonatomic, retain) NSString * categoryTitle;
 @property (nonatomic, retain) NSSet *term;
 @end
 

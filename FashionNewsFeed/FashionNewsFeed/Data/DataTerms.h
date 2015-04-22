@@ -2,7 +2,7 @@
 //  DataTerms.h
 //  FashionNewsFeed
 //
-//  Created by Владислав Станишевский on 13.04.15.
+//  Created by Владислав Станишевский on 22.04.15.
 //  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
@@ -13,8 +13,7 @@
 
 @interface DataTerms : NSManagedObject
 
-@property (nonatomic, retain) NSString * termsCategory;
-@property (nonatomic, retain) NSString * termsPostTag;
+@property (nonatomic, retain) NSNumber * termsId;
 @property (nonatomic, retain) NSSet *categories;
 @property (nonatomic, retain) DataPost *post;
 @property (nonatomic, retain) NSSet *postTags;

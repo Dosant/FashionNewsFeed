@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1514" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DataAuthor" representedClassName="DataAuthor" syncable="YES">
         <attribute name="authorFirstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="authorId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -14,6 +14,7 @@
         <attribute name="categoryId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="categoryLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="categoryTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="term" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataTerms" inverseName="categories" inverseEntity="DataTerms" syncable="YES"/>
     </entity>
     <entity name="DataObject" isAbstract="YES" syncable="YES"/>
@@ -25,7 +26,7 @@
         <attribute name="postId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="postLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postTitle" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DataAuthor" inverseName="post" inverseEntity="DataAuthor" syncable="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DataAuthor" inverseName="post" inverseEntity="DataAuthor" syncable="YES"/>
         <relationship name="term" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DataTerms" inverseName="post" inverseEntity="DataTerms" syncable="YES"/>
     </entity>
     <entity name="DataPostTag" representedClassName="DataPostTag" parentEntity="DataObject" syncable="YES">
@@ -36,19 +37,17 @@
         <relationship name="term" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataTerms" inverseName="postTags" inverseEntity="DataTerms" syncable="YES"/>
     </entity>
     <entity name="DataTerms" representedClassName="DataTerms" syncable="YES">
-        <attribute name="termsCategory" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="termsId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="termsPostTag" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataCategory" inverseName="term" inverseEntity="DataCategory" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DataCategory" inverseName="term" inverseEntity="DataCategory" syncable="YES"/>
         <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DataPost" inverseName="term" inverseEntity="DataPost" syncable="YES"/>
-        <relationship name="postTags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataPostTag" inverseName="term" inverseEntity="DataPostTag" syncable="YES"/>
+        <relationship name="postTags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DataPostTag" inverseName="term" inverseEntity="DataPostTag" syncable="YES"/>
     </entity>
     <elements>
         <element name="DataAuthor" positionX="115" positionY="-396" width="119" height="148"/>
-        <element name="DataCategory" positionX="124" positionY="-19" width="128" height="118"/>
+        <element name="DataCategory" positionX="124" positionY="-19" width="128" height="133"/>
+        <element name="DataObject" positionX="-623" positionY="-178" width="128" height="43"/>
         <element name="DataPost" positionX="-351" positionY="-412" width="128" height="178"/>
         <element name="DataPostTag" positionX="-351" positionY="-18" width="128" height="118"/>
-        <element name="DataTerms" positionX="-128" positionY="-189" width="128" height="133"/>
-        <element name="DataObject" positionX="-623" positionY="-178" width="128" height="43"/>
+        <element name="DataTerms" positionX="-128" positionY="-189" width="128" height="103"/>
     </elements>
 </model>

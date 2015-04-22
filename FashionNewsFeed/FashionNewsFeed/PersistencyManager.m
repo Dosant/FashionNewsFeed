@@ -25,7 +25,7 @@
     self = [super init];
     if (self)
     {
-
+        
     }
     return self;
 }
@@ -75,56 +75,174 @@
 //    return nil;
 //}
 
-#pragma mark - Data Manager
+#pragma mark - get from Data
 
-- (void) setToDataPostTag:(FCPostTag *)postTag category:(FCCategory *)category author:(FCAuthor *)author term:(FCTerms *)term post:(FCPost *)post {
+- (void) get {
     
-    self.dataPostTag = [NSEntityDescription insertNewObjectForEntityForName:@"DataPostTag"
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataTerms"
+                inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (DataTerms *obj in resultArray) {
+        
+        for (DataPostTag *postTag in obj.postTags) {
+            NSLog(@"%@ %@", postTag.postTagId, postTag.postTagName);
+        }
+        for (DataCategory *categories in obj.categories) {
+            NSLog(@"%@ %@", categories.categoryId, categories.categoryName);
+        }
+    }
+}
+
+- (FCCategory *)getDataCategoryById:(NSUInteger)idCategory {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataCategory"
+                inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (DataCategory *obj in resultArray) {
+        
+        if ([obj.categoryId integerValue] == idCategory) {
+            
+            FCCategory *category = [[FCCategory alloc]  initCategoryWithId:[obj.categoryId integerValue]
+                                                                   andName:obj.categoryName
+                                                                  andTitle:obj.categoryTitle
+                                                                  andCount:[obj.categoryCount integerValue]
+                                                                   andLink:[NSURL URLWithString:obj.categoryLink]
+                                                                   andMeta:nil];
+            NSLog(@"%lu %@ %@ %lu %@", (unsigned long)category.categoryId, category.categoryName, category.categoryTitle,
+                                        (unsigned long)category.categoryCount, category.categoryLink);
+            return category;
+        } else {
+            NSLog(@"%@", @"Неверный ID");
+        }
+    }
+    
+    return nil;
+}
+
+- (FCPostTag *)getDataPostTagById:(NSUInteger)idPostTag {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataPostTag"
+                inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (DataPostTag *obj in resultArray) {
+        
+        if ([obj.postTagId integerValue] == idPostTag) {
+            
+            FCPostTag *postTag = [[FCPostTag alloc] initPostTagWithId:[obj.postTagId integerValue]
+                                                              andName:obj.postTagName
+                                                             andCount:[obj.postTagCount integerValue]
+                                                              andLink:[NSURL URLWithString: obj.postTagLink]
+                                                              andMeta:nil];
+            
+            NSLog(@"%lu %@ %@ %lu", (unsigned long)postTag.postTagId, postTag.postTagName, postTag.postTagLink, (unsigned long)postTag.postTagCount);
+            return postTag;
+        } else {
+            NSLog(@"%@", @"Неверный ID");
+        }
+    }
+    
+    return nil;
+}
+
+# pragma mark set to Data
+
+- (void) setToDataAuthor:(FCAuthor *)author terms:(FCTerms *)terms post:(FCPost *)post {
+    
+    NSMutableArray *postTags = [NSMutableArray array];
+    NSMutableArray *categories = [NSMutableArray array];
+
+    for (FCPostTag *obj in terms.termsPostTag) {
+        
+        DataPostTag *dataPostTag = [NSEntityDescription insertNewObjectForEntityForName:@"DataPostTag"
                                                      inManagedObjectContext: self.managedObjectContext];
     
-    self.dataPostTag.postTagCount   = [NSNumber numberWithInteger: postTag.postTagCount];
-    self.dataPostTag.postTagId      = [NSNumber numberWithInteger: postTag.postTagId];
-    self.dataPostTag.postTagLink    = postTag.postTagLink;
-    self.dataPostTag.postTagName    = postTag.postTagName;
+        dataPostTag.postTagCount   = [NSNumber numberWithInteger: obj.postTagCount];
+        dataPostTag.postTagId      = [NSNumber numberWithInteger: obj.postTagId];
+        dataPostTag.postTagLink    = [obj.postTagLink absoluteString];
+        dataPostTag.postTagName    = obj.postTagName;
+        
+        [postTags addObject:dataPostTag];
+        [self saveContext];
+    }
     
+    for (FCCategory *obj in terms.termsCategory) {
     
-    self.dataCategory = [NSEntityDescription insertNewObjectForEntityForName:@"DataCategory"
+        DataCategory *dataCategory = [NSEntityDescription insertNewObjectForEntityForName:@"DataCategory"
                                                       inManagedObjectContext: self.managedObjectContext];
     
-    self.dataCategory.categoryCount = [NSNumber numberWithInteger: category.categoryCount];
-    self.dataCategory.categoryId    = [NSNumber numberWithInteger: category.categoryId];
-    self.dataCategory.categoryLink  = category.categoryLink;
-    self.dataCategory.categoryName  = category.categoryName;
+        dataCategory.categoryCount = [NSNumber numberWithInteger: obj.categoryCount];
+        dataCategory.categoryId    = [NSNumber numberWithInteger: obj.categoryId];
+        dataCategory.categoryTitle = obj.categoryTitle;
+        dataCategory.categoryLink  = [obj.categoryLink absoluteString];
+        dataCategory.categoryName  = obj.categoryName;
+        
+        [categories addObject:dataCategory];
+        [self saveContext];
+    }
     
-    self.dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
+    DataTerms *dataTerms = [NSEntityDescription insertNewObjectForEntityForName:@"DataTerms"
+                                                         inManagedObjectContext: self.managedObjectContext];
+    dataTerms.postTags = [NSSet setWithArray: postTags];
+    dataTerms.categories = [NSSet setWithArray:categories];
+    [self saveContext];
+    
+    DataAuthor *dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
                                                     inManagedObjectContext: self.managedObjectContext];
     
-    self.dataAuthor.authorFirstName = author.authorFirstName;
-    self.dataAuthor.authorId        = [NSNumber numberWithInteger: author.authorId];
-    self.dataAuthor.authorLastName  = author.authorLastName;
-    self.dataAuthor.authorNickName  = author.authorNickName;
-    self.dataAuthor.authorRegistered= author.authorRegistered;
-    self.dataAuthor.authorUserName  = author.authorUserName;
-    
-    self.dataTerms = [NSEntityDescription insertNewObjectForEntityForName:@"DataTerms"
-                                                   inManagedObjectContext: self.managedObjectContext];
+    dataAuthor.authorFirstName = author.authorFirstName;
+    dataAuthor.authorId        = [NSNumber numberWithInteger: author.authorId];
+    dataAuthor.authorLastName  = author.authorLastName;
+    dataAuthor.authorNickName  = author.authorNickName;
+    dataAuthor.authorRegistered= author.authorRegistered;
+    dataAuthor.authorUserName  = author.authorUserName;
+    [self saveContext];
 
-    self.dataTerms.postTags = [NSSet setWithObject: self.dataPostTag];
-    self.dataTerms.categories = [NSSet setWithObject: self.dataCategory];
-    
-    self.dataPost = [NSEntityDescription insertNewObjectForEntityForName:@"DataPost"
+    DataPost *dataPost      = [NSEntityDescription insertNewObjectForEntityForName:@"DataPost"
                                                   inManagedObjectContext: self.managedObjectContext];
     
-    self.dataPost.postContent       = post.postContent;
-    self.dataPost.postDate          = post.postDate;
-    self.dataPost.postDateModified  = post.postDateModified;
-    self.dataPost.postExcerpt       = post.postExcerpt;
-    self.dataPost.postId            = [NSNumber numberWithInteger: post.postId];
-    self.dataPost.postLink          = post.postLink;
-    self.dataPost.postTitle         = post.postTitle;
-    self.dataPost.author            = self.dataAuthor;
-    self.dataPost.term              = self.dataTerms;
-    
+    dataPost.postContent       = post.postContent;
+    dataPost.postDate          = post.postDate;
+    dataPost.postDateModified  = post.postDateModified;
+    dataPost.postExcerpt       = post.postExcerpt;
+    dataPost.postId            = [NSNumber numberWithInteger: post.postId];
+    dataPost.postLink          = [post.postLink absoluteString];
+    dataPost.postTitle         = post.postTitle;
+    dataPost.author            = dataAuthor;
+    dataPost.term              = dataTerms;
+    [self saveContext];
 }
 
 #pragma mark - Core Data Stack
@@ -191,7 +309,7 @@
     return _managedObjectContext;
 }
 
-#pragma mark - Core Data Saving support
+#pragma mark - Core Data Saving & Delete
 
 - (void)saveContext {
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
@@ -203,6 +321,28 @@
             abort();
         }
     }
+}
+
+- (void)deleteAllObjects {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataObject"
+                inManagedObjectContext:self.managedObjectContext];
+    
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (id object in resultArray) {
+        [self.managedObjectContext deleteObject:object];
+    }
+    [self.managedObjectContext save:nil];
 }
 
 @end

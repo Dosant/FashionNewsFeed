@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 #import "PersistencyManager.h"
+#import "FCCategory.h"
+#import "FCPostTag.h"
+#import "FCAuthor.h"
+#import "FCTerms.h"
+#import "FCPost.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +26,61 @@
       
  [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:4.0 forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:4 forBarMetrics:UIBarMetricsDefault];
+    
+    
+    PersistencyManager *manager = [[PersistencyManager alloc] init];
+    
+    FCCategory *category = [[FCCategory alloc] initCategoryWithId:1
+                                                          andName:@"Fashion"
+                                                         andTitle:@"News"
+                                                         andCount:20
+                                                          andLink:[NSURL URLWithString:@"www.tut.by"]
+                                                          andMeta:nil];
+    
+    FCCategory *category2 = [[FCCategory alloc] initCategoryWithId:2
+                                                          andName:@"Profession"
+                                                         andTitle:@"News"
+                                                         andCount:20
+                                                          andLink:[NSURL URLWithString:@"www.tut.by"]
+                                                          andMeta:nil];
+    
+    FCPostTag *postTag = [[FCPostTag alloc] initPostTagWithId:1
+                                                      andName:@"t-shirts"
+                                                     andCount:10
+                                                      andLink:[NSURL URLWithString:@"http//"]
+                                                      andMeta:nil];
+    
+    FCPostTag *postTag2 = [[FCPostTag alloc] initPostTagWithId:2
+                                                      andName:@"shirts"
+                                                     andCount:10
+                                                      andLink:[NSURL URLWithString:@"http//"]
+                                                      andMeta:nil];
+    
+    FCAuthor *author = [[FCAuthor alloc] initAuthorWithId:1
+                                              andUserName:@"Vladok"
+                                             andFirstName:@"Vladislav"
+                                              andLastName:@"Solo"
+                                              andNickName:@"Stas"
+                                                andAvatar:nil
+                                            andRegistered:[NSDate dateWithTimeIntervalSince1970:37273]
+                                                  andMeta:nil];
+    
+    FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:[NSMutableArray arrayWithObjects: postTag, postTag2, nil]
+                                               andCategory:[NSMutableArray arrayWithObjects: category,category2, nil]];
+    
+    FCPost *post = [[FCPost alloc] initPostWithId:1
+                                         andTitle:@"Welcome to FCollection"
+                                        andAuthor:author
+                                       andContent:@"Helo bla bla"
+                                          andLink:[NSURL URLWithString:@"www.fcollection.by"]
+                                          andDate:[NSDate dateWithTimeIntervalSince1970:12345]
+                                  andDateModified:[NSDate dateWithTimeIntervalSince1970:12789]
+                                       andExcerpt:@"Ok"
+                                          andMeta:nil
+                                 andFeaturedImage:nil
+                                         andTerms:terms];
+    [manager deleteAllObjects];
+    [manager setToDataAuthor:author terms:terms post:post];
     
   return YES;
 }
