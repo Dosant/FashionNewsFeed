@@ -79,8 +79,9 @@
                                           andMeta:nil
                                  andFeaturedImage:nil
                                          andTerms:terms];
-    [manager deleteAllObjects];
-    [manager setToDataAuthor:author terms:terms post:post];
+    
+    [manager setToDataPost: post];
+    [manager get];
     
   return YES;
 }

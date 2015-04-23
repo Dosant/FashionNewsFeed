@@ -179,12 +179,23 @@
 
 # pragma mark set to Data
 
-- (void) setToDataAuthor:(FCAuthor *)author terms:(FCTerms *)terms post:(FCPost *)post {
+- (void) setToDataPost:(FCPost *)post {
+    
+    DataAuthor *dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
+                                                           inManagedObjectContext: self.managedObjectContext];
+    
+    dataAuthor.authorFirstName = post.postAuthor.authorFirstName;
+    dataAuthor.authorId        = [NSNumber numberWithInteger: post.postAuthor.authorId];
+    dataAuthor.authorLastName  = post.postAuthor.authorLastName;
+    dataAuthor.authorNickName  = post.postAuthor.authorNickName;
+    dataAuthor.authorRegistered= post.postAuthor.authorRegistered;
+    dataAuthor.authorUserName  = post.postAuthor.authorUserName;
+    [self saveContext];
     
     NSMutableArray *postTags = [NSMutableArray array];
     NSMutableArray *categories = [NSMutableArray array];
 
-    for (FCPostTag *obj in terms.termsPostTag) {
+    for (FCPostTag *obj in post.postTerms.termsPostTag) {
         
         DataPostTag *dataPostTag = [NSEntityDescription insertNewObjectForEntityForName:@"DataPostTag"
                                                      inManagedObjectContext: self.managedObjectContext];
@@ -198,7 +209,7 @@
         [self saveContext];
     }
     
-    for (FCCategory *obj in terms.termsCategory) {
+    for (FCCategory *obj in post.postTerms.termsCategory) {
     
         DataCategory *dataCategory = [NSEntityDescription insertNewObjectForEntityForName:@"DataCategory"
                                                       inManagedObjectContext: self.managedObjectContext];
@@ -217,17 +228,6 @@
                                                          inManagedObjectContext: self.managedObjectContext];
     dataTerms.postTags = [NSSet setWithArray: postTags];
     dataTerms.categories = [NSSet setWithArray:categories];
-    [self saveContext];
-    
-    DataAuthor *dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
-                                                    inManagedObjectContext: self.managedObjectContext];
-    
-    dataAuthor.authorFirstName = author.authorFirstName;
-    dataAuthor.authorId        = [NSNumber numberWithInteger: author.authorId];
-    dataAuthor.authorLastName  = author.authorLastName;
-    dataAuthor.authorNickName  = author.authorNickName;
-    dataAuthor.authorRegistered= author.authorRegistered;
-    dataAuthor.authorUserName  = author.authorUserName;
     [self saveContext];
 
     DataPost *dataPost      = [NSEntityDescription insertNewObjectForEntityForName:@"DataPost"

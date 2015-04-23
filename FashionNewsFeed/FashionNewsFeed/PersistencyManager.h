@@ -46,7 +46,7 @@
 - (FCCategory *)getDataCategoryById:(NSUInteger)idCategory;
 - (FCPostTag *)getDataPostTagById:(NSUInteger)idPostTag;
 
-- (void) setToDataAuthor:(FCAuthor *)author terms:(FCTerms *)terms post:(FCPost *)post;
+- (void) setToDataPost:(FCPost *)post;
 
 
 @end
