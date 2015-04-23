@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "FCCategory.h"
 
 
 @interface MainViewController ()
@@ -40,9 +41,8 @@
     [super viewDidLoad];
     
     //TODO
-    //self.pageTitles = [[FashionCollectionAPI sharedInstance] getCategories] ;
-    NSMutableArray *categories = [NSMutableArray arrayWithObjects: @"category1", @"category2", @"category3", nil];
-    self.pageTitles = categories;
+    self.pageTitles = [[FashionCollectionAPI sharedInstance] getHardCodedCategories];
+    
     
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -274,8 +274,8 @@
     pageContentViewContoller.pageIndex = index;
 
     //TODO
-    //pageContentViewContoller.pageTitle = [self.pageTitles[index] categoryName];
-    pageContentViewContoller.pageTitle = @"Test";
+    FCCategory* category = [self.pageTitles objectAtIndex:index];
+    pageContentViewContoller.pageTitle = [category categoryTitle];
     
     pageContentViewContoller.delegate = self;
     [self setupRevealControllerContentPage:pageContentViewContoller];

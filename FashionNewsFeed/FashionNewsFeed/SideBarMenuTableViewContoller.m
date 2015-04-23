@@ -43,18 +43,18 @@
 
     //TODO
     // Return the number of rows in the section.
-    //return [[[FashionCollectionAPI sharedInstance] getCategories] count];
-    return 12;
+    return [[[FashionCollectionAPI sharedInstance] getHardCodedCategories] count];
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    FCTableViewCell* cell = [[FCTableViewCell alloc] init];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
     //TODO
-    //cell.textLabel.text = [[[[FashionCollectionAPI sharedInstance] getCategories] objectAtIndex:indexPath.row] categoryName];
-    cell.textLabel.text = @"Test";
+    cell.textLabel.text = [[[[FashionCollectionAPI sharedInstance] getHardCodedCategories] objectAtIndex:indexPath.row] categoryName];
+    
     
     return cell;
 }

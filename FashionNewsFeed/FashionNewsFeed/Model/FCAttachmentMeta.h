@@ -19,4 +19,6 @@
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
+-(void)printMeta;
+
 @end

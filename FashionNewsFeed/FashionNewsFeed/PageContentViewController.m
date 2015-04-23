@@ -11,24 +11,60 @@
 #import "FCTableViewCell.h"
 #import "NewsContentContoller.h"
 
+#import "FCAttachmentMeta.h"
+
+#import <AFNetworking/UIKit+AFNetworking.h>
+
+
+
 
 @interface PageContentViewController ()
 
-@property (weak, nonatomic) FashionCollectionAPI *fCollectionAPI;
+
 
 @end
 
 @implementation PageContentViewController{
     
+    NSMutableArray* postsToPresent;
+    
+    
+    UIActivityIndicatorView *activityView;
+    BOOL postsLoaded;
+    
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
     self.title = _pageTitle;
-    self.fCollectionAPI = [FashionCollectionAPI sharedInstance];
+    postsLoaded = NO;
+    
+    //Starting activity
+    activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView.center=self.view.center;
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+    
+    
+    
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    self.refreshControl.tintColor = [UIColor blackColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(loadMorePostsFromPage:)
+                  forControlEvents:UIControlEventValueChanged];
+
+    
+    
+    [self loadMorePostsFromPage:1];
+    
+    
+    
+    
+    
    
 }
 
@@ -38,22 +74,64 @@
     
 }
 
+-(void)loadMorePostsFromPage:(NSUInteger)page{
+    
+    [[FashionCollectionAPI sharedInstance] getNewsPosts:page postsPerPage:12 success:^(NSURLSessionDataTask *task, NSMutableArray *posts) {
+        
+        NSLog(@"%d",[posts count]);
+        if (postsToPresent != nil){
+            [postsToPresent addObjectsFromArray:posts];
+        } else {
+            
+            postsToPresent = [NSMutableArray arrayWithArray:posts];
+            
+            
+        }
+        if (!postsLoaded){
+            postsLoaded = YES;
+            [activityView stopAnimating];
+            [activityView removeFromSuperview];
+        }
+        
+        [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"%@",[error localizedDescription]);
+        
+    }];
+    
+}
+
 #pragma mark - tableViewDataSource
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
 
-    FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell"];
+    FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell" forIndexPath:indexPath];
 
     //TODO
-    //FCPost* post = (FCPost*)[[self.fCollectionAPI getLatestsPosts] objectAtIndex:indexPath.row];
-    FCPost *post = [[FCPost alloc] init];
+    FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
     
-    cell.post = post;
+    
     
     cell.FCCellTitle.text = post.postTitle;
+    cell.post = post;
+    
+    FCAttachmentMeta* meta =  post.postFeaturedImage.imageAttachmentMeta[1];
+    cell.FCCellFeaturedImage.image = nil;
+    [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
+    
+    
+    
    // cell.FCCellFeaturedImage.image = post.postFeaturedImage;
     cell.FCCellCategoryAndDate.text = @"вчера";
+    
+    
+    
+    
     
     
     return cell;
@@ -64,7 +142,7 @@
     
     //TODO
     //return  [[self.fCollectionAPI getLatestsPosts] count];
-    return 12;
+    return [postsToPresent count];
 }
 
 
@@ -74,6 +152,22 @@
     
     
     
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([postsToPresent count] - 1 <= indexPath.row){
+        
+        NSLog(@"%d",(indexPath.row + 1)/12);
+        [self loadMorePostsFromPage:1 + (indexPath.row + 1)/12];
+        
+        
+    }
+    
+}
+
+-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.imageView.image = nil;
 }
 
 

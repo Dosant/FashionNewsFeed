@@ -28,8 +28,8 @@
 		8362509A1AC5E39400370340 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 836250991AC5E39400370340 /* Images.xcassets */; };
 		8362509D1AC5E39400370340 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8362509B1AC5E39400370340 /* LaunchScreen.xib */; };
 		836250A91AC5E39400370340 /* FashionNewsFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250A81AC5E39400370340 /* FashionNewsFeedTests.m */; };
-		836250B41AC5E4A200370340 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250B31AC5E4A200370340 /* PageContentViewController.m */; };
 		836B8A091AE4CC6A002A37D2 /* newsFeaturedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */; };
+		836B8A0B1AE94048002A37D2 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B8A0A1AE94048002A37D2 /* PageContentViewController.m */; };
 		838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */; };
 		838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C91ACBE4AD004F3298 /* PersistencyManager.m */; };
 		838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */; };
@@ -97,9 +97,9 @@
 		836250A71AC5E39400370340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836250A81AC5E39400370340 /* FashionNewsFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FashionNewsFeedTests.m; sourceTree = "<group>"; };
 		836250B21AC5E4A200370340 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
-		836250B31AC5E4A200370340 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		836B8A071AE4CC6A002A37D2 /* newsFeaturedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newsFeaturedImageView.h; sourceTree = "<group>"; };
 		836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newsFeaturedImageView.m; sourceTree = "<group>"; };
+		836B8A0A1AE94048002A37D2 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		838A28C51ACBE48A004F3298 /* FashionCollectionAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FashionCollectionAPI.h; sourceTree = "<group>"; };
 		838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FashionCollectionAPI.m; sourceTree = "<group>"; };
 		838A28C81ACBE4AD004F3298 /* PersistencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistencyManager.h; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				836250931AC5E39400370340 /* MainViewController.h */,
 				836250941AC5E39400370340 /* MainViewController.m */,
 				836250B21AC5E4A200370340 /* PageContentViewController.h */,
-				836250B31AC5E4A200370340 /* PageContentViewController.m */,
+				836B8A0A1AE94048002A37D2 /* PageContentViewController.m */,
 				832B3A881ACA918B00D34619 /* SideBarMenuTableViewContoller.h */,
 				832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */,
 				832B3A8B1ACA922900D34619 /* NewsContentContoller.h */,
@@ -495,13 +495,13 @@
 				861556791AE82F5E0060EAB2 /* DataAuthor.m in Sources */,
 				2A88DA6D1AD32352007A618C /* FCFeaturedImage.m in Sources */,
 				8615566D1AE82F5D0060EAB2 /* DataCategory.m in Sources */,
-				836250B41AC5E4A200370340 /* PageContentViewController.m in Sources */,
 				836250951AC5E39400370340 /* MainViewController.m in Sources */,
 				2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */,
 				861556731AE82F5E0060EAB2 /* DataTerms.m in Sources */,
 				838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */,
 				2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */,
 				861556761AE82F5E0060EAB2 /* DataPost.m in Sources */,
+				836B8A0B1AE94048002A37D2 /* PageContentViewController.m in Sources */,
 				2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */,
 				832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */,
 				2A2B634D1ADD9FB7004C6CCB /* FCResponseDeserializer.m in Sources */,

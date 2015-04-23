@@ -67,6 +67,9 @@
                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
+
+- (NSArray*)getHardCodedCategories;
+
 @end
 
 

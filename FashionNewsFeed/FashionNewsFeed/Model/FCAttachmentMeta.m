@@ -28,10 +28,21 @@
         self.attachmentMetaWidth = (NSUInteger) [[attributes valueForKeyPath:@"width"] integerValue];
         self.attachmentMetaHeight = (NSUInteger) [[attributes valueForKeyPath:@"height"] integerValue];
 
-        NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"url"]];
+        NSString* urlString = [[attributes valueForKeyPath:@"url"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        
+        
+        NSURL *url = [NSURL URLWithString:urlString];
         self.attachmentMetaUrl = url;
     }
     return self;
+}
+
+-(void)printMeta{
+    
+    NSLog(@"%@ w = %d , h = %d, url = %@", _attachmentMetaFile, _attachmentMetaWidth, _attachmentMetaHeight,_attachmentMetaUrl );
+    
+    
 }
 
 @end

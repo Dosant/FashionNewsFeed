@@ -46,12 +46,12 @@
 
 -(NSString*)resizeImages:(NSString*)htmlString{
     
-    NSString* out = [htmlString stringByReplacingOccurrencesOfString:@"400" withString:@"300"];
-    out = [out stringByReplacingOccurrencesOfString:@"600" withString:@"450"];
-    out = [out stringByReplacingOccurrencesOfString:@"601" withString:@"450"];
-    NSLog(out);
+//    NSString* out = [htmlString stringByReplacingOccurrencesOfString:@"400" withString:@"300"];
+//    out = [out stringByReplacingOccurrencesOfString:@"600" withString:@"450"];
+//    out = [out stringByReplacingOccurrencesOfString:@"601" withString:@"450"];
+//    NSLog(out);
     
-    return out;
+    return htmlString;
     
     
     

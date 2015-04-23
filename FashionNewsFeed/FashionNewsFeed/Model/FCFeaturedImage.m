@@ -29,7 +29,9 @@
         self.imageId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
         self.imageTitle = [attributes valueForKeyPath:@"title"];
 
-        NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"source"]];
+        NSString* urlString = [[attributes valueForKeyPath:@"source"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [NSURL URLWithString:urlString];
+        
         self.imageSource = url;
 
         NSMutableArray *meta = [[NSMutableArray alloc] init];
