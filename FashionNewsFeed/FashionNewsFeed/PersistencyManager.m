@@ -10,12 +10,6 @@
 
 @interface PersistencyManager ()
 
-@property (strong, nonatomic) DataPost     *dataPost;
-@property (strong, nonatomic) DataAuthor   *dataAuthor;
-@property (strong, nonatomic) DataTerms    *dataTerms;
-@property (strong, nonatomic) DataCategory *dataCategory;
-@property (strong, nonatomic) DataPostTag  *dataPostTag;
-
 @end
 
 @implementation PersistencyManager
@@ -30,60 +24,14 @@
     return self;
 }
 
-//#pragma mark - addOtherInPost
-
-//- (BOOL)addCategory:(NSString *)category {
-//    
-//    PersistencyManager *manager = [[PersistencyManager alloc] init];
-//    
-//    if (![[manager categoriesList] containsObject: category]) {
-//        
-//        return NO;
-//    }
-//    
-//    //[self.postCategories addObject: category];
-//    
-//    return YES;
-//}
-//
-//- (void)addTag:(NSString *)tag {
-//    
-//    //[self.postTags addObject: tag];
-//}
-//
-//- (void)addAttachment:(id) attachment {
-//    
-//    //[self.postAttachments addObject: attachment];
-//}
-
-//#pragma mark - getOtherInPost
-
-//- (NSArray *)getCurrentPostCategories {
-//    NSArray *anArray = @[@1, @2, @3, @4];
-//    return anArray;
-//    //return self.postCategories;
-//}
-//
-//- (NSArray *)getCurrentPostTags {
-//    NSArray *anArray = @[@1, @2, @3, @4];
-//    return anArray;
-//    //return self.postTags;
-//}
-//
-//- (id)getCurrentPostAttachments {
-//    
-//    return nil;
-//}
-
 #pragma mark - get from Data
 
-- (void) get {
+- (NSArray *)getCategoriesFromData { //Modify in future
     
+    NSMutableArray *categories = [NSMutableArray array];
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription* description =
-    [NSEntityDescription entityForName:@"DataTerms"
-                inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataCategory"
+                                                   inManagedObjectContext:self.managedObjectContext];
     [request setEntity:description];
     
     NSError* requestError = nil;
@@ -91,26 +39,22 @@
     
     if (requestError) {
         NSLog(@"%@", [requestError localizedDescription]);
+        return nil;
     }
     
-    for (DataTerms *obj in resultArray) {
-        
-        for (DataPostTag *postTag in obj.postTags) {
-            NSLog(@"%@ %@", postTag.postTagId, postTag.postTagName);
-        }
-        for (DataCategory *categories in obj.categories) {
-            NSLog(@"%@ %@", categories.categoryId, categories.categoryName);
-        }
+    for (DataCategory *dataCategory in resultArray) {
+        [categories addObject:dataCategory.categoryName];
+        NSLog(@"%@", dataCategory.categoryName);
     }
+    
+    return categories;
 }
 
-- (FCCategory *)getDataCategoryById:(NSUInteger)idCategory {
+- (FCPost *)getPostById:(NSUInteger)postId {
     
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription* description =
-    [NSEntityDescription entityForName:@"DataCategory"
-                inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
+                                                   inManagedObjectContext:self.managedObjectContext];
     [request setEntity:description];
     
     NSError* requestError = nil;
@@ -118,36 +62,72 @@
     
     if (requestError) {
         NSLog(@"%@", [requestError localizedDescription]);
+        return nil;
     }
     
-    for (DataCategory *obj in resultArray) {
+    NSMutableArray *categories = [NSMutableArray array];
+    NSMutableArray *postTags = [NSMutableArray array];
+
+    for (DataPost *dataPost in resultArray) {
         
-        if ([obj.categoryId integerValue] == idCategory) {
+        if ([dataPost.postId integerValue] == postId) {
             
-            FCCategory *category = [[FCCategory alloc]  initCategoryWithId:[obj.categoryId integerValue]
-                                                                   andName:obj.categoryName
-                                                                  andTitle:obj.categoryTitle
-                                                                  andCount:[obj.categoryCount integerValue]
-                                                                   andLink:[NSURL URLWithString:obj.categoryLink]
-                                                                   andMeta:nil];
-            NSLog(@"%lu %@ %@ %lu %@", (unsigned long)category.categoryId, category.categoryName, category.categoryTitle,
-                                        (unsigned long)category.categoryCount, category.categoryLink);
-            return category;
-        } else {
-            NSLog(@"%@", @"Неверный ID");
+            FCAuthor *author = [[FCAuthor alloc] initAuthorWithId:[dataPost.author.authorId integerValue]
+                                                      andUserName:dataPost.author.authorUserName
+                                                     andFirstName:dataPost.author.authorFirstName
+                                                      andLastName:dataPost.author.authorLastName
+                                                      andNickName:dataPost.author.authorNickName
+                                                        andAvatar:nil
+                                                    andRegistered:dataPost.author.authorRegistered andMeta:nil];
+            NSLog(@"%@ %@ %lu %@", author.authorFirstName, author.authorLastName, (unsigned long)author.authorId, author.authorNickName);
+            for (DataCategory *dataCategory in dataPost.term.categories) {
+                
+                FCCategory *category = [[FCCategory alloc] initCategoryWithId:[dataCategory.categoryId integerValue]
+                                                                      andName:dataCategory.categoryName
+                                                                     andTitle:dataCategory.categoryTitle
+                                                                     andCount:[dataCategory.categoryCount integerValue]
+                                                                      andLink:[NSURL URLWithString:dataCategory.categoryLink]
+                                                                      andMeta:nil];
+                [categories addObject:category];
+                NSLog(@"%@ %@ %lu", category.categoryName, category.categoryTitle, category.categoryId);
+            }
+            
+            for (DataPostTag *dataPostTag in dataPost.term.postTags) {
+                
+                FCPostTag *postTag = [[FCPostTag alloc] initPostTagWithId:[dataPostTag.postTagId integerValue]
+                                                                  andName:dataPostTag.postTagName
+                                                                 andCount:[dataPostTag.postTagCount integerValue]
+                                                                  andLink:[NSURL URLWithString:dataPostTag.postTagLink]
+                                                                  andMeta:nil];
+                [postTags addObject:postTag];
+                NSLog(@"%@ %@ %lu", postTag.postTagLink, postTag.postTagName, (unsigned long)postTag.postTagId);
+            }
+            
+            FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:postTags andCategory:categories];
+            
+            FCPost *post = [[FCPost alloc] initPostWithId:[dataPost.postId integerValue]
+                                                 andTitle:dataPost.postTitle
+                                                andAuthor:author
+                                               andContent:dataPost.postContent
+                                                  andLink:[NSURL URLWithString: dataPost.postLink]
+                                                  andDate:dataPost.postDate
+                                          andDateModified:dataPost.postDateModified
+                                               andExcerpt:dataPost.postExcerpt
+                                                  andMeta:nil
+                                         andFeaturedImage:nil
+                                                 andTerms:terms];
+            NSLog(@"%@ %@ %@", post.postLink, post.postTitle, post.postContent);
+            return post;
         }
     }
-    
     return nil;
 }
 
-- (FCPostTag *)getDataPostTagById:(NSUInteger)idPostTag {
+- (FCPost *)getPostByCategory:(NSString *)category {
     
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription* description =
-    [NSEntityDescription entityForName:@"DataPostTag"
-                inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
+                                                   inManagedObjectContext:self.managedObjectContext];
     [request setEntity:description];
     
     NSError* requestError = nil;
@@ -155,25 +135,67 @@
     
     if (requestError) {
         NSLog(@"%@", [requestError localizedDescription]);
+        return nil;
     }
     
-    for (DataPostTag *obj in resultArray) {
+    NSMutableArray *categories = [NSMutableArray array];
+    NSMutableArray *postTags = [NSMutableArray array];
+    
+    for (DataPost *dataPost in resultArray) {
         
-        if ([obj.postTagId integerValue] == idPostTag) {
+        for (DataCategory *categoryName in dataPost.term.categories) {
+        
+        if ([categoryName.categoryName isEqual:category]) {
             
-            FCPostTag *postTag = [[FCPostTag alloc] initPostTagWithId:[obj.postTagId integerValue]
-                                                              andName:obj.postTagName
-                                                             andCount:[obj.postTagCount integerValue]
-                                                              andLink:[NSURL URLWithString: obj.postTagLink]
-                                                              andMeta:nil];
+            FCAuthor *author = [[FCAuthor alloc] initAuthorWithId:[dataPost.author.authorId integerValue]
+                                                      andUserName:dataPost.author.authorUserName
+                                                     andFirstName:dataPost.author.authorFirstName
+                                                      andLastName:dataPost.author.authorLastName
+                                                      andNickName:dataPost.author.authorNickName
+                                                        andAvatar:nil
+                                                    andRegistered:dataPost.author.authorRegistered andMeta:nil];
+            NSLog(@"%@ %@ %lu %@", author.authorFirstName, author.authorLastName, (unsigned long)author.authorId, author.authorNickName);
+            for (DataCategory *dataCategory in dataPost.term.categories) {
+                
+                FCCategory *category = [[FCCategory alloc] initCategoryWithId:[dataCategory.categoryId integerValue]
+                                                                      andName:dataCategory.categoryName
+                                                                     andTitle:dataCategory.categoryTitle
+                                                                     andCount:[dataCategory.categoryCount integerValue]
+                                                                      andLink:[NSURL URLWithString:dataCategory.categoryLink]
+                                                                      andMeta:nil];
+                [categories addObject:category];
+                NSLog(@"%@ %@ %lu", category.categoryName, category.categoryTitle, category.categoryId);
+            }
             
-            NSLog(@"%lu %@ %@ %lu", (unsigned long)postTag.postTagId, postTag.postTagName, postTag.postTagLink, (unsigned long)postTag.postTagCount);
-            return postTag;
-        } else {
-            NSLog(@"%@", @"Неверный ID");
+            for (DataPostTag *dataPostTag in dataPost.term.postTags) {
+                
+                FCPostTag *postTag = [[FCPostTag alloc] initPostTagWithId:[dataPostTag.postTagId integerValue]
+                                                                  andName:dataPostTag.postTagName
+                                                                 andCount:[dataPostTag.postTagCount integerValue]
+                                                                  andLink:[NSURL URLWithString:dataPostTag.postTagLink]
+                                                                  andMeta:nil];
+                [postTags addObject:postTag];
+                NSLog(@"%@ %@ %lu", postTag.postTagLink, postTag.postTagName, (unsigned long)postTag.postTagId);
+            }
+            
+            FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:postTags andCategory:categories];
+            
+            FCPost *post = [[FCPost alloc] initPostWithId:[dataPost.postId integerValue]
+                                                 andTitle:dataPost.postTitle
+                                                andAuthor:author
+                                               andContent:dataPost.postContent
+                                                  andLink:[NSURL URLWithString: dataPost.postLink]
+                                                  andDate:dataPost.postDate
+                                          andDateModified:dataPost.postDateModified
+                                               andExcerpt:dataPost.postExcerpt
+                                                  andMeta:nil
+                                         andFeaturedImage:nil
+                                                 andTerms:terms];
+            NSLog(@"%@ %@ %@", post.postLink, post.postTitle, post.postContent);
+            return post;
+        }
         }
     }
-    
     return nil;
 }
 

@@ -34,19 +34,19 @@
 //- (NSArray *)getCurrentPostTags;
 //- (id)getCurrentPostAttachments;
 
-#pragma mark - Data Manager
-
+//Core Data manager
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-- (void)deleteAllObjects;
+//Methods return posts from Core Data
+//- (NSArray *)getCategoriesFromData;
+- (FCPost *)getPostById:(NSUInteger)postId;
+- (FCPost *)getPostByCategory:(NSString *)category;
 
-- (void) get;
-- (FCCategory *)getDataCategoryById:(NSUInteger)idCategory;
-- (FCPostTag *)getDataPostTagById:(NSUInteger)idPostTag;
-
+//Method set post to Core Data
 - (void) setToDataPost:(FCPost *)post;
 
+- (void)deleteAllObjects;
 
 @end
