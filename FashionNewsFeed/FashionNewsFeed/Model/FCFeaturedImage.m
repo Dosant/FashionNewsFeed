@@ -18,7 +18,7 @@
         self.imageId = imageId;
         self.imageTitle = imageTitle;
         self.imageSource = imageSource;
-        self.imageAttachmentMeta = imageAttachmentMeta;
+        //self.imageAttachmentMeta = imageAttachmentMeta;
     }
     return self;
 }
@@ -45,9 +45,33 @@
                 }
             }
         }
-        self.imageAttachmentMeta = meta;
+        //self.imageAttachmentMeta = meta;
+        self.maxFeaturedImage = [self getTheLargestPicture:meta];
+        
     }
     return self;
+}
+
+
+
+-(FCAttachmentMeta*)getTheLargestPicture:(NSArray*)attachmentsArray{
+    
+    NSUInteger maxWidth = 0;
+    FCAttachmentMeta* _meta;
+    
+    for(FCAttachmentMeta* meta in attachmentsArray){
+        NSLog(@"%d",meta.attachmentMetaWidth);
+        
+        if (maxWidth < meta.attachmentMetaWidth){
+            maxWidth = meta.attachmentMetaWidth;
+            _meta = meta;
+        }
+        
+        
+    }
+    NSLog(@"%d", maxWidth);
+    return _meta;
+    
 }
 
 @end

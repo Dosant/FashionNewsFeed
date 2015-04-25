@@ -68,8 +68,12 @@
 
         self.postFeaturedImage = [[FCFeaturedImage alloc] initWithAttributes:[attributes valueForKeyPath:@"featured_image"]];
         self.postTerms = [[FCTerms alloc] initWithAttributes:[attributes valueForKeyPath:@"terms"]];
+        
+        
     }
     return self;
 }
+
+
 
 @end

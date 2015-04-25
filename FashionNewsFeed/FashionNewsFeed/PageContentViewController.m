@@ -9,6 +9,7 @@
 #import "PageContentViewController.h"
 #import "FashionCollectionAPI.h"
 #import "FCTableViewCell.h"
+#import "FCTableViewCell2.h"
 #import "NewsContentContoller.h"
 
 #import "FCAttachmentMeta.h"
@@ -37,6 +38,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     self.title = _pageTitle;
     postsLoaded = NO;
     
@@ -151,33 +155,51 @@
 #pragma mark - tableViewDataSource
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"CELL");
     
-
-    FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell" forIndexPath:indexPath];
-
-    //TODO
     FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
+    FCAttachmentMeta* meta =  post.postFeaturedImage.maxFeaturedImage;
     
     
     
-    cell.FCCellTitle.text = post.postTitle;
-    cell.post = post;
+    if (((CGFloat)meta.attachmentMetaWidth / meta.attachmentMetaHeight) < 1.5){
+        
+       FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell" forIndexPath:indexPath];
+        cell.FCCellTitle.text = post.postTitle;
+        cell.post = post;
+        
+        
+        cell.FCCellFeaturedImage.image = nil;
+        [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
+        cell.FCCellCategoryAndDate.text = @"вчера";
+        return cell;
+    } else {
+        
+        FCTableViewCell2* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell2" forIndexPath:indexPath];
+        cell.FCCellTitle.text = post.postTitle;
+        cell.post = post;
+        
+        
+        cell.FCCellFeaturedImage.image = nil;
+        [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
+        cell.FCCellCategoryAndDate.text = @"вчера";
+        return cell;
+    }
     
-    FCAttachmentMeta* meta =  [self getTheLargestPicture:post.postFeaturedImage.imageAttachmentMeta];
-    cell.FCCellFeaturedImage.image = nil;
-    [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
+    
+    
     
     
     
    // cell.FCCellFeaturedImage.image = post.postFeaturedImage;
-    cell.FCCellCategoryAndDate.text = @"вчера";
     
     
     
     
     
     
-    return cell;
+    
+    
 
 }
 
@@ -213,6 +235,23 @@
     cell.imageView.image = nil;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
+    FCAttachmentMeta* meta =  post.postFeaturedImage.maxFeaturedImage;
+//    CGFloat height = (CGFloat)meta.attachmentMetaHeight;
+//    CGFloat width = (CGFloat)meta.attachmentMetaWidth;
+    
+    if (((CGFloat)meta.attachmentMetaWidth / meta.attachmentMetaHeight) < 1.5){
+        return 342;
+    } else {
+        return 196;
+        
+    }
+    
+    
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
@@ -233,25 +272,7 @@
 
 #pragma mark - preparingContent
 
--(FCAttachmentMeta*)getTheLargestPicture:(NSArray*)attachmentsArray{
-    
-    NSUInteger maxWidth = 0;
-    FCAttachmentMeta* _meta;
-    
-    for(FCAttachmentMeta* meta in attachmentsArray){
-        NSLog(@"%d",meta.attachmentMetaWidth);
-        
-        if (maxWidth < meta.attachmentMetaWidth){
-            maxWidth = meta.attachmentMetaWidth;
-            _meta = meta;
-        }
-        
-        
-    }
-    NSLog(@"%d", maxWidth);
-    return _meta;
-    
-}
+
 
 
 @end

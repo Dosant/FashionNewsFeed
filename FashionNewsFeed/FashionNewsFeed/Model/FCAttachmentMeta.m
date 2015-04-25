@@ -34,6 +34,8 @@
         
         NSURL *url = [NSURL URLWithString:urlString];
         self.attachmentMetaUrl = url;
+        
+        
     }
     return self;
 }
@@ -42,7 +44,7 @@
     
     NSLog(@"%@ w = %d , h = %d, url = %@", _attachmentMetaFile, _attachmentMetaWidth, _attachmentMetaHeight,_attachmentMetaUrl );
     
-    
 }
+
 
 @end

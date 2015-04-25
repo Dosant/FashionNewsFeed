@@ -103,17 +103,17 @@
         <scene sceneID="4lD-Ak-sga">
             <objects>
                 <tableViewController storyboardIdentifier="pageContentConroller" id="vbT-r0-ggN" customClass="PageContentViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="350" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qwr-yC-NoG">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="342" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qwr-yC-NoG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95283776521682739" green="0.95300072431564331" blue="0.95282751321792603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell" rowHeight="350" id="S4K-lQ-6ss" customClass="FCTableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="350"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell" rowHeight="342" id="S4K-lQ-6ss" userLabel="FCCell1:1" customClass="FCTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="342"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S4K-lQ-6ss" id="Mgr-Sa-cQQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="342"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="GDZ-m2-0cP">
@@ -123,7 +123,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dHy-Ok-aMS" customClass="newsFeaturedImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="304" height="264"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bHZ-SO-fji">
                                                     <rect key="frame" x="8" y="272" width="288" height="45"/>
@@ -153,6 +153,49 @@
                                     <segue destination="WVd-OM-PCO" kind="push" identifier="moveToContent" id="En6-Jd-VVc"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell2" rowHeight="196" id="SO9-zi-OMc" userLabel="FCCell1:1.6" customClass="FCTableViewCell2">
+                                <rect key="frame" x="0.0" y="428" width="320" height="196"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SO9-zi-OMc" id="EzB-a5-o3Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="5eO-lg-txl">
+                                            <rect key="frame" x="8" y="0.0" width="304" height="188"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lrM-kV-ctn" customClass="newsFeaturedImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="116"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jQy-PU-EXB">
+                                                    <rect key="frame" x="8" y="124" width="288" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AyV-Rj-0iP">
+                                                    <rect key="frame" x="180" y="156" width="116" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="FCCellCategoryAndDate" destination="AyV-Rj-0iP" id="bcL-eb-jon"/>
+                                    <outlet property="FCCellFeaturedImage" destination="lrM-kV-ctn" id="O0C-CV-DOv"/>
+                                    <outlet property="FCCellTitle" destination="jQy-PU-EXB" id="ebg-nC-Ikx"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="vbT-r0-ggN" id="dnS-CZ-FzE"/>
@@ -163,6 +206,8 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="5Qa-Dg-dbN"/>
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="S5A-r3-lhn"/>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="1000"/>
                     <connections>
                         <outlet property="barButtonMenuIcon" destination="S5A-r3-lhn" id="qxy-gt-wS7"/>
                     </connections>
@@ -176,11 +221,11 @@
             <objects>
                 <viewController title="NewsContentContoller" id="WVd-OM-PCO" customClass="NewsContentContoller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zhR-2X-shM">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="aJg-wK-cia">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>

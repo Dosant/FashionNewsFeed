@@ -12,6 +12,8 @@
 @property(assign, nonatomic) NSUInteger attachmentMetaHeight;
 @property(strong, nonatomic) NSURL *attachmentMetaUrl;
 
+
+
 - (instancetype)initAttachmentMetaWithFile:(NSString *)attachmentMetaFile
                                   andWidth:(NSUInteger)attachmentMetaWidth
                                  andHeight:(NSUInteger)attachmentMetaHeight
