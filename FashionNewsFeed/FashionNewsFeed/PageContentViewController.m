@@ -88,7 +88,7 @@
      void (^success)(NSURLSessionDataTask *task, NSMutableArray *posts) = ^(NSURLSessionDataTask *task, NSMutableArray *posts) {
     
         
-        NSLog(@"%d",[posts count]);
+        
         if (postsToPresent != nil){
             [postsToPresent addObjectsFromArray:posts];
         } else {
@@ -155,7 +155,7 @@
 #pragma mark - tableViewDataSource
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"CELL");
+    
     
     FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
     FCAttachmentMeta* meta =  post.postFeaturedImage.maxFeaturedImage;
@@ -242,10 +242,10 @@
 //    CGFloat height = (CGFloat)meta.attachmentMetaHeight;
 //    CGFloat width = (CGFloat)meta.attachmentMetaWidth;
     
-    if (((CGFloat)meta.attachmentMetaWidth / meta.attachmentMetaHeight) < 1.5){
-        return 342;
-    } else {
-        return 196;
+    if (((CGFloat)meta.attachmentMetaWidth / meta.attachmentMetaHeight) > 1.5){
+        return 250; // width >> height
+    } else { /// width == height
+        return 360;
         
     }
     

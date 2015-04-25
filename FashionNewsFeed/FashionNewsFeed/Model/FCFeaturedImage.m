@@ -56,20 +56,25 @@
 
 -(FCAttachmentMeta*)getTheLargestPicture:(NSArray*)attachmentsArray{
     
-    NSUInteger maxWidth = 0;
+    NSUInteger maxDim = 0;
     FCAttachmentMeta* _meta;
     
     for(FCAttachmentMeta* meta in attachmentsArray){
-        NSLog(@"%d",meta.attachmentMetaWidth);
         
-        if (maxWidth < meta.attachmentMetaWidth){
-            maxWidth = meta.attachmentMetaWidth;
+        
+        if (maxDim < meta.attachmentMetaWidth){
+            maxDim = meta.attachmentMetaWidth;
+            _meta = meta;
+        }
+        
+        if (maxDim < meta.attachmentMetaHeight){
+            maxDim = meta.attachmentMetaHeight;
             _meta = meta;
         }
         
         
     }
-    NSLog(@"%d", maxWidth);
+   // NSLog(@"%d", maxWidth);
     return _meta;
     
 }

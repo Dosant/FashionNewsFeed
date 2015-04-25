@@ -109,31 +109,31 @@
                         <color key="backgroundColor" red="0.95283776521682739" green="0.95300072431564331" blue="0.95282751321792603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell" rowHeight="342" id="S4K-lQ-6ss" userLabel="FCCell1:1" customClass="FCTableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="342"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell" rowHeight="360" id="S4K-lQ-6ss" userLabel="FCCell1:1" customClass="FCTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="360"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S4K-lQ-6ss" id="Mgr-Sa-cQQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="342"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="GDZ-m2-0cP">
-                                            <rect key="frame" x="8" y="0.0" width="304" height="334"/>
+                                            <rect key="frame" x="8" y="0.0" width="304" height="350"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dHy-Ok-aMS" customClass="newsFeaturedImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="264"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="250"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bHZ-SO-fji">
-                                                    <rect key="frame" x="8" y="272" width="288" height="45"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" id="bHZ-SO-fji">
+                                                    <rect key="frame" x="8" y="282" width="288" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dDg-ij-0If">
-                                                    <rect key="frame" x="180" y="304" width="116" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dDg-ij-0If">
+                                                    <rect key="frame" x="8" y="258" width="288" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -153,31 +153,31 @@
                                     <segue destination="WVd-OM-PCO" kind="push" identifier="moveToContent" id="En6-Jd-VVc"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell2" rowHeight="196" id="SO9-zi-OMc" userLabel="FCCell1:1.6" customClass="FCTableViewCell2">
-                                <rect key="frame" x="0.0" y="428" width="320" height="196"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell2" rowHeight="250" id="SO9-zi-OMc" userLabel="FCCell1:1.6" customClass="FCTableViewCell2">
+                                <rect key="frame" x="0.0" y="446" width="320" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SO9-zi-OMc" id="EzB-a5-o3Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="5eO-lg-txl">
-                                            <rect key="frame" x="8" y="0.0" width="304" height="188"/>
+                                            <rect key="frame" x="8" y="0.0" width="304" height="240"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lrM-kV-ctn" customClass="newsFeaturedImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="116"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jQy-PU-EXB">
-                                                    <rect key="frame" x="8" y="124" width="288" height="45"/>
+                                                    <rect key="frame" x="8" y="176" width="288" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AyV-Rj-0iP">
-                                                    <rect key="frame" x="180" y="156" width="116" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AyV-Rj-0iP">
+                                                    <rect key="frame" x="8" y="154" width="116" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
