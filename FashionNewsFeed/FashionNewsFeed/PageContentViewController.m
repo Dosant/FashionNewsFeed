@@ -43,7 +43,8 @@
     //Starting activity
     activityView = [[UIActivityIndicatorView alloc]
                                              initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    activityView.center=self.view.center;
+    activityView.center= CGPointMake(self.view.center.x, 20);
+    
     [activityView startAnimating];
     [self.view addSubview:activityView];
     
@@ -51,19 +52,15 @@
     
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    
     self.refreshControl.tintColor = [UIColor blackColor];
     [self.refreshControl addTarget:self
-                            action:@selector(loadMorePostsFromPage:)
+                            action:@selector(reloadPosts)
                   forControlEvents:UIControlEventValueChanged];
 
     
     
+    
     [self loadMorePostsFromPage:1];
-    
-    
-    
-    
     
    
 }
@@ -74,9 +71,18 @@
     
 }
 
+-(void)reloadPosts{
+    
+    [postsToPresent removeAllObjects];
+    [self loadMorePostsFromPage:1];
+    
+}
+
+
 -(void)loadMorePostsFromPage:(NSUInteger)page{
     
-    [[FashionCollectionAPI sharedInstance] getNewsPosts:page postsPerPage:12 success:^(NSURLSessionDataTask *task, NSMutableArray *posts) {
+     void (^success)(NSURLSessionDataTask *task, NSMutableArray *posts) = ^(NSURLSessionDataTask *task, NSMutableArray *posts) {
+    
         
         NSLog(@"%d",[posts count]);
         if (postsToPresent != nil){
@@ -96,14 +102,51 @@
         [self.refreshControl endRefreshing];
         [self.tableView reloadData];
         
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+    
+    
+    };
+    
+    
+     void (^failure)(NSURLSessionDataTask *task, NSError* error) = ^(NSURLSessionDataTask *task,  NSError *error) {
+
         NSLog(@"%@",[error localizedDescription]);
         
-    }];
+    };
+    
+    __weak void (^successWeak)(NSURLSessionDataTask *task, NSMutableArray *posts) = success;
+    __weak void (^failureWeak)(NSURLSessionDataTask *task, NSError *error) = failure;
+    
+    switch (_pageIndex) {
+        case 0:
+            
+            [[FashionCollectionAPI sharedInstance] getNewsPosts:page postsPerPage:12 success:successWeak failure:failureWeak];
+            break;
+        case 1:
+            
+            [[FashionCollectionAPI sharedInstance] getFashionPosts:page postsPerPage:12 success:successWeak failure:failureWeak];
+            break;
+        case 2:
+            
+            [[FashionCollectionAPI sharedInstance] getEventsPosts:page postsPerPage:12 success:successWeak failure:failureWeak];
+            break;
+        case 3:
+            
+            [[FashionCollectionAPI sharedInstance] getBeautyBoxPosts:page postsPerPage:12 success:successWeak failure:failureWeak];
+            break;
+            
+            
+            
+        default:
+            
+            NSLog(@"Wrong pageIndex lol?");
+            break;
+    }
+    
     
 }
+
+
+
 
 #pragma mark - tableViewDataSource
 
@@ -120,7 +163,7 @@
     cell.FCCellTitle.text = post.postTitle;
     cell.post = post;
     
-    FCAttachmentMeta* meta =  post.postFeaturedImage.imageAttachmentMeta[1];
+    FCAttachmentMeta* meta =  [self getTheLargestPicture:post.postFeaturedImage.imageAttachmentMeta];
     cell.FCCellFeaturedImage.image = nil;
     [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
     
@@ -173,8 +216,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    
-    
     if([segue.identifier isEqualToString: @"moveToContent"]){
         
         //Disable Nav scroll
@@ -187,6 +228,29 @@
         dvt.post = ((FCTableViewCell*)[self.tableView cellForRowAtIndexPath:ip]).post;
         
     }
+}
+
+
+#pragma mark - preparingContent
+
+-(FCAttachmentMeta*)getTheLargestPicture:(NSArray*)attachmentsArray{
+    
+    NSUInteger maxWidth = 0;
+    FCAttachmentMeta* _meta;
+    
+    for(FCAttachmentMeta* meta in attachmentsArray){
+        NSLog(@"%d",meta.attachmentMetaWidth);
+        
+        if (maxWidth < meta.attachmentMetaWidth){
+            maxWidth = meta.attachmentMetaWidth;
+            _meta = meta;
+        }
+        
+        
+    }
+    NSLog(@"%d", maxWidth);
+    return _meta;
+    
 }
 
 

@@ -34,7 +34,7 @@
         littleTriangle.path = [polygonPath CGPath];
         littleTriangle.fillColor = [[UIColor whiteColor] CGColor];
         
-        [[self layer] addSublayer:littleTriangle];
+       // [[self layer] addSublayer:littleTriangle];
         
 
         
