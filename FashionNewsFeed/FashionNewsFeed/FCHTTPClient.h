@@ -23,4 +23,9 @@
                    success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                    failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
+- (void)getPostsNoCategory:(NSUInteger)pageNumber
+           andPostsPerPage:(NSUInteger)postsPerPage
+                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
 @end

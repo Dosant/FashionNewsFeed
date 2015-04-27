@@ -17,6 +17,11 @@
             success:(void (^)(NSURLSessionDataTask *task, FCPost *post))success
             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
+- (void)getLatestsPosts:(NSUInteger)pageNumber
+           postsPerPage:(NSUInteger)postsPerPage
+                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
 - (void)getBeautyBoxPosts:(NSUInteger)pageNumber
              postsPerPage:(NSUInteger)postsPerPage
                   success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
@@ -67,8 +72,7 @@
                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
-
-- (NSArray*)getHardCodedCategories;
+- (NSArray *)getHardCodedCategories;
 
 @end
 

@@ -93,7 +93,26 @@
                        }];
 
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
-        
+        XCTAssertNil(error, "Error");
+    }];
+}
+
+- (void)testGetPostsNoCategory {
+
+    XCTestExpectation *getPostsNoCategoryExpectation = [self expectationWithDescription:@"Data downloaded"];
+    FCHTTPClient *client = [self getsharedClient];
+
+    [client getPostsNoCategory:1
+               andPostsPerPage:12
+                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                           XCTAssert(YES, @"Pass");
+                           [getPostsNoCategoryExpectation fulfill];
+                       }
+                       failure:^(NSURLSessionDataTask *task, NSError *error) {
+                           XCTAssertFalse(@"Failed");
+                       }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
         XCTAssertNil(error, "Error");
     }];
 }

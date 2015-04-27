@@ -75,6 +75,26 @@
     }];
 }
 
+- (void)testGetLatestPosts {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
+    FashionCollectionAPI *client = [self getsharedInstance];
+
+    [client getLatestsPosts:1
+               postsPerPage:12
+                    success:^(NSURLSessionDataTask *task, id responseObject) {
+                        XCTAssert(YES, @"Pass");
+                        [expectation fulfill];
+                    }
+                    failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        XCTAssertFalse(@"Failed");
+                    }];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        XCTAssertNil(error, "Error");
+    }];
+}
+
 - (void)testGetBeautyBoxPosts {
 
     XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
@@ -94,7 +114,6 @@
         XCTAssertNil(error, "Error");
     }];
 }
-
 
 - (void)testGetLifestylePosts {
 

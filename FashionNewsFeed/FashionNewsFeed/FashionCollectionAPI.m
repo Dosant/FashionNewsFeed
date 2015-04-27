@@ -57,7 +57,6 @@
                       }];
 }
 
-
 - (void)getPostById:(NSUInteger)postId
             success:(void (^)(NSURLSessionDataTask *task, FCPost *post))success
             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
@@ -70,6 +69,22 @@
                     failure:^(NSURLSessionDataTask *task, NSError *error) {
                         failure(task, error);
                     }];
+}
+
+- (void)getLatestsPosts:(NSUInteger)pageNumber
+           postsPerPage:(NSUInteger)postsPerPage
+                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    [httpClient getPostsNoCategory:pageNumber
+                   andPostsPerPage:postsPerPage
+                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                               NSMutableArray *responses = [self processResponse:responseObject];
+                               success(task, responses);
+                           }
+                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                               failure(task, error);
+                           }];
 }
 
 - (void)getBeautyBoxPosts:(NSUInteger)pageNumber
@@ -88,7 +103,6 @@
                                failure(task, error);
                            }];
 }
-
 
 - (void)getLifestylePosts:(NSUInteger)pageNumber
              postsPerPage:(NSUInteger)postsPerPage
@@ -196,13 +210,13 @@
            postsPerPage:(NSUInteger)postsPerPage
                 success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
                 failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    
+
     [httpClient getPostsByCategory:@"fashion"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
                            success:^(NSURLSessionDataTask *task, id responseObject) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               
+
                                success(task, responses);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -215,7 +229,6 @@
              success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
-    NSLog(@"hey");
     [httpClient getPostsByCategory:@"news"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
@@ -245,20 +258,13 @@
                            }];
 }
 
+- (NSArray *)getHardCodedCategories {
 
-- (NSArray*)getHardCodedCategories {
-    
-    FCCategory* cat1 = [[FCCategory alloc]initCategoryWithId:0 andName:@"Новости" andTitle:@"Новости" andCount:nil andLink:nil andMeta:nil];
-    
-    FCCategory* cat2 = [[FCCategory alloc]initCategoryWithId:1 andName:@"Мода" andTitle:@"Мода" andCount:nil andLink:nil andMeta:nil];
-    
-    FCCategory* cat3 = [[FCCategory alloc]initCategoryWithId:2 andName:@"События" andTitle:@"События" andCount:nil andLink:nil andMeta:nil];
-    
-    FCCategory* cat4 = [[FCCategory alloc]initCategoryWithId:3 andName:@"Beauty Box" andTitle:@"Beauty Box" andCount:nil andLink:nil andMeta:nil];
-    
-    return @[cat1,cat2,cat3,cat4];
-    
-    
+    FCCategory *cat1 = [[FCCategory alloc] initCategoryWithId:0 andName:@"Новости" andTitle:@"Новости" andCount:nil andLink:nil andMeta:nil];
+    FCCategory *cat2 = [[FCCategory alloc] initCategoryWithId:1 andName:@"Мода" andTitle:@"Мода" andCount:nil andLink:nil andMeta:nil];
+    FCCategory *cat3 = [[FCCategory alloc] initCategoryWithId:2 andName:@"События" andTitle:@"События" andCount:nil andLink:nil andMeta:nil];
+    FCCategory *cat4 = [[FCCategory alloc] initCategoryWithId:3 andName:@"Beauty Box" andTitle:@"Beauty Box" andCount:nil andLink:nil andMeta:nil];
+    return @[cat1, cat2, cat3, cat4];
 }
 
 @end

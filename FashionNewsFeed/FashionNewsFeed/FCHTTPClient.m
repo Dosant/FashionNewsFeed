@@ -93,9 +93,30 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
                    success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                    failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
-    NSString *path = [NSString stringWithFormat:@"%@posts?filter[category_name]=%@&page=%lu&filter[posts_per_page]=%lu&status=publish",
+    NSString *path = [NSString stringWithFormat:@"%@posts?filter[category_name]=%@&page=%lu&filter[posts_per_page]=%lu&status=publish&count=true",
                                                 kFCollectionBaseURLString,
                                                 categoryName,
+                                                (unsigned long) pageNumber,
+                                                (unsigned long) postsPerPage];
+
+    [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (success) {
+            success(task, responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failure) {
+            failure(task, error);
+        }
+    }];
+}
+
+- (void)getPostsNoCategory:(NSUInteger)pageNumber
+           andPostsPerPage:(NSUInteger)postsPerPage
+                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+
+    NSString *path = [NSString stringWithFormat:@"%@posts?page=%lu&filter[posts_per_page]=%lu&status=publish&count=true",
+                                                kFCollectionBaseURLString,
                                                 (unsigned long) pageNumber,
                                                 (unsigned long) postsPerPage];
 
