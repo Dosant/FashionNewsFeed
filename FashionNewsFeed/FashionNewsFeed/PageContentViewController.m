@@ -85,7 +85,7 @@
 
 -(void)loadMorePostsFromPage:(NSUInteger)page{
     
-     void (^success)(NSURLSessionDataTask *task, NSMutableArray *posts) = ^(NSURLSessionDataTask *task, NSMutableArray *posts) {
+     void (^success)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) = ^(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) {
     
         
         
@@ -117,7 +117,7 @@
         
     };
     
-    __weak void (^successWeak)(NSURLSessionDataTask *task, NSMutableArray *posts) = success;
+    __weak void (^successWeak)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) = success;
     __weak void (^failureWeak)(NSURLSessionDataTask *task, NSError *error) = failure;
     
     switch (_pageIndex) {

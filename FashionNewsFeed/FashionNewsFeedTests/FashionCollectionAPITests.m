@@ -82,7 +82,7 @@
 
     [client getLatestsPosts:1
                postsPerPage:12
-                    success:^(NSURLSessionDataTask *task, id responseObject) {
+                    success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                         XCTAssert(YES, @"Pass");
                         [expectation fulfill];
                     }
@@ -102,7 +102,7 @@
 
     [client getBeautyBoxPosts:1
                  postsPerPage:5
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                      success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                           XCTAssert(YES, @"Pass");
                           [expectation fulfill];
                       }
@@ -122,7 +122,7 @@
 
     [client getLifestylePosts:1
                  postsPerPage:5
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                      success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                           XCTAssert(YES, @"Pass");
                           [expectation fulfill];
                       }
@@ -142,7 +142,7 @@
 
     [client getBreakfastPosts:1
                  postsPerPage:5
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                      success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                           XCTAssert(YES, @"Pass");
                           [expectation fulfill];
                       }
@@ -162,7 +162,7 @@
 
     [client getKonkursPosts:1
                postsPerPage:5
-                    success:^(NSURLSessionDataTask *task, id responseObject) {
+                    success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                         XCTAssert(YES, @"Pass");
                         [expectation fulfill];
                     }
@@ -182,7 +182,7 @@
 
     [client getBeautyPosts:1
               postsPerPage:5
-                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                   success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                        XCTAssert(YES, @"Pass");
                        [expectation fulfill];
                    }
@@ -202,7 +202,7 @@
 
     [client getFacePosts:1
             postsPerPage:5
-                 success:^(NSURLSessionDataTask *task, id responseObject) {
+                 success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                      XCTAssert(YES, @"Pass");
                      [expectation fulfill];
                  }
@@ -222,7 +222,7 @@
 
     [client getBestPosts:1
             postsPerPage:5
-                 success:^(NSURLSessionDataTask *task, id responseObject) {
+                 success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                      XCTAssert(YES, @"Pass");
                      [expectation fulfill];
                  }
@@ -242,7 +242,7 @@
 
     [client getFashionPosts:1
                postsPerPage:5
-                    success:^(NSURLSessionDataTask *task, id responseObject) {
+                    success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                         XCTAssert(YES, @"Pass");
                         [expectation fulfill];
                     }
@@ -262,7 +262,7 @@
 
     [client getNewsPosts:1
             postsPerPage:5
-                 success:^(NSURLSessionDataTask *task, id responseObject) {
+                 success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                      XCTAssert(YES, @"Pass");
                      [expectation fulfill];
                  }
@@ -282,7 +282,7 @@
 
     [client getEventsPosts:1
               postsPerPage:5
-                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                   success:^(NSURLSessionDataTask *task, id responseObject, FCResponseHeaders *headers) {
                        XCTAssert(YES, @"Pass");
                        [expectation fulfill];
                    }

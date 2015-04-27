@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A2512751AEEE6A50070A6DA /* FCResponseHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2512741AEEE6A50070A6DA /* FCResponseHeaders.m */; };
 		2A2B634D1ADD9FB7004C6CCB /* FCResponseDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B634C1ADD9FB7004C6CCB /* FCResponseDeserializer.m */; };
 		2A6514A81ADF1F490046BA76 /* FashionCollectionAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6514A71ADF1F490046BA76 /* FashionCollectionAPITests.m */; };
 		2A88DA6A1AD32328007A618C /* FCAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA691AD32328007A618C /* FCAuthor.m */; };
@@ -59,6 +60,8 @@
 /* Begin PBXFileReference section */
 		11172E0DC9B8ACB18D45F871 /* Pods-FashionNewsFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeed/Pods-FashionNewsFeed.release.xcconfig"; sourceTree = "<group>"; };
 		135EB12A5DDD5B6DE7B3FE5A /* Pods-FashionNewsFeedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeedTests/Pods-FashionNewsFeedTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2A2512731AEEE6A50070A6DA /* FCResponseHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCResponseHeaders.h; path = Model/FCResponseHeaders.h; sourceTree = "<group>"; };
+		2A2512741AEEE6A50070A6DA /* FCResponseHeaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCResponseHeaders.m; path = Model/FCResponseHeaders.m; sourceTree = "<group>"; };
 		2A2B634B1ADD9FB7004C6CCB /* FCResponseDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCResponseDeserializer.h; path = "untitled folder/FCResponseDeserializer.h"; sourceTree = "<group>"; };
 		2A2B634C1ADD9FB7004C6CCB /* FCResponseDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCResponseDeserializer.m; path = "untitled folder/FCResponseDeserializer.m"; sourceTree = "<group>"; };
 		2A6514A71ADF1F490046BA76 /* FashionCollectionAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FashionCollectionAPITests.m; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				2A88DA721AD32393007A618C /* FCTerms.m */,
 				2A88DA741AD323B7007A618C /* FCPostTag.h */,
 				2A88DA751AD323B7007A618C /* FCPostTag.m */,
+				2A2512731AEEE6A50070A6DA /* FCResponseHeaders.h */,
+				2A2512741AEEE6A50070A6DA /* FCResponseHeaders.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */,
 				861556761AE82F5E0060EAB2 /* DataPost.m in Sources */,
 				836B8A0B1AE94048002A37D2 /* PageContentViewController.m in Sources */,
+				2A2512751AEEE6A50070A6DA /* FCResponseHeaders.m in Sources */,
 				2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */,
 				832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */,
 				2A2B634D1ADD9FB7004C6CCB /* FCResponseDeserializer.m in Sources */,

@@ -84,7 +84,7 @@
     [client getPostsByCategory:@"beauty_box"
                  andPageNumber:5
                andPostsPerPage:12
-                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                       success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                            XCTAssert(YES, @"Pass");
                            [getPostsByCategoryExpectation fulfill];
                        }
@@ -104,7 +104,7 @@
 
     [client getPostsNoCategory:1
                andPostsPerPage:12
-                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                       success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                            XCTAssert(YES, @"Pass");
                            [getPostsNoCategoryExpectation fulfill];
                        }

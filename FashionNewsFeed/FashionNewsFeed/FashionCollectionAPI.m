@@ -6,6 +6,7 @@
 #import "FashionCollectionAPI.h"
 #import "FCHTTPClient.h"
 #import "FCCategory.h"
+#import "FCResponseHeaders.h"
 
 @interface FashionCollectionAPI () {
     FCHTTPClient *httpClient;
@@ -73,14 +74,15 @@
 
 - (void)getLatestsPosts:(NSUInteger)pageNumber
            postsPerPage:(NSUInteger)postsPerPage
-                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
                 failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsNoCategory:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -89,15 +91,16 @@
 
 - (void)getBeautyBoxPosts:(NSUInteger)pageNumber
              postsPerPage:(NSUInteger)postsPerPage
-                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"beauty_box"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -106,15 +109,16 @@
 
 - (void)getLifestylePosts:(NSUInteger)pageNumber
              postsPerPage:(NSUInteger)postsPerPage
-                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"lifestyle"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -123,15 +127,16 @@
 
 - (void)getBreakfastPosts:(NSUInteger)pageNumber
              postsPerPage:(NSUInteger)postsPerPage
-                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                  success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"breakfast"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -140,15 +145,16 @@
 
 - (void)getKonkursPosts:(NSUInteger)pageNumber
            postsPerPage:(NSUInteger)postsPerPage
-                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
                 failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"konkurs"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -157,15 +163,16 @@
 
 - (void)getBeautyPosts:(NSUInteger)pageNumber
           postsPerPage:(NSUInteger)postsPerPage
-               success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+               success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"beauty"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -174,15 +181,16 @@
 
 - (void)getFacePosts:(NSUInteger)pageNumber
         postsPerPage:(NSUInteger)postsPerPage
-             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"face"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -191,15 +199,16 @@
 
 - (void)getBestPosts:(NSUInteger)pageNumber
         postsPerPage:(NSUInteger)postsPerPage
-             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"best"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -208,16 +217,16 @@
 
 - (void)getFashionPosts:(NSUInteger)pageNumber
            postsPerPage:(NSUInteger)postsPerPage
-                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+                success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
                 failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"fashion"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -226,15 +235,16 @@
 
 - (void)getNewsPosts:(NSUInteger)pageNumber
         postsPerPage:(NSUInteger)postsPerPage
-             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+             success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
              failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"news"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);
@@ -243,15 +253,16 @@
 
 - (void)getEventsPosts:(NSUInteger)pageNumber
           postsPerPage:(NSUInteger)postsPerPage
-               success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts))success
+               success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     [httpClient getPostsByCategory:@"events"
                      andPageNumber:pageNumber
                    andPostsPerPage:postsPerPage
-                           success:^(NSURLSessionDataTask *task, id responseObject) {
+                           success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
-                               success(task, responses);
+                               FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
+                               success(task, responses, responseHeaders);
                            }
                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                failure(task, error);

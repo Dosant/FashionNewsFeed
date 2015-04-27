@@ -90,7 +90,7 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
 - (void)getPostsByCategory:(NSString *)categoryName
              andPageNumber:(NSUInteger)pageNumber
            andPostsPerPage:(NSUInteger)postsPerPage
-                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                   success:(void (^)(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers))success
                    failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     NSString *path = [NSString stringWithFormat:@"%@posts?filter[category_name]=%@&page=%lu&filter[posts_per_page]=%lu&status=publish&count=true",
@@ -101,7 +101,10 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
 
     [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            success(task, responseObject);
+            // handle response headers
+            NSHTTPURLResponse *response = ((NSHTTPURLResponse *) [task response]);
+            NSDictionary *headers = [response allHeaderFields];
+            success(task, responseObject, headers);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
@@ -112,7 +115,7 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
 
 - (void)getPostsNoCategory:(NSUInteger)pageNumber
            andPostsPerPage:(NSUInteger)postsPerPage
-                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                   success:(void (^)(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers))success
                    failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
 
     NSString *path = [NSString stringWithFormat:@"%@posts?page=%lu&filter[posts_per_page]=%lu&status=publish&count=true",
@@ -122,7 +125,10 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
 
     [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
-            success(task, responseObject);
+            // handle response headers
+            NSHTTPURLResponse *response = ((NSHTTPURLResponse *) [task response]);
+            NSDictionary *headers = [response allHeaderFields];
+            success(task, responseObject, headers);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {
