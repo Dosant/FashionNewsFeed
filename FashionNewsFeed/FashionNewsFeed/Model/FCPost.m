@@ -4,6 +4,7 @@
 //
 
 #import "FCPost.h"
+#import "FCCategory.h"
 
 @implementation FCPost
 
@@ -74,6 +75,24 @@
     return self;
 }
 
+-(NSString*)getCategoriesString{
+    
+    NSString* out = @"";
+    NSArray* categories = self.postTerms.termsCategory;
+    
+    for(FCCategory* category in categories){
+        
+       out =  [out stringByAppendingString: [NSString stringWithFormat:@"%@ | ",category.categoryTitle]];
+        
+        
+    }
+    
+    out = [out stringByReplacingCharactersInRange: NSMakeRange([out length] - 2, 2) withString:@""];
+    
+    return out;
+    
+    
+}
 
 
 @end

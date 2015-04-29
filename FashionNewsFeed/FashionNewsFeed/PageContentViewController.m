@@ -183,7 +183,7 @@
     
     NSDate* date = post.postDate;
     
-    
+    //post.post
     
     
     if(meta.attachmentMetaWidth < 200) {
@@ -209,6 +209,7 @@
         cell.FCCellFeaturedImage.image = nil;
         [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
         cell.FCCellDate.text = date.timeAgoSinceNow;
+        cell.FCCellCategory.text = post.getCategoriesString;
         return cell;
         
         
@@ -225,6 +226,7 @@
         cell.FCCellFeaturedImage.image = nil;
         [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
         cell.FCCellDate.text = date.timeAgoSinceNow;
+        cell.FCCellCategory.text = post.getCategoriesString;
         
         return cell;
         

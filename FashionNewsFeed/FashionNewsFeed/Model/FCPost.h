@@ -38,4 +38,6 @@
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
+-(NSString*)getCategoriesString;
+
 @end
