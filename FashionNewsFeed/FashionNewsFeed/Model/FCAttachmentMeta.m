@@ -4,6 +4,7 @@
 //
 
 #import "FCAttachmentMeta.h"
+#import <Foundation/Foundation.h>
 
 @implementation FCAttachmentMeta
 
@@ -33,6 +34,10 @@
         self.attachmentMetaUrl = url;
     }
     return self;
+}
+
+-(CGFloat)attachmentAspectRation{
+    return (CGFloat)self.attachmentMetaHeight/self.attachmentMetaWidth;
 }
 
 - (void)printMeta {

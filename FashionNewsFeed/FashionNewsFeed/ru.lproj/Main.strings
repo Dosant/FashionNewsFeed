@@ -1,0 +1,42 @@
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "5Qa-Dg-dbN"; */
+"5Qa-Dg-dbN.title" = " ";
+
+/* Class = "UILabel"; text = "Cat & Date"; ObjectID = "AyV-Rj-0iP"; */
+"AyV-Rj-0iP.text" = "Cat & Date";
+
+/* Class = "UINavigationItem"; title = "NEWS"; ObjectID = "DWE-YW-foL"; */
+"DWE-YW-foL.title" = "NEWS";
+
+/* Class = "UILabel"; text = "Кристин Сентенера: всегда на каблуках"; ObjectID = "Ivk-3z-2k7"; */
+"Ivk-3z-2k7.text" = "Кристин Сентенера: всегда на каблуках";
+
+/* Class = "UIViewController"; title = "NewsContentContoller"; ObjectID = "WVd-OM-PCO"; */
+"WVd-OM-PCO.title" = "NewsContentContoller";
+
+/* Class = "UILabel"; text = "Cat & Date"; ObjectID = "a7v-CC-YM6"; */
+"a7v-CC-YM6.text" = "Cat & Date";
+
+/* Class = "UILabel"; text = "Кристин Сентенера: всегда на каблуках"; ObjectID = "bHZ-SO-fji"; */
+"bHZ-SO-fji.text" = "Кристин Сентенера: всегда на каблуках";
+
+/* Class = "UILabel"; text = "вчера"; ObjectID = "cxY-5v-qBX"; */
+"cxY-5v-qBX.text" = "вчера";
+
+/* Class = "UILabel"; text = "НОВОСТИ"; ObjectID = "dDg-ij-0If"; */
+"dDg-ij-0If.text" = "НОВОСТИ";
+
+/* Class = "UINavigationItem"; title = "Content"; ObjectID = "eVO-Ji-NJQ"; */
+"eVO-Ji-NJQ.title" = "Content";
+
+/* Class = "UILabel"; text = "Кристин Сентенера: всегда на каблуках"; ObjectID = "jQy-PU-EXB"; */
+"jQy-PU-EXB.text" = "Кристин Сентенера: всегда на каблуках";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "nEu-YI-zcu"; */
+"nEu-YI-zcu.title" = " ";
+
+/* Class = "UITableViewController"; title = "SideBarMenu"; ObjectID = "vU3-yI-uyj"; */
+"vU3-yI-uyj.title" = "SideBarMenu";
+
+/* Class = "UIViewController"; title = "SWRevealViewConroller"; ObjectID = "w2B-TY-eIG"; */
+"w2B-TY-eIG.title" = "SWRevealViewConroller";

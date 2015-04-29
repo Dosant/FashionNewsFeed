@@ -3,9 +3,15 @@ platform :ios, "8.0"
 
 target 'FashionNewsFeed' do
 pod 'AFNetworking', '~> 2.5.0'
+pod 'DateTools'
+
+
 end
 
 target 'FashionNewsFeedTests' do
 pod 'AFNetworking', '~> 2.5.0'
+pod 'DateTools'
 end
+
+
 

@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface FCAttachmentMeta : NSObject
 
@@ -18,6 +19,9 @@
                                     andUrl:(NSURL *)attachmentMetaUrl;
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
+-(CGFloat)attachmentAspectRation;
+
 
 - (void)printMeta;
 

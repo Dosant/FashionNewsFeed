@@ -1,22 +1,15 @@
+
 //
-//  FCTableViewCell.m
+//  FCTableViewCell3.m
 //  FashionNewsFeed
 //
-//  Created by Владислав Станишевский on 10.04.15.
+//  Created by Anton Dosov on 25.04.15.
 //  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
-#import "FCTableViewCell.h"
+#import "FCTableViewCell3.h"
 
-
-@interface FCTableViewCell ()
-
-
-
-@end
-
-@implementation FCTableViewCell
-
+@implementation FCTableViewCell3
 
 
 
@@ -40,7 +33,6 @@
          postCategory:(FCCategory*)postCategory {
     
 }
-
 
 
 @end

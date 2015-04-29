@@ -8,14 +8,15 @@
 
 #import "PageContentViewController.h"
 #import "FashionCollectionAPI.h"
-#import "FCTableViewCell.h"
+#import "FCTableViewCell1.h"
 #import "FCTableViewCell2.h"
+#import "FCTableViewCell3.h"
 #import "NewsContentContoller.h"
 
 #import "FCAttachmentMeta.h"
 
 #import <AFNetworking/UIKit+AFNetworking.h>
-
+#import <DateTools/DateTools.h>
 
 
 
@@ -28,11 +29,15 @@
 @implementation PageContentViewController{
     
     NSMutableArray* postsToPresent;
-    
-    
+    NSUInteger postsPerPage;
     UIActivityIndicatorView *activityView;
     BOOL postsLoaded;
     
+    NSUInteger totalPosts;
+    NSUInteger totalPages;
+    
+    
+    BOOL newPostsAreLoading;
     
 }
 
@@ -43,6 +48,8 @@
     
     self.title = _pageTitle;
     postsLoaded = NO;
+    postsPerPage = 7;
+    
     
     //Starting activity
     activityView = [[UIActivityIndicatorView alloc]
@@ -85,10 +92,20 @@
 
 -(void)loadMorePostsFromPage:(NSUInteger)page{
     
+    if (newPostsAreLoading) {
+        return;
+    } else {
+    
+        newPostsAreLoading = true;
+    
      void (^success)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) = ^(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) {
     
         
-        
+         NSLog(@"total posts : %d \n totalPages : %d",headers.totalPosts,headers.totalPages);
+         totalPages = headers.totalPages;
+         totalPosts = headers.totalPosts;
+         
+         
         if (postsToPresent != nil){
             [postsToPresent addObjectsFromArray:posts];
         } else {
@@ -103,16 +120,18 @@
             [activityView removeFromSuperview];
         }
         
+         
+        newPostsAreLoading = false;
         [self.refreshControl endRefreshing];
         [self.tableView reloadData];
         
-    
+     
     
     };
     
     
      void (^failure)(NSURLSessionDataTask *task, NSError* error) = ^(NSURLSessionDataTask *task,  NSError *error) {
-
+        newPostsAreLoading = false;
         NSLog(@"%@",[error localizedDescription]);
         
     };
@@ -123,19 +142,19 @@
     switch (_pageIndex) {
         case 0:
             
-            [[FashionCollectionAPI sharedInstance] getNewsPosts:page postsPerPage:12 success:successWeak failure:failureWeak];
+            [[FashionCollectionAPI sharedInstance] getLatestsPosts:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
             break;
         case 1:
             
-            [[FashionCollectionAPI sharedInstance] getFashionPosts:page postsPerPage:12 success:successWeak failure:failureWeak];
+            [[FashionCollectionAPI sharedInstance] getFashionPosts:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
             break;
         case 2:
             
-            [[FashionCollectionAPI sharedInstance] getEventsPosts:page postsPerPage:12 success:successWeak failure:failureWeak];
+            [[FashionCollectionAPI sharedInstance] getEventsPosts:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
             break;
         case 3:
             
-            [[FashionCollectionAPI sharedInstance] getBeautyBoxPosts:page postsPerPage:12 success:successWeak failure:failureWeak];
+            [[FashionCollectionAPI sharedInstance] getBeautyBoxPosts:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
             break;
             
             
@@ -146,7 +165,7 @@
             break;
     }
     
-    
+    }
 }
 
 
@@ -162,18 +181,25 @@
     
     
     
-    if (((CGFloat)meta.attachmentMetaWidth / meta.attachmentMetaHeight) < 1.5){
+    NSDate* date = post.postDate;
+    
+    
+    
+    
+    if(meta.attachmentMetaWidth < 200) {
         
-       FCTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell" forIndexPath:indexPath];
+        FCTableViewCell3* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell3" forIndexPath:indexPath];
         cell.FCCellTitle.text = post.postTitle;
         cell.post = post;
         
         
-        cell.FCCellFeaturedImage.image = nil;
-        [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
+        
         cell.FCCellCategoryAndDate.text = @"вчера";
         return cell;
-    } else {
+        
+    }
+    
+    if (meta.attachmentAspectRation < 0.7){
         
         FCTableViewCell2* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell2" forIndexPath:indexPath];
         cell.FCCellTitle.text = post.postTitle;
@@ -182,8 +208,26 @@
         
         cell.FCCellFeaturedImage.image = nil;
         [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
-        cell.FCCellCategoryAndDate.text = @"вчера";
+        cell.FCCellDate.text = date.timeAgoSinceNow;
         return cell;
+        
+        
+        
+    } else {
+        
+        
+        
+        FCTableViewCell1* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell" forIndexPath:indexPath];
+        cell.FCCellTitle.text = post.postTitle;
+        cell.post = post;
+        
+        
+        cell.FCCellFeaturedImage.image = nil;
+        [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
+        cell.FCCellDate.text = date.timeAgoSinceNow;
+        
+        return cell;
+        
     }
     
     
@@ -221,10 +265,10 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if ([postsToPresent count] - 1 <= indexPath.row){
+    if ([postsToPresent count] - 3 <= indexPath.row){
         
-        NSLog(@"%d",(indexPath.row + 1)/12);
-        [self loadMorePostsFromPage:1 + (indexPath.row + 1)/12];
+        NSLog(@"loadnextpage = %d", 1 + (indexPath.row + 3)/postsPerPage);
+        [self loadMorePostsFromPage:1 + (indexPath.row + 3)/postsPerPage];
         
         
     }
@@ -241,8 +285,14 @@
     FCAttachmentMeta* meta =  post.postFeaturedImage.maxFeaturedImage;
 //    CGFloat height = (CGFloat)meta.attachmentMetaHeight;
 //    CGFloat width = (CGFloat)meta.attachmentMetaWidth;
+    NSLog(@"aspect = %f for indexPath, %d",meta.attachmentAspectRation, indexPath.row);
     
-    if (((CGFloat)meta.attachmentMetaWidth / meta.attachmentMetaHeight) > 1.5){
+    if(meta.attachmentMetaWidth < 200){ // image is too small
+        return 120;
+    }
+    
+    if (meta.attachmentAspectRation < 0.7){
+        
         return 250; // width >> height
     } else { /// width == height
         return 360;
@@ -264,7 +314,7 @@
         //Pass post to the contentView
         NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
         NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
-        dvt.post = ((FCTableViewCell*)[self.tableView cellForRowAtIndexPath:ip]).post;
+        dvt.post = ((FCTableViewCell1*)[self.tableView cellForRowAtIndexPath:ip]).post;
         
     }
 }

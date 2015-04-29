@@ -8,7 +8,7 @@
 
 #import "SideBarMenuTableViewContoller.h"
 #import "FashionCollectionAPI.h"
-#import "FCTableViewCell.h"
+#import "FCTableViewCell1.h"
 
 @interface SideBarMenuTableViewContoller ()
 

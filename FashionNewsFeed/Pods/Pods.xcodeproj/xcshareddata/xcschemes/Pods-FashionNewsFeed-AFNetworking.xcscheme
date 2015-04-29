@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C7F08CB44B4E3CA2F9A2F73"
+               BlueprintIdentifier = "C666D824B56AA6600A88D3D0"
                BuildableName = "libPods-FashionNewsFeed-AFNetworking.a"
                BlueprintName = "Pods-FashionNewsFeed-AFNetworking"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -38,11 +38,13 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      language = "ru"
+      region = "RU">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C7F08CB44B4E3CA2F9A2F73"
+            BlueprintIdentifier = "C666D824B56AA6600A88D3D0"
             BuildableName = "libPods-FashionNewsFeed-AFNetworking.a"
             BlueprintName = "Pods-FashionNewsFeed-AFNetworking"
             ReferencedContainer = "container:Pods.xcodeproj">

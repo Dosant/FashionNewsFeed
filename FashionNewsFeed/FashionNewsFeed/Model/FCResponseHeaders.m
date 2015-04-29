@@ -8,7 +8,7 @@
 @implementation FCResponseHeaders
 
 - (instancetype)initWithTotalPosts:(NSUInteger)totalPosts
-                     andTotalPages:(NSUInteger *)totalPages {
+                     andTotalPages:(NSUInteger)totalPages {
     self = [super init];
     if (self) {
         self.totalPosts = totalPosts;

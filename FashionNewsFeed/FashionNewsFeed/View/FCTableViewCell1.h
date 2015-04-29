@@ -1,8 +1,8 @@
 //
-//  FCTableViewCell2.h
+//  FCTableViewCell.h
 //  FashionNewsFeed
 //
-//  Created by Anton Dosov on 25.04.15.
+//  Created by Владислав Станишевский on 10.04.15.
 //  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
@@ -12,15 +12,14 @@
 #import "FCPost.h"
 #import "newsFeaturedImageView.h"
 
-@interface FCTableViewCell2 : UITableViewCell
 
+
+@interface FCTableViewCell1 : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *FCCellTitle;
 
-@property (weak, nonatomic) IBOutlet UILabel *FCCellDate;
-
 @property (weak, nonatomic) IBOutlet UILabel *FCCellCategory;
-
+@property (weak, nonatomic) IBOutlet UILabel *FCCellDate;
 
 @property (weak, nonatomic) IBOutlet  newsFeaturedImageView* FCCellFeaturedImage;
 
@@ -30,6 +29,5 @@
              postDate:(NSDate *)postDate
     postFeaturedImage:(FCFeaturedImage *)postFeaturedImage
          postCategory:(FCCategory*)postCategory;
-
 
 @end

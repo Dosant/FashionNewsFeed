@@ -32,6 +32,7 @@
 		836250A91AC5E39400370340 /* FashionNewsFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250A81AC5E39400370340 /* FashionNewsFeedTests.m */; };
 		836B8A091AE4CC6A002A37D2 /* newsFeaturedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */; };
 		836B8A0B1AE94048002A37D2 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B8A0A1AE94048002A37D2 /* PageContentViewController.m */; };
+		8373409F1AEFD5C1006A2B72 /* FCTableViewCell3.m in Sources */ = {isa = PBXBuildFile; fileRef = 8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */; };
 		838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */; };
 		838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C91ACBE4AD004F3298 /* PersistencyManager.m */; };
 		838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */; };
@@ -43,7 +44,7 @@
 		861556731AE82F5E0060EAB2 /* DataTerms.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556721AE82F5E0060EAB2 /* DataTerms.m */; };
 		861556761AE82F5E0060EAB2 /* DataPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556751AE82F5E0060EAB2 /* DataPost.m */; };
 		861556791AE82F5E0060EAB2 /* DataAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556781AE82F5E0060EAB2 /* DataAuthor.m */; };
-		866336C41AD85C02003CE4DC /* FCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 866336C31AD85C02003CE4DC /* FCTableViewCell.m */; };
+		866336C41AD85C02003CE4DC /* FCTableViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 866336C31AD85C02003CE4DC /* FCTableViewCell1.m */; };
 		868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868C1E161AD85F4700AEEBFF /* coreData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,10 @@
 		836B8A071AE4CC6A002A37D2 /* newsFeaturedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newsFeaturedImageView.h; sourceTree = "<group>"; };
 		836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newsFeaturedImageView.m; sourceTree = "<group>"; };
 		836B8A0A1AE94048002A37D2 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		8373409D1AEFD5C1006A2B72 /* FCTableViewCell3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCTableViewCell3.h; sourceTree = "<group>"; };
+		8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCTableViewCell3.m; sourceTree = "<group>"; };
+		838A21221AF1319700BDC838 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		838A21231AF1319700BDC838 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		838A28C51ACBE48A004F3298 /* FashionCollectionAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FashionCollectionAPI.h; sourceTree = "<group>"; };
 		838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FashionCollectionAPI.m; sourceTree = "<group>"; };
 		838A28C81ACBE4AD004F3298 /* PersistencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistencyManager.h; sourceTree = "<group>"; };
@@ -126,8 +131,8 @@
 		861556751AE82F5E0060EAB2 /* DataPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPost.m; path = Data/DataPost.m; sourceTree = "<group>"; };
 		861556771AE82F5E0060EAB2 /* DataAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataAuthor.h; path = Data/DataAuthor.h; sourceTree = "<group>"; };
 		861556781AE82F5E0060EAB2 /* DataAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAuthor.m; path = Data/DataAuthor.m; sourceTree = "<group>"; };
-		866336C21AD85C02003CE4DC /* FCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCTableViewCell.h; path = View/FCTableViewCell.h; sourceTree = "<group>"; };
-		866336C31AD85C02003CE4DC /* FCTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCTableViewCell.m; path = View/FCTableViewCell.m; sourceTree = "<group>"; };
+		866336C21AD85C02003CE4DC /* FCTableViewCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCTableViewCell1.h; path = View/FCTableViewCell1.h; sourceTree = "<group>"; };
+		866336C31AD85C02003CE4DC /* FCTableViewCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCTableViewCell1.m; path = View/FCTableViewCell1.m; sourceTree = "<group>"; };
 		868C1E171AD85F4700AEEBFF /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
 		9FDD1CC86E81D5154F3E3DAF /* libPods-FashionNewsFeedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A805F0CB9ED6D9B769622224 /* Pods-FashionNewsFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeedTests/Pods-FashionNewsFeedTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -188,12 +193,14 @@
 			children = (
 				83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */,
 				83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */,
-				866336C21AD85C02003CE4DC /* FCTableViewCell.h */,
-				866336C31AD85C02003CE4DC /* FCTableViewCell.m */,
+				866336C21AD85C02003CE4DC /* FCTableViewCell1.h */,
+				866336C31AD85C02003CE4DC /* FCTableViewCell1.m */,
 				836B8A071AE4CC6A002A37D2 /* newsFeaturedImageView.h */,
 				836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */,
 				8329227E1AEBB57600FE6761 /* FCTableViewCell2.h */,
 				8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */,
+				8373409D1AEFD5C1006A2B72 /* FCTableViewCell3.h */,
+				8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -508,6 +515,7 @@
 				836250951AC5E39400370340 /* MainViewController.m in Sources */,
 				2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */,
 				861556731AE82F5E0060EAB2 /* DataTerms.m in Sources */,
+				8373409F1AEFD5C1006A2B72 /* FCTableViewCell3.m in Sources */,
 				838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */,
 				2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */,
 				861556761AE82F5E0060EAB2 /* DataPost.m in Sources */,
@@ -523,7 +531,7 @@
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
 				832922801AEBB57600FE6761 /* FCTableViewCell2.m in Sources */,
 				83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */,
-				866336C41AD85C02003CE4DC /* FCTableViewCell.m in Sources */,
+				866336C41AD85C02003CE4DC /* FCTableViewCell1.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
 				838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,
@@ -560,6 +568,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				836250971AC5E39400370340 /* Base */,
+				838A21221AF1319700BDC838 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -568,6 +577,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8362509C1AC5E39400370340 /* Base */,
+				838A21231AF1319700BDC838 /* ru */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";

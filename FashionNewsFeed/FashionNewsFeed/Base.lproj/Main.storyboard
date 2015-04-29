@@ -109,7 +109,7 @@
                         <color key="backgroundColor" red="0.95283776521682739" green="0.95300072431564331" blue="0.95282751321792603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell" rowHeight="360" id="S4K-lQ-6ss" userLabel="FCCell1:1" customClass="FCTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell" rowHeight="360" id="S4K-lQ-6ss" userLabel="FCCell1:1" customClass="FCTableViewCell1">
                                 <rect key="frame" x="0.0" y="86" width="320" height="360"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S4K-lQ-6ss" id="Mgr-Sa-cQQ">
@@ -132,10 +132,17 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dDg-ij-0If">
-                                                    <rect key="frame" x="8" y="258" width="288" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dDg-ij-0If" userLabel="Категория">
+                                                    <rect key="frame" x="8" y="258" width="120" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вчера" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cxY-5v-qBX" userLabel="Дата">
+                                                    <rect key="frame" x="136" y="258" width="120" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -147,7 +154,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="FCCellCategoryAndDate" destination="dDg-ij-0If" id="O0f-Rt-dMQ"/>
+                                    <outlet property="FCCellCategory" destination="dDg-ij-0If" id="X09-zO-gA2"/>
+                                    <outlet property="FCCellDate" destination="cxY-5v-qBX" id="1h2-B2-APj"/>
                                     <outlet property="FCCellFeaturedImage" destination="dHy-Ok-aMS" id="Wop-KG-HjX"/>
                                     <outlet property="FCCellTitle" destination="bHZ-SO-fji" id="Cej-E3-ela"/>
                                     <segue destination="WVd-OM-PCO" kind="push" identifier="moveToContent" id="En6-Jd-VVc"/>
@@ -176,8 +184,54 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AyV-Rj-0iP">
-                                                    <rect key="frame" x="8" y="154" width="116" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s1R-fL-UTy" userLabel="Категория">
+                                                    <rect key="frame" x="8" y="158" width="120" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вчера" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VBc-Wf-wFy" userLabel="Дата">
+                                                    <rect key="frame" x="136" y="158" width="120" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="FCCellCategory" destination="s1R-fL-UTy" id="HSD-3R-lDl"/>
+                                    <outlet property="FCCellDate" destination="VBc-Wf-wFy" id="RJ4-Ju-PoF"/>
+                                    <outlet property="FCCellFeaturedImage" destination="lrM-kV-ctn" id="MNg-Vi-aYY"/>
+                                    <outlet property="FCCellTitle" destination="jQy-PU-EXB" id="q0v-zP-LnM"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell3" rowHeight="250" id="bJW-rY-Vlf" userLabel="FCCellNoImage" customClass="FCTableViewCell3">
+                                <rect key="frame" x="0.0" y="696" width="320" height="250"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bJW-rY-Vlf" id="Q4B-X6-qIz">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="tkQ-EU-seS" customClass="FCTableViewCell3">
+                                            <rect key="frame" x="8" y="0.0" width="304" height="112"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ivk-3z-2k7">
+                                                    <rect key="frame" x="8" y="36" width="288" height="68"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat &amp; Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a7v-CC-YM6">
+                                                    <rect key="frame" x="8" y="8" width="116" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -191,9 +245,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="FCCellCategoryAndDate" destination="AyV-Rj-0iP" id="bcL-eb-jon"/>
-                                    <outlet property="FCCellFeaturedImage" destination="lrM-kV-ctn" id="O0C-CV-DOv"/>
-                                    <outlet property="FCCellTitle" destination="jQy-PU-EXB" id="ebg-nC-Ikx"/>
+                                    <outlet property="FCCellCategoryAndDate" destination="a7v-CC-YM6" id="Gbu-KV-yN4"/>
+                                    <outlet property="FCCellTitle" destination="Ivk-3z-2k7" id="1HM-Dk-i82"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

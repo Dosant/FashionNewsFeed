@@ -14,8 +14,9 @@
 //@property(strong, nonatomic) NSMutableArray *imageAttachmentMeta; // FCAttachmentMeta
 
 @property(strong,nonatomic) FCAttachmentMeta *maxFeaturedImage;
-
 @property(assign, nonatomic) NSUInteger featuredImageMaxHeight;
+
+
 
 - (instancetype)initImageWithId:(NSUInteger)imageId
                        andTitle:(NSString *)imageTitle
@@ -23,5 +24,7 @@
               andAttachmentMeta:(NSMutableArray *)imageAttachmentMeta;
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
+
 
 @end
