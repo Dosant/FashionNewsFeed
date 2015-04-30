@@ -26,30 +26,6 @@
 
 #pragma mark - get from Data
 
-- (NSArray *)getCategoriesFromData { //Modify in future
-    
-    NSMutableArray *categories = [NSMutableArray array];
-    NSFetchRequest* request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataCategory"
-                                                   inManagedObjectContext:self.managedObjectContext];
-    [request setEntity:description];
-    
-    NSError* requestError = nil;
-    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
-    
-    if (requestError) {
-        NSLog(@"%@", [requestError localizedDescription]);
-        return nil;
-    }
-    
-    for (DataCategory *dataCategory in resultArray) {
-        [categories addObject:dataCategory.categoryName];
-        NSLog(@"%@", dataCategory.categoryName);
-    }
-    
-    return categories;
-}
-
 - (FCPost *)getPostById:(NSUInteger)postId {
     
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
@@ -89,7 +65,7 @@
                                                                       andLink:[NSURL URLWithString:dataCategory.categoryLink]
                                                                       andMeta:nil];
                 [categories addObject:category];
-                NSLog(@"%@ %@ %lu", category.categoryName, category.categoryTitle, category.categoryId);
+                NSLog(@"%@ %@ %lu", category.categoryName, category.categoryTitle, (unsigned long)category.categoryId);
             }
             
             for (DataPostTag *dataPostTag in dataPost.term.postTags) {
@@ -164,7 +140,7 @@
                                                                       andLink:[NSURL URLWithString:dataCategory.categoryLink]
                                                                       andMeta:nil];
                 [categories addObject:category];
-                NSLog(@"%@ %@ %lu", category.categoryName, category.categoryTitle, category.categoryId);
+                NSLog(@"%@ %@ %lu", category.categoryName, category.categoryTitle, (unsigned long)category.categoryId);
             }
             
             for (DataPostTag *dataPostTag in dataPost.term.postTags) {

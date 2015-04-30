@@ -44,7 +44,6 @@
 		861556731AE82F5E0060EAB2 /* DataTerms.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556721AE82F5E0060EAB2 /* DataTerms.m */; };
 		861556761AE82F5E0060EAB2 /* DataPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556751AE82F5E0060EAB2 /* DataPost.m */; };
 		861556791AE82F5E0060EAB2 /* DataAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556781AE82F5E0060EAB2 /* DataAuthor.m */; };
-		866336C41AD85C02003CE4DC /* FCTableViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 866336C31AD85C02003CE4DC /* FCTableViewCell1.m */; };
 		868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868C1E161AD85F4700AEEBFF /* coreData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -132,7 +131,6 @@
 		861556771AE82F5E0060EAB2 /* DataAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataAuthor.h; path = Data/DataAuthor.h; sourceTree = "<group>"; };
 		861556781AE82F5E0060EAB2 /* DataAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAuthor.m; path = Data/DataAuthor.m; sourceTree = "<group>"; };
 		866336C21AD85C02003CE4DC /* FCTableViewCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCTableViewCell1.h; path = View/FCTableViewCell1.h; sourceTree = "<group>"; };
-		866336C31AD85C02003CE4DC /* FCTableViewCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCTableViewCell1.m; path = View/FCTableViewCell1.m; sourceTree = "<group>"; };
 		868C1E171AD85F4700AEEBFF /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
 		9FDD1CC86E81D5154F3E3DAF /* libPods-FashionNewsFeedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A805F0CB9ED6D9B769622224 /* Pods-FashionNewsFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeedTests/Pods-FashionNewsFeedTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */,
 				83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */,
 				866336C21AD85C02003CE4DC /* FCTableViewCell1.h */,
-				866336C31AD85C02003CE4DC /* FCTableViewCell1.m */,
 				836B8A071AE4CC6A002A37D2 /* newsFeaturedImageView.h */,
 				836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */,
 				8329227E1AEBB57600FE6761 /* FCTableViewCell2.h */,
@@ -531,7 +528,6 @@
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
 				832922801AEBB57600FE6761 /* FCTableViewCell2.m in Sources */,
 				83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */,
-				866336C41AD85C02003CE4DC /* FCTableViewCell1.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
 				838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,
