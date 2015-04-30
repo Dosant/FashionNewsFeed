@@ -177,7 +177,7 @@
     
     
     FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
-    FCAttachmentMeta* meta =  post.postFeaturedImage.maxFeaturedImage;
+    FCFeaturedImage* featuredImage =  post.postFeaturedImage;
     
     
     
@@ -186,7 +186,7 @@
     //post.post
     
     
-    if(meta.attachmentMetaWidth < 200) {
+    if(featuredImage.imageWidth < 200) { // The image is small. Show only text cell.
         
         FCTableViewCell3* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell3" forIndexPath:indexPath];
         cell.FCCellTitle.text = post.postTitle;
@@ -199,7 +199,7 @@
         
     }
     
-    if (meta.attachmentAspectRation < 0.7){
+    if (featuredImage.imageAspectRatio < 0.7){
         
         FCTableViewCell2* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell2" forIndexPath:indexPath];
         cell.FCCellTitle.text = post.postTitle;
@@ -207,7 +207,7 @@
         
         
         cell.FCCellFeaturedImage.image = nil;
-        [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
+        [cell.FCCellFeaturedImage setImageWithURL:featuredImage.imageSource];
         cell.FCCellDate.text = date.timeAgoSinceNow;
         cell.FCCellCategory.text = post.getCategoriesString;
         return cell;
@@ -224,7 +224,7 @@
         
         
         cell.FCCellFeaturedImage.image = nil;
-        [cell.FCCellFeaturedImage setImageWithURL:meta.attachmentMetaUrl];
+        [cell.FCCellFeaturedImage setImageWithURL:featuredImage.imageSource];
         cell.FCCellDate.text = date.timeAgoSinceNow;
         cell.FCCellCategory.text = post.getCategoriesString;
         
@@ -284,16 +284,16 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
-    FCAttachmentMeta* meta =  post.postFeaturedImage.maxFeaturedImage;
+    FCFeaturedImage* featuredImage =  post.postFeaturedImage;
 //    CGFloat height = (CGFloat)meta.attachmentMetaHeight;
 //    CGFloat width = (CGFloat)meta.attachmentMetaWidth;
-    NSLog(@"aspect = %f for indexPath, %d",meta.attachmentAspectRation, indexPath.row);
+    NSLog(@"aspect = %f for indexPath, %d",featuredImage.imageAspectRatio, indexPath.row);
     
-    if(meta.attachmentMetaWidth < 200){ // image is too small
+    if(featuredImage.imageWidth < 200){ // image is too small
         return 120;
     }
     
-    if (meta.attachmentAspectRation < 0.7){
+    if (featuredImage.imageAspectRatio < 0.7){
         
         return 250; // width >> height
     } else { /// width == height

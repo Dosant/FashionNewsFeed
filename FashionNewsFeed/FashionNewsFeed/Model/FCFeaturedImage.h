@@ -12,9 +12,11 @@
 @property(strong, nonatomic) NSString *imageTitle;
 @property(strong, nonatomic) NSURL *imageSource;
 //@property(strong, nonatomic) NSMutableArray *imageAttachmentMeta; // FCAttachmentMeta
+//@property(strong,nonatomic) FCAttachmentMeta *maxFeaturedImage;
 
-@property(strong,nonatomic) FCAttachmentMeta *maxFeaturedImage;
-@property(assign, nonatomic) NSUInteger featuredImageMaxHeight;
+
+@property(assign, nonatomic) NSUInteger imageHeight;
+@property(assign, nonatomic) NSUInteger imageWidth;
 
 
 
@@ -25,6 +27,5 @@
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
-
-
+-(CGFloat)imageAspectRatio;
 @end

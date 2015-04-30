@@ -18,6 +18,8 @@
         self.imageId = imageId;
         self.imageTitle = imageTitle;
         self.imageSource = imageSource;
+        
+        
         //self.imageAttachmentMeta = imageAttachmentMeta;
     }
     return self;
@@ -31,9 +33,14 @@
 
         NSString* urlString = [[attributes valueForKeyPath:@"source"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *url = [NSURL URLWithString:urlString];
-        
         self.imageSource = url;
-
+        
+        self.imageHeight = (NSUInteger) [[[attributes valueForKeyPath:@"attachment_meta"] valueForKeyPath:@"height"] integerValue];
+        self.imageWidth = (NSUInteger) [[[attributes valueForKeyPath:@"attachment_meta"] valueForKeyPath:@"width"] integerValue];
+        
+        NSLog(@"%@",self.imageSource);
+        
+        /*
         NSMutableArray *meta = [[NSMutableArray alloc] init];
         for (NSString *attachment in [attributes valueForKeyPath:@"attachment_meta"]) {
             if ([attachment isEqualToString:@"sizes"]) {
@@ -45,38 +52,17 @@
                 }
             }
         }
+         */
         //self.imageAttachmentMeta = meta;
-        self.maxFeaturedImage = [self getTheLargestPicture:meta];
+        //self.maxFeaturedImage = [self getTheLargestPicture:meta];
         
     }
     return self;
 }
 
-
-
--(FCAttachmentMeta*)getTheLargestPicture:(NSArray*)attachmentsArray{
-    
-    NSUInteger maxDim = 0;
-    FCAttachmentMeta* _meta;
-    
-    for(FCAttachmentMeta* meta in attachmentsArray){
-        
-        
-        if (maxDim < meta.attachmentMetaWidth){
-            maxDim = meta.attachmentMetaWidth;
-            _meta = meta;
-        }
-        
-        if (maxDim < meta.attachmentMetaHeight){
-            maxDim = meta.attachmentMetaHeight;
-            _meta = meta;
-        }
-        
-        
-    }
-   // NSLog(@"%d", maxWidth);
-    return _meta;
-    
+-(CGFloat)imageAspectRatio{
+    return (CGFloat)self.imageHeight/self.imageWidth;
 }
+
 
 @end
