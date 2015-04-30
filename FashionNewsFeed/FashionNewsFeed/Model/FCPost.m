@@ -79,9 +79,14 @@
     
     NSMutableString* out = [NSMutableString stringWithString:@""];
     NSArray* categories = self.postTerms.termsCategory;
+    NSUInteger limit = 0;
+    
     
     for(FCCategory* category in categories){
-        
+        if(limit == 3){
+            break;
+        }
+        limit++;
         [out appendString:[NSString stringWithFormat:@"%@ | ",category.categoryTitle]];
         
     }
@@ -93,8 +98,7 @@
     
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-retain-cycles"
+
 
 -(NSString*)clearPostFromTrash:(NSString*) string{
     
@@ -121,7 +125,7 @@
     
 }
 
-#pragma clang diagnostic pop
+
 
 
 @end

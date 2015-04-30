@@ -16,8 +16,10 @@
 
 
 @property (weak, nonatomic) IBOutlet UILabel *FCCellTitle;
+@property (weak, nonatomic) IBOutlet UILabel *FCCellCategory;
+@property (weak, nonatomic) IBOutlet UILabel *FCCellDate;
 
-@property (weak, nonatomic) IBOutlet UILabel *FCCellCategoryAndDate;
+
 
 
 @property(strong,nonatomic) FCPost* post;

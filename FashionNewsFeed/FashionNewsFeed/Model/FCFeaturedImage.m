@@ -38,7 +38,7 @@
         self.imageHeight = (NSUInteger) [[[attributes valueForKeyPath:@"attachment_meta"] valueForKeyPath:@"height"] integerValue];
         self.imageWidth = (NSUInteger) [[[attributes valueForKeyPath:@"attachment_meta"] valueForKeyPath:@"width"] integerValue];
         
-        NSLog(@"%@",self.imageSource);
+       // NSLog(@"%@",self.imageSource);
         
         /*
         NSMutableArray *meta = [[NSMutableArray alloc] init];

@@ -41,6 +41,8 @@
     
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -70,6 +72,9 @@
 
     
     
+    [self tableView].estimatedRowHeight = 250;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     
     [self loadMorePostsFromPage:1];
     
@@ -79,8 +84,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [[self delegate] setScrollEnabled:self enabled:YES];
+    //[self.tableView reloadData];
     
 }
+
+
 
 -(void)reloadPosts{
     
@@ -101,7 +109,7 @@
      void (^success)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) = ^(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) {
     
         
-         NSLog(@"total posts : %d \n totalPages : %d",headers.totalPosts,headers.totalPages);
+        // NSLog(@"total posts : %d \n totalPages : %d",headers.totalPosts,headers.totalPages);
          totalPages = headers.totalPages;
          totalPosts = headers.totalPosts;
          
@@ -194,7 +202,12 @@
         
         
         
-        cell.FCCellCategoryAndDate.text = @"вчера";
+        cell.FCCellCategory.text = post.getCategoriesString;
+        cell.FCCellDate.text = date.timeAgoSinceNow;
+        
+        
+        
+        
         return cell;
         
     }
@@ -210,6 +223,9 @@
         [cell.FCCellFeaturedImage setImageWithURL:featuredImage.imageSource];
         cell.FCCellDate.text = date.timeAgoSinceNow;
         cell.FCCellCategory.text = post.getCategoriesString;
+        
+        
+        
         return cell;
         
         
@@ -227,6 +243,8 @@
         [cell.FCCellFeaturedImage setImageWithURL:featuredImage.imageSource];
         cell.FCCellDate.text = date.timeAgoSinceNow;
         cell.FCCellCategory.text = post.getCategoriesString;
+        
+        
         
         return cell;
         
@@ -280,14 +298,13 @@
 -(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     cell.imageView.image = nil;
 }
-
+/*
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
     FCFeaturedImage* featuredImage =  post.postFeaturedImage;
-//    CGFloat height = (CGFloat)meta.attachmentMetaHeight;
-//    CGFloat width = (CGFloat)meta.attachmentMetaWidth;
-    NSLog(@"aspect = %f for indexPath, %d",featuredImage.imageAspectRatio, indexPath.row);
+
+    //NSLog(@"aspect = %f for indexPath, %d",featuredImage.imageAspectRatio, indexPath.row);
     
     if(featuredImage.imageWidth < 200){ // image is too small
         return 120;
@@ -300,9 +317,10 @@
         return 360;
         
     }
+ 
     
     
-}
+}*/
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
