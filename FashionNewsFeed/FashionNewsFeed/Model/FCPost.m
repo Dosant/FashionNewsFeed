@@ -40,7 +40,7 @@
     self = [super init];
     if (self) {
         self.postId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
-        self.postTitle = [attributes valueForKeyPath:@"title"];
+        self.postTitle = [self clearPostFromTrash:[attributes valueForKeyPath:@"title"]];
         self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"author"]];
         self.postContent = [attributes valueForKeyPath:@"content"];
 
@@ -77,22 +77,51 @@
 
 -(NSString*)getCategoriesString{
     
-    NSString* out = @"";
+    NSMutableString* out = [NSMutableString stringWithString:@""];
     NSArray* categories = self.postTerms.termsCategory;
     
     for(FCCategory* category in categories){
         
-       out =  [out stringByAppendingString: [NSString stringWithFormat:@"%@ | ",category.categoryTitle]];
-        
+        [out appendString:[NSString stringWithFormat:@"%@ | ",category.categoryTitle]];
         
     }
     
-    out = [out stringByReplacingCharactersInRange: NSMakeRange([out length] - 2, 2) withString:@""];
     
-    return out;
+    
+    return [out stringByReplacingCharactersInRange: NSMakeRange([out length] - 2, 2) withString:@""];
     
     
 }
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+
+-(NSString*)clearPostFromTrash:(NSString*) string{
+    
+    NSError *error;
+    
+    
+    NSString* regexPattern = @"\\&\\#\\d*\\;";
+    
+    
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexPattern
+                                                                           options:nil
+                                                                             error:&error];
+    
+
+    NSString *post = [regex stringByReplacingMatchesInString:string
+                                                     options:nil
+                                                       range:NSMakeRange(0, [string length])
+                                                withTemplate:@""];
+    
+    
+    
+    return post;
+    
+}
+
+#pragma clang diagnostic pop
 
 
 @end
