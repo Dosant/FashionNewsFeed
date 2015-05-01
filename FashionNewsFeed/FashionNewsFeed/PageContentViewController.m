@@ -73,7 +73,7 @@
 
     
     
-    [self tableView].estimatedRowHeight = 250;
+    [self tableView].estimatedRowHeight = 300;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     
@@ -311,7 +311,7 @@
     
     if ([postsToPresent count] - 3 <= indexPath.row){
         
-        NSLog(@"loadnextpage = %d", 1 + (indexPath.row + 3)/postsPerPage);
+        NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 3)/postsPerPage);
         [self loadMorePostsFromPage:1 + (indexPath.row + 3)/postsPerPage];
         
         
@@ -322,6 +322,7 @@
 -(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     cell.imageView.image = nil;
 }
+
 /*
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     

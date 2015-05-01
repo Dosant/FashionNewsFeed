@@ -41,7 +41,7 @@
 }
 
 - (void)printMeta {
-    NSLog(@"%@ w = %d , h = %d, url = %@", _attachmentMetaFile, _attachmentMetaWidth, _attachmentMetaHeight, _attachmentMetaUrl);
+    NSLog(@"%@ w = %lu , h = %d, url = %@", _attachmentMetaFile, (unsigned long)_attachmentMetaWidth, _attachmentMetaHeight, _attachmentMetaUrl);
 }
 
 @end
