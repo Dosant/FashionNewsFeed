@@ -7,9 +7,11 @@
 #import "FCHTTPClient.h"
 #import "FCCategory.h"
 #import "FCResponseHeaders.h"
+#import "PersistencyManager.h"
 
 @interface FashionCollectionAPI () {
     FCHTTPClient *httpClient;
+    PersistencyManager *manager;
 }
 @end
 
@@ -29,8 +31,26 @@
     self = [super init];
     if (self) {
         httpClient = [[FCHTTPClient alloc] init];
+        manager = [[PersistencyManager alloc] init];
     }
     return self;
+}
+
+- (UIImage *)getImageForRequest:(NSURLRequest *)request {
+    
+    if (![manager getImageForRequest:request]) {
+        
+        //get from http
+    } else {
+        
+        return [manager getImageForRequest:request];
+    }
+    return nil;
+}
+
+- (void)cacheImage:(UIImage *)image forRequest:(NSURLRequest *)request {
+    
+    [manager cacheImage:image forRequest:request];
 }
 
 - (NSMutableArray *)processResponse:(id)responseObject {

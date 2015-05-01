@@ -4,18 +4,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #include <CoreData/CoreData.h>
 #import "FCPost.h"
 #import "FCAuthor.h"
 #import "FCTerms.h"
 #import "FCCategory.h"
 #import "FCPostTag.h"
-#import "DataPost.h"
-#import "DataAuthor.h"
-#import "DataTerms.h"
-#import "DataCategory.h"
-#import "DataPostTag.h"
 
 @interface PersistencyManager : NSObject
 
@@ -25,10 +20,12 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 //Methods return posts from Core Data
+- (UIImage *)getImageForRequest:(NSURLRequest *)request;
 - (FCPost *)getPostById:(NSUInteger)postId;
-- (FCPost *)getPostByCategory:(NSString *)category;
+- (NSArray *)getPostByCategory:(NSString *)category;
 
 //Method set post to Core Data
+- (void)cacheImage:(UIImage *)image forRequest:(NSURLRequest *)request;
 - (void)setToDataPost:(FCPost *)post;
 
 //Other

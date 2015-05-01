@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DataAuthor" representedClassName="DataAuthor" syncable="YES">
         <attribute name="authorFirstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="authorId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -16,6 +16,10 @@
         <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="categoryTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="term" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataTerms" inverseName="categories" inverseEntity="DataTerms" syncable="YES"/>
+    </entity>
+    <entity name="DataImage" representedClassName="DataImage" parentEntity="DataObject" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="DataObject" isAbstract="YES" syncable="YES"/>
     <entity name="DataPost" representedClassName="DataPost" parentEntity="DataObject" syncable="YES">
@@ -45,9 +49,10 @@
     <elements>
         <element name="DataAuthor" positionX="115" positionY="-396" width="119" height="148"/>
         <element name="DataCategory" positionX="124" positionY="-19" width="128" height="133"/>
-        <element name="DataObject" positionX="-623" positionY="-178" width="128" height="43"/>
+        <element name="DataObject" positionX="-623" positionY="-178" width="128" height="45"/>
         <element name="DataPost" positionX="-351" positionY="-412" width="128" height="178"/>
         <element name="DataPostTag" positionX="-351" positionY="-18" width="128" height="118"/>
         <element name="DataTerms" positionX="-128" positionY="-189" width="128" height="103"/>
+        <element name="DataImage" positionX="-621" positionY="-0" width="128" height="73"/>
     </elements>
 </model>

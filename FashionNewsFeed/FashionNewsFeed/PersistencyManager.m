@@ -7,6 +7,12 @@
 //
 
 #import "PersistencyManager.h"
+#import "DataPost.h"
+#import "DataAuthor.h"
+#import "DataTerms.h"
+#import "DataCategory.h"
+#import "DataPostTag.h"
+#import "DataImage.h"
 
 @interface PersistencyManager ()
 
@@ -25,6 +31,36 @@
 }
 
 #pragma mark - get from Data
+
+- (UIImage *)getImageForRequest:(NSURLRequest *)request {
+    
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataImage"
+                                                   inManagedObjectContext:self.managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url = %@", [[request URL] absoluteString]];
+    
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    if (requestError) {
+        
+        NSLog(@"%@", [requestError localizedDescription]);
+        return nil;
+    } else if ([resultArray count] < 1) {
+        NSLog(@"0");
+        return nil;
+    } else {
+        NSLog(@"1");
+        for (DataImage *dataImage in resultArray) {
+            
+            return [UIImage imageWithData: dataImage.image];
+        }
+    }
+    return nil;
+}
 
 - (FCPost *)getPostById:(NSUInteger)postId {
     
@@ -99,8 +135,9 @@
     return nil;
 }
 
-- (FCPost *)getPostByCategory:(NSString *)category {
+- (NSArray *)getPostByCategory:(NSString *)category {
     
+    NSMutableArray *posts = [NSMutableArray array];
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
                                                    inManagedObjectContext:self.managedObjectContext];
@@ -122,7 +159,7 @@
         for (DataCategory *categoryName in dataPost.term.categories) {
         
         if ([categoryName.categoryName isEqual:category]) {
-            
+        
             FCAuthor *author = [[FCAuthor alloc] initAuthorWithId:[dataPost.author.authorId integerValue]
                                                       andUserName:dataPost.author.authorUserName
                                                      andFirstName:dataPost.author.authorFirstName
@@ -130,7 +167,7 @@
                                                       andNickName:dataPost.author.authorNickName
                                                         andAvatar:nil
                                                     andRegistered:dataPost.author.authorRegistered andMeta:nil];
-            NSLog(@"%@ %@ %lu %@", author.authorFirstName, author.authorLastName, (unsigned long)author.authorId, author.authorNickName);
+
             for (DataCategory *dataCategory in dataPost.term.categories) {
                 
                 FCCategory *category = [[FCCategory alloc] initCategoryWithId:[dataCategory.categoryId integerValue]
@@ -140,7 +177,7 @@
                                                                       andLink:[NSURL URLWithString:dataCategory.categoryLink]
                                                                       andMeta:nil];
                 [categories addObject:category];
-                NSLog(@"%@ %@ %lu", category.categoryName, category.categoryTitle, (unsigned long)category.categoryId);
+
             }
             
             for (DataPostTag *dataPostTag in dataPost.term.postTags) {
@@ -151,7 +188,7 @@
                                                                   andLink:[NSURL URLWithString:dataPostTag.postTagLink]
                                                                   andMeta:nil];
                 [postTags addObject:postTag];
-                NSLog(@"%@ %@ %lu", postTag.postTagLink, postTag.postTagName, (unsigned long)postTag.postTagId);
+
             }
             
             FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:postTags andCategory:categories];
@@ -167,15 +204,26 @@
                                                   andMeta:nil
                                          andFeaturedImage:nil
                                                  andTerms:terms];
-            NSLog(@"%@ %@ %@", post.postLink, post.postTitle, post.postContent);
-            return post;
+            
+            [posts addObject: post];
         }
         }
     }
-    return nil;
+    return posts;
 }
 
 # pragma mark set to Data
+
+- (void)cacheImage:(UIImage *)image forRequest:(NSURLRequest *)request {
+    
+    DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
+                                                           inManagedObjectContext: self.managedObjectContext];
+    
+    dataImage.url = [[request URL] absoluteString];
+    dataImage.image = UIImageJPEGRepresentation(image, 0.0);
+    
+    [self saveContext];
+}
 
 - (void) setToDataPost:(FCPost *)post {
     

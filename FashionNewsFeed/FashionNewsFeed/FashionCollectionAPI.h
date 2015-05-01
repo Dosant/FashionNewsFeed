@@ -11,6 +11,10 @@
 
 + (FashionCollectionAPI *)sharedInstance;
 
+- (void)cacheImage:(UIImage *)image forRequest:(NSURLRequest *)request; //Core Data
+
+- (UIImage *)getImageForRequest:(NSURLRequest *)request;
+
 - (void)getCategories:(void (^)(NSURLSessionDataTask *task, NSMutableArray *categories))success
               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
