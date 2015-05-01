@@ -11,6 +11,7 @@
 #import "FCTableViewCell1.h"
 #import "FCTableViewCell2.h"
 #import "FCTableViewCell3.h"
+#import "FCTableViewCell4.h"
 #import "NewsContentContoller.h"
 
 #import "FCAttachmentMeta.h"
@@ -212,7 +213,7 @@
         
     }
     
-    if (featuredImage.imageAspectRatio < 0.7){
+    if (featuredImage.imageAspectRatio < 0.7){ // w >> h
         
         FCTableViewCell2* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell2" forIndexPath:indexPath];
         cell.FCCellTitle.text = post.postTitle;
@@ -230,7 +231,7 @@
         
         
         
-    } else {
+    } else if (featuredImage.imageAspectRatio >= 0.7 && featuredImage.imageAspectRatio <= 1.3) { // 1:1
         
         
         
@@ -247,6 +248,29 @@
         
         
         return cell;
+        
+    } else { // w << h
+        
+        
+       
+        
+        
+        FCTableViewCell4* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell4" forIndexPath:indexPath];
+        cell.FCCellTitle.text = post.postTitle;
+        cell.post = post;
+        
+        
+        cell.FCCellFeaturedImage.image = nil;
+        [cell.FCCellFeaturedImage setImageWithURL:featuredImage.imageSource];
+        cell.FCCellDate.text = date.timeAgoSinceNow;
+        cell.FCCellCategory.text = post.getCategoriesString;
+        
+        
+        
+        return cell;
+
+        
+        
         
     }
     

@@ -33,6 +33,7 @@
 		836B8A091AE4CC6A002A37D2 /* newsFeaturedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */; };
 		836B8A0B1AE94048002A37D2 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B8A0A1AE94048002A37D2 /* PageContentViewController.m */; };
 		8373409F1AEFD5C1006A2B72 /* FCTableViewCell3.m in Sources */ = {isa = PBXBuildFile; fileRef = 8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */; };
+		838A21261AF2697700BDC838 /* FCTableViewCell4.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A21251AF2697700BDC838 /* FCTableViewCell4.m */; };
 		838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */; };
 		838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C91ACBE4AD004F3298 /* PersistencyManager.m */; };
 		838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */; };
@@ -110,6 +111,8 @@
 		8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCTableViewCell3.m; sourceTree = "<group>"; };
 		838A21221AF1319700BDC838 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		838A21231AF1319700BDC838 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		838A21241AF2697700BDC838 /* FCTableViewCell4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCTableViewCell4.h; sourceTree = "<group>"; };
+		838A21251AF2697700BDC838 /* FCTableViewCell4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCTableViewCell4.m; sourceTree = "<group>"; };
 		838A28C51ACBE48A004F3298 /* FashionCollectionAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FashionCollectionAPI.h; sourceTree = "<group>"; };
 		838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FashionCollectionAPI.m; sourceTree = "<group>"; };
 		838A28C81ACBE4AD004F3298 /* PersistencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistencyManager.h; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */,
 				8373409D1AEFD5C1006A2B72 /* FCTableViewCell3.h */,
 				8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */,
+				838A21241AF2697700BDC838 /* FCTableViewCell4.h */,
+				838A21251AF2697700BDC838 /* FCTableViewCell4.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -519,6 +524,7 @@
 				836B8A0B1AE94048002A37D2 /* PageContentViewController.m in Sources */,
 				2A2512751AEEE6A50070A6DA /* FCResponseHeaders.m in Sources */,
 				2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */,
+				838A21261AF2697700BDC838 /* FCTableViewCell4.m in Sources */,
 				832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */,
 				2A2B634D1ADD9FB7004C6CCB /* FCResponseDeserializer.m in Sources */,
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
