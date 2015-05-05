@@ -22,8 +22,6 @@
 @property(strong, nonatomic) FCFeaturedImage *postFeaturedImage;
 @property(strong, nonatomic) FCTerms *postTerms;
 
-
-
 - (instancetype)initPostWithId:(NSUInteger)postId
                       andTitle:(NSString *)postTitle
                      andAuthor:(FCAuthor *)postAuthor
@@ -38,6 +36,6 @@
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
--(NSString*)getCategoriesString;
+- (NSString *)getCategoriesString;
 
 @end

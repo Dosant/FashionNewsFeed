@@ -5,6 +5,7 @@
 
 #import "FCPost.h"
 #import "FCCategory.h"
+#import "NSStringHTML.h"
 
 @implementation FCPost
 
@@ -40,7 +41,7 @@
     self = [super init];
     if (self) {
         self.postId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
-        self.postTitle = [self clearPostFromTrash:[attributes valueForKeyPath:@"title"]];
+        self.postTitle = [[attributes valueForKeyPath:@"title"] stringByConvertingHTMLToPlainText];
         self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"author"]];
         self.postContent = [attributes valueForKeyPath:@"content"];
 
@@ -69,63 +70,23 @@
 
         self.postFeaturedImage = [[FCFeaturedImage alloc] initWithAttributes:[attributes valueForKeyPath:@"featured_image"]];
         self.postTerms = [[FCTerms alloc] initWithAttributes:[attributes valueForKeyPath:@"terms"]];
-        
-        
     }
     return self;
 }
 
--(NSString*)getCategoriesString{
-    
-    NSMutableString* out = [NSMutableString stringWithString:@""];
-    NSArray* categories = self.postTerms.termsCategory;
+- (NSString *)getCategoriesString {
+    NSMutableString *out = [NSMutableString stringWithString:@""];
+    NSArray *categories = self.postTerms.termsCategory;
     NSUInteger limit = 0;
-    
-    
-    for(FCCategory* category in categories){
-        if(limit == 3){
+
+    for (FCCategory *category in categories) {
+        if (limit == 3) {
             break;
         }
         limit++;
-        [out appendString:[NSString stringWithFormat:@"%@ | ",category.categoryTitle]];
-        
+        [out appendString:[NSString stringWithFormat:@"%@ | ", category.categoryTitle]];
     }
-    
-    
-    
-    return [out stringByReplacingCharactersInRange: NSMakeRange([out length] - 2, 2) withString:@""];
-    
-    
+    return [out stringByReplacingCharactersInRange:NSMakeRange([out length] - 2, 2) withString:@""];
 }
-
-
-
--(NSString*)clearPostFromTrash:(NSString*) string{
-    
-    NSError *error;
-    
-    
-    NSString* regexPattern = @"\\&\\#\\d*\\;";
-    
-    
-    
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexPattern
-                                                                           options:nil
-                                                                             error:&error];
-    
-
-    NSString *post = [regex stringByReplacingMatchesInString:string
-                                                     options:nil
-                                                       range:NSMakeRange(0, [string length])
-                                                withTemplate:@""];
-    
-    
-    
-    return post;
-    
-}
-
-
-
 
 @end

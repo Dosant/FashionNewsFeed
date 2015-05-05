@@ -14,16 +14,10 @@
 #import "FCTableViewCell4.h"
 #import "NewsContentContoller.h"
 
-#import "FCAttachmentMeta.h"
-
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <DateTools/DateTools.h>
 
-
-
 @interface PageContentViewController ()
-
-
 
 @end
 

@@ -14,7 +14,7 @@
                      andNickName:(NSString *)authorNickName
                        andAvatar:(NSURL *)authorAvatar
                    andRegistered:(NSDate *)authorRegistered
-                         andMeta:(NSMutableDictionary *)authorMeta{
+                         andMeta:(NSMutableDictionary *)authorMeta {
     self = [super init];
     if (self) {
         self.authorId = authorId;

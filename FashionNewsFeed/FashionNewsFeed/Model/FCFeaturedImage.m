@@ -4,23 +4,17 @@
 //
 
 #import "FCFeaturedImage.h"
-#import "FCAttachmentMeta.h"
 
 @implementation FCFeaturedImage
 
 - (instancetype)initImageWithId:(NSUInteger)imageId
                        andTitle:(NSString *)imageTitle
-                      andSource:(NSURL *)imageSource
-              andAttachmentMeta:(NSMutableArray *)imageAttachmentMeta // FCAttachmentMeta
-{
+                      andSource:(NSURL *)imageSource {
     self = [super init];
     if (self) {
         self.imageId = imageId;
         self.imageTitle = imageTitle;
         self.imageSource = imageSource;
-        
-        
-        //self.imageAttachmentMeta = imageAttachmentMeta;
     }
     return self;
 }
@@ -31,15 +25,15 @@
         self.imageId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
         self.imageTitle = [attributes valueForKeyPath:@"title"];
 
-        NSString* urlString = [[attributes valueForKeyPath:@"source"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *urlString = [[attributes valueForKeyPath:@"source"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *url = [NSURL URLWithString:urlString];
         self.imageSource = url;
-        
+
         self.imageHeight = (NSUInteger) [[[attributes valueForKeyPath:@"attachment_meta"] valueForKeyPath:@"height"] integerValue];
         self.imageWidth = (NSUInteger) [[[attributes valueForKeyPath:@"attachment_meta"] valueForKeyPath:@"width"] integerValue];
-        
-       // NSLog(@"%@",self.imageSource);
-        
+
+        // NSLog(@"%@",self.imageSource);
+
         /*
         NSMutableArray *meta = [[NSMutableArray alloc] init];
         for (NSString *attachment in [attributes valueForKeyPath:@"attachment_meta"]) {
@@ -55,14 +49,13 @@
          */
         //self.imageAttachmentMeta = meta;
         //self.maxFeaturedImage = [self getTheLargestPicture:meta];
-        
+
     }
     return self;
 }
 
--(CGFloat)imageAspectRatio{
-    return (CGFloat)self.imageHeight/self.imageWidth;
+- (CGFloat)imageAspectRatio {
+    return (CGFloat) self.imageHeight / self.imageWidth;
 }
-
 
 @end

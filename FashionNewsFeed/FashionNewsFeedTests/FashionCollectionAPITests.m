@@ -61,7 +61,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Expectation"];
     FashionCollectionAPI *client = [self getsharedInstance];
 
-    [client getPostById:1000
+    [client getPostById:34021
                 success:^(NSURLSessionDataTask *task, id responseObject) {
                     XCTAssert(YES, @"Pass");
                     [expectation fulfill];
