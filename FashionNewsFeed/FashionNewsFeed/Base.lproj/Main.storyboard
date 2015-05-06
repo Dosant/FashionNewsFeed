@@ -389,7 +389,7 @@
                                                 <constraint firstItem="phb-g3-W5R" firstAttribute="leading" secondItem="rZI-3r-VBb" secondAttribute="trailing" constant="8" id="WOl-Ui-vGx"/>
                                                 <constraint firstAttribute="trailing" secondItem="IrK-hG-BhX" secondAttribute="trailing" id="cx2-0h-Mk4"/>
                                                 <constraint firstAttribute="bottom" secondItem="IrK-hG-BhX" secondAttribute="bottom" id="d1C-dU-0tc"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="dw7-yM-uJO"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="76" id="dw7-yM-uJO"/>
                                                 <constraint firstItem="yUh-cK-Av8" firstAttribute="top" secondItem="phb-g3-W5R" secondAttribute="bottom" constant="8" id="iFC-bN-4nh"/>
                                                 <constraint firstItem="phb-g3-W5R" firstAttribute="top" secondItem="cpu-Qq-6Nh" secondAttribute="top" constant="8" id="mtc-Ms-K9P"/>
                                                 <constraint firstItem="yUh-cK-Av8" firstAttribute="leading" secondItem="cpu-Qq-6Nh" secondAttribute="leading" constant="8" id="ntX-ux-lpW"/>
@@ -448,7 +448,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJg-wK-cia">
+                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJg-wK-cia">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
