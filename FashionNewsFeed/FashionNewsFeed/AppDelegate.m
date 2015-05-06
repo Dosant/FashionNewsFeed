@@ -22,6 +22,9 @@
     [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:4.0 forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:4 forBarMetrics:UIBarMetricsDefault];
     
+    [[UINavigationBar appearance] setTitleTextAttributes:
+    [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"PlayfairDisplay-Regular" size:18], NSFontAttributeName, nil]];
+    
   return YES;
 }
 

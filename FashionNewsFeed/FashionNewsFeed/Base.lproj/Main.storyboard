@@ -3,6 +3,28 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Mark Simonson - Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </mutableArray>
+        <mutableArray key="Mark Simonson - Proxima Nova Regular.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+        <mutableArray key="PlayfairDisplay-Bold.ttf">
+            <string>PlayfairDisplay-Bold</string>
+            <string>PlayfairDisplay-Bold</string>
+            <string>PlayfairDisplay-Bold</string>
+            <string>PlayfairDisplay-Bold</string>
+        </mutableArray>
+        <mutableArray key="PlayfairDisplay-Regular.ttf">
+            <string>PlayfairDisplay-Regular</string>
+            <string>PlayfairDisplay-Regular</string>
+            <string>PlayfairDisplay-Regular</string>
+            <string>PlayfairDisplay-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--SWRevealViewConroller-->
         <scene sceneID="Kdc-bz-6bd">
@@ -93,7 +115,7 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <fontDescription key="fontDescription" name="PlayfairDisplay-Regular" family="Playfair Display" pointSize="20"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
@@ -114,7 +136,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="342" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qwr-yC-NoG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.95283776521682739" green="0.95300072431564331" blue="0.95282751321792603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.95186219904626723" green="0.96101472019094281" blue="0.96101472019094281" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell" rowHeight="360" id="S4K-lQ-6ss" userLabel="FCCell1:1" customClass="FCTableViewCell1">
@@ -134,28 +156,28 @@
                                                         <constraint firstAttribute="height" constant="250" id="d5F-pq-gbb"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="bHZ-SO-fji">
-                                                    <rect key="frame" x="8" y="282" width="288" height="40"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="bHZ-SO-fji">
+                                                    <rect key="frame" x="8" y="282" width="288" height="21"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDg-ij-0If" userLabel="Категория">
-                                                    <rect key="frame" x="8" y="258" width="61" height="20"/>
+                                                    <rect key="frame" x="8" y="258" width="63" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="gCe-9g-Ghw"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="PlayfairDisplay-Bold" family="Playfair Display" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вчера" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxY-5v-qBX" userLabel="Дата">
-                                                    <rect key="frame" x="77" y="258" width="34" height="20"/>
+                                                    <rect key="frame" x="79" y="258" width="33" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="HDs-Mg-PbY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="PlayfairDisplay-Regular" family="Playfair Display" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -211,27 +233,27 @@
                                                         <constraint firstAttribute="height" constant="150" id="kOF-tn-zNn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="jQy-PU-EXB">
-                                                    <rect key="frame" x="8" y="182" width="288" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="jQy-PU-EXB">
+                                                    <rect key="frame" x="8" y="182" width="288" height="21"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1R-fL-UTy" userLabel="Категория">
-                                                    <rect key="frame" x="8" y="158" width="61" height="20"/>
+                                                    <rect key="frame" x="8" y="158" width="63" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="ZhK-Vo-lwG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="PlayfairDisplay-Bold" family="Playfair Display" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вчера" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBc-Wf-wFy" userLabel="Дата">
-                                                    <rect key="frame" x="77" y="158" width="34" height="20"/>
+                                                    <rect key="frame" x="79" y="158" width="33" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="eiK-I3-cIn"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="PlayfairDisplay-Regular" family="Playfair Display" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -279,39 +301,39 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkQ-EU-seS" customClass="FCTableViewCell3">
                                             <rect key="frame" x="8" y="0.0" width="304" height="110"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188" translatesAutoresizingMaskIntoConstraints="NO" id="Ivk-3z-2k7">
-                                                    <rect key="frame" x="8" y="36" width="288" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188" translatesAutoresizingMaskIntoConstraints="NO" id="Ivk-3z-2k7">
+                                                    <rect key="frame" x="8" y="32" width="288" height="19"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAn-Nb-ep5" userLabel="Категория">
-                                                    <rect key="frame" x="8" y="8" width="61" height="20"/>
+                                                    <rect key="frame" x="8" y="8" width="63" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="30b-ce-4NV"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="PlayfairDisplay-Bold" family="Playfair Display" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вчера" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iC-q8-lGl" userLabel="Дата">
-                                                    <rect key="frame" x="77" y="8" width="34" height="20"/>
+                                                    <rect key="frame" x="79" y="8" width="33" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="XaP-aB-PyC"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="PlayfairDisplay-Regular" family="Playfair Display" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ivk-3z-2k7" secondAttribute="bottom" constant="8" id="BWI-ZA-fgl"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ivk-3z-2k7" secondAttribute="trailing" constant="8" id="EUN-aa-85z"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="IXh-eU-AaU"/>
                                                 <constraint firstItem="1iC-q8-lGl" firstAttribute="leading" secondItem="tAn-Nb-ep5" secondAttribute="trailing" constant="8" id="Nzi-aE-F3G"/>
-                                                <constraint firstItem="Ivk-3z-2k7" firstAttribute="top" secondItem="1iC-q8-lGl" secondAttribute="bottom" constant="8" id="SL8-wL-nvY"/>
+                                                <constraint firstItem="Ivk-3z-2k7" firstAttribute="top" secondItem="1iC-q8-lGl" secondAttribute="bottom" constant="4" id="SL8-wL-nvY"/>
                                                 <constraint firstItem="tAn-Nb-ep5" firstAttribute="top" secondItem="tkQ-EU-seS" secondAttribute="top" constant="8" id="UvH-WP-Xlq"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ivk-3z-2k7" secondAttribute="bottom" constant="59" id="YHB-9l-wbg"/>
                                                 <constraint firstItem="tAn-Nb-ep5" firstAttribute="leading" secondItem="tkQ-EU-seS" secondAttribute="leading" constant="8" id="hsX-oV-DTX"/>
                                                 <constraint firstItem="1iC-q8-lGl" firstAttribute="top" secondItem="tkQ-EU-seS" secondAttribute="top" constant="8" id="lRs-AX-coK"/>
                                                 <constraint firstItem="1iC-q8-lGl" firstAttribute="leading" secondItem="tAn-Nb-ep5" secondAttribute="trailing" constant="8" id="lcU-fc-4BA"/>
@@ -348,52 +370,55 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpu-Qq-6Nh">
-                                            <rect key="frame" x="8" y="313" width="304" height="87"/>
+                                            <rect key="frame" x="8" y="317" width="304" height="83"/>
                                             <subviews>
                                                 <view alpha="0.70000000000000007" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IrK-hG-BhX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="87"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="83"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="83" id="8BU-6I-fAa"/>
+                                                    </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZI-3r-VBb" userLabel="Категория">
-                                                    <rect key="frame" x="8" y="8" width="61" height="20"/>
+                                                    <rect key="frame" x="8" y="8" width="63" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="owX-LF-aI3"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="PlayfairDisplay-Bold" family="Playfair Display" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вчера" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phb-g3-W5R" userLabel="Дата">
-                                                    <rect key="frame" x="77" y="8" width="34" height="20"/>
+                                                    <rect key="frame" x="79" y="8" width="33" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="lGl-hb-Lpz"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="PlayfairDisplay-Regular" family="Playfair Display" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: всегда на каблуках" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="yUh-cK-Av8">
-                                                    <rect key="frame" x="8" y="36" width="288" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кристин Сентенера: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="yUh-cK-Av8">
+                                                    <rect key="frame" x="8" y="32" width="288" height="21"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="yUh-cK-Av8" secondAttribute="bottom" constant="10" id="1j8-3N-UAt"/>
                                                 <constraint firstItem="rZI-3r-VBb" firstAttribute="leading" secondItem="cpu-Qq-6Nh" secondAttribute="leading" constant="8" id="8wc-P8-fx2"/>
                                                 <constraint firstItem="IrK-hG-BhX" firstAttribute="top" secondItem="cpu-Qq-6Nh" secondAttribute="top" id="EkT-Rz-v13"/>
                                                 <constraint firstItem="IrK-hG-BhX" firstAttribute="leading" secondItem="cpu-Qq-6Nh" secondAttribute="leading" id="LeY-Jh-snz"/>
                                                 <constraint firstItem="rZI-3r-VBb" firstAttribute="top" secondItem="cpu-Qq-6Nh" secondAttribute="top" constant="8" id="Lx6-cy-eGI"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="83" id="O1v-aP-WmX"/>
                                                 <constraint firstItem="phb-g3-W5R" firstAttribute="leading" secondItem="rZI-3r-VBb" secondAttribute="trailing" constant="8" id="WOl-Ui-vGx"/>
                                                 <constraint firstAttribute="trailing" secondItem="IrK-hG-BhX" secondAttribute="trailing" id="cx2-0h-Mk4"/>
                                                 <constraint firstAttribute="bottom" secondItem="IrK-hG-BhX" secondAttribute="bottom" id="d1C-dU-0tc"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="76" id="dw7-yM-uJO"/>
-                                                <constraint firstItem="yUh-cK-Av8" firstAttribute="top" secondItem="phb-g3-W5R" secondAttribute="bottom" constant="8" id="iFC-bN-4nh"/>
+                                                <constraint firstAttribute="bottom" secondItem="yUh-cK-Av8" secondAttribute="bottom" constant="30" id="gJ3-t7-GST"/>
                                                 <constraint firstItem="phb-g3-W5R" firstAttribute="top" secondItem="cpu-Qq-6Nh" secondAttribute="top" constant="8" id="mtc-Ms-K9P"/>
                                                 <constraint firstItem="yUh-cK-Av8" firstAttribute="leading" secondItem="cpu-Qq-6Nh" secondAttribute="leading" constant="8" id="ntX-ux-lpW"/>
                                                 <constraint firstAttribute="trailing" secondItem="yUh-cK-Av8" secondAttribute="trailing" constant="8" id="s9E-5d-IRt"/>
+                                                <constraint firstItem="yUh-cK-Av8" firstAttribute="top" secondItem="phb-g3-W5R" secondAttribute="bottom" constant="4" id="wtW-hE-0Cq"/>
                                             </constraints>
                                         </view>
                                     </subviews>
