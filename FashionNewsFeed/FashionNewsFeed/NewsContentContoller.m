@@ -8,13 +8,20 @@
 
 #import "NewsContentContoller.h"
 
+#import "ArticleView.h"
+#import <HTMLReader/HTMLReader.h>
+
+
+
 @interface NewsContentContoller ()
 @property (weak, nonatomic) IBOutlet UIWebView *contentView;
 @property (strong,nonatomic) NSString* contentString;
 
 @end
 
-@implementation NewsContentContoller
+@implementation NewsContentContoller{
+    ArticleView* _articleView;
+}
 
 
 
@@ -22,19 +29,83 @@
     [super viewDidLoad];
     NSLog(@"%@",_post.postContent);
     
-    
-    NSMutableString *html = [NSMutableString stringWithString: @"<html><head><title></title></head><body\">"];
+    NSMutableString *htmlString = [NSMutableString stringWithString: @"<html><head><title></title></head><body>"];
     
     //continue building the string
-    [html appendString:[self resizeImages:_post.postContent]];
-    [html appendString:@"</body></html>"];
+    [htmlString appendString: _post.postContent];
+    [htmlString appendString:@"</body></html>"];
     
-   
+    HTMLDocument* doc = [[HTMLDocument alloc] initWithString:htmlString];
+    HTMLElement* html = doc.rootElement;
+    HTMLNode* body = [html childAtIndex:1];
     
-    [self.contentView loadHTMLString:html baseURL:nil];
+    NSArray* nodes = [body childElementNodes];
+//    NSLog([nodes description]);
+//    
+//    for(HTMLNode* node in nodes){
+//        NSLog([node recursiveDescription]);
+//    }
+    
+//    NSEnumerator* en = [html treeEnumerator];
+//    
+//    HTMLNode* node;
+//    while ((node = en.nextObject)) {
+//        NSLog([node description]);
+//    }
+    
+    [self recursiveFormat:body];
+    
+    
     
     
     // Do any additional setup after loading the view.
+    
+    
+    _articleView = [[ArticleView alloc] initWithFrame:CGRectMake(0,50,self.view.frame.size.width,self.view.frame.size.height - 50) htmlString:_post.postContent];
+    _articleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    
+    
+    [self.view addSubview:_articleView];
+    
+    
+}
+
+-(void)viewDidLayoutSubviews{
+    [_articleView buildFrames];
+}
+
+-(void)recursiveFormat:(HTMLNode*)node{
+    if([node isKindOfClass:[HTMLTextNode class]]){
+        
+        NSLog(@"textNode: %@",[node textContent]);
+        return;
+        
+    }
+    
+    if([node isKindOfClass:[HTMLElement class]]){
+        
+        HTMLElement* el = (HTMLElement*)node;
+        NSLog([el tagName]);
+        
+        if([[el tagName] isEqualToString:@"img"]){
+           
+            [el tagName];
+           
+            
+        }
+        
+        for(HTMLNode* n in [el children]){
+            
+            [self recursiveFormat:n];
+            
+        }
+        
+        
+        
+    }
+    
+    
     
     
 }

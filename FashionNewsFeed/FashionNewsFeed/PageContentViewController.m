@@ -309,6 +309,15 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
+    
+    
+    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
+    cell.layer.shadowOffset = CGSizeMake(0, 0.25);
+    cell.layer.shadowOpacity = 0.2;
+    cell.layer.shadowRadius = 0.2;
+    
+    
     if ([postsToPresent count] - 3 <= indexPath.row){
         
         NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 3)/postsPerPage);
@@ -346,6 +355,8 @@
     
     
 }*/
+
+
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

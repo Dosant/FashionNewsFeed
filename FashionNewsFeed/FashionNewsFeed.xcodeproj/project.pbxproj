@@ -65,6 +65,8 @@
 		83BFF2611AFAA5EB0077C3E1 /* PlayfairDisplaySC-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BFF2551AFAA5EB0077C3E1 /* PlayfairDisplaySC-BoldItalic.ttf */; };
 		83BFF2621AFAA5EB0077C3E1 /* PlayfairDisplaySC-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BFF2561AFAA5EB0077C3E1 /* PlayfairDisplaySC-Italic.ttf */; };
 		83BFF2631AFAA5EB0077C3E1 /* PlayfairDisplaySC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BFF2571AFAA5EB0077C3E1 /* PlayfairDisplaySC-Regular.ttf */; };
+		83C2B5A31AFBFD97009B1E08 /* ArticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2B5A21AFBFD97009B1E08 /* ArticleView.m */; };
+		83C2B5A61AFC0573009B1E08 /* MarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */; };
 		83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */; };
 		8505FBD5CEFF5EE843A393DD /* libPods-FashionNewsFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */; };
 		8615566D1AE82F5D0060EAB2 /* DataCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8615566C1AE82F5D0060EAB2 /* DataCategory.m */; };
@@ -176,6 +178,10 @@
 		83BFF2551AFAA5EB0077C3E1 /* PlayfairDisplaySC-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplaySC-BoldItalic.ttf"; sourceTree = "<group>"; };
 		83BFF2561AFAA5EB0077C3E1 /* PlayfairDisplaySC-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplaySC-Italic.ttf"; sourceTree = "<group>"; };
 		83BFF2571AFAA5EB0077C3E1 /* PlayfairDisplaySC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplaySC-Regular.ttf"; sourceTree = "<group>"; };
+		83C2B5A11AFBFD97009B1E08 /* ArticleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleView.h; sourceTree = "<group>"; };
+		83C2B5A21AFBFD97009B1E08 /* ArticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleView.m; sourceTree = "<group>"; };
+		83C2B5A41AFC0573009B1E08 /* MarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkdownParser.h; sourceTree = "<group>"; };
+		83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkdownParser.m; sourceTree = "<group>"; };
 		83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarWithBottomStroke.h; sourceTree = "<group>"; };
 		83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarWithBottomStroke.m; sourceTree = "<group>"; };
 		8615566B1AE82F5D0060EAB2 /* DataCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCategory.h; path = Data/DataCategory.h; sourceTree = "<group>"; };
@@ -261,6 +267,8 @@
 				8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */,
 				838A21241AF2697700BDC838 /* FCTableViewCell4.h */,
 				838A21251AF2697700BDC838 /* FCTableViewCell4.m */,
+				83C2B5A11AFBFD97009B1E08 /* ArticleView.h */,
+				83C2B5A21AFBFD97009B1E08 /* ArticleView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -327,6 +335,8 @@
 		8362508C1AC5E39400370340 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				83C2B5A41AFC0573009B1E08 /* MarkdownParser.h */,
+				83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */,
 				83BFF22D1AFA9C2D0077C3E1 /* fonts */,
 				83AC6B801AC7E186001544A6 /* SWRevealViewController */,
 				8362509B1AC5E39400370340 /* LaunchScreen.xib */,
@@ -670,8 +680,10 @@
 				869798F41AF36FDE00AB44F1 /* DataImage.m in Sources */,
 				836B8A091AE4CC6A002A37D2 /* newsFeaturedImageView.m in Sources */,
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
+				83C2B5A61AFC0573009B1E08 /* MarkdownParser.m in Sources */,
 				832922801AEBB57600FE6761 /* FCTableViewCell2.m in Sources */,
 				83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */,
+				83C2B5A31AFBFD97009B1E08 /* ArticleView.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
 				838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,

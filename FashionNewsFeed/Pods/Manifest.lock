@@ -21,13 +21,16 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - DateTools (1.5.0)
+  - HTMLReader (0.7.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
   - DateTools
+  - HTMLReader
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
+  HTMLReader: e6ba09514d125f45e810b6c6c1cebf3542f04d89
 
 COCOAPODS: 0.36.3

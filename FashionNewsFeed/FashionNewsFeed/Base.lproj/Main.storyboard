@@ -365,6 +365,7 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rJo-qL-jJ6">
                                             <rect key="frame" x="8" y="0.0" width="304" height="400"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="400" id="zA5-X0-Lck"/>
                                             </constraints>
@@ -472,21 +473,11 @@
                     <view key="view" contentMode="scaleToFill" id="zhR-2X-shM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJg-wK-cia">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Content" id="eVO-Ji-NJQ">
                         <barButtonItem key="backBarButtonItem" title=" " id="nEu-YI-zcu"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="contentView" destination="aJg-wK-cia" id="5ID-3g-c9o"/>
-                        <outlet property="tempWebView" destination="aJg-wK-cia" id="5yu-iv-BMl"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZu-xL-s98" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
