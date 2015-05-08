@@ -76,7 +76,7 @@
 }
 
 -(void)recursiveFormat:(HTMLNode*)node{
-    if([node isKindOfClass:[HTMLTextNode class]]){
+    if([node isKindOfClass:[HTMLNode class]]){
         
         NSString* lastTag = node.parentElement.tagName;
         

@@ -10,7 +10,7 @@
 
 #import "ArticleView.h"
 #import <HTMLReader/HTMLReader.h>
-
+#import "VKSdk.h"
 
 
 @interface NewsContentContoller ()
@@ -28,6 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"%@",_post.postContent);
+    
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareContent:)];
+    self.navigationItem.rightBarButtonItem = shareButton;
     
     NSMutableString *htmlString = [NSMutableString stringWithString: @"<html><head><title></title></head><body>"];
     
@@ -71,12 +74,29 @@
     
 }
 
+-(void)shareContent:(id)sender {
+    NSURL* sharedURL = _post.postLink;
+    NSArray* items = @[sharedURL];
+    
+    UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:@[[VKActivity new]]];
+    
+    if (VK_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0") && UIUserInterfaceIdiomPad == [[UIDevice currentDevice] userInterfaceIdiom])
+    {
+        UIPopoverPresentationController *popover = activity.popoverPresentationController;
+        popover.sourceView = self.view;
+        popover.barButtonItem = self.navigationItem.rightBarButtonItem;
+    }
+    
+    [self presentViewController:activity animated:YES completion:nil];
+    
+}
+
 -(void)viewDidLayoutSubviews{
     [_articleView buildFrames];
 }
 
 -(void)recursiveFormat:(HTMLNode*)node{
-    if([node isKindOfClass:[HTMLTextNode class]]){
+    if([node isKindOfClass:[HTMLNode class]]){
         
         NSLog(@"textNode: %@",[node textContent]);
         return;
