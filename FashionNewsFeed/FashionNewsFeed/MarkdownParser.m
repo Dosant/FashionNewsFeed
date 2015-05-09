@@ -11,11 +11,16 @@
 @implementation MarkdownParser{
     NSDictionary *_pTextAttributes;
     NSDictionary *_strongTextAttributes;
-    NSDictionary *_headingTextAttributes;
+    NSDictionary *_emTextAttributes;
+    
+    NSDictionary *_headingTextAttributesOne;
+    NSDictionary *_headingTextAttributesTwo;
+    NSDictionary *_headingTextAttributesThree;
     
     NSMutableAttributedString* _parsedOutput;
     
     NSDictionary *_nextTextAttributes;
+    
     
 }
 
@@ -30,32 +35,49 @@
 
 -(void)createTextAttributes{
     
-        // 1. Create the font descriptors
-        UIFontDescriptor *baskerville = [UIFontDescriptor
-                                         fontDescriptorWithFontAttributes: @{UIFontDescriptorFamilyAttribute: @"Baskerville"}];
-        UIFontDescriptor *baskervilleBold = [baskerville fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    // 1. Create the font descriptors
+    UIFontDescriptor *proxima = [UIFontDescriptor
+                                     fontDescriptorWithFontAttributes: @{UIFontDescriptorFamilyAttribute: @"Proxima Nova"}];
+    UIFontDescriptor *proximaBold = [proxima fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    UIFontDescriptor *proximaItalic = [proxima fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitItalic];
+
+
+    // 2. determine the current text size preference
+    UIFontDescriptor *playfare = [UIFontDescriptor
+                              fontDescriptorWithFontAttributes: @{UIFontDescriptorFamilyAttribute: @"Playfair Display"}];
+    UIFontDescriptor *playfareBold = [playfare fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
     
+    NSNumber *bodyFontSize = @16;
+    CGFloat bodyFontSizeValue = [bodyFontSize floatValue];
+
+
+    // 3. create the attributes for the various styles
+
+    _pTextAttributes = [self attributesWithDescriptor:proxima size:bodyFontSizeValue];
     
-        // 2. determine the current text size preference
-        UIFontDescriptor *bodyFont = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
-        NSNumber *bodyFontSize = bodyFont.fontAttributes[UIFontDescriptorSizeAttribute];
-        CGFloat bodyFontSizeValue = [bodyFontSize floatValue];
+    _headingTextAttributesOne = [self attributesWithDescriptor:playfareBold
+                                                      size:bodyFontSizeValue * 1.6f];
+    _headingTextAttributesTwo = [self attributesWithDescriptor:playfareBold
+                                                          size:bodyFontSizeValue * 1.4f];
+    _headingTextAttributesThree = [self attributesWithDescriptor:playfareBold
+                                                          size:bodyFontSizeValue * 1.2f];
     
-    
-        // 3. create the attributes for the various styles
-    
-        _pTextAttributes = [self attributesWithDescriptor:baskerville size:bodyFontSizeValue];
-        _headingTextAttributes = [self attributesWithDescriptor:baskervilleBold
-                                                          size:bodyFontSizeValue * 2.0f];
-        _strongTextAttributes = [self attributesWithDescriptor:baskervilleBold
-                                                          size:bodyFontSizeValue];
+    _strongTextAttributes = [self attributesWithDescriptor:proximaBold
+                                                      size:bodyFontSizeValue];
+    _emTextAttributes = [self attributesWithDescriptor:proximaItalic
+                                                  size:bodyFontSizeValue];
     
 }
 
 - (NSDictionary *)attributesWithDescriptor: (UIFontDescriptor*)descriptor size:(CGFloat)size {
     
     UIFont *font = [UIFont fontWithDescriptor:descriptor size:size];
-    return @{NSFontAttributeName: font};
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.paragraphSpacing = 10.0;
+    
+    return @{NSFontAttributeName: font,
+             NSParagraphStyleAttributeName:paragraphStyle};
 }
 
 
@@ -78,26 +100,58 @@
 -(void)recursiveFormat:(HTMLNode*)node{
     if([node isKindOfClass:[HTMLTextNode class]]){
         
+        
+        
+        
+        
+        
         NSString* lastTag = node.parentElement.tagName;
         
+        
+        
+        
         if([lastTag isEqualToString:@"p"]){
+            
             _nextTextAttributes = _pTextAttributes;
+            
         }
         
-        if([lastTag isEqualToString:@"h3"]){
-            _nextTextAttributes = _headingTextAttributes;
+        else if([lastTag isEqualToString:@"a"]){
+            _nextTextAttributes = _emTextAttributes;
         }
         
-        if([lastTag isEqualToString:@"strong"]){
+        else if([lastTag isEqualToString:@"h3"]){
+            _nextTextAttributes = _headingTextAttributesThree;
+        }
+        
+        else if([lastTag isEqualToString:@"h2"]){
+            _nextTextAttributes = _headingTextAttributesTwo;
+        }
+        
+        else if([lastTag isEqualToString:@"h1"]){
+            _nextTextAttributes = _headingTextAttributesOne;
+        }
+        
+        else if([lastTag isEqualToString:@"strong"]){
             _nextTextAttributes = _strongTextAttributes;
+        }
+        else if([lastTag isEqualToString:@"em"]){
+            _nextTextAttributes = _strongTextAttributes;
+        }
+        
+        else { // not recognize selector
+            return;
         }
         
         
         
         NSAttributedString* append = [[NSAttributedString alloc] initWithString:node.textContent attributes:_nextTextAttributes];
+        
         [_parsedOutput appendAttributedString:append];
         
         
+        
+        //NSLog([_parsedOutput string]);
         
         return;
         
@@ -106,8 +160,33 @@
     if([node isKindOfClass:[HTMLElement class]]){
         
         HTMLElement* el = (HTMLElement*)node;
+        
+        if([[el tagName] isEqualToString:@"style"] ||
+           [[el tagName] isEqualToString:@"iframe"] ){ // don't show
+            
+            return;
+            
+        }
+        
+        
         if([[el tagName] isEqualToString:@"img"]){
-            [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"img\n\n"]];
+            
+            NSData* imgData = [NSData dataWithContentsOfURL:
+                               [NSURL URLWithString: [el.attributes[@"src"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            
+            
+            
+            UIImage* image = [UIImage imageWithData:imgData];
+            UIImage* scimage = [UIImage imageWithCGImage:image.CGImage scale:2.0 orientation:UIImageOrientationUp];
+            NSLog(@"%f, %f",image.size.height,image.size.width);
+            
+            NSTextAttachment *textAttachment = [NSTextAttachment new];
+            
+            textAttachment.image = scimage;
+            
+            
+            [_parsedOutput appendAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
+            [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             return;
         }
         

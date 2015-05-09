@@ -35,6 +35,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIAppFonts</key>
-	<array/>
+	<array>
+		<string></string>
+		<string>Mark Simonson - Proxima Nova Regular Italic.otf</string>
+	</array>
 </dict>
 </plist>

@@ -487,4 +487,5 @@
     <resources>
         <image name="MenuIcon" width="24" height="12"/>
     </resources>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

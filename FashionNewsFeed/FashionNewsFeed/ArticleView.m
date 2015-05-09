@@ -37,10 +37,10 @@
     _layoutManager = [[NSLayoutManager alloc] init];
     [textStorage addLayoutManager:_layoutManager];
     
-    NSTextContainer *textcontainer = [[NSTextContainer alloc] initWithSize:CGSizeMake(self.bounds.size.width, FLT_MAX)];
+    NSTextContainer *textcontainer = [[NSTextContainer alloc] initWithSize:CGSizeMake(self.bounds.size.width - 16, FLT_MAX)];
     [_layoutManager addTextContainer:textcontainer];
     
-    UITextView* textView = [[UITextView alloc] initWithFrame:self.bounds textContainer:textcontainer];
+    UITextView* textView = [[UITextView alloc] initWithFrame:CGRectMake(8, 0, self.bounds.size.width - 16, self.bounds.size.height) textContainer:textcontainer];
     textView.scrollEnabled = true;
     textView.editable = false;
     textView.showsVerticalScrollIndicator = false;
