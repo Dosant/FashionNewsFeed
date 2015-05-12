@@ -113,9 +113,20 @@
          totalPosts = headers.totalPosts;
          
          
+         
+        [self.tableView beginUpdates];
+         
         if (postsToPresent != nil){
             
             if(page == 1){ // reload
+                
+                NSUInteger count = [self.tableView numberOfRowsInSection:0];
+                
+                for (int i = 0 ; i < count ; i++) {
+                    NSIndexPath* path = [NSIndexPath indexPathForRow:i inSection:0];
+                    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+                 }
+                
                 [postsToPresent removeAllObjects];
             }
             
@@ -134,9 +145,19 @@
         [self.refreshControl endRefreshing];
          
          //TODO
-        [self.tableView reloadData];
+         
+         for (int i = 0 ; i < postsPerPage; i++) {
+             NSIndexPath* path = [NSIndexPath indexPathForRow:((page - 1)*postsPerPage + i) inSection:0];
+              [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+             
+             
+         }
+         
+         
         
      
+         
+         [self.tableView endUpdates];
     
     };
     
@@ -344,13 +365,13 @@
                          imageURL:(NSURL*)imageURL{
     
     [[FashionCollectionAPI sharedInstance] getImageWithUrl:imageURL success:^(NSURLSessionDataTask *task, UIImage *image) {
+        
         imageView.alpha = 0.0;
         imageView.image = image;
         
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             imageView.alpha = 1.0;
         }];
-        
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog([error localizedDescription]);

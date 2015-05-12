@@ -85,6 +85,13 @@
              NSParagraphStyleAttributeName:paragraphStyle};
 }
 
+-(NSDictionary * )attributesForImage{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.paragraphSpacing = 10.0;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    return @{NSParagraphStyleAttributeName:paragraphStyle};
+}
+
 
 -(NSMutableAttributedString*) parseMarkdownHtmlString:(NSString*)htmlString{
     _parsedOutput = [[NSMutableAttributedString alloc] init];
@@ -106,14 +113,7 @@
     if([node isKindOfClass:[HTMLTextNode class]]){
         
         
-        
-        
-        
-        
         NSString* lastTag = node.parentElement.tagName;
-        
-        
-        
         
         if([lastTag isEqualToString:@"p"]){
             
@@ -187,51 +187,18 @@
             
             [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             [_parsedOutput appendAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
+            
             [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             
             NSUInteger index = [_parsedOutput length] - 2;
+            [_parsedOutput addAttributes:[self attributesForImage] range:NSMakeRange(index, 1)];
+            
             NSURL* imageURL = [NSURL URLWithString: [el.attributes[@"src"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             
             MarkdownImage* imageToDownload = [[MarkdownImage alloc] initWithImageUrl:imageURL placeholderSize:placeholderSize index:index];
             
             [_imagesQueueToDownload addObject:imageToDownload];
             
-            
-            
-            
-            
-//            NSData* imgData = [NSData dataWithContentsOfURL:
-//                               [NSURL URLWithString: [el.attributes[@"src"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-            
-            
-            
-//            [[FashionCollectionAPI sharedInstance] getImageWithUrl:imgUrl success:^(NSURLSessionDataTask *task, UIImage *image) {
-//                
-//                UIImage* scimage = [self resizeImage:image size:placeholderSize];
-//                NSTextAttachment *textAttachment = [NSTextAttachment new];
-//                
-//                textAttachment.image = scimage;
-//                
-//                NSLog(@"ParsedOutput");
-//                [_parsedOutput replaceCharactersInRange:NSMakeRange(index, 1) withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
-//                
-//                [self.delegate markdownParserImageDownloaded:self withImage:scimage];
-//                
-//            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//                NSLog([error localizedDescription]);
-//            }];
-            
-            //UIImage* image = [UIImage imageWithData:imgData];
-//            UIImage* scimage = [self resizeImage:image];
-//            NSLog(@"%f, %f",image.size.height,image.size.width);
-            
-//            NSTextAttachment *textAttachment = [NSTextAttachment new];
-//            
-//            textAttachment.image = scimage;
-//            
-//            
-//            [_parsedOutput appendAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
-//            [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             return;
         }
         
@@ -251,22 +218,22 @@
 -(void)downloadImagesToAttribtutedString{
     
     for (MarkdownImage* imageMarkdown in _imagesQueueToDownload) {
+       
+        [[FashionCollectionAPI sharedInstance] getImageWithUrl:imageMarkdown.url success:^(NSURLSessionDataTask *task, UIImage *image) {
+            
+            UIImage* scimage = [self resizeImage:image size:imageMarkdown.size];
+            NSTextAttachment *textAttachment = [NSTextAttachment new];
+            textAttachment.image = scimage;
+            NSRange range = NSMakeRange(imageMarkdown.index, 1);
+            
+            //[_parsedOutput replaceCharactersInRange:NSMakeRange(imageMarkdown.index, 1) withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
+            
+            [self.delegate markdownParserImageDownloaded:self withTextAttachemnt:textAttachment WithRange:range];
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog([error localizedDescription]);
+        }];
         
-    
-    [[FashionCollectionAPI sharedInstance] getImageWithUrl:imageMarkdown.url success:^(NSURLSessionDataTask *task, UIImage *image) {
-                        UIImage* scimage = [self resizeImage:image size:imageMarkdown.size];
-                        NSTextAttachment *textAttachment = [NSTextAttachment new];
-                        textAttachment.image = scimage;
-        
-                        NSRange range = NSMakeRange(imageMarkdown.index, 1);
-        
-                        //[_parsedOutput replaceCharactersInRange:NSMakeRange(imageMarkdown.index, 1) withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
-        
-        [self.delegate markdownParserImageDownloaded:self withTextAttachemnt:textAttachment WithRange:range];
-        
-                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                        NSLog([error localizedDescription]);
-                    }];
     }
     
     

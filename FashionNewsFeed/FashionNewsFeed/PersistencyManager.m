@@ -220,7 +220,7 @@
                                                            inManagedObjectContext: self.managedObjectContext];
     
     dataImage.url = [url absoluteString];
-    dataImage.image = UIImageJPEGRepresentation(image, 0.0);
+    dataImage.image = UIImageJPEGRepresentation(image, 1.0);
     
     [self saveContext];
 }

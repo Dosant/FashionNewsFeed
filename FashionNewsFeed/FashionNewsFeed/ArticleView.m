@@ -28,7 +28,7 @@
     self = [super initWithFrame:frame];
     if (self){
         
-        contentWidth = self.bounds.size.width - 5;
+        contentWidth = self.bounds.size.width - 8;
         
         [self setHtmlStringWithPostContent:htmlString];
         
@@ -56,10 +56,11 @@
     NSTextContainer *textcontainer = [[NSTextContainer alloc] initWithSize:CGSizeMake(contentWidth, FLT_MAX)];
     [_layoutManager addTextContainer:textcontainer];
     
-    _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, contentWidth, self.bounds.size.height) textContainer:textcontainer];
+    _textView = [[UITextView alloc] initWithFrame:CGRectMake(2, 0, contentWidth, self.bounds.size.height) textContainer:textcontainer];
     _textView.scrollEnabled = true;
     _textView.editable = false;
     _textView.showsVerticalScrollIndicator = false;
+    
     [self addSubview:_textView];
     
     [_parser downloadImagesToAttribtutedString];
@@ -83,6 +84,7 @@
                             WithRange:(NSRange)range{
     
     [_textStorage replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
+    
     
 }
 
