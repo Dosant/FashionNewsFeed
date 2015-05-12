@@ -20,12 +20,12 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 //Methods return posts from Core Data
-- (UIImage *)getImageForRequest:(NSURLRequest *)request;
+- (UIImage *)getImageForUrl:(NSURL *)request;
 - (FCPost *)getPostById:(NSUInteger)postId;
 - (NSArray *)getPostByCategory:(NSString *)category;
 
 //Method set post to Core Data
-- (void)cacheImage:(UIImage *)image forRequest:(NSURLRequest *)request;
+- (void)cacheImage:(UIImage *)image forURL:(NSURL*)url;
 - (void)setToDataPost:(FCPost *)post;
 
 //Other

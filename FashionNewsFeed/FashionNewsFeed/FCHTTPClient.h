@@ -10,6 +10,10 @@
 
 + (FCHTTPClient *)sharedClient;
 
+- (void)getImageWithURL:(NSURL*)url
+                success:(void (^)(NSURLSessionDataTask *task, UIImage* responseObject))success
+                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
 - (void)getCategories:(void (^)(NSURLSessionDataTask *task, id responseObject))success
               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
@@ -27,5 +31,7 @@
            andPostsPerPage:(NSUInteger)postsPerPage
                    success:(void (^)(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers))success
                    failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
+-(void)cancelAllOperations;
 
 @end

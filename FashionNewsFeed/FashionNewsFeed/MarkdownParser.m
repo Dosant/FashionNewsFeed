@@ -171,22 +171,47 @@
         
         if([[el tagName] isEqualToString:@"img"]){
             
-            NSData* imgData = [NSData dataWithContentsOfURL:
-                               [NSURL URLWithString: [el.attributes[@"src"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            NSURL*  imgUrl = [NSURL URLWithString: [el.attributes[@"src"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             
-            
-            
-            UIImage* image = [UIImage imageWithData:imgData];
-            UIImage* scimage = [UIImage imageWithCGImage:image.CGImage scale:2.0 orientation:UIImageOrientationUp];
-            NSLog(@"%f, %f",image.size.height,image.size.width);
+            CGSize placeholderSize = [self sizeFromElement:el];
+            UIImage* placeholderImage = [self generatePlaceholderImage:placeholderSize];
             
             NSTextAttachment *textAttachment = [NSTextAttachment new];
+            textAttachment.image = placeholderImage;
             
-            textAttachment.image = scimage;
             
-            
+            [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             [_parsedOutput appendAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
             [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
+            NSUInteger index = [_parsedOutput length] - 2;
+            
+//            NSData* imgData = [NSData dataWithContentsOfURL:
+//                               [NSURL URLWithString: [el.attributes[@"src"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            
+            [[FashionCollectionAPI sharedInstance] getImageWithUrl:imgUrl success:^(NSURLSessionDataTask *task, UIImage *image) {
+                UIImage* scimage = [self resizeImage:image size:placeholderSize];
+                NSTextAttachment *textAttachment = [NSTextAttachment new];
+                
+                textAttachment.image = scimage;
+                
+                [_parsedOutput replaceCharactersInRange:NSMakeRange(index, 1) withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
+                
+                
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog([error localizedDescription]);
+            }];
+            
+            //UIImage* image = [UIImage imageWithData:imgData];
+//            UIImage* scimage = [self resizeImage:image];
+//            NSLog(@"%f, %f",image.size.height,image.size.width);
+            
+//            NSTextAttachment *textAttachment = [NSTextAttachment new];
+//            
+//            textAttachment.image = scimage;
+//            
+//            
+//            [_parsedOutput appendAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
+//            [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             return;
         }
         
@@ -196,11 +221,66 @@
             [self recursiveFormat:n];
         }
         
-        if([[el tagName] isEqualToString:@"p"]){
+        if([[el tagName] isEqualToString:@"p"] || [[[el tagName] substringToIndex:1] isEqualToString:@"h"]){
             [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
         }
         
     }
+}
+
+-(UIImage*)resizeImage:(UIImage*)imageToResize size:(CGSize)newSize{
+    CGFloat height = imageToResize.size.height;
+    CGFloat width = imageToResize.size.width;
+    
+    if( width <= self.textContainerWidth ){ // to small to resize
+        return imageToResize;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+    [imageToResize drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+    
+}
+
+-(CGSize)newSize:(CGFloat)width height:(CGFloat)height{
+    if( width <= self.textContainerWidth ){ // to small to resize
+        return CGSizeMake(width, height);
+    }
+    
+    CGFloat newWidth = self.textContainerWidth;
+    CGFloat ar = width/height;
+    CGFloat newHeight = newWidth/ar;
+    
+    return CGSizeMake(newWidth, newHeight);
+    
+}
+
+-(CGSize)sizeFromElement:(HTMLElement*)el{
+    NSString* widthString = el.attributes[@"width"];
+    NSString* heightString = el.attributes[@"height"];
+    
+    if(widthString == nil || heightString == nil){
+        return CGSizeZero;
+    }
+    
+    CGFloat width = [widthString floatValue];
+    CGFloat height = [heightString floatValue];
+    
+    return [self newSize:width height:height];
+}
+
+-(UIImage*)generatePlaceholderImage:(CGSize)size{
+    UIGraphicsBeginImageContextWithOptions(size, false, 0.0);
+    
+    UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, size.width, size.height)];
+    [[UIColor colorWithWhite:0.9 alpha:1.0] setFill];
+    [path fill];
+    
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 

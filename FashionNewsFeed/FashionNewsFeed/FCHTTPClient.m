@@ -40,6 +40,10 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
     dispatch_once(&oncePredicate, ^{
         _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kFCollectionBaseURLString]];
         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        
+        
+        
+        
     });
     return _sharedClient;
 }
@@ -49,9 +53,34 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
     if (!self) {
         return nil;
     }
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFImageResponseSerializer* noScalingImageSerializer = [AFImageResponseSerializer serializer];
+    noScalingImageSerializer.imageScale = 1.0;
+    
+    self.responseSerializer = [AFCompoundResponseSerializer compoundSerializerWithResponseSerializers:@[[AFJSONResponseSerializer serializer],noScalingImageSerializer]];
     self.requestSerializer = [AFJSONRequestSerializer serializer];
     return self;
+}
+
+- (void)getImageWithURL:(NSURL*)url
+                success:(void (^)(NSURLSessionDataTask *task, UIImage* responseObject))success
+                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
+    
+    
+    
+    
+    [self GET:[url absoluteString] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        UIImage* image = responseObject;
+        
+        success(task,image);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task,error);
+    }];
+    
+    
+    
+    
 }
 
 - (void)getCategories:(void (^)(NSURLSessionDataTask *task, id responseObject))success
@@ -137,4 +166,13 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
     }];
 }
 
+-(void)cancelAllOperations{
+    
+    
+    for (NSURLSessionTask *task in self.tasks) {
+        [task cancel];
+    }
+    
+    
+}
 @end

@@ -52,6 +52,11 @@
     [_articleView buildFrames];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[FashionCollectionAPI sharedInstance] cancelAllOperations];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

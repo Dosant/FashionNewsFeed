@@ -11,7 +11,7 @@
 
 @interface FashionCollectionAPI () {
     FCHTTPClient *httpClient;
-    PersistencyManager *manager;
+    PersistencyManager *persistencyManager;
 }
 @end
 
@@ -30,28 +30,35 @@
 - (id)init {
     self = [super init];
     if (self) {
-        httpClient = [[FCHTTPClient alloc] init];
-        manager = [[PersistencyManager alloc] init];
+        httpClient = [FCHTTPClient sharedClient];
+        persistencyManager = [[PersistencyManager alloc] init];
     }
     return self;
 }
 
-- (UIImage *)getImageForRequest:(NSURLRequest *)request {
+
+
+-(void)getImageWithUrl:(NSURL*)url
+               success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
+               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
+    //TODO: ask if image with url is already in cache
     
-    if (![manager getImageForRequest:request]) {
+    UIImage* cachedImaged = [persistencyManager getImageForUrl:url];
+    
+    if (cachedImaged == nil) {
+        [httpClient getImageWithURL:url success:
+         ^(NSURLSessionDataTask *task, UIImage* image) {
+             [persistencyManager cacheImage:image forURL:url];
+             success(task, image);
+         }failure:failure];
         
-        //get from http
     } else {
-        
-        return [manager getImageForRequest:request];
+        NSLog(@"cashed image for url: %@",[url absoluteString]);
+        success(nil,cachedImaged);
     }
-    return nil;
 }
 
-- (void)cacheImage:(UIImage *)image forRequest:(NSURLRequest *)request {
-    
-    [manager cacheImage:image forRequest:request];
-}
+
 
 - (NSMutableArray *)processResponse:(id)responseObject {
     NSMutableArray *responses = [[NSMutableArray alloc] init];
@@ -296,6 +303,10 @@
     FCCategory *cat3 = [[FCCategory alloc] initCategoryWithId:2 andName:@"События" andTitle:@"События" andCount:nil andLink:nil andMeta:nil];
     FCCategory *cat4 = [[FCCategory alloc] initCategoryWithId:3 andName:@"Beauty Box" andTitle:@"Beauty Box" andCount:nil andLink:nil andMeta:nil];
     return @[cat1, cat2, cat3, cat4];
+}
+
+- (void)cancelAllOperations{
+    [httpClient cancelAllOperations];
 }
 
 @end

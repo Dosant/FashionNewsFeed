@@ -23,6 +23,7 @@
         
         [self setHtmlStringWithPostContent:htmlString];
         MarkdownParser* parser = [[MarkdownParser alloc] init];
+        parser.textContainerWidth = self.bounds.size.width - 16;
         _content = [parser parseMarkdownHtmlString:_htmlString];
         
     }

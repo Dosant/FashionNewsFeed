@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <HTMLReader/HTMLReader.h>
+#import "FashionCollectionAPI.h"
 
 @interface MarkdownParser : NSObject
+
+@property (nonatomic,assign) CGFloat textContainerWidth;
 
 -(NSAttributedString*) parseMarkdownHtmlString:(NSString*)htmlString;
 

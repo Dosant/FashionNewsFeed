@@ -32,12 +32,12 @@
 
 #pragma mark - get from Data
 
-- (UIImage *)getImageForRequest:(NSURLRequest *)request {
+- (UIImage *)getImageForUrl:(NSURL *)url {
     
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *description = [NSEntityDescription entityForName:@"DataImage"
                                                    inManagedObjectContext:self.managedObjectContext];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url = %@", [[request URL] absoluteString]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url = %@", [url absoluteString]];
     
     [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:description];
@@ -214,12 +214,12 @@
 
 # pragma mark set to Data
 
-- (void)cacheImage:(UIImage *)image forRequest:(NSURLRequest *)request {
+- (void)cacheImage:(UIImage *)image forURL:(NSURL *)url {
     
     DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
                                                            inManagedObjectContext: self.managedObjectContext];
     
-    dataImage.url = [[request URL] absoluteString];
+    dataImage.url = [url absoluteString];
     dataImage.image = UIImageJPEGRepresentation(image, 0.0);
     
     [self saveContext];
