@@ -72,9 +72,9 @@
                   forControlEvents:UIControlEventValueChanged];
 
     
-    
-    [self tableView].estimatedRowHeight = 300;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 250;
+    
     
     
     [self loadMorePostsFromPage:1];
@@ -92,8 +92,6 @@
 
 
 -(void)reloadPosts{
-    
-    [postsToPresent removeAllObjects];
     [self loadMorePostsFromPage:1];
     
 }
@@ -116,12 +114,14 @@
          
          
         if (postsToPresent != nil){
+            
+            if(page == 1){ // reload
+                [postsToPresent removeAllObjects];
+            }
+            
             [postsToPresent addObjectsFromArray:posts];
         } else {
-            
             postsToPresent = [NSMutableArray arrayWithArray:posts];
-            
-            
         }
         if (!postsLoaded){
             postsLoaded = YES;
@@ -132,6 +132,8 @@
          
         newPostsAreLoading = false;
         [self.refreshControl endRefreshing];
+         
+         //TODO
         [self.tableView reloadData];
         
      
@@ -221,10 +223,11 @@
         
         
         cell.FCCellFeaturedImage.image = nil;
-        [cell.FCCellFeaturedImage setImageWithURL:featuredImage.imageSource];
+        
         cell.FCCellDate.text = date.timeAgoSinceNow;
         cell.FCCellCategory.text = post.getCategoriesString;
         
+        [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
         
         
         return cell;
@@ -241,9 +244,11 @@
         
         
         cell.FCCellFeaturedImage.image = nil;
-        [cell.FCCellFeaturedImage setImageWithURL:featuredImage.imageSource];
+        
         cell.FCCellDate.text = date.timeAgoSinceNow;
         cell.FCCellCategory.text = post.getCategoriesString;
+        
+        [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
         
         
         
@@ -261,9 +266,11 @@
         
         
         cell.FCCellFeaturedImage.image = nil;
-        [cell.FCCellFeaturedImage setImageWithURL:featuredImage.imageSource];
+        
         cell.FCCellDate.text = date.timeAgoSinceNow;
         cell.FCCellCategory.text = post.getCategoriesString;
+        
+        [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
         
         
         
@@ -274,21 +281,6 @@
         
     }
     
-    
-    
-    
-    
-    
-   // cell.FCCellFeaturedImage.image = post.postFeaturedImage;
-    
-    
-    
-    
-    
-    
-    
-    
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -308,9 +300,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    
     
     cell.layer.shadowColor = [[UIColor blackColor]CGColor];
     cell.layer.shadowOffset = CGSizeMake(0, 0.25);
@@ -332,31 +321,6 @@
     cell.imageView.image = nil;
 }
 
-/*
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
-    FCFeaturedImage* featuredImage =  post.postFeaturedImage;
-
-    //NSLog(@"aspect = %f for indexPath, %d",featuredImage.imageAspectRatio, indexPath.row);
-    
-    if(featuredImage.imageWidth < 200){ // image is too small
-        return 120;
-    }
-    
-    if (featuredImage.imageAspectRatio < 0.7){
-        
-        return 250; // width >> height
-    } else { /// width == height
-        return 360;
-        
-    }
- 
-    
-    
-}*/
-
-
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -376,7 +340,23 @@
 }
 
 
-#pragma mark - preparingContent
+-(void)downloadImageToUIImageView:(UIImageView*)imageView
+                         imageURL:(NSURL*)imageURL{
+    
+    [[FashionCollectionAPI sharedInstance] getImageWithUrl:imageURL success:^(NSURLSessionDataTask *task, UIImage *image) {
+        imageView.alpha = 0.0;
+        imageView.image = image;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            imageView.alpha = 1.0;
+        }];
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog([error localizedDescription]);
+              }];
+    
+}
 
 
 

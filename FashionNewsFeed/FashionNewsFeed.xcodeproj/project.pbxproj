@@ -23,6 +23,7 @@
 		832922801AEBB57600FE6761 /* FCTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */; };
 		832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */; };
 		832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A8C1ACA922900D34619 /* NewsContentContoller.m */; };
+		835147451B0246CE007D4F51 /* MarkdownImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 835147441B0246CE007D4F51 /* MarkdownImage.m */; };
 		8362508F1AC5E39400370340 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8362508E1AC5E39400370340 /* main.m */; };
 		836250921AC5E39400370340 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250911AC5E39400370340 /* AppDelegate.m */; };
 		836250951AC5E39400370340 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250941AC5E39400370340 /* MainViewController.m */; };
@@ -120,6 +121,8 @@
 		832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarMenuTableViewContoller.m; sourceTree = "<group>"; };
 		832B3A8B1ACA922900D34619 /* NewsContentContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentContoller.h; sourceTree = "<group>"; };
 		832B3A8C1ACA922900D34619 /* NewsContentContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentContoller.m; sourceTree = "<group>"; };
+		835147431B0246CE007D4F51 /* MarkdownImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkdownImage.h; sourceTree = "<group>"; };
+		835147441B0246CE007D4F51 /* MarkdownImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkdownImage.m; sourceTree = "<group>"; };
 		836250891AC5E39400370340 /* FashionNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8362508D1AC5E39400370340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8362508E1AC5E39400370340 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -296,6 +299,17 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		835147421B024659007D4F51 /* Markdown */ = {
+			isa = PBXGroup;
+			children = (
+				83C2B5A41AFC0573009B1E08 /* MarkdownParser.h */,
+				83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */,
+				835147431B0246CE007D4F51 /* MarkdownImage.h */,
+				835147441B0246CE007D4F51 /* MarkdownImage.m */,
+			);
+			name = Markdown;
+			sourceTree = "<group>";
+		};
 		836250801AC5E39400370340 = {
 			isa = PBXGroup;
 			children = (
@@ -335,8 +349,7 @@
 		8362508C1AC5E39400370340 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				83C2B5A41AFC0573009B1E08 /* MarkdownParser.h */,
-				83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */,
+				835147421B024659007D4F51 /* Markdown */,
 				83BFF22D1AFA9C2D0077C3E1 /* fonts */,
 				83AC6B801AC7E186001544A6 /* SWRevealViewController */,
 				8362509B1AC5E39400370340 /* LaunchScreen.xib */,
@@ -673,6 +686,7 @@
 				2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */,
 				838A21261AF2697700BDC838 /* FCTableViewCell4.m in Sources */,
 				832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */,
+				835147451B0246CE007D4F51 /* MarkdownImage.m in Sources */,
 				2A2B634D1ADD9FB7004C6CCB /* FCResponseDeserializer.m in Sources */,
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
 				2A88DA731AD32393007A618C /* FCTerms.m in Sources */,

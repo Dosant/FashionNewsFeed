@@ -10,7 +10,7 @@
 #import <HTMLReader/HTMLReader.h>
 #import "MarkdownParser.h"
 
-@interface ArticleView : UIView
+@interface ArticleView : UIView <MarkdownParserDelegate>
 
 -(instancetype)initWithFrame:(CGRect)frame htmlString:(NSString*)htmlString;
 

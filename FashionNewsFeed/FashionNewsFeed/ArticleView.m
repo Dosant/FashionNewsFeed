@@ -11,9 +11,16 @@
 @implementation ArticleView{
     
     NSLayoutManager *_layoutManager;
-    NSString* _htmlString;
+    UITextView* _textView;
+    NSTextStorage* _textStorage;
     
-    NSAttributedString* _content;
+    MarkdownParser* _parser;
+    
+    
+    NSString* _htmlString;
+    NSMutableAttributedString* _content;
+    
+    CGFloat contentWidth;
     
 }
 
@@ -21,10 +28,17 @@
     self = [super initWithFrame:frame];
     if (self){
         
+        contentWidth = self.bounds.size.width - 5;
+        
         [self setHtmlStringWithPostContent:htmlString];
-        MarkdownParser* parser = [[MarkdownParser alloc] init];
-        parser.textContainerWidth = self.bounds.size.width - 16;
-        _content = [parser parseMarkdownHtmlString:_htmlString];
+        
+        _parser = [[MarkdownParser alloc] init];
+        
+        _parser.textContainerWidth = contentWidth;
+        _parser.delegate = self;
+        
+        NSLog(@"ContentInit");
+        _content = [_parser parseMarkdownHtmlString:_htmlString];
         
     }
     
@@ -33,20 +47,22 @@
 }
 
 -(void)buildFrames{
-    NSTextStorage *textStorage = [[NSTextStorage alloc] init];
-    [textStorage setAttributedString:_content];
+     _textStorage = [[NSTextStorage alloc] init];
+    [_textStorage setAttributedString:_content];
     _layoutManager = [[NSLayoutManager alloc] init];
-    [textStorage addLayoutManager:_layoutManager];
     
-    NSTextContainer *textcontainer = [[NSTextContainer alloc] initWithSize:CGSizeMake(self.bounds.size.width - 16, FLT_MAX)];
+    [_textStorage addLayoutManager:_layoutManager];
+    
+    NSTextContainer *textcontainer = [[NSTextContainer alloc] initWithSize:CGSizeMake(contentWidth, FLT_MAX)];
     [_layoutManager addTextContainer:textcontainer];
     
-    UITextView* textView = [[UITextView alloc] initWithFrame:CGRectMake(8, 0, self.bounds.size.width - 16, self.bounds.size.height) textContainer:textcontainer];
-    textView.scrollEnabled = true;
-    textView.editable = false;
-    textView.showsVerticalScrollIndicator = false;
-    [self addSubview:textView];
+    _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, contentWidth, self.bounds.size.height) textContainer:textcontainer];
+    _textView.scrollEnabled = true;
+    _textView.editable = false;
+    _textView.showsVerticalScrollIndicator = false;
+    [self addSubview:_textView];
     
+    [_parser downloadImagesToAttribtutedString];
     
 }
 
@@ -58,6 +74,15 @@
     [htmlString appendString:@"</body></html>"];
     
     _htmlString = htmlString;
+    
+}
+
+#pragma mark -MarkdownParserDelegate
+
+- (void)markdownParserImageDownloaded:(MarkdownParser *)parser withTextAttachemnt:(NSTextAttachment*)textAttachment
+                            WithRange:(NSRange)range{
+    
+    [_textStorage replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
     
 }
 

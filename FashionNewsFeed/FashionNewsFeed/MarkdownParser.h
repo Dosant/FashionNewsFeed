@@ -9,11 +9,28 @@
 #import <UIKit/UIKit.h>
 #import <HTMLReader/HTMLReader.h>
 #import "FashionCollectionAPI.h"
+#import "MarkdownImage.h"
+
+@class MarkdownParser;
+
+@protocol MarkdownParserDelegate <NSObject>
+
+@required
+
+- (void)markdownParserImageDownloaded:(MarkdownParser *)parser withTextAttachemnt:(NSTextAttachment*)textAttachment
+                            WithRange:(NSRange)range;
+
+
+
+@end
+
 
 @interface MarkdownParser : NSObject
 
+@property (nonatomic, weak) id <MarkdownParserDelegate> delegate;
 @property (nonatomic,assign) CGFloat textContainerWidth;
 
--(NSAttributedString*) parseMarkdownHtmlString:(NSString*)htmlString;
+-(NSMutableAttributedString*) parseMarkdownHtmlString:(NSString*)htmlString;
+-(void)downloadImagesToAttribtutedString;
 
 @end

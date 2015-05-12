@@ -58,6 +58,7 @@ static NSString *const kFCollectionBaseURLString = @"http://fcollection.by/wp-js
     
     self.responseSerializer = [AFCompoundResponseSerializer compoundSerializerWithResponseSerializers:@[[AFJSONResponseSerializer serializer],noScalingImageSerializer]];
     self.requestSerializer = [AFJSONRequestSerializer serializer];
+    
     return self;
 }
 
