@@ -16,6 +16,8 @@
 
 @interface PersistencyManager ()
 
+@property (strong, nonatomic) NSUserDefaults *counter;
+
 @end
 
 @implementation PersistencyManager
@@ -25,7 +27,6 @@
     self = [super init];
     if (self)
     {
-        
     }
     return self;
 }
@@ -216,11 +217,70 @@
 
 - (void)cacheImage:(UIImage *)image forURL:(NSURL *)url {
     
-    DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
-                                                           inManagedObjectContext: self.managedObjectContext];
+    self.counter = [NSUserDefaults standardUserDefaults];
     
-    dataImage.url = [url absoluteString];
-    dataImage.image = UIImageJPEGRepresentation(image, 1.0);
+    int num = [self.counter integerForKey:@"counter"];
+    
+    if (!num) {
+        
+        [self.counter setInteger:1 forKey:@"counter"];
+        
+        DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
+                                                             inManagedObjectContext: self.managedObjectContext];
+        
+        dataImage.url = [url absoluteString];
+        dataImage.image = UIImageJPEGRepresentation(image, 1.0);
+        
+        NSLog(@"Save image, number %d", num);
+    } else {
+        
+        if (num > 140) {
+            
+            NSFetchRequest* request = [[NSFetchRequest alloc] init];
+            
+            NSEntityDescription* description =
+            [NSEntityDescription entityForName:@"DataImage"
+                        inManagedObjectContext:self.managedObjectContext];
+            
+            [request setEntity:description];
+            
+            NSError* requestError = nil;
+            NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+            
+            if (requestError) {
+                NSLog(@"%@", [requestError localizedDescription]);
+            }
+            
+            for (id object in resultArray) {
+                [self.managedObjectContext deleteObject:object];
+            }
+            
+            [self.managedObjectContext save:nil];
+            
+            [self.counter setInteger:1 forKey:@"counter"];
+            
+            DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
+                                                                 inManagedObjectContext: self.managedObjectContext];
+            
+            dataImage.url = [url absoluteString];
+            dataImage.image = UIImageJPEGRepresentation(image, 1.0);
+            
+            NSLog(@"Save image, number %d", num);
+            
+        } else {
+            
+            num++;
+            [self.counter setInteger:num forKey:@"counter"];
+            
+            DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
+                                                                 inManagedObjectContext: self.managedObjectContext];
+            
+            dataImage.url = [url absoluteString];
+            dataImage.image = UIImageJPEGRepresentation(image, 1.0);
+            
+            NSLog(@"Save image, number %d", num);
+        }
+    }
     
     [self saveContext];
 }

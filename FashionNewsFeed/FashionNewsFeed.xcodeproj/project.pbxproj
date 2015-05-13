@@ -70,13 +70,13 @@
 		83C2B5A61AFC0573009B1E08 /* MarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */; };
 		83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */; };
 		8505FBD5CEFF5EE843A393DD /* libPods-FashionNewsFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */; };
+		860F83371B02933100FDEE74 /* DataImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 860F83361B02933100FDEE74 /* DataImage.m */; };
 		8615566D1AE82F5D0060EAB2 /* DataCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8615566C1AE82F5D0060EAB2 /* DataCategory.m */; };
 		861556701AE82F5E0060EAB2 /* DataPostTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8615566F1AE82F5E0060EAB2 /* DataPostTag.m */; };
 		861556731AE82F5E0060EAB2 /* DataTerms.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556721AE82F5E0060EAB2 /* DataTerms.m */; };
 		861556761AE82F5E0060EAB2 /* DataPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556751AE82F5E0060EAB2 /* DataPost.m */; };
 		861556791AE82F5E0060EAB2 /* DataAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 861556781AE82F5E0060EAB2 /* DataAuthor.m */; };
 		868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868C1E161AD85F4700AEEBFF /* coreData.xcdatamodeld */; };
-		869798F41AF36FDE00AB44F1 /* DataImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 869798F31AF36FDE00AB44F1 /* DataImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +187,8 @@
 		83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkdownParser.m; sourceTree = "<group>"; };
 		83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarWithBottomStroke.h; sourceTree = "<group>"; };
 		83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarWithBottomStroke.m; sourceTree = "<group>"; };
+		860F83351B02933100FDEE74 /* DataImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataImage.h; path = Data/DataImage.h; sourceTree = "<group>"; };
+		860F83361B02933100FDEE74 /* DataImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataImage.m; path = Data/DataImage.m; sourceTree = "<group>"; };
 		8615566B1AE82F5D0060EAB2 /* DataCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCategory.h; path = Data/DataCategory.h; sourceTree = "<group>"; };
 		8615566C1AE82F5D0060EAB2 /* DataCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCategory.m; path = Data/DataCategory.m; sourceTree = "<group>"; };
 		8615566E1AE82F5E0060EAB2 /* DataPostTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataPostTag.h; path = Data/DataPostTag.h; sourceTree = "<group>"; };
@@ -199,8 +201,6 @@
 		861556781AE82F5E0060EAB2 /* DataAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAuthor.m; path = Data/DataAuthor.m; sourceTree = "<group>"; };
 		866336C21AD85C02003CE4DC /* FCTableViewCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCTableViewCell1.h; path = View/FCTableViewCell1.h; sourceTree = "<group>"; };
 		868C1E171AD85F4700AEEBFF /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
-		869798F21AF36FDE00AB44F1 /* DataImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataImage.h; path = Data/DataImage.h; sourceTree = "<group>"; };
-		869798F31AF36FDE00AB44F1 /* DataImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataImage.m; path = Data/DataImage.m; sourceTree = "<group>"; };
 		9FDD1CC86E81D5154F3E3DAF /* libPods-FashionNewsFeedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A805F0CB9ED6D9B769622224 /* Pods-FashionNewsFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeedTests/Pods-FashionNewsFeedTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -451,8 +451,8 @@
 				8615566F1AE82F5E0060EAB2 /* DataPostTag.m */,
 				8615566B1AE82F5D0060EAB2 /* DataCategory.h */,
 				8615566C1AE82F5D0060EAB2 /* DataCategory.m */,
-				869798F21AF36FDE00AB44F1 /* DataImage.h */,
-				869798F31AF36FDE00AB44F1 /* DataImage.m */,
+				860F83351B02933100FDEE74 /* DataImage.h */,
+				860F83361B02933100FDEE74 /* DataImage.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -530,6 +530,7 @@
 				TargetAttributes = {
 					836250881AC5E39400370340 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = WG58VW2S68;
 					};
 					836250A11AC5E39400370340 = {
 						CreatedOnToolsVersion = 6.2;
@@ -691,7 +692,6 @@
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
 				2A88DA731AD32393007A618C /* FCTerms.m in Sources */,
 				83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */,
-				869798F41AF36FDE00AB44F1 /* DataImage.m in Sources */,
 				836B8A091AE4CC6A002A37D2 /* newsFeaturedImageView.m in Sources */,
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
 				83C2B5A61AFC0573009B1E08 /* MarkdownParser.m in Sources */,
@@ -706,6 +706,7 @@
 				861556701AE82F5E0060EAB2 /* DataPostTag.m in Sources */,
 				868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */,
 				2A88DA701AD3237B007A618C /* FCAttachmentMeta.m in Sources */,
+				860F83371B02933100FDEE74 /* DataImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,8 +833,9 @@
 			baseConfigurationReference = 7F1612489324A6B0BE012158 /* Pods-FashionNewsFeed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -844,8 +846,9 @@
 			baseConfigurationReference = 11172E0DC9B8ACB18D45F871 /* Pods-FashionNewsFeed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
