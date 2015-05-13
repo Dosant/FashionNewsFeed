@@ -26,7 +26,7 @@
 
 //Method set post to Core Data
 - (void)cacheImage:(UIImage *)image forURL:(NSURL*)url;
-- (void)setToDataPost:(FCPost *)post;
+- (void)setToDataPosts:(NSArray *)post;
 
 //Other
 - (void)deleteAllObjects;

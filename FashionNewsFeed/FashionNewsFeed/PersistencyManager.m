@@ -17,6 +17,7 @@
 @interface PersistencyManager ()
 
 @property (strong, nonatomic) NSUserDefaults *counter;
+@property (strong, nonatomic) NSUserDefaults *postCounter;
 
 @end
 
@@ -27,6 +28,7 @@
     self = [super init];
     if (self)
     {
+        
     }
     return self;
 }
@@ -236,26 +238,7 @@
         
         if (num > 140) {
             
-            NSFetchRequest* request = [[NSFetchRequest alloc] init];
-            
-            NSEntityDescription* description =
-            [NSEntityDescription entityForName:@"DataImage"
-                        inManagedObjectContext:self.managedObjectContext];
-            
-            [request setEntity:description];
-            
-            NSError* requestError = nil;
-            NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
-            
-            if (requestError) {
-                NSLog(@"%@", [requestError localizedDescription]);
-            }
-            
-            for (id object in resultArray) {
-                [self.managedObjectContext deleteObject:object];
-            }
-            
-            [self.managedObjectContext save:nil];
+            [self deleteImages];
             
             [self.counter setInteger:1 forKey:@"counter"];
             
@@ -285,7 +268,48 @@
     [self saveContext];
 }
 
-- (void) setToDataPost:(FCPost *)post {
+- (void) setToDataPost:(NSArray *)posts {
+    
+    self.postCounter = [NSUserDefaults standardUserDefaults];
+    
+    int num = [self.counter integerForKey:@"postCounter"];
+    
+    if (!num) {
+        
+        [self.counter setInteger:1 forKey:@"postCounter"];
+        
+        for (FCPost *post in posts) {
+            
+            [self cachePost:post];
+        }
+        
+    } else {
+        
+        if (num > 20) {
+            
+            [self deletePosts];
+            
+            [self.counter setInteger:1 forKey:@"postCounter"];
+            
+            for (FCPost *post in posts) {
+                
+                [self cachePost:post];
+            }
+        } else {
+            
+            num++;
+            
+            [self.counter setInteger:num forKey:@"postCounter"];
+            
+            for (FCPost *post in posts) {
+                
+                [self cachePost:post];
+            }
+        }
+    }
+}
+
+- (void)cachePost:(FCPost *)post {
     
     DataAuthor *dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
                                                            inManagedObjectContext: self.managedObjectContext];
@@ -300,12 +324,12 @@
     
     NSMutableArray *postTags = [NSMutableArray array];
     NSMutableArray *categories = [NSMutableArray array];
-
+    
     for (FCPostTag *obj in post.postTerms.termsPostTag) {
         
         DataPostTag *dataPostTag = [NSEntityDescription insertNewObjectForEntityForName:@"DataPostTag"
-                                                     inManagedObjectContext: self.managedObjectContext];
-    
+                                                                 inManagedObjectContext: self.managedObjectContext];
+        
         dataPostTag.postTagCount   = [NSNumber numberWithInteger: obj.postTagCount];
         dataPostTag.postTagId      = [NSNumber numberWithInteger: obj.postTagId];
         dataPostTag.postTagLink    = [obj.postTagLink absoluteString];
@@ -316,10 +340,10 @@
     }
     
     for (FCCategory *obj in post.postTerms.termsCategory) {
-    
+        
         DataCategory *dataCategory = [NSEntityDescription insertNewObjectForEntityForName:@"DataCategory"
-                                                      inManagedObjectContext: self.managedObjectContext];
-    
+                                                                   inManagedObjectContext: self.managedObjectContext];
+        
         dataCategory.categoryCount = [NSNumber numberWithInteger: obj.categoryCount];
         dataCategory.categoryId    = [NSNumber numberWithInteger: obj.categoryId];
         dataCategory.categoryTitle = obj.categoryTitle;
@@ -335,9 +359,9 @@
     dataTerms.postTags = [NSSet setWithArray: postTags];
     dataTerms.categories = [NSSet setWithArray:categories];
     [self saveContext];
-
+    
     DataPost *dataPost      = [NSEntityDescription insertNewObjectForEntityForName:@"DataPost"
-                                                  inManagedObjectContext: self.managedObjectContext];
+                                                            inManagedObjectContext: self.managedObjectContext];
     
     dataPost.postContent       = post.postContent;
     dataPost.postDate          = post.postDate;
@@ -349,6 +373,7 @@
     dataPost.author            = dataAuthor;
     dataPost.term              = dataTerms;
     [self saveContext];
+    
 }
 
 #pragma mark - Core Data Stack
@@ -448,6 +473,52 @@
     for (id object in resultArray) {
         [self.managedObjectContext deleteObject:object];
     }
+    [self.managedObjectContext save:nil];
+}
+
+- (void) deletePosts {
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataPost"
+                inManagedObjectContext:self.managedObjectContext];
+    
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (id object in resultArray) {
+        [self.managedObjectContext deleteObject:object];
+    }
+    
+    [self.managedObjectContext save:nil];
+}
+
+- (void) deleteImages {
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataImage"
+                inManagedObjectContext:self.managedObjectContext];
+    
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (id object in resultArray) {
+        [self.managedObjectContext deleteObject:object];
+    }
+    
     [self.managedObjectContext save:nil];
 }
 
