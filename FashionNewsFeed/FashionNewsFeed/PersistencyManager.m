@@ -218,6 +218,81 @@
     return posts;
 }
 
+- (NSArray *)getPostsOnPageNumber:(NSUInteger)pageNumber {
+    
+    NSMutableArray *posts = [NSMutableArray array];
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
+                                                   inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
+    
+    request.fetchOffset = pageNumber * 7;
+    request.fetchLimit = 7;
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+        return nil;
+    }
+    
+    NSMutableArray *categories = [NSMutableArray array];
+    NSMutableArray *postTags = [NSMutableArray array];
+    
+    for (DataPost *dataPost in resultArray) {
+                
+        FCAuthor *author = [[FCAuthor alloc] initAuthorWithId:[dataPost.author.authorId integerValue]
+                                                  andUserName:dataPost.author.authorUserName
+                                                 andFirstName:dataPost.author.authorFirstName
+                                                  andLastName:dataPost.author.authorLastName
+                                                  andNickName:dataPost.author.authorNickName
+                                                    andAvatar:nil
+                                                andRegistered:dataPost.author.authorRegistered andMeta:nil];
+        
+        for (DataCategory *dataCategory in dataPost.term.categories) {
+            
+            FCCategory *category = [[FCCategory alloc] initCategoryWithId:[dataCategory.categoryId integerValue]
+                                                                  andName:dataCategory.categoryName
+                                                                 andTitle:dataCategory.categoryTitle
+                                                                 andCount:[dataCategory.categoryCount integerValue]
+                                                                  andLink:[NSURL URLWithString:dataCategory.categoryLink]
+                                                                  andMeta:nil];
+            [categories addObject:category];
+            
+        }
+        
+        for (DataPostTag *dataPostTag in dataPost.term.postTags) {
+            
+            FCPostTag *postTag = [[FCPostTag alloc] initPostTagWithId:[dataPostTag.postTagId integerValue]
+                                                              andName:dataPostTag.postTagName
+                                                             andCount:[dataPostTag.postTagCount integerValue]
+                                                              andLink:[NSURL URLWithString:dataPostTag.postTagLink]
+                                                              andMeta:nil];
+            [postTags addObject:postTag];
+            
+        }
+        
+        FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:postTags andCategory:categories];
+        
+        FCPost *post = [[FCPost alloc] initPostWithId:[dataPost.postId integerValue]
+                                             andTitle:dataPost.postTitle
+                                            andAuthor:author
+                                           andContent:dataPost.postContent
+                                              andLink:[NSURL URLWithString: dataPost.postLink]
+                                              andDate:dataPost.postDate
+                                      andDateModified:dataPost.postDateModified
+                                           andExcerpt:dataPost.postExcerpt
+                                              andMeta:nil
+                                     andFeaturedImage:nil
+                                             andTerms:terms];
+        
+        [posts addObject: post];
+    }
+    return posts;
+    
+}
+
 # pragma mark set to Data
 
 - (void)cacheImage:(UIImage *)image forURL:(NSURL *)url {
@@ -299,7 +374,7 @@
     
     } else {
         
-        if (num > 20) {
+        if (num > 27) {
             
             [self deletePosts];
             
@@ -373,6 +448,8 @@
         dataCategory.categoryTitle = obj.categoryTitle;
         dataCategory.categoryLink  = [obj.categoryLink absoluteString];
         dataCategory.categoryName  = obj.categoryName;
+        
+        NSLog(@"%@", dataCategory.categoryName);
         
         [categories addObject:dataCategory];
         [self saveContext];

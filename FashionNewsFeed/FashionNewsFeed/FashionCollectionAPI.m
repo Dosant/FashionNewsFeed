@@ -36,11 +36,25 @@
     return self;
 }
 
+//CORE DATA
+
 - (void)cachePosts:(NSArray *)posts {
     
     [persistencyManager setToDataPosts:posts];
 }
 
+
+- (NSArray *)getPostsFromDataByCategory:(NSString *)category onPage:(NSUInteger)pageNumber {
+    
+    return [persistencyManager getPostsByCategory:category pageNumber:pageNumber];
+}
+
+- (NSArray *)getLatestPostsFromDataOnPage:(NSUInteger)pageNumber {
+    
+    return [persistencyManager getPostsOnPageNumber:pageNumber];
+}
+
+///////
 
 -(void)getImageWithUrl:(NSURL*)url
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success

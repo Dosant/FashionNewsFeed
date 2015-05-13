@@ -11,8 +11,13 @@
 
 + (FashionCollectionAPI *)sharedInstance;
 
-- (void)cachePosts:(NSArray *)posts;
+//NEW
 
+- (void)cachePosts:(NSArray *)posts;
+- (NSArray *)getPostsFromDataByCategory:(NSString *)category onPage:(NSUInteger)pageNumber;
+- (NSArray *)getLatestPostsFromDataOnPage:(NSUInteger)pageNumber;
+
+//////
 -(void)getImageWithUrl:(NSURL*)url
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;

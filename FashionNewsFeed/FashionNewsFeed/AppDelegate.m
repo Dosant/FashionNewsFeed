@@ -33,15 +33,6 @@
         NSLog (@"%@: %@", fontFamily, fontNames);
     }
     
-    
-    
-    PersistencyManager *p = [[PersistencyManager alloc] init];
-    [p deleteAllObjects];
-    
-    //NSArray *array = [p getPostsByCategory:@"news" pageNumber:3];
-    
-    //NSLog(@"Length = %d", [array count]);
-    
   return YES;
 }
 
