@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		2A2512751AEEE6A50070A6DA /* FCResponseHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2512741AEEE6A50070A6DA /* FCResponseHeaders.m */; };
-		2A2B634D1ADD9FB7004C6CCB /* FCResponseDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B634C1ADD9FB7004C6CCB /* FCResponseDeserializer.m */; };
 		2A6514A81ADF1F490046BA76 /* FashionCollectionAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6514A71ADF1F490046BA76 /* FashionCollectionAPITests.m */; };
 		2A88DA6A1AD32328007A618C /* FCAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA691AD32328007A618C /* FCAuthor.m */; };
 		2A88DA6D1AD32352007A618C /* FCFeaturedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA6C1AD32352007A618C /* FCFeaturedImage.m */; };
-		2A88DA701AD3237B007A618C /* FCAttachmentMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA6F1AD3237B007A618C /* FCAttachmentMeta.m */; };
 		2A88DA731AD32393007A618C /* FCTerms.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA721AD32393007A618C /* FCTerms.m */; };
 		2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88DA751AD323B7007A618C /* FCPostTag.m */; };
 		2AA8A5431AD5C70600530047 /* FCHTTPClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8A5421AD5C70600530047 /* FCHTTPClientTests.m */; };
 		2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */ = {isa = PBXBuildFile; fileRef = 2AF330C71AD91E5E00E1CB68 /* ExampleContent */; };
 		2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD71711AD46B3300DA1FA2 /* FCCategory.m */; };
 		2AFD71741AD46B3300DA1FA2 /* FCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD71721AD46B3300DA1FA2 /* FCPost.m */; };
+		2DC1528C74FAD05729FC89AA /* NSStringHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1541EA6895D441435FF89 /* NSStringHTML.m */; };
+		2DC157CDB7A10163F1476296 /* NSStringHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1541EA6895D441435FF89 /* NSStringHTML.m */; };
+		2DC159D202C8CAC677EFFD1D /* GTMNSStringHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC15A0C70A934F1AD8A2637 /* GTMNSStringHTML.m */; };
+		2DC15CD3732A1939372B52A6 /* GTMNSStringHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC15A0C70A934F1AD8A2637 /* GTMNSStringHTML.m */; };
 		34B828F12837BAB923F3D16B /* libPods-FashionNewsFeedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FDD1CC86E81D5154F3E3DAF /* libPods-FashionNewsFeedTests.a */; };
 		832922801AEBB57600FE6761 /* FCTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */; };
 		832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */; };
@@ -94,15 +96,11 @@
 		135EB12A5DDD5B6DE7B3FE5A /* Pods-FashionNewsFeedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeedTests/Pods-FashionNewsFeedTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2A2512731AEEE6A50070A6DA /* FCResponseHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCResponseHeaders.h; path = Model/FCResponseHeaders.h; sourceTree = "<group>"; };
 		2A2512741AEEE6A50070A6DA /* FCResponseHeaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCResponseHeaders.m; path = Model/FCResponseHeaders.m; sourceTree = "<group>"; };
-		2A2B634B1ADD9FB7004C6CCB /* FCResponseDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCResponseDeserializer.h; path = "untitled folder/FCResponseDeserializer.h"; sourceTree = "<group>"; };
-		2A2B634C1ADD9FB7004C6CCB /* FCResponseDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCResponseDeserializer.m; path = "untitled folder/FCResponseDeserializer.m"; sourceTree = "<group>"; };
 		2A6514A71ADF1F490046BA76 /* FashionCollectionAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FashionCollectionAPITests.m; sourceTree = "<group>"; };
 		2A88DA681AD32328007A618C /* FCAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCAuthor.h; path = Model/FCAuthor.h; sourceTree = "<group>"; };
 		2A88DA691AD32328007A618C /* FCAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCAuthor.m; path = Model/FCAuthor.m; sourceTree = "<group>"; };
 		2A88DA6B1AD32352007A618C /* FCFeaturedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCFeaturedImage.h; path = Model/FCFeaturedImage.h; sourceTree = "<group>"; };
 		2A88DA6C1AD32352007A618C /* FCFeaturedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCFeaturedImage.m; path = Model/FCFeaturedImage.m; sourceTree = "<group>"; };
-		2A88DA6E1AD3237B007A618C /* FCAttachmentMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCAttachmentMeta.h; path = Model/FCAttachmentMeta.h; sourceTree = "<group>"; };
-		2A88DA6F1AD3237B007A618C /* FCAttachmentMeta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCAttachmentMeta.m; path = Model/FCAttachmentMeta.m; sourceTree = "<group>"; };
 		2A88DA711AD32393007A618C /* FCTerms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCTerms.h; path = Model/FCTerms.h; sourceTree = "<group>"; };
 		2A88DA721AD32393007A618C /* FCTerms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCTerms.m; path = Model/FCTerms.m; sourceTree = "<group>"; };
 		2A88DA741AD323B7007A618C /* FCPostTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCPostTag.h; path = Model/FCPostTag.h; sourceTree = "<group>"; };
@@ -113,6 +111,10 @@
 		2AFD71701AD46B3300DA1FA2 /* FCPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCPost.h; path = Model/FCPost.h; sourceTree = "<group>"; };
 		2AFD71711AD46B3300DA1FA2 /* FCCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCCategory.m; path = Model/FCCategory.m; sourceTree = "<group>"; };
 		2AFD71721AD46B3300DA1FA2 /* FCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCPost.m; path = Model/FCPost.m; sourceTree = "<group>"; };
+		2DC1541EA6895D441435FF89 /* NSStringHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringHTML.m; sourceTree = "<group>"; };
+		2DC156DC67B8E450442B8F10 /* GTMNSStringHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMNSStringHTML.h; sourceTree = "<group>"; };
+		2DC1593D34D80AFA3BB27731 /* NSStringHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringHTML.h; sourceTree = "<group>"; };
+		2DC15A0C70A934F1AD8A2637 /* GTMNSStringHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMNSStringHTML.m; sourceTree = "<group>"; };
 		771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1612489324A6B0BE012158 /* Pods-FashionNewsFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeed/Pods-FashionNewsFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		8329227E1AEBB57600FE6761 /* FCTableViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCTableViewCell2.h; sourceTree = "<group>"; };
@@ -225,6 +227,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DC1567E48CA00FDF9190B37 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1593D34D80AFA3BB27731 /* NSStringHTML.h */,
+				2DC1541EA6895D441435FF89 /* NSStringHTML.m */,
+				2DC156DC67B8E450442B8F10 /* GTMNSStringHTML.h */,
+				2DC15A0C70A934F1AD8A2637 /* GTMNSStringHTML.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		831008DC1ACADC6900270301 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,8 +247,6 @@
 				838A28C91ACBE4AD004F3298 /* PersistencyManager.m */,
 				838A28CB1ACBE4C4004F3298 /* FCHTTPClient.h */,
 				838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */,
-				2A2B634B1ADD9FB7004C6CCB /* FCResponseDeserializer.h */,
-				2A2B634C1ADD9FB7004C6CCB /* FCResponseDeserializer.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -287,8 +298,6 @@
 				2A88DA691AD32328007A618C /* FCAuthor.m */,
 				2A88DA6B1AD32352007A618C /* FCFeaturedImage.h */,
 				2A88DA6C1AD32352007A618C /* FCFeaturedImage.m */,
-				2A88DA6E1AD3237B007A618C /* FCAttachmentMeta.h */,
-				2A88DA6F1AD3237B007A618C /* FCAttachmentMeta.m */,
 				2A88DA711AD32393007A618C /* FCTerms.h */,
 				2A88DA721AD32393007A618C /* FCTerms.m */,
 				2A88DA741AD323B7007A618C /* FCPostTag.h */,
@@ -342,6 +351,7 @@
 				836250901AC5E39400370340 /* AppDelegate.h */,
 				836250911AC5E39400370340 /* AppDelegate.m */,
 				8362508C1AC5E39400370340 /* Supporting Files */,
+				2DC1567E48CA00FDF9190B37 /* Helpers */,
 			);
 			path = FashionNewsFeed;
 			sourceTree = "<group>";
@@ -688,7 +698,6 @@
 				838A21261AF2697700BDC838 /* FCTableViewCell4.m in Sources */,
 				832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */,
 				835147451B0246CE007D4F51 /* MarkdownImage.m in Sources */,
-				2A2B634D1ADD9FB7004C6CCB /* FCResponseDeserializer.m in Sources */,
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
 				2A88DA731AD32393007A618C /* FCTerms.m in Sources */,
 				83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */,
@@ -705,8 +714,9 @@
 				2AFD71741AD46B3300DA1FA2 /* FCPost.m in Sources */,
 				861556701AE82F5E0060EAB2 /* DataPostTag.m in Sources */,
 				868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */,
-				2A88DA701AD3237B007A618C /* FCAttachmentMeta.m in Sources */,
 				860F83371B02933100FDEE74 /* DataImage.m in Sources */,
+				2DC157CDB7A10163F1476296 /* NSStringHTML.m in Sources */,
+				2DC159D202C8CAC677EFFD1D /* GTMNSStringHTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +727,8 @@
 				836250A91AC5E39400370340 /* FashionNewsFeedTests.m in Sources */,
 				2AA8A5431AD5C70600530047 /* FCHTTPClientTests.m in Sources */,
 				2A6514A81ADF1F490046BA76 /* FashionCollectionAPITests.m in Sources */,
+				2DC1528C74FAD05729FC89AA /* NSStringHTML.m in Sources */,
+				2DC15CD3732A1939372B52A6 /* GTMNSStringHTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
