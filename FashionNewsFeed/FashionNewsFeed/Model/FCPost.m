@@ -43,7 +43,7 @@
         self.postId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
         self.postTitle = [[attributes valueForKeyPath:@"title"] stringByConvertingHTMLToPlainText];
         self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"author"]];
-        self.postContent = [attributes valueForKeyPath:@"content"];
+        self.postContent = [[attributes valueForKeyPath:@"content"] stringByConvertingHTMLToPlainText];
 
         NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"link"]];
         self.postLink = url;
@@ -55,7 +55,7 @@
         NSDate *postDateModifiedFromString = [dateFormatter dateFromString:[attributes valueForKeyPath:@"modified"]];
         self.postDateModified = postDateModifiedFromString;
 
-        self.postExcerpt = [attributes valueForKeyPath:@"excerpt"];
+        self.postExcerpt = [[attributes valueForKeyPath:@"excerpt"] stringByConvertingHTMLToPlainText];
 
         NSMutableDictionary *meta = [[NSMutableDictionary alloc] init];
         for (NSString *i in [attributes valueForKeyPath:@"meta"]) {
