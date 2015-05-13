@@ -22,6 +22,17 @@
     [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:4.0 forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:4 forBarMetrics:UIBarMetricsDefault];
     
+    [[UINavigationBar appearance] setTitleTextAttributes:
+    [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"PlayfairDisplay-Regular" size:18], NSFontAttributeName, nil]];
+    
+    NSArray *fontFamilies = [UIFont familyNames];
+    for (int i = 0; i < [fontFamilies count]; i++)
+    {
+        NSString *fontFamily = [fontFamilies objectAtIndex:i];
+        NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
+        NSLog (@"%@: %@", fontFamily, fontNames);
+    }
+    
   return YES;
 }
 

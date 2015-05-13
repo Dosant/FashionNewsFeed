@@ -11,7 +11,7 @@
 
 @interface FashionCollectionAPI () {
     FCHTTPClient *httpClient;
-    PersistencyManager *manager;
+    PersistencyManager *persistencyManager;
 }
 @end
 
@@ -30,28 +30,53 @@
 - (id)init {
     self = [super init];
     if (self) {
-        httpClient = [[FCHTTPClient alloc] init];
-        manager = [[PersistencyManager alloc] init];
+        httpClient = [FCHTTPClient sharedClient];
+        persistencyManager = [[PersistencyManager alloc] init];
     }
     return self;
 }
 
-- (UIImage *)getImageForRequest:(NSURLRequest *)request {
+//CORE DATA
+
+- (void)cachePosts:(NSArray *)posts {
     
-    if (![manager getImageForRequest:request]) {
-        
-        //get from http
-    } else {
-        
-        return [manager getImageForRequest:request];
-    }
-    return nil;
+    [persistencyManager setToDataPosts:posts];
 }
 
-- (void)cacheImage:(UIImage *)image forRequest:(NSURLRequest *)request {
+
+- (NSArray *)getPostsFromDataByCategory:(NSString *)category onPage:(NSUInteger)pageNumber {
     
-    [manager cacheImage:image forRequest:request];
+    return [persistencyManager getPostsByCategory:category pageNumber:pageNumber];
 }
+
+- (NSArray *)getLatestPostsFromDataOnPage:(NSUInteger)pageNumber {
+    
+    return [persistencyManager getPostsOnPageNumber:pageNumber];
+}
+
+///////
+
+-(void)getImageWithUrl:(NSURL*)url
+               success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
+               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
+    //TODO: ask if image with url is already in cache
+    
+    UIImage* cachedImaged = [persistencyManager getImageForUrl:url];
+    
+    if (cachedImaged == nil) {
+        [httpClient getImageWithURL:url success:
+         ^(NSURLSessionDataTask *task, UIImage* image) {
+             [persistencyManager cacheImage:image forURL:url];
+             success(task, image);
+         }failure:failure];
+        
+    } else {
+        NSLog(@"cashed image for url: %@",[url absoluteString]);
+        success(nil,cachedImaged);
+    }
+}
+
+
 
 - (NSMutableArray *)processResponse:(id)responseObject {
     NSMutableArray *responses = [[NSMutableArray alloc] init];
@@ -296,6 +321,10 @@
     FCCategory *cat3 = [[FCCategory alloc] initCategoryWithId:2 andName:@"События" andTitle:@"События" andCount:nil andLink:nil andMeta:nil];
     FCCategory *cat4 = [[FCCategory alloc] initCategoryWithId:3 andName:@"Beauty Box" andTitle:@"Beauty Box" andCount:nil andLink:nil andMeta:nil];
     return @[cat1, cat2, cat3, cat4];
+}
+
+- (void)cancelAllOperations{
+    [httpClient cancelAllOperations];
 }
 
 @end

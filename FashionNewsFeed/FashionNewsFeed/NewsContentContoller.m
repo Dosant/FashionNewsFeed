@@ -8,13 +8,20 @@
 
 #import "NewsContentContoller.h"
 
+#import "ArticleView.h"
+#import <HTMLReader/HTMLReader.h>
+
+
+
 @interface NewsContentContoller ()
 @property (weak, nonatomic) IBOutlet UIWebView *contentView;
 @property (strong,nonatomic) NSString* contentString;
 
 @end
 
-@implementation NewsContentContoller
+@implementation NewsContentContoller{
+    ArticleView* _articleView;
+}
 
 
 
@@ -23,40 +30,42 @@
     NSLog(@"%@",_post.postContent);
     
     
-    NSMutableString *html = [NSMutableString stringWithString: @"<html><head><title></title></head><body\">"];
     
-    //continue building the string
-    [html appendString:[self resizeImages:_post.postContent]];
-    [html appendString:@"</body></html>"];
     
-   
     
-    [self.contentView loadHTMLString:html baseURL:nil];
     
     
     // Do any additional setup after loading the view.
     
     
+    _articleView = [[ArticleView alloc] initWithFrame:CGRectMake(0,50,self.view.frame.size.width,self.view.frame.size.height - 50) htmlString:_post.postContent];
+    _articleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    
+    
+    [self.view addSubview:_articleView];
+    
+    
 }
+
+-(void)viewDidLayoutSubviews{
+    [_articleView buildFrames];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[FashionCollectionAPI sharedInstance] cancelAllOperations];
+}
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(NSString*)resizeImages:(NSString*)htmlString{
-    
-//    NSString* out = [htmlString stringByReplacingOccurrencesOfString:@"400" withString:@"300"];
-//    out = [out stringByReplacingOccurrencesOfString:@"600" withString:@"450"];
-//    out = [out stringByReplacingOccurrencesOfString:@"601" withString:@"450"];
-//    NSLog(out);
-    
-    return htmlString;
-    
-    
-    
-    
-}
 
 /*
 #pragma mark - Navigation
