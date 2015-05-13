@@ -36,6 +36,10 @@
     return self;
 }
 
+- (void)cachePosts:(NSArray *)posts {
+    
+    [persistencyManager setToDataPosts:posts];
+}
 
 
 -(void)getImageWithUrl:(NSURL*)url

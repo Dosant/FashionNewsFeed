@@ -138,13 +138,16 @@
     return nil;
 }
 
-- (NSArray *)getPostByCategory:(NSString *)category {
-    
+- (NSArray *)getPostsByCategory:(NSString *)category pageNumber:(NSUInteger)pageNumber {
+
     NSMutableArray *posts = [NSMutableArray array];
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
                                                    inManagedObjectContext:self.managedObjectContext];
     [request setEntity:description];
+    
+    request.fetchOffset = pageNumber * 7;
+    request.fetchLimit = 7;
     
     NSError* requestError = nil;
     NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
@@ -233,6 +236,8 @@
         dataImage.url = [url absoluteString];
         dataImage.image = UIImageJPEGRepresentation(image, 1.0);
         
+        [self saveContext];
+        
         NSLog(@"Save image, number %d", num);
     } else {
         
@@ -248,6 +253,8 @@
             dataImage.url = [url absoluteString];
             dataImage.image = UIImageJPEGRepresentation(image, 1.0);
             
+            [self saveContext];
+            
             NSLog(@"Save image, number %d", num);
             
         } else {
@@ -261,51 +268,68 @@
             dataImage.url = [url absoluteString];
             dataImage.image = UIImageJPEGRepresentation(image, 1.0);
             
+            [self saveContext];
+            
             NSLog(@"Save image, number %d", num);
         }
     }
-    
-    [self saveContext];
 }
 
-- (void) setToDataPost:(NSArray *)posts {
+- (void) setToDataPosts:(NSArray *)posts {
     
     self.postCounter = [NSUserDefaults standardUserDefaults];
     
-    int num = [self.counter integerForKey:@"postCounter"];
+    int num = 0;
     
-    if (!num) {
-        
-        [self.counter setInteger:1 forKey:@"postCounter"];
-        
+    num = [self.postCounter integerForKey:@"ccc"];
+    
+    if (num == 0) {
+    
         for (FCPost *post in posts) {
             
+            num++;
+            
             [self cachePost:post];
+            
         }
         
+        [self.postCounter setInteger:num forKey:@"ccc"];
+        
+        NSLog(@"NUMBER - %d", num);
+    
     } else {
         
         if (num > 20) {
             
             [self deletePosts];
             
-            [self.counter setInteger:1 forKey:@"postCounter"];
+            num = 0;
             
             for (FCPost *post in posts) {
                 
+                num++;
+                
                 [self cachePost:post];
+                
             }
+            
+            [self.postCounter setInteger:num forKey:@"ccc"];
+            NSLog(@"NUMBER - %d", num);
+            
         } else {
-            
-            num++;
-            
-            [self.counter setInteger:num forKey:@"postCounter"];
-            
+        
             for (FCPost *post in posts) {
                 
+                num++;
+                
                 [self cachePost:post];
+                
             }
+            
+            [self.postCounter setInteger:num forKey:@"ccc"];
+            NSLog(@"NUMBER - %d", num);
         }
+
     }
 }
 

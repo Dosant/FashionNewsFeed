@@ -11,9 +11,7 @@
 
 + (FashionCollectionAPI *)sharedInstance;
 
-
-
-
+- (void)cachePosts:(NSArray *)posts;
 
 -(void)getImageWithUrl:(NSURL*)url
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
