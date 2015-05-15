@@ -208,7 +208,8 @@
             [self recursiveFormat:n];
         }
         
-        if([[el tagName] isEqualToString:@"p"] || [[[el tagName] substringToIndex:1] isEqualToString:@"h"]){
+        if([[el tagName] isEqualToString:@"p"] || [[[el tagName] substringToIndex:1] isEqualToString:@"h"] ||
+           [[el tagName] isEqualToString:@"address"]){
             [_parsedOutput appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
         }
         
@@ -293,6 +294,10 @@
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+-(NSDictionary*)getHeadingTextAttributesOne{
+    return _headingTextAttributesOne;
 }
 
 

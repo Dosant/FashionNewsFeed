@@ -15,6 +15,7 @@
     NSTextStorage* _textStorage;
     
     MarkdownParser* _parser;
+    FCPost* _post;
     
     
     NSString* _htmlString;
@@ -24,13 +25,14 @@
     
 }
 
--(instancetype)initWithFrame:(CGRect)frame htmlString:(NSString*)htmlString{
+-(instancetype)initWithFrame:(CGRect)frame htmlString:(NSString*)htmlString postTitle:(NSString*)postTitle{
     self = [super initWithFrame:frame];
     if (self){
         
         contentWidth = self.bounds.size.width - 8;
         
-        [self setHtmlStringWithPostContent:htmlString];
+        
+        [self setHtmlStringWithPostContent:htmlString postTitle:postTitle];
         
         _parser = [[MarkdownParser alloc] init];
         
@@ -38,7 +40,11 @@
         _parser.delegate = self;
         
         NSLog(@"ContentInit");
+        
+        
+        
         _content = [_parser parseMarkdownHtmlString:_htmlString];
+        
         
     }
     
@@ -67,10 +73,13 @@
     
 }
 
-- (void)setHtmlStringWithPostContent:(NSString*)postContent{
+- (void)setHtmlStringWithPostContent:(NSString*)postContent postTitle:(NSString*)postTitle{
     
     NSMutableString *htmlString = [NSMutableString stringWithString: @"<html><head><title></title></head><body>"];
     //continue building the string
+    [htmlString appendString:@"<h1>"];
+    [htmlString appendString:postTitle];
+    [htmlString appendString:@"</h1>"];
     [htmlString appendString: postContent];
     [htmlString appendString:@"</body></html>"];
     
@@ -87,5 +96,7 @@
     
     
 }
+
+
 
 @end

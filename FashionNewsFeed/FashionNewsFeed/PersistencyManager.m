@@ -354,7 +354,7 @@
     
     self.postCounter = [NSUserDefaults standardUserDefaults];
     
-    int num = 0;
+    NSUInteger num = 0;
     
     num = [self.postCounter integerForKey:@"ccc"];
     

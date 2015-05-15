@@ -21,6 +21,8 @@
 
 @implementation NewsContentContoller{
     ArticleView* _articleView;
+    
+    BOOL isFramesBuilt;
 }
 
 
@@ -29,16 +31,14 @@
     [super viewDidLoad];
     NSLog(@"%@",_post.postContent);
     
-    
-    
-    
-    
+    isFramesBuilt = false;
+    self.title = @"";
     
     
     // Do any additional setup after loading the view.
     
     
-    _articleView = [[ArticleView alloc] initWithFrame:CGRectMake(0,50,self.view.frame.size.width,self.view.frame.size.height - 50) htmlString:_post.postContent];
+    _articleView = [[ArticleView alloc] initWithFrame:CGRectMake(0,50,self.view.frame.size.width,self.view.frame.size.height - 50) htmlString:_post.postContent postTitle:_post.postTitle];
     _articleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     
@@ -46,15 +46,21 @@
     [self.view addSubview:_articleView];
     
     
+    
 }
 
--(void)viewDidLayoutSubviews{
-    [_articleView buildFrames];
-}
+
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[FashionCollectionAPI sharedInstance] cancelAllOperations];
+}
+
+-(void)viewDidLayoutSubviews{
+    if(!isFramesBuilt){
+        [_articleView buildFrames];
+        isFramesBuilt = true;
+    }
 }
 
 

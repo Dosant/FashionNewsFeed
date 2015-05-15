@@ -12,7 +12,7 @@
 
 @interface ArticleView : UIView <MarkdownParserDelegate>
 
--(instancetype)initWithFrame:(CGRect)frame htmlString:(NSString*)htmlString;
+-(instancetype)initWithFrame:(CGRect)frame htmlString:(NSString*)htmlString postTitle:(NSString*)postTitle;
 
 - (void)buildFrames;
 - (void)setHtmlStringWithPostContent:(NSString*)postContent;
