@@ -43,7 +43,7 @@
         self.postId = (NSUInteger) [[attributes valueForKeyPath:@"ID"] integerValue];
         self.postTitle = [[attributes valueForKeyPath:@"title"] stringByConvertingHTMLToPlainText];
         self.postAuthor = [[FCAuthor alloc] initWithAttributes:[attributes valueForKeyPath:@"author"]];
-        self.postContent = [[attributes valueForKeyPath:@"content"] stringByConvertingHTMLToPlainText];
+        self.postContent = [[attributes valueForKeyPath:@"content"] stringByDecodingHTMLEntities];
 
         NSURL *url = [NSURL URLWithString:[attributes valueForKeyPath:@"link"]];
         self.postLink = url;
