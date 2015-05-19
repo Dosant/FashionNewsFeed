@@ -316,10 +316,10 @@
     cell.layer.shadowRadius = 0.2;
     
     
-    if ([postsToPresent count] - 3 <= indexPath.row){
+    if ([postsToPresent count] - 1 <= indexPath.row){
         
-        NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 3)/postsPerPage);
-        [self loadMorePostsFromPage:1 + (indexPath.row + 3)/postsPerPage];
+        NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 1)/postsPerPage);
+        [self loadMorePostsFromPage:1 + (indexPath.row + 1)/postsPerPage];
         
         
     }

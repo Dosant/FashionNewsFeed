@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface menuTableViewCell : UITableViewCell
+@interface MenuTableViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *menuTitle;
 
 @end

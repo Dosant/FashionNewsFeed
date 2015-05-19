@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
-#import "menuTableViewCell.h"
+#import "MenuTableViewCell.h"
 
-@implementation menuTableViewCell
+@implementation MenuTableViewCell
 
 @end
