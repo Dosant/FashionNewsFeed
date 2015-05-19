@@ -12,6 +12,9 @@
             <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
         </mutableArray>
+        <mutableArray key="Mark Simonson - Proxima Nova Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </mutableArray>
         <mutableArray key="PlayfairDisplay-Bold.ttf">
             <string>PlayfairDisplay-Bold</string>
             <string>PlayfairDisplay-Bold</string>
@@ -52,18 +55,47 @@
         <scene sceneID="p4V-BX-SFs">
             <objects>
                 <tableViewController title="SideBarMenu" id="vU3-yI-uyj" customClass="SideBarMenuTableViewContoller" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="100" sectionFooterHeight="22" id="nyn-wm-mzL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="5" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="100" sectionFooterHeight="22" id="nyn-wm-mzL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.72837221622467041" green="0.72849893569946289" blue="0.72836422920227051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexColor" red="0.95186219900000002" green="0.96101472020000001" blue="0.96101472020000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="jEu-J4-BOB">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="50" reuseIdentifier="menuCellHeader" rowHeight="200" id="jEu-J4-BOB">
                                 <rect key="frame" x="0.0" y="100" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jEu-J4-BOB" id="akh-SM-mBU">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="50" reuseIdentifier="menuCell" rowHeight="44" id="3tM-2b-Cvq" customClass="MenuTableViewCell">
+                                <rect key="frame" x="0.0" y="100" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3tM-2b-Cvq" id="Q1b-Fi-Y46">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Новости" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fv-F1-D1E">
+                                            <rect key="frame" x="50" y="11" width="96" height="21"/>
+                                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="menuTitle" destination="8Fv-F1-D1E" id="9XL-05-3yw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -71,10 +103,11 @@
                             <outlet property="delegate" destination="vU3-yI-uyj" id="7AJ-6F-Svc"/>
                         </connections>
                     </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9C-oi-z6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="418.125" y="1167.2535211267605"/>
+            <point key="canvasLocation" x="417.5" y="1166.5"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -213,7 +246,7 @@
                                     <outlet property="FCCellDate" destination="cxY-5v-qBX" id="1h2-B2-APj"/>
                                     <outlet property="FCCellFeaturedImage" destination="dHy-Ok-aMS" id="Wop-KG-HjX"/>
                                     <outlet property="FCCellTitle" destination="bHZ-SO-fji" id="Cej-E3-ela"/>
-                                    <segue destination="WVd-OM-PCO" kind="show" identifier="moveToContent" id="En6-Jd-VVc"/>
+                                    <segue destination="WVd-OM-PCO" kind="show" identifier="moveToContent1" id="En6-Jd-VVc"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell2" rowHeight="260" id="SO9-zi-OMc" userLabel="FCCell1:1.6" customClass="FCTableViewCell2">
@@ -289,6 +322,7 @@
                                     <outlet property="FCCellDate" destination="VBc-Wf-wFy" id="RJ4-Ju-PoF"/>
                                     <outlet property="FCCellFeaturedImage" destination="lrM-kV-ctn" id="MNg-Vi-aYY"/>
                                     <outlet property="FCCellTitle" destination="jQy-PU-EXB" id="q0v-zP-LnM"/>
+                                    <segue destination="WVd-OM-PCO" kind="show" identifier="moveToContent2" id="fja-JX-IAa"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell3" rowHeight="120" id="bJW-rY-Vlf" userLabel="FCCellNoImage" customClass="FCTableViewCell3">
@@ -354,6 +388,7 @@
                                     <outlet property="FCCellCategory" destination="tAn-Nb-ep5" id="WaQ-Md-F6w"/>
                                     <outlet property="FCCellDate" destination="1iC-q8-lGl" id="vpY-nS-ewI"/>
                                     <outlet property="FCCellTitle" destination="Ivk-3z-2k7" id="1HM-Dk-i82"/>
+                                    <segue destination="WVd-OM-PCO" kind="show" identifier="moveToContent3" id="bSE-Us-srP"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FCCell4" rowHeight="410" id="Q7y-wv-s19" userLabel="FCCell1.6:1" customClass="FCTableViewCell4">
@@ -440,6 +475,7 @@
                                     <outlet property="FCCellDate" destination="phb-g3-W5R" id="kfX-v4-F9M"/>
                                     <outlet property="FCCellFeaturedImage" destination="rJo-qL-jJ6" id="PYA-JW-qaK"/>
                                     <outlet property="FCCellTitle" destination="yUh-cK-Av8" id="Uge-Pu-EM1"/>
+                                    <segue destination="WVd-OM-PCO" kind="show" identifier="moveToContent4" id="TaK-ju-dqY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -487,5 +523,8 @@
     <resources>
         <image name="MenuIcon" width="24" height="12"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TaK-ju-dqY"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

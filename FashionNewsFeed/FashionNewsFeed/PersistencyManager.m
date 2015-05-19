@@ -58,8 +58,9 @@
     } else {
         NSLog(@"1");
         for (DataImage *dataImage in resultArray) {
+            UIImage* image = [UIImage imageWithData: dataImage.image];
+            return image;
             
-            return [UIImage imageWithData: dataImage.image];
         }
     }
     return nil;
@@ -299,7 +300,7 @@
     
     self.counter = [NSUserDefaults standardUserDefaults];
     
-    int num = [self.counter integerForKey:@"counter"];
+    NSUInteger num = [self.counter integerForKey:@"counter"];
     
     if (!num) {
         
@@ -309,11 +310,11 @@
                                                              inManagedObjectContext: self.managedObjectContext];
         
         dataImage.url = [url absoluteString];
-        dataImage.image = UIImageJPEGRepresentation(image, 1.0);
+        dataImage.image = UIImageJPEGRepresentation(image, 0.75);
         
         [self saveContext];
         
-        NSLog(@"Save image, number %d", num);
+        NSLog(@"Save image, number %ul", num);
     } else {
         
         if (num > 140) {

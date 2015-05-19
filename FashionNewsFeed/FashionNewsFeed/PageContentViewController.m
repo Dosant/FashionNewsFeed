@@ -143,13 +143,7 @@
          for (int i = 0 ; i < postsPerPage; i++) {
              NSIndexPath* path = [NSIndexPath indexPathForRow:((page - 1)*postsPerPage + i) inSection:0];
               [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-             
-             
          }
-         
-         
-        
-     
          
          [self.tableView endUpdates];
     
@@ -340,7 +334,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    if([segue.identifier isEqualToString: @"moveToContent"]){
+    if([segue.identifier isEqualToString: @"moveToContent1"]){
         
         //Disable Nav scroll
         [[self delegate] setScrollEnabled:self enabled: NO];
@@ -352,11 +346,52 @@
         dvt.post = ((FCTableViewCell1*)[self.tableView cellForRowAtIndexPath:ip]).post;
         
     }
+    
+    if([segue.identifier isEqualToString: @"moveToContent2"]){
+        
+        //Disable Nav scroll
+        [[self delegate] setScrollEnabled:self enabled: NO];
+        
+        
+        //Pass post to the contentView
+        NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
+        NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
+        dvt.post = ((FCTableViewCell2*)[self.tableView cellForRowAtIndexPath:ip]).post;
+        
+    }
+    
+    if([segue.identifier isEqualToString: @"moveToContent3"]){
+        
+        //Disable Nav scroll
+        [[self delegate] setScrollEnabled:self enabled: NO];
+        
+        
+        //Pass post to the contentView
+        NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
+        NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
+        dvt.post = ((FCTableViewCell3*)[self.tableView cellForRowAtIndexPath:ip]).post;
+        
+    }
+    
+    if([segue.identifier isEqualToString: @"moveToContent4"]){
+        
+        //Disable Nav scroll
+        [[self delegate] setScrollEnabled:self enabled: NO];
+        
+        
+        //Pass post to the contentView
+        NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
+        NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
+        dvt.post = ((FCTableViewCell4*)[self.tableView cellForRowAtIndexPath:ip]).post;
+        
+    }
 }
 
 
 -(void)downloadImageToUIImageView:(UIImageView*)imageView
                          imageURL:(NSURL*)imageURL{
+    
+    
     
     [[FashionCollectionAPI sharedInstance] getImageWithUrl:imageURL success:^(NSURLSessionDataTask *task, UIImage *image) {
         

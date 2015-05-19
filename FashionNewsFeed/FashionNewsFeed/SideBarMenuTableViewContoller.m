@@ -9,6 +9,7 @@
 #import "SideBarMenuTableViewContoller.h"
 #import "FashionCollectionAPI.h"
 #import "FCTableViewCell1.h"
+#import "MenuTableViewCell.h"
 
 @interface SideBarMenuTableViewContoller ()
 
@@ -43,30 +44,51 @@
 
     //TODO
     // Return the number of rows in the section.
-    return [[[FashionCollectionAPI sharedInstance] getHardCodedCategories] count];
+    return [[[FashionCollectionAPI sharedInstance] getHardCodedCategories] count] + 1;
     
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0){
+        return 200;
+    } else {
+        return 44;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (indexPath.row == 0) {
+        
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"menuCellHeader"];
+        cell.textLabel.text = @"Header";
+        return cell;
+        
+    } else {
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
-    //TODO
-    cell.textLabel.text = [[[[FashionCollectionAPI sharedInstance] getHardCodedCategories] objectAtIndex:indexPath.row] categoryName];
+        MenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
+        //TODO
+        cell.menuTitle.text = [[[[FashionCollectionAPI sharedInstance] getHardCodedCategories] objectAtIndex:indexPath.row - 1] categoryName];
+        return cell;
+    
+    }
     
     
-    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    if(indexPath.row == 0){
+        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        return;
+    }
     
     
     if([self.revealViewController.frontViewController isKindOfClass:[MainViewController class]]){
         MainViewController* mvc = (MainViewController*)self.revealViewController.frontViewController;
         if(indexPath.row < [[mvc pageTitles] count]){
-        [mvc showPageAtIndex:indexPath.row];
+        [mvc showPageAtIndex:indexPath.row - 1];
         }
     }
     
@@ -76,14 +98,7 @@
     
 }
 
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 100)];
-    view.backgroundColor = [UIColor blackColor];
-    return view;
-    
-    
-}
+
 
 
 

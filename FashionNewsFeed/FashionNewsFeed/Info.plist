@@ -26,6 +26,8 @@
 	<array>
 		<string></string>
 		<string>Mark Simonson - Proxima Nova Regular Italic.otf</string>
+		<string></string>
+		<string>Mark Simonson - Proxima Nova Semibold Italic.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

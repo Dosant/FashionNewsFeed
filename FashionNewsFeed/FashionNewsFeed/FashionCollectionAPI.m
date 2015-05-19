@@ -60,21 +60,35 @@
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
     //TODO: ask if image with url is already in cache
-    
-    UIImage* cachedImaged = [persistencyManager getImageForUrl:url];
-    
-    if (cachedImaged == nil) {
-        [httpClient getImageWithURL:url success:
-         ^(NSURLSessionDataTask *task, UIImage* image) {
-             [persistencyManager cacheImage:image forURL:url];
-             success(task, image);
-         }failure:failure];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-    } else {
-        NSLog(@"cashed image for url: %@",[url absoluteString]);
-        success(nil,cachedImaged);
-    }
+        
+        UIImage* cachedImaged = [persistencyManager getImageForUrl:url];
+        
+        if (cachedImaged == nil) {
+            [httpClient getImageWithURL:url success:
+             ^(NSURLSessionDataTask *task, UIImage* image) {
+                 [persistencyManager cacheImage:image forURL:url];
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                 success(task, image);
+                 });
+                 
+             }failure:failure];
+            
+        } else {
+            NSLog(@"cashed image for url: %@",[url absoluteString]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+            success(nil,cachedImaged);
+            });
+        }
+    
+                   
+                   
+    });
+
 }
+
+                   
 
 
 

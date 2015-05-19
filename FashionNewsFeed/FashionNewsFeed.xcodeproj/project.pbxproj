@@ -41,6 +41,7 @@
 		838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C61ACBE48A004F3298 /* FashionCollectionAPI.m */; };
 		838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C91ACBE4AD004F3298 /* PersistencyManager.m */; };
 		838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */; };
+		838AE6141B0B1E6400EF0E17 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 838AE6131B0B1E6400EF0E17 /* MenuTableViewCell.m */; };
 		83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC6B821AC7E186001544A6 /* SWRevealViewController.m */; };
 		83B795E21AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 83B795D41AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black Italic.otf */; };
 		83B795E31AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 83B795D51AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black.otf */; };
@@ -155,6 +156,8 @@
 		838A28C91ACBE4AD004F3298 /* PersistencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistencyManager.m; sourceTree = "<group>"; };
 		838A28CB1ACBE4C4004F3298 /* FCHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCHTTPClient.h; sourceTree = "<group>"; };
 		838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCHTTPClient.m; sourceTree = "<group>"; };
+		838AE6121B0B1E6400EF0E17 /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
+		838AE6131B0B1E6400EF0E17 /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
 		83AC6B811AC7E186001544A6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		83AC6B821AC7E186001544A6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		83B795D41AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mark Simonson - Proxima Nova Black Italic.otf"; path = "fonts/ProximaNova/Mark Simonson - Proxima Nova Black Italic.otf"; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 				838A21251AF2697700BDC838 /* FCTableViewCell4.m */,
 				83C2B5A11AFBFD97009B1E08 /* ArticleView.h */,
 				83C2B5A21AFBFD97009B1E08 /* ArticleView.m */,
+				838AE6121B0B1E6400EF0E17 /* MenuTableViewCell.h */,
+				838AE6131B0B1E6400EF0E17 /* MenuTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -691,6 +696,7 @@
 				838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */,
 				2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */,
 				861556761AE82F5E0060EAB2 /* DataPost.m in Sources */,
+				838AE6141B0B1E6400EF0E17 /* MenuTableViewCell.m in Sources */,
 				838A21281AF32DCE00BDC838 /* FCTableViewCell1.m in Sources */,
 				836B8A0B1AE94048002A37D2 /* PageContentViewController.m in Sources */,
 				2A2512751AEEE6A50070A6DA /* FCResponseHeaders.m in Sources */,
