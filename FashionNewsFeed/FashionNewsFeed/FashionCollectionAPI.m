@@ -36,7 +36,12 @@
     return self;
 }
 
-//CORE DATA
+#pragma mark - Core Data
+
+- (NSUInteger)getDataPostCountByCategory:(NSString *)category {
+    
+    return [persistencyManager getPostCountByCategory:category];
+}
 
 - (void)cachePosts:(NSArray *)posts {
     
@@ -44,17 +49,15 @@
 }
 
 
-- (NSArray *)getPostsFromDataByCategory:(NSString *)category onPage:(NSUInteger)pageNumber {
+- (NSArray *)getDataPostsByCategory:(NSString *)category onPage:(NSUInteger)pageNumber {
     
     return [persistencyManager getPostsByCategory:category pageNumber:pageNumber];
 }
 
-- (NSArray *)getLatestPostsFromDataOnPage:(NSUInteger)pageNumber {
+- (NSArray *)getLatestDataPostsOnPage:(NSUInteger)pageNumber {
     
     return [persistencyManager getPostsOnPageNumber:pageNumber];
 }
-
-///////
 
 -(void)getImageWithUrl:(NSURL*)url
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
@@ -81,16 +84,14 @@
             success(nil,cachedImaged);
             
         }
-    
-                   
-                   
-    
-
 }
 
-                   
+- (void)cachePost:(FCPost *)post {
+    
+    [persistencyManager cachePost:post];
+}
 
-
+#pragma mark - Network
 
 - (NSMutableArray *)processResponse:(id)responseObject {
     NSMutableArray *responses = [[NSMutableArray alloc] init];

@@ -11,13 +11,16 @@
 
 + (FashionCollectionAPI *)sharedInstance;
 
-//NEW
+#pragma mark - Core Data
 
 - (void)cachePosts:(NSArray *)posts;
-- (NSArray *)getPostsFromDataByCategory:(NSString *)category onPage:(NSUInteger)pageNumber;
-- (NSArray *)getLatestPostsFromDataOnPage:(NSUInteger)pageNumber;
+- (void)cachePost:(FCPost *)post;
+- (NSUInteger)getDataPostCountByCategory:(NSString *)category;
+- (NSArray *)getDataPostsByCategory:(NSString *)category onPage:(NSUInteger)pageNumber;
+- (NSArray *)getLatestDataPostsOnPage:(NSUInteger)pageNumber;
 
-//////
+#pragma mark - Network
+
 -(void)getImageWithUrl:(NSURL*)url
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;

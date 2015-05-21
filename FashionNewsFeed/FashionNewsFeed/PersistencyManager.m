@@ -35,6 +35,34 @@
 
 #pragma mark - get from Data
 
+- (NSUInteger)getPostCountByCategory:(NSString *)category {
+    
+    NSUInteger counter = 0;
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
+                                                   inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (DataPost *dataPost in resultArray) {
+        
+        for (DataCategory *categoryName in dataPost.term.categories) {
+            
+            if ([categoryName.categoryName isEqual:category]) {
+                
+                counter++;
+            }
+        }
+    }
+    return counter;
+}
+
 - (UIImage *)getImageForUrl:(NSURL *)url {
     
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
