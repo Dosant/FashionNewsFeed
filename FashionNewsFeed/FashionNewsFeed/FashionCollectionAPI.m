@@ -62,10 +62,7 @@
 -(void)getImageWithUrl:(NSURL*)url
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
-    //TODO: ask if image with url is already in cache
-   
-        
-        
+    
         UIImage* cachedImaged = [persistencyManager getImageForUrl:url];
         
         if (cachedImaged == nil) {
@@ -79,7 +76,7 @@
              }failure:failure];
             
         } else {
-            NSLog(@"cashed image for url: %@",[url absoluteString]);
+            NSLog(@"data image for url: %@",[url absoluteString]);
             
             success(nil,cachedImaged);
             
@@ -88,7 +85,7 @@
 
 - (void)cachePost:(FCPost *)post {
     
-    [persistencyManager cachePost:post];
+    [persistencyManager addPostToQueue:post];
 }
 
 #pragma mark - Network

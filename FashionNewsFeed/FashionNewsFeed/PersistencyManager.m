@@ -14,6 +14,8 @@
 #import "DataPostTag.h"
 #import "DataImage.h"
 
+NSUInteger const MAXNUMBER = 49;
+
 @interface PersistencyManager ()
 
 @property (strong, nonatomic) NSUserDefaults *counter;
@@ -381,59 +383,33 @@
 
 - (void) setToDataPosts:(NSArray *)posts {
     
-    self.postCounter = [NSUserDefaults standardUserDefaults];
-    
-    NSUInteger num = 0;
-    
-    num = [self.postCounter integerForKey:@"ccc"];
-    
-    if (num == 0) {
-    
-        for (FCPost *post in posts) {
-            
-            if([self cachePost:post]) {
-                num++;
-            }
-            
-        }
+    for (FCPost *post in posts) {
         
-        [self.postCounter setInteger:num forKey:@"ccc"];
-        
-        NSLog(@"NUMBER - %d", num);
+        [self addPostToQueue:post];
+    }
+}
+
+- (void)addPostToQueue:(FCPost *)post {
     
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DataPost"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    NSError* reqError = nil;
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self.managedObjectContext executeFetchRequest:fetchRequest error:&reqError]];
+    
+    if (reqError) {
+        NSLog(@"%@", [reqError localizedDescription]);
+    }
+    
+    if (array.count >= MAXNUMBER) {
+        
+        [self deleteFirstPost];
+        [self cachePost:post];
     } else {
         
-        if (num > 27) {
-            
-            [self deletePosts];
-            
-            num = 0;
-            
-            for (FCPost *post in posts) {
-                
-                if([self cachePost:post]) {
-                    num++;
-                }
-                
-            }
-            
-            [self.postCounter setInteger:num forKey:@"ccc"];
-            NSLog(@"NUMBER - %d", num);
-            
-        } else {
-        
-            for (FCPost *post in posts) {
-                
-                if([self cachePost:post]) {
-                    num++;
-                }
-                
-            }
-            
-            [self.postCounter setInteger:num forKey:@"ccc"];
-            NSLog(@"NUMBER - %d", num);
-        }
-
+        [self cachePost:post];
     }
 }
 
@@ -627,7 +603,7 @@
     [self.managedObjectContext save:nil];
 }
 
-- (void) deletePosts {
+- (void)deletePosts {
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     
     NSEntityDescription* description =
@@ -650,7 +626,34 @@
     [self.managedObjectContext save:nil];
 }
 
-- (void) deleteImages {
+- (void)deleteFirstPost {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataPost"
+                inManagedObjectContext:self.managedObjectContext];
+    
+    [request setEntity:description];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"ASC"]];
+    request.fetchLimit = 1;
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (id object in resultArray) {
+        [self.managedObjectContext deleteObject:object];
+    }
+    
+    [self.managedObjectContext save:nil];
+    
+}
+
+- (void)deleteImages {
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     
     NSEntityDescription* description =
