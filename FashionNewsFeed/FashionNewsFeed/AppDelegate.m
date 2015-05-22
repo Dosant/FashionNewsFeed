@@ -34,8 +34,9 @@
         NSLog (@"%@: %@", fontFamily, fontNames);
     }
     
-//    PersistencyManager *manager = [[PersistencyManager alloc] init];
-//    NSLog(@"Count: %d", [manager getPostCountByCategory:@"lifestyle"]);
+    //PersistencyManager *manager = [[PersistencyManager alloc] init];
+    //[manager deleteAllObjects];
+    //NSLog(@"Count: %d", [manager getPostCountByCategory:@"lifestyle"]);
     
   return YES;
 }

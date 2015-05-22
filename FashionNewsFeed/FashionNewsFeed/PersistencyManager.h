@@ -29,6 +29,7 @@
 //Method set post to Core Data
 - (void)cacheImage:(UIImage *)image forURL:(NSURL*)url;
 - (void)setToDataPosts:(NSArray *)post;
+- (void)cachePost:(FCPost *)post;
 - (void)addPostToQueue:(FCPost *)post;
 
 //Other

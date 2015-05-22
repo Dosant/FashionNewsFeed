@@ -413,7 +413,7 @@ NSUInteger const MAXNUMBER = 49;
     }
 }
 
-- (BOOL)cachePost:(FCPost *)post {
+- (void)cachePost:(FCPost *)post {
     
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
@@ -496,11 +496,7 @@ NSUInteger const MAXNUMBER = 49;
         dataPost.author            = dataAuthor;
         dataPost.term              = dataTerms;
         [self saveContext];
-        return YES;
-    } else {
-        return NO;
     }
-    
 }
 
 #pragma mark - Core Data Stack
@@ -635,7 +631,9 @@ NSUInteger const MAXNUMBER = 49;
                 inManagedObjectContext:self.managedObjectContext];
     
     [request setEntity:description];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"ASC"]];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"postId" ascending:YES];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     request.fetchLimit = 1;
     
     NSError* requestError = nil;
