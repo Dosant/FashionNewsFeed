@@ -14,7 +14,8 @@
 #import "DataPostTag.h"
 #import "DataImage.h"
 
-NSUInteger const MAXNUMBER = 49;
+NSUInteger const MAXNUMBERPOST = 49;
+NSUInteger const MAXNUMBERIMAGE = 100;
 
 @interface PersistencyManager ()
 
@@ -328,56 +329,55 @@ NSUInteger const MAXNUMBER = 49;
 
 - (void)cacheImage:(UIImage *)image forURL:(NSURL *)url {
     
-    self.counter = [NSUserDefaults standardUserDefaults];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DataImage"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
     
-    NSUInteger num = [self.counter integerForKey:@"counter"];
+    NSError* reqError = nil;
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self.managedObjectContext executeFetchRequest:fetchRequest error:&reqError]];
     
-    if (!num) {
+    if (reqError) {
+        NSLog(@"%@", [reqError localizedDescription]);
+    }
+    
+    if (array.count >= MAXNUMBERIMAGE) {
         
-        [self.counter setInteger:1 forKey:@"counter"];
+        [self deleteImage];
+        [self setToDataImage:image forURL:url];
+    } else {
+        
+        [self setToDataImage:image forURL:url];
+    }
+    
+}
+
+- (void)setToDataImage:(UIImage *)image forURL:(NSURL *)url {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataImage"
+                                                   inManagedObjectContext:self.managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url = %@", url];
+    
+    [request setPredicate:predicate];
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    if (resultArray.count == 0) {
         
         DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
                                                              inManagedObjectContext: self.managedObjectContext];
-        
+
         dataImage.url = [url absoluteString];
         dataImage.image = UIImageJPEGRepresentation(image, 0.75);
-        
+
         [self saveContext];
-        
-        NSLog(@"Save image, number %ul", num);
-    } else {
-        
-        if (num > 140) {
-            
-            [self deleteImages];
-            
-            [self.counter setInteger:1 forKey:@"counter"];
-            
-            DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
-                                                                 inManagedObjectContext: self.managedObjectContext];
-            
-            dataImage.url = [url absoluteString];
-            dataImage.image = UIImageJPEGRepresentation(image, 1.0);
-            
-            [self saveContext];
-            
-            NSLog(@"Save image, number %d", num);
-            
-        } else {
-            
-            num++;
-            [self.counter setInteger:num forKey:@"counter"];
-            
-            DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
-                                                                 inManagedObjectContext: self.managedObjectContext];
-            
-            dataImage.url = [url absoluteString];
-            dataImage.image = UIImageJPEGRepresentation(image, 1.0);
-            
-            [self saveContext];
-            
-            NSLog(@"Save image, number %d", num);
-        }
     }
 }
 
@@ -403,7 +403,7 @@ NSUInteger const MAXNUMBER = 49;
         NSLog(@"%@", [reqError localizedDescription]);
     }
     
-    if (array.count >= MAXNUMBER) {
+    if (array.count >= MAXNUMBERPOST) {
         
         [self deleteFirstPost];
         [self cachePost:post];
@@ -633,6 +633,35 @@ NSUInteger const MAXNUMBER = 49;
     [request setEntity:description];
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"postId" ascending:YES];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    request.fetchLimit = 1;
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (id object in resultArray) {
+        [self.managedObjectContext deleteObject:object];
+    }
+    
+    [self.managedObjectContext save:nil];
+    
+}
+
+- (void)deleteImage {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataImage"
+                inManagedObjectContext:self.managedObjectContext];
+    
+    [request setEntity:description];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"url" ascending:YES];
     [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     request.fetchLimit = 1;
     
