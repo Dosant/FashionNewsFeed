@@ -34,13 +34,15 @@
     
     BOOL newPostsAreLoading;
     
+    BOOL isNetwork;
+    
 }
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    isNetwork = [FashionCollectionAPI sharedInstance].isNetwork;
     
     
     self.title = _pageTitle;
@@ -69,7 +71,9 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     
-    [self loadMorePostsFromPage:1];
+    
+    
+    [self reloadPosts];
     
    
 }
@@ -84,10 +88,18 @@
 
 
 -(void)reloadPosts{
+    if(isNetwork){
     [self loadMorePostsFromPage:1];
+    } else {
+        [self loadCachePosts];
+    }
+}
+-(void)loadCachePosts{
+    
+    NSArray* posts = [[FashionCollectionAPI sharedInstance] getDataPostsByCategory:@"news" onPage:0];
+    postsToPresent = posts;
     
 }
-
 
 -(void)loadMorePostsFromPage:(NSUInteger)page{
     
@@ -123,10 +135,8 @@
             }
             
             [postsToPresent addObjectsFromArray:posts];
-            //[[FashionCollectionAPI sharedInstance] cachePosts:posts];
         } else {
             postsToPresent = [NSMutableArray arrayWithArray:posts];
-            //[[FashionCollectionAPI sharedInstance] cachePosts:posts];
 
         }
         if (!postsLoaded){
@@ -332,13 +342,14 @@
     cell.layer.shadowOpacity = 0.2;
     cell.layer.shadowRadius = 0.2;
     
-    
+    if(isNetwork){
     if ([postsToPresent count] - 3 <= indexPath.row){
         
         NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 3)/postsPerPage);
         [self loadMorePostsFromPage:1 + (indexPath.row + 3)/postsPerPage];
         
         
+    }
     }
     
 }

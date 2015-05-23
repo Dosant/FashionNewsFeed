@@ -11,6 +11,8 @@
 
 + (FashionCollectionAPI *)sharedInstance;
 
+@property (nonatomic,assign) BOOL isNetwork;
+
 #pragma mark - Core Data
 
 - (void)cachePosts:(NSArray *)posts;

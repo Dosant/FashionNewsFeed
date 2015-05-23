@@ -178,8 +178,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                                    inManagedObjectContext:self.managedObjectContext];
     [request setEntity:description];
     
-    request.fetchOffset = pageNumber * 7;
-    request.fetchLimit = 7;
+    
     
     NSError* requestError = nil;
     NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
@@ -495,6 +494,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         dataPost.postTitle         = post.postTitle;
         dataPost.author            = dataAuthor;
         dataPost.term              = dataTerms;
+        
         [self saveContext];
     }
 }

@@ -23,6 +23,7 @@
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[FashionCollectionAPI alloc] init];
+        _sharedInstance.isNetwork = false;
     });
     return _sharedInstance;
 }
@@ -138,6 +139,11 @@
                    andPostsPerPage:postsPerPage
                            success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
+                               
+                               [persistencyManager setToDataPosts:responses];
+
+                               
+                               
                                FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
                                success(task, responses, responseHeaders);
                            }
@@ -156,6 +162,10 @@
                    andPostsPerPage:postsPerPage
                            success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
+                               
+                               [persistencyManager setToDataPosts:responses];
+                               
+                               
                                FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
                                success(task, responses, responseHeaders);
                            }
@@ -282,6 +292,10 @@
                    andPostsPerPage:postsPerPage
                            success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
+                               
+                               [persistencyManager setToDataPosts:responses];
+                               
+                               
                                FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
                                success(task, responses, responseHeaders);
                            }
@@ -300,6 +314,9 @@
                    andPostsPerPage:postsPerPage
                            success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
+                               
+                               [persistencyManager setToDataPosts:responses];
+                               
                                FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
                                success(task, responses, responseHeaders);
                            }
@@ -318,6 +335,10 @@
                    andPostsPerPage:postsPerPage
                            success:^(NSURLSessionDataTask *task, id responseObject, NSDictionary *headers) {
                                NSMutableArray *responses = [self processResponse:responseObject];
+                               
+                               [persistencyManager setToDataPosts:responses];
+                               
+                               
                                FCResponseHeaders *responseHeaders = [[FCResponseHeaders alloc] initWithAttributes:headers];
                                success(task, responses, responseHeaders);
                            }
