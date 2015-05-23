@@ -1,22 +1,22 @@
 //
-//  DataTerms.m
+//  DataFeaturedImage.m
 //  FashionNewsFeed
 //
 //  Created by Владислав Станишевский on 5/23/15.
 //  Copyright (c) 2015 Anton Dosov. All rights reserved.
 //
 
-#import "DataTerms.h"
-#import "DataCategory.h"
+#import "DataFeaturedImage.h"
 #import "DataPost.h"
-#import "DataPostTag.h"
 
 
-@implementation DataTerms
+@implementation DataFeaturedImage
 
-@dynamic termsId;
-@dynamic categories;
+@dynamic imageId;
+@dynamic imageTitl;
+@dynamic imageSource;
+@dynamic imageHeight;
+@dynamic imageWidth;
 @dynamic post;
-@dynamic postTags;
 
 @end

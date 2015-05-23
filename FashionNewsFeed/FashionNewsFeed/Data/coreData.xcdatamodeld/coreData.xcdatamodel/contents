@@ -17,6 +17,14 @@
         <attribute name="categoryTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="term" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataTerms" inverseName="categories" inverseEntity="DataTerms" syncable="YES"/>
     </entity>
+    <entity name="DataFeaturedImage" representedClassName="DataFeaturedImage" syncable="YES">
+        <attribute name="imageHeight" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageSource" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageTitl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageWidth" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DataPost" inverseName="featuredImage" inverseEntity="DataPost" syncable="YES"/>
+    </entity>
     <entity name="DataImage" representedClassName="DataImage" parentEntity="DataObject" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,6 +39,7 @@
         <attribute name="postLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DataAuthor" inverseName="post" inverseEntity="DataAuthor" syncable="YES"/>
+        <relationship name="featuredImage" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DataFeaturedImage" inverseName="post" inverseEntity="DataFeaturedImage" syncable="YES"/>
         <relationship name="term" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DataTerms" inverseName="post" inverseEntity="DataTerms" syncable="YES"/>
     </entity>
     <entity name="DataPostTag" representedClassName="DataPostTag" parentEntity="DataObject" syncable="YES">
@@ -51,8 +60,9 @@
         <element name="DataCategory" positionX="124" positionY="-19" width="128" height="133"/>
         <element name="DataImage" positionX="-621" positionY="-0" width="128" height="73"/>
         <element name="DataObject" positionX="-623" positionY="-178" width="128" height="43"/>
-        <element name="DataPost" positionX="-351" positionY="-412" width="128" height="178"/>
+        <element name="DataPost" positionX="-380" positionY="-409" width="128" height="193"/>
         <element name="DataPostTag" positionX="-351" positionY="-18" width="128" height="118"/>
         <element name="DataTerms" positionX="-128" positionY="-189" width="128" height="103"/>
+        <element name="DataFeaturedImage" positionX="-56" positionY="-414" width="128" height="133"/>
     </elements>
 </model>
