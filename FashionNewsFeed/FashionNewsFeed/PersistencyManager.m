@@ -13,6 +13,7 @@
 #import "DataCategory.h"
 #import "DataPostTag.h"
 #import "DataImage.h"
+#import "DataFeaturedImage.h"
 
 NSUInteger const MAXNUMBERPOST = 49;
 NSUInteger const MAXNUMBERIMAGE = 100;
@@ -152,6 +153,13 @@ NSUInteger const MAXNUMBERIMAGE = 100;
             
             FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:postTags andCategory:categories];
             
+            FCFeaturedImage *featuredImage = [[FCFeaturedImage alloc] init];
+            featuredImage.imageId = [dataPost.featuredImage.imageId integerValue];
+            featuredImage.imageTitle = dataPost.featuredImage.imageTitl;
+            featuredImage.imageSource = [NSURL URLWithString: dataPost.featuredImage.imageSource];
+            featuredImage.imageHeight = [dataPost.featuredImage.imageHeight integerValue];
+            featuredImage.imageWidth = [dataPost.featuredImage.imageWidth integerValue];
+            
             FCPost *post = [[FCPost alloc] initPostWithId:[dataPost.postId integerValue]
                                                  andTitle:dataPost.postTitle
                                                 andAuthor:author
@@ -161,7 +169,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                           andDateModified:dataPost.postDateModified
                                                andExcerpt:dataPost.postExcerpt
                                                   andMeta:nil
-                                         andFeaturedImage:nil
+                                         andFeaturedImage:featuredImage
                                                  andTerms:terms];
             NSLog(@"%@ %@ %@", post.postLink, post.postTitle, post.postContent);
             return post;
@@ -230,6 +238,13 @@ NSUInteger const MAXNUMBERIMAGE = 100;
             
             FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:postTags andCategory:categories];
             
+            FCFeaturedImage *featuredImage = [[FCFeaturedImage alloc] init];
+            featuredImage.imageId = [dataPost.featuredImage.imageId integerValue];
+            featuredImage.imageTitle = dataPost.featuredImage.imageTitl;
+            featuredImage.imageSource = [NSURL URLWithString: dataPost.featuredImage.imageSource];
+            featuredImage.imageHeight = [dataPost.featuredImage.imageHeight integerValue];
+            featuredImage.imageWidth = [dataPost.featuredImage.imageWidth integerValue];
+            
             FCPost *post = [[FCPost alloc] initPostWithId:[dataPost.postId integerValue]
                                                  andTitle:dataPost.postTitle
                                                 andAuthor:author
@@ -239,7 +254,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                           andDateModified:dataPost.postDateModified
                                                andExcerpt:dataPost.postExcerpt
                                                   andMeta:nil
-                                         andFeaturedImage:nil
+                                         andFeaturedImage:featuredImage
                                                  andTerms:terms];
             
             [posts addObject: post];
@@ -306,6 +321,13 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         
         FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:postTags andCategory:categories];
         
+        FCFeaturedImage *featuredImage = [[FCFeaturedImage alloc] init];
+        featuredImage.imageId = [dataPost.featuredImage.imageId integerValue];
+        featuredImage.imageTitle = dataPost.featuredImage.imageTitl;
+        featuredImage.imageSource = [NSURL URLWithString: dataPost.featuredImage.imageSource];
+        featuredImage.imageHeight = [dataPost.featuredImage.imageHeight integerValue];
+        featuredImage.imageWidth = [dataPost.featuredImage.imageWidth integerValue];
+        
         FCPost *post = [[FCPost alloc] initPostWithId:[dataPost.postId integerValue]
                                              andTitle:dataPost.postTitle
                                             andAuthor:author
@@ -315,7 +337,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                       andDateModified:dataPost.postDateModified
                                            andExcerpt:dataPost.postExcerpt
                                               andMeta:nil
-                                     andFeaturedImage:nil
+                                     andFeaturedImage:featuredImage
                                              andTerms:terms];
         
         [posts addObject: post];
@@ -482,6 +504,16 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         dataTerms.categories = [NSSet setWithArray:categories];
         [self saveContext];
         
+        DataFeaturedImage *dataFeaturedImage  = [NSEntityDescription insertNewObjectForEntityForName:@"DataFeaturedImage"
+                                                                              inManagedObjectContext: self.managedObjectContext];
+        
+        dataFeaturedImage.imageId = [NSNumber numberWithInteger: post.postFeaturedImage.imageId];
+        dataFeaturedImage.imageSource = [post.postFeaturedImage.imageSource absoluteString];
+        dataFeaturedImage.imageTitl = post.postFeaturedImage.imageTitle;
+        dataFeaturedImage.imageHeight = [NSNumber numberWithInteger:post.postFeaturedImage.imageHeight];
+        dataFeaturedImage.imageWidth = [NSNumber numberWithInteger:post.postFeaturedImage.imageWidth];
+
+        
         DataPost *dataPost      = [NSEntityDescription insertNewObjectForEntityForName:@"DataPost"
                                                                 inManagedObjectContext: self.managedObjectContext];
         
@@ -494,6 +526,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         dataPost.postTitle         = post.postTitle;
         dataPost.author            = dataAuthor;
         dataPost.term              = dataTerms;
+        dataPost.featuredImage = dataFeaturedImage;
         
         [self saveContext];
     }
