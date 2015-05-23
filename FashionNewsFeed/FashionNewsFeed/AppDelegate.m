@@ -26,12 +26,17 @@
     [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"PlayfairDisplay-Regular" size:18], NSFontAttributeName, nil]];
     
     NSArray *fontFamilies = [UIFont familyNames];
+    
     for (int i = 0; i < [fontFamilies count]; i++)
     {
         NSString *fontFamily = [fontFamilies objectAtIndex:i];
         NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
         NSLog (@"%@: %@", fontFamily, fontNames);
     }
+    
+    //PersistencyManager *manager = [[PersistencyManager alloc] init];
+    //[manager deleteAllObjects];
+    //NSLog(@"Count: %d", [manager getPostCountByCategory:@"lifestyle"]);
     
   return YES;
 }

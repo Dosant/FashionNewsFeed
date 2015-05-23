@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#include <CoreData/CoreData.h>
+#import <CoreData/CoreData.h>
 #import "FCPost.h"
 #import "FCAuthor.h"
 #import "FCTerms.h"
@@ -24,10 +24,13 @@
 - (FCPost *)getPostById:(NSUInteger)postId;
 - (NSArray *)getPostsOnPageNumber:(NSUInteger)pageNumber;
 - (NSArray *)getPostsByCategory:(NSString *)category pageNumber:(NSUInteger)pageNumber;
+- (NSUInteger)getPostCountByCategory:(NSString *)category;
 
 //Method set post to Core Data
 - (void)cacheImage:(UIImage *)image forURL:(NSURL*)url;
 - (void)setToDataPosts:(NSArray *)post;
+- (void)cachePost:(FCPost *)post;
+- (void)addPostToQueue:(FCPost *)post;
 
 //Other
 - (void)deleteAllObjects;

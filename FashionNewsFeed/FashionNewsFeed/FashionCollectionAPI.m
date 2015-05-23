@@ -36,7 +36,12 @@
     return self;
 }
 
-//CORE DATA
+#pragma mark - Core Data
+
+- (NSUInteger)getDataPostCountByCategory:(NSString *)category {
+    
+    return [persistencyManager getPostCountByCategory:category];
+}
 
 - (void)cachePosts:(NSArray *)posts {
     
@@ -44,25 +49,20 @@
 }
 
 
-- (NSArray *)getPostsFromDataByCategory:(NSString *)category onPage:(NSUInteger)pageNumber {
+- (NSArray *)getDataPostsByCategory:(NSString *)category onPage:(NSUInteger)pageNumber {
     
     return [persistencyManager getPostsByCategory:category pageNumber:pageNumber];
 }
 
-- (NSArray *)getLatestPostsFromDataOnPage:(NSUInteger)pageNumber {
+- (NSArray *)getLatestDataPostsOnPage:(NSUInteger)pageNumber {
     
     return [persistencyManager getPostsOnPageNumber:pageNumber];
 }
 
-///////
-
 -(void)getImageWithUrl:(NSURL*)url
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
-    //TODO: ask if image with url is already in cache
-   
-        
-        
+    
         UIImage* cachedImaged = [persistencyManager getImageForUrl:url];
         
         if (cachedImaged == nil) {
@@ -76,21 +76,19 @@
              }failure:failure];
             
         } else {
-            NSLog(@"cashed image for url: %@",[url absoluteString]);
+            NSLog(@"data image for url: %@",[url absoluteString]);
             
             success(nil,cachedImaged);
             
         }
-    
-                   
-                   
-    
-
 }
 
-                   
+- (void)cachePost:(FCPost *)post {
+    
+    [persistencyManager addPostToQueue:post];
+}
 
-
+#pragma mark - Network
 
 - (NSMutableArray *)processResponse:(id)responseObject {
     NSMutableArray *responses = [[NSMutableArray alloc] init];

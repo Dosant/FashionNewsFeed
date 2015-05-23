@@ -123,8 +123,11 @@
             }
             
             [postsToPresent addObjectsFromArray:posts];
+            //[[FashionCollectionAPI sharedInstance] cachePosts:posts];
         } else {
             postsToPresent = [NSMutableArray arrayWithArray:posts];
+            //[[FashionCollectionAPI sharedInstance] cachePosts:posts];
+
         }
         if (!postsLoaded){
             postsLoaded = YES;

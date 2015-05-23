@@ -14,6 +14,9 @@
 #import "DataPostTag.h"
 #import "DataImage.h"
 
+NSUInteger const MAXNUMBERPOST = 49;
+NSUInteger const MAXNUMBERIMAGE = 100;
+
 @interface PersistencyManager ()
 
 @property (strong, nonatomic) NSUserDefaults *counter;
@@ -34,6 +37,34 @@
 }
 
 #pragma mark - get from Data
+
+- (NSUInteger)getPostCountByCategory:(NSString *)category {
+    
+    NSUInteger counter = 0;
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
+                                                   inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (DataPost *dataPost in resultArray) {
+        
+        for (DataCategory *categoryName in dataPost.term.categories) {
+            
+            if ([categoryName.categoryName isEqual:category]) {
+                
+                counter++;
+            }
+        }
+    }
+    return counter;
+}
 
 - (UIImage *)getImageForUrl:(NSURL *)url {
     
@@ -298,184 +329,174 @@
 
 - (void)cacheImage:(UIImage *)image forURL:(NSURL *)url {
     
-    self.counter = [NSUserDefaults standardUserDefaults];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DataImage"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
     
-    NSUInteger num = [self.counter integerForKey:@"counter"];
+    NSError* reqError = nil;
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self.managedObjectContext executeFetchRequest:fetchRequest error:&reqError]];
     
-    if (!num) {
+    if (reqError) {
+        NSLog(@"%@", [reqError localizedDescription]);
+    }
+    
+    if (array.count >= MAXNUMBERIMAGE) {
         
-        [self.counter setInteger:1 forKey:@"counter"];
+        [self deleteImage];
+        [self setToDataImage:image forURL:url];
+    } else {
+        
+        [self setToDataImage:image forURL:url];
+    }
+    
+}
+
+- (void)setToDataImage:(UIImage *)image forURL:(NSURL *)url {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataImage"
+                                                   inManagedObjectContext:self.managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"url = %@", url];
+    
+    [request setPredicate:predicate];
+    [request setEntity:description];
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    if (resultArray.count == 0) {
         
         DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
                                                              inManagedObjectContext: self.managedObjectContext];
-        
+
         dataImage.url = [url absoluteString];
         dataImage.image = UIImageJPEGRepresentation(image, 0.75);
-        
+
         [self saveContext];
-        
-        NSLog(@"Save image, number %ul", num);
-    } else {
-        
-        if (num > 140) {
-            
-            [self deleteImages];
-            
-            [self.counter setInteger:1 forKey:@"counter"];
-            
-            DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
-                                                                 inManagedObjectContext: self.managedObjectContext];
-            
-            dataImage.url = [url absoluteString];
-            dataImage.image = UIImageJPEGRepresentation(image, 1.0);
-            
-            [self saveContext];
-            
-            NSLog(@"Save image, number %d", num);
-            
-        } else {
-            
-            num++;
-            [self.counter setInteger:num forKey:@"counter"];
-            
-            DataImage *dataImage = [NSEntityDescription insertNewObjectForEntityForName:@"DataImage"
-                                                                 inManagedObjectContext: self.managedObjectContext];
-            
-            dataImage.url = [url absoluteString];
-            dataImage.image = UIImageJPEGRepresentation(image, 1.0);
-            
-            [self saveContext];
-            
-            NSLog(@"Save image, number %d", num);
-        }
     }
 }
 
 - (void) setToDataPosts:(NSArray *)posts {
     
-    self.postCounter = [NSUserDefaults standardUserDefaults];
-    
-    NSUInteger num = 0;
-    
-    num = [self.postCounter integerForKey:@"ccc"];
-    
-    if (num == 0) {
-    
-        for (FCPost *post in posts) {
-            
-            num++;
-            
-            [self cachePost:post];
-            
-        }
+    for (FCPost *post in posts) {
         
-        [self.postCounter setInteger:num forKey:@"ccc"];
-        
-        NSLog(@"NUMBER - %d", num);
+        [self addPostToQueue:post];
+    }
+}
+
+- (void)addPostToQueue:(FCPost *)post {
     
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DataPost"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    NSError* reqError = nil;
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self.managedObjectContext executeFetchRequest:fetchRequest error:&reqError]];
+    
+    if (reqError) {
+        NSLog(@"%@", [reqError localizedDescription]);
+    }
+    
+    if (array.count >= MAXNUMBERPOST) {
+        
+        [self deleteFirstPost];
+        [self cachePost:post];
     } else {
         
-        if (num > 27) {
-            
-            [self deletePosts];
-            
-            num = 0;
-            
-            for (FCPost *post in posts) {
-                
-                num++;
-                
-                [self cachePost:post];
-                
-            }
-            
-            [self.postCounter setInteger:num forKey:@"ccc"];
-            NSLog(@"NUMBER - %d", num);
-            
-        } else {
-        
-            for (FCPost *post in posts) {
-                
-                num++;
-                
-                [self cachePost:post];
-                
-            }
-            
-            [self.postCounter setInteger:num forKey:@"ccc"];
-            NSLog(@"NUMBER - %d", num);
-        }
-
+        [self cachePost:post];
     }
 }
 
 - (void)cachePost:(FCPost *)post {
     
-    DataAuthor *dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
-                                                           inManagedObjectContext: self.managedObjectContext];
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
+                                                   inManagedObjectContext:self.managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"postId = %d", post.postId];
     
-    dataAuthor.authorFirstName = post.postAuthor.authorFirstName;
-    dataAuthor.authorId        = [NSNumber numberWithInteger: post.postAuthor.authorId];
-    dataAuthor.authorLastName  = post.postAuthor.authorLastName;
-    dataAuthor.authorNickName  = post.postAuthor.authorNickName;
-    dataAuthor.authorRegistered= post.postAuthor.authorRegistered;
-    dataAuthor.authorUserName  = post.postAuthor.authorUserName;
-    [self saveContext];
+    [request setPredicate:predicate];
+    [request setEntity:description];
     
-    NSMutableArray *postTags = [NSMutableArray array];
-    NSMutableArray *categories = [NSMutableArray array];
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
     
-    for (FCPostTag *obj in post.postTerms.termsPostTag) {
-        
-        DataPostTag *dataPostTag = [NSEntityDescription insertNewObjectForEntityForName:@"DataPostTag"
-                                                                 inManagedObjectContext: self.managedObjectContext];
-        
-        dataPostTag.postTagCount   = [NSNumber numberWithInteger: obj.postTagCount];
-        dataPostTag.postTagId      = [NSNumber numberWithInteger: obj.postTagId];
-        dataPostTag.postTagLink    = [obj.postTagLink absoluteString];
-        dataPostTag.postTagName    = obj.postTagName;
-        
-        [postTags addObject:dataPostTag];
-        [self saveContext];
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
     }
     
-    for (FCCategory *obj in post.postTerms.termsCategory) {
+    if (resultArray.count == 0) {
+    
+        DataAuthor *dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
+                                                               inManagedObjectContext: self.managedObjectContext];
         
-        DataCategory *dataCategory = [NSEntityDescription insertNewObjectForEntityForName:@"DataCategory"
-                                                                   inManagedObjectContext: self.managedObjectContext];
+        dataAuthor.authorFirstName = post.postAuthor.authorFirstName;
+        dataAuthor.authorId        = [NSNumber numberWithInteger: post.postAuthor.authorId];
+        dataAuthor.authorLastName  = post.postAuthor.authorLastName;
+        dataAuthor.authorNickName  = post.postAuthor.authorNickName;
+        dataAuthor.authorRegistered= post.postAuthor.authorRegistered;
+        dataAuthor.authorUserName  = post.postAuthor.authorUserName;
+        [self saveContext];
         
-        dataCategory.categoryCount = [NSNumber numberWithInteger: obj.categoryCount];
-        dataCategory.categoryId    = [NSNumber numberWithInteger: obj.categoryId];
-        dataCategory.categoryTitle = obj.categoryTitle;
-        dataCategory.categoryLink  = [obj.categoryLink absoluteString];
-        dataCategory.categoryName  = obj.categoryName;
+        NSMutableArray *postTags = [NSMutableArray array];
+        NSMutableArray *categories = [NSMutableArray array];
         
-        NSLog(@"%@", dataCategory.categoryName);
+        for (FCPostTag *obj in post.postTerms.termsPostTag) {
+            
+            DataPostTag *dataPostTag = [NSEntityDescription insertNewObjectForEntityForName:@"DataPostTag"
+                                                                     inManagedObjectContext: self.managedObjectContext];
+            
+            dataPostTag.postTagCount   = [NSNumber numberWithInteger: obj.postTagCount];
+            dataPostTag.postTagId      = [NSNumber numberWithInteger: obj.postTagId];
+            dataPostTag.postTagLink    = [obj.postTagLink absoluteString];
+            dataPostTag.postTagName    = obj.postTagName;
+            
+            [postTags addObject:dataPostTag];
+            [self saveContext];
+        }
         
-        [categories addObject:dataCategory];
+        for (FCCategory *obj in post.postTerms.termsCategory) {
+            
+            DataCategory *dataCategory = [NSEntityDescription insertNewObjectForEntityForName:@"DataCategory"
+                                                                       inManagedObjectContext: self.managedObjectContext];
+            
+            dataCategory.categoryCount = [NSNumber numberWithInteger: obj.categoryCount];
+            dataCategory.categoryId    = [NSNumber numberWithInteger: obj.categoryId];
+            dataCategory.categoryTitle = obj.categoryTitle;
+            dataCategory.categoryLink  = [obj.categoryLink absoluteString];
+            dataCategory.categoryName  = obj.categoryName;
+            
+            NSLog(@"%@", dataCategory.categoryName);
+            
+            [categories addObject:dataCategory];
+            [self saveContext];
+        }
+        
+        DataTerms *dataTerms = [NSEntityDescription insertNewObjectForEntityForName:@"DataTerms"
+                                                             inManagedObjectContext: self.managedObjectContext];
+        dataTerms.postTags = [NSSet setWithArray: postTags];
+        dataTerms.categories = [NSSet setWithArray:categories];
+        [self saveContext];
+        
+        DataPost *dataPost      = [NSEntityDescription insertNewObjectForEntityForName:@"DataPost"
+                                                                inManagedObjectContext: self.managedObjectContext];
+        
+        dataPost.postContent       = post.postContent;
+        dataPost.postDate          = post.postDate;
+        dataPost.postDateModified  = post.postDateModified;
+        dataPost.postExcerpt       = post.postExcerpt;
+        dataPost.postId            = [NSNumber numberWithInteger: post.postId];
+        dataPost.postLink          = [post.postLink absoluteString];
+        dataPost.postTitle         = post.postTitle;
+        dataPost.author            = dataAuthor;
+        dataPost.term              = dataTerms;
         [self saveContext];
     }
-    
-    DataTerms *dataTerms = [NSEntityDescription insertNewObjectForEntityForName:@"DataTerms"
-                                                         inManagedObjectContext: self.managedObjectContext];
-    dataTerms.postTags = [NSSet setWithArray: postTags];
-    dataTerms.categories = [NSSet setWithArray:categories];
-    [self saveContext];
-    
-    DataPost *dataPost      = [NSEntityDescription insertNewObjectForEntityForName:@"DataPost"
-                                                            inManagedObjectContext: self.managedObjectContext];
-    
-    dataPost.postContent       = post.postContent;
-    dataPost.postDate          = post.postDate;
-    dataPost.postDateModified  = post.postDateModified;
-    dataPost.postExcerpt       = post.postExcerpt;
-    dataPost.postId            = [NSNumber numberWithInteger: post.postId];
-    dataPost.postLink          = [post.postLink absoluteString];
-    dataPost.postTitle         = post.postTitle;
-    dataPost.author            = dataAuthor;
-    dataPost.term              = dataTerms;
-    [self saveContext];
-    
 }
 
 #pragma mark - Core Data Stack
@@ -578,7 +599,7 @@
     [self.managedObjectContext save:nil];
 }
 
-- (void) deletePosts {
+- (void)deletePosts {
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     
     NSEntityDescription* description =
@@ -601,7 +622,65 @@
     [self.managedObjectContext save:nil];
 }
 
-- (void) deleteImages {
+- (void)deleteFirstPost {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataPost"
+                inManagedObjectContext:self.managedObjectContext];
+    
+    [request setEntity:description];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"postId" ascending:YES];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    request.fetchLimit = 1;
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (id object in resultArray) {
+        [self.managedObjectContext deleteObject:object];
+    }
+    
+    [self.managedObjectContext save:nil];
+    
+}
+
+- (void)deleteImage {
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"DataImage"
+                inManagedObjectContext:self.managedObjectContext];
+    
+    [request setEntity:description];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"url" ascending:YES];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    request.fetchLimit = 1;
+    
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    for (id object in resultArray) {
+        [self.managedObjectContext deleteObject:object];
+    }
+    
+    [self.managedObjectContext save:nil];
+    
+}
+
+- (void)deleteImages {
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     
     NSEntityDescription* description =
