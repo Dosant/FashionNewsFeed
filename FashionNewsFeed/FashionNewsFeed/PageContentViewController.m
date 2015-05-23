@@ -283,6 +283,10 @@
 }
 
 - (NSInteger)whichCellToUse:(FCFeaturedImage*)featuredImage{
+    if(!isNetwork){
+        return 0;
+    }
+    
     if(featuredImage.imageWidth < 200) {
         // The image is small. Show only text cell.
         return 0;
