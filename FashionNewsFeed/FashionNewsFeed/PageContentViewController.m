@@ -75,29 +75,64 @@
     
     [self reloadPosts];
     
+    
+    
    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     
     [[self delegate] setScrollEnabled:self enabled:YES];
+    
+    [[FashionCollectionAPI sharedInstance] addObserver:self forKeyPath:@"isNetwork" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     //[self.tableView reloadData];
     
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    @try {
+        [[FashionCollectionAPI sharedInstance] removeObserver:self forKeyPath:@"isNetwork"];
+    }
+    @catch (NSException * __unused exception) {}
+    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"isNetwork"]) {
+        NSLog(@"isNetwork");
+        NSLog(@"%@", change);
+
+        isNetwork = [[FashionCollectionAPI sharedInstance] isNetwork];
+        
+        if (!isNetwork) {
+            [self loadCachePosts];
+        }
+    }
 }
 
 
 
 -(void)reloadPosts{
-    if(isNetwork){
+    
     [self loadMorePostsFromPage:1];
-    } else {
-        [self loadCachePosts];
-    }
+    
 }
 -(void)loadCachePosts{
     
+    newPostsAreLoading = false;
+    [self.refreshControl endRefreshing];
+    
+    
+    if (!postsLoaded){
+        postsLoaded = YES;
+        [activityView stopAnimating];
+        [activityView removeFromSuperview];
+    }
+    
+    
     NSArray* posts = [[FashionCollectionAPI sharedInstance] getDataPostsByCategory:@"news" onPage:0];
     postsToPresent = posts;
+    [self.tableView reloadData];
     
 }
 
@@ -170,31 +205,7 @@
     __weak void (^successWeak)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) = success;
     __weak void (^failureWeak)(NSURLSessionDataTask *task, NSError *error) = failure;
     
-    switch (_pageIndex) {
-        case 0:
-            
-            [[FashionCollectionAPI sharedInstance] getLatestsPosts:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
-            break;
-        case 1:
-            
-            [[FashionCollectionAPI sharedInstance] getFashionPosts:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
-            break;
-        case 2:
-            
-            [[FashionCollectionAPI sharedInstance] getEventsPosts:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
-            break;
-        case 3:
-            
-            [[FashionCollectionAPI sharedInstance] getBeautyBoxPosts:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
-            break;
-            
-            
-            
-        default:
-            
-            NSLog(@"Wrong pageIndex lol?");
-            break;
-    }
+        [[FashionCollectionAPI sharedInstance] getPostsForPageCategory:_pageIndex pageNumber:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
     
     }
 }
@@ -283,9 +294,9 @@
 }
 
 - (NSInteger)whichCellToUse:(FCFeaturedImage*)featuredImage{
-    if(!isNetwork){
-        return 0;
-    }
+//    if(!isNetwork){
+//        return 0;
+//    }
     
     if(featuredImage.imageWidth < 200) {
         // The image is small. Show only text cell.
@@ -324,7 +335,7 @@
     
     switch ([self whichCellToUse:image]) {
         case 0:
-            estHeight = 110;
+            estHeight = 120;
             break;
         case 1:
             estHeight = 150;
@@ -439,6 +450,14 @@
               }];
     
 }
+
+-(void)dealloc{
+    @try {
+        [[FashionCollectionAPI sharedInstance] removeObserver:self forKeyPath:@"isNetwork"];
+    }
+    @catch (NSException * __unused exception) {}
+}
+
 
 
 

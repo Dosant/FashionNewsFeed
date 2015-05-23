@@ -222,10 +222,17 @@
        
         [[FashionCollectionAPI sharedInstance] getImageWithUrl:imageMarkdown.url success:^(NSURLSessionDataTask *task, UIImage *image) {
             
+            if(image == nil){
+                NSRange range = NSMakeRange(imageMarkdown.index,1);
+                [self.delegate markdownParserImageDownloaded:self withTextAttachemnt:nil WithRange:range];
+                return;
+            }
+            
+            NSRange range = NSMakeRange(imageMarkdown.index, 1);
             UIImage* scimage = [self resizeImage:image size:imageMarkdown.size];
             NSTextAttachment *textAttachment = [NSTextAttachment new];
             textAttachment.image = scimage;
-            NSRange range = NSMakeRange(imageMarkdown.index, 1);
+            
             
             //[_parsedOutput replaceCharactersInRange:NSMakeRange(imageMarkdown.index, 1) withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
             

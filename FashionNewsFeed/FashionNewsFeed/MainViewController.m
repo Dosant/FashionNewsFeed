@@ -82,6 +82,8 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -125,31 +127,40 @@
         
         if(!overlayViewToDisableMainController){
             overlayViewToDisableMainController = [[UIView alloc]initWithFrame:self.view.frame];
-            overlayViewToDisableMainController.alpha = 0.2;
-            overlayViewToDisableMainController.backgroundColor = [UIColor blackColor];
+            overlayViewToDisableMainController.alpha = 1.0;
+            overlayViewToDisableMainController.backgroundColor = [UIColor clearColor];
             
             [overlayViewToDisableMainController addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
             
-            //UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] init];
-            //[overlayViewToDisableMainController addGestureRecognizer: pan];
+            UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] init];
+            [overlayViewToDisableMainController addGestureRecognizer: pan];
         }
         
         
     
         if(position == 3){ // SideBar is Closed
             
+            if (_currentPage == 0) {
+                [pc.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+            }
+            
+            
             isSideBarOpen = NO;
             isDisableScroll = NO;
             [overlayViewToDisableMainController removeFromSuperview];
         
-            [firstPageContentConroller.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+            
             
         } else if(position == 4) { // SideBar is Opened
+            
+            overlayViewToDisableMainController.frame = CGRectMake(0, -100, self.view.frame.size.width, pc.tableView.contentSize.height + 500);
+            
             
             isSideBarOpen = YES;
             isDisableScroll = YES;
             
             [overlayViewToDisableMainController addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+            
             
             
             [pc.view addSubview:overlayViewToDisableMainController];
@@ -374,6 +385,10 @@
     
     
 }
+
+
+
+
 
 
 

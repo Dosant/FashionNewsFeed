@@ -91,6 +91,11 @@
 
 - (void)markdownParserImageDownloaded:(MarkdownParser *)parser withTextAttachemnt:(NSTextAttachment*)textAttachment
                             WithRange:(NSRange)range{
+    if(textAttachment == nil){
+        [_textStorage replaceCharactersInRange:range withString:@" "];
+        return;
+    }
+    
     
     [_textStorage replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
     

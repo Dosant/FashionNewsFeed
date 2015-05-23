@@ -23,7 +23,7 @@
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[FashionCollectionAPI alloc] init];
-        _sharedInstance.isNetwork = false;
+        
     });
     return _sharedInstance;
 }
@@ -33,9 +33,13 @@
     if (self) {
         httpClient = [FCHTTPClient sharedClient];
         persistencyManager = [[PersistencyManager alloc] init];
+        _isNetwork = true;
+        
     }
     return self;
 }
+
+
 
 #pragma mark - Core Data
 
@@ -60,13 +64,15 @@
     return [persistencyManager getPostsOnPageNumber:pageNumber];
 }
 
+#pragma mark - gets
+
 -(void)getImageWithUrl:(NSURL*)url
                success:(void(^)(NSURLSessionDataTask* task, UIImage* image))success
                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
     
         UIImage* cachedImaged = [persistencyManager getImageForUrl:url];
-        
-        if (cachedImaged == nil) {
+    
+        if (cachedImaged == nil && _isNetwork) {
             [httpClient getImageWithURL:url success:
              ^(NSURLSessionDataTask *task, UIImage* image) {
                  [persistencyManager cacheImage:image forURL:url];
@@ -74,11 +80,12 @@
                  success(task, image);
                  
                  
-             }failure:failure];
+             }failure: failure];
             
         } else {
+            if(cachedImaged != nil){
             NSLog(@"data image for url: %@",[url absoluteString]);
-            
+            }
             success(nil,cachedImaged);
             
         }
@@ -129,6 +136,44 @@
                         failure(task, error);
                     }];
 }
+
+-(void)getPostsForPageCategory:(NSUInteger)pageCategory
+                    pageNumber:(NSUInteger)pageNumber
+                  postsPerPage:(NSUInteger)postsPerPage
+                       success:(void (^)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers))success
+                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
+    
+     void (^nFailure)(NSURLSessionDataTask *task, NSError* error) = ^(NSURLSessionDataTask *task,  NSError *error) {
+         self.isNetwork = NO;
+         failure(task,error);
+     };
+    
+    void (^nSuccess)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) = ^(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) {
+        self.isNetwork = YES;
+        success(task,posts,headers);
+    };
+    
+    switch (pageCategory) {
+        case 0:
+            [self getLatestsPosts:pageNumber postsPerPage:postsPerPage success:nSuccess failure:nFailure];
+            break;
+        case 1:
+            [self getFashionPosts:pageNumber postsPerPage:postsPerPage success:nSuccess failure:nFailure];
+            break;
+        case 2:
+            [self getEventsPosts:pageNumber postsPerPage:postsPerPage success:nSuccess failure:nFailure];
+            break;
+        case 3:
+            [self getBeautyBoxPosts:pageNumber postsPerPage:postsPerPage success:nSuccess failure:nFailure];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
 
 - (void)getLatestsPosts:(NSUInteger)pageNumber
            postsPerPage:(NSUInteger)postsPerPage
