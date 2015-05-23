@@ -67,8 +67,6 @@
 
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 250;
-    
     
     
     [self loadMorePostsFromPage:1];
@@ -142,7 +140,7 @@
          
          for (int i = 0 ; i < postsPerPage; i++) {
              NSIndexPath* path = [NSIndexPath indexPathForRow:((page - 1)*postsPerPage + i) inSection:0];
-              [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+              [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationMiddle];
          }
          
          [self.tableView endUpdates];
@@ -199,98 +197,92 @@
     FCPost* post = (FCPost*)[postsToPresent objectAtIndex:indexPath.row];
     FCFeaturedImage* featuredImage =  post.postFeaturedImage;
     
-    
-    
     NSDate* date = post.postDate;
     
     //post.post
     
-    
-    if(featuredImage.imageWidth < 200) { // The image is small. Show only text cell.
-        
-        FCTableViewCell3* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell3" forIndexPath:indexPath];
-        cell.FCCellTitle.text = post.postTitle;
-        cell.post = post;
-        
-        
-        
-        cell.FCCellCategory.text = post.getCategoriesString;
-        cell.FCCellDate.text = date.timeAgoSinceNow;
-        
-        
-        
-        
-        return cell;
-        
+    switch ([self whichCellToUse:featuredImage]) {
+        case 0: // small image -- no image
+        {
+            FCTableViewCell3* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell3" forIndexPath:indexPath];
+            cell.FCCellTitle.text = post.postTitle;
+            cell.post = post;
+            
+            cell.FCCellCategory.text = post.getCategoriesString;
+            cell.FCCellDate.text = date.timeAgoSinceNow;
+            
+            return cell;
+        }
+            break;
+            
+        case 1: // w>>h
+        {
+            FCTableViewCell2* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell2" forIndexPath:indexPath];
+            cell.FCCellTitle.text = post.postTitle;
+            cell.post = post;
+            
+            cell.FCCellDate.text = date.timeAgoSinceNow;
+            cell.FCCellCategory.text = post.getCategoriesString;
+            
+            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
+            
+            
+            return cell;
+        }
+            break;
+        case 2: // 1:1
+        {
+            FCTableViewCell1* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell" forIndexPath:indexPath];
+            cell.FCCellTitle.text = post.postTitle;
+            cell.post = post;
+            
+            
+            cell.FCCellDate.text = date.timeAgoSinceNow;
+            cell.FCCellCategory.text = post.getCategoriesString;
+            
+            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
+            
+            
+            
+            return cell;
+        }
+            break;
+            
+        case 3: // h>>w
+        {
+            FCTableViewCell4* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell4" forIndexPath:indexPath];
+            cell.FCCellTitle.text = post.postTitle;
+            cell.post = post;
+            
+            cell.FCCellDate.text = date.timeAgoSinceNow;
+            cell.FCCellCategory.text = post.getCategoriesString;
+            
+            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
+            
+            return cell;
+        }
+            break;
+            
+        default:
+            return nil;
+            break;
     }
-    
-    if (featuredImage.imageAspectRatio < 0.7){ // w >> h
-        
-        FCTableViewCell2* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell2" forIndexPath:indexPath];
-        cell.FCCellTitle.text = post.postTitle;
-        cell.post = post;
-        
-        
-        cell.FCCellFeaturedImage.image = nil;
-        
-        cell.FCCellDate.text = date.timeAgoSinceNow;
-        cell.FCCellCategory.text = post.getCategoriesString;
-        
-        [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
-        
-        
-        return cell;
-        
-        
-        
-    } else if (featuredImage.imageAspectRatio >= 0.7 && featuredImage.imageAspectRatio <= 1.3) { // 1:1
-        
-        
-        
-        FCTableViewCell1* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell" forIndexPath:indexPath];
-        cell.FCCellTitle.text = post.postTitle;
-        cell.post = post;
-        
-        
-        cell.FCCellFeaturedImage.image = nil;
-        
-        cell.FCCellDate.text = date.timeAgoSinceNow;
-        cell.FCCellCategory.text = post.getCategoriesString;
-        
-        [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
-        
-        
-        
-        return cell;
-        
-    } else { // w << h
-        
-        
-       
-        
-        
-        FCTableViewCell4* cell = [tableView dequeueReusableCellWithIdentifier:@"FCCell4" forIndexPath:indexPath];
-        cell.FCCellTitle.text = post.postTitle;
-        cell.post = post;
-        
-        
-        cell.FCCellFeaturedImage.image = nil;
-        
-        cell.FCCellDate.text = date.timeAgoSinceNow;
-        cell.FCCellCategory.text = post.getCategoriesString;
-        
-        [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
-        
-        
-        
-        return cell;
-
-        
-        
-        
-    }
-    
 }
+
+- (NSInteger)whichCellToUse:(FCFeaturedImage*)featuredImage{
+    if(featuredImage.imageWidth < 200) {
+        // The image is small. Show only text cell.
+        return 0;
+    }
+    if (featuredImage.imageAspectRatio < 0.7){ // w >> h
+        return 1;
+    }
+    if (featuredImage.imageAspectRatio >= 0.7 && featuredImage.imageAspectRatio <= 1.3) { // 1:1
+        return 2;
+    }
+    return 3; // h>>w
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -302,10 +294,32 @@
 
 #pragma mark - tableViewDelegate
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    CGFloat estHeight = 250;
     
+    if([postsToPresent count] <= indexPath.row){
+        return estHeight;
+    }
     
+    FCPost* post = [postsToPresent objectAtIndex:indexPath.row];
+    FCFeaturedImage* image = post.postFeaturedImage;
+    
+    switch ([self whichCellToUse:image]) {
+        case 0:
+            estHeight = 110;
+            break;
+        case 1:
+            estHeight = 150;
+        case 2:
+            estHeight = 250;
+        case 3:
+            estHeight = 400;
+            
+        default:
+            break;
+    }
+    return estHeight;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -316,10 +330,10 @@
     cell.layer.shadowRadius = 0.2;
     
     
-    if ([postsToPresent count] - 1 <= indexPath.row){
+    if ([postsToPresent count] - 3 <= indexPath.row){
         
-        NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 1)/postsPerPage);
-        [self loadMorePostsFromPage:1 + (indexPath.row + 1)/postsPerPage];
+        NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 3)/postsPerPage);
+        [self loadMorePostsFromPage:1 + (indexPath.row + 3)/postsPerPage];
         
         
     }
@@ -391,11 +405,11 @@
 -(void)downloadImageToUIImageView:(UIImageView*)imageView
                          imageURL:(NSURL*)imageURL{
     
-    
+    imageView.alpha = 0.0;
     
     [[FashionCollectionAPI sharedInstance] getImageWithUrl:imageURL success:^(NSURLSessionDataTask *task, UIImage *image) {
         
-        imageView.alpha = 0.0;
+        
         imageView.image = image;
         
         [UIView animateWithDuration:0.3 animations:^{

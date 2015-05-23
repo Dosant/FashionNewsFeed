@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -44,7 +46,7 @@
 
     //TODO
     // Return the number of rows in the section.
-    return [[[FashionCollectionAPI sharedInstance] getHardCodedCategories] count] + 1;
+    return [[[FashionCollectionAPI sharedInstance] getHardCodedCategories] count] + 2;
     
 }
 
@@ -52,7 +54,7 @@
     if (indexPath.row == 0){
         return 200;
     } else {
-        return 44;
+        return 36;
     }
 }
 
@@ -62,14 +64,23 @@
     if (indexPath.row == 0) {
         
         UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"menuCellHeader"];
-        cell.textLabel.text = @"Header";
+        //cell.textLabel.text = @"Header";
         return cell;
         
     } else {
     
         MenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
         //TODO
-        cell.menuTitle.text = [[[[FashionCollectionAPI sharedInstance] getHardCodedCategories] objectAtIndex:indexPath.row - 1] categoryName];
+        
+        if (indexPath.row == 5) {
+            
+            cell.menuTitle.text = @"Информация";
+            cell.menuTitle.font = [UIFont fontWithName:@"ProximaNova-Regular" size:15];
+            
+        } else {
+            cell.menuTitle.text = [[[[FashionCollectionAPI sharedInstance] getHardCodedCategories] objectAtIndex:indexPath.row - 1] categoryName];
+        }
+        
         return cell;
     
     }
@@ -87,7 +98,7 @@
     
     if([self.revealViewController.frontViewController isKindOfClass:[MainViewController class]]){
         MainViewController* mvc = (MainViewController*)self.revealViewController.frontViewController;
-        if(indexPath.row < [[mvc pageTitles] count]){
+        if(indexPath.row - 1 < [[mvc pageTitles] count]){
         [mvc showPageAtIndex:indexPath.row - 1];
         }
     }

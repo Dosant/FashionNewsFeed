@@ -70,12 +70,17 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jEu-J4-BOB" id="akh-SM-mBU">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FCollectionLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Jsn-9R-iSU">
+                                            <rect key="frame" x="50" y="22" width="160" height="79"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="50" reuseIdentifier="menuCell" rowHeight="44" id="3tM-2b-Cvq" customClass="MenuTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="50" reuseIdentifier="menuCell" rowHeight="36" id="3tM-2b-Cvq" customClass="MenuTableViewCell">
                                 <rect key="frame" x="0.0" y="100" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3tM-2b-Cvq" id="Q1b-Fi-Y46">
@@ -83,7 +88,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Новости" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fv-F1-D1E">
-                                            <rect key="frame" x="50" y="11" width="96" height="21"/>
+                                            <rect key="frame" x="50" y="7" width="96" height="21"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -521,6 +526,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FCollectionLogo" width="202" height="99"/>
         <image name="MenuIcon" width="24" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
