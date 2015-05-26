@@ -22,6 +22,16 @@
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:
+     [UIImage imageNamed:@"menubg.png"]];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
+    
+    
+    
+    
+    
+    self.tableView.backgroundView = imageView;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

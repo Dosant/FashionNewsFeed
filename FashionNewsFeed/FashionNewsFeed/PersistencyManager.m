@@ -196,11 +196,11 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         return nil;
     }
     
-    NSMutableArray *categories = [NSMutableArray array];
-    NSMutableArray *postTags = [NSMutableArray array];
+    
     
     for (DataPost *dataPost in resultArray) {
-        
+        NSMutableArray *categories = [NSMutableArray array];
+        NSMutableArray *postTags = [NSMutableArray array];
         for (DataCategory *categoryName in dataPost.term.categories) {
         
         if ([categoryName.categoryName isEqual:category]) {
