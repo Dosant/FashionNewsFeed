@@ -15,11 +15,9 @@
 
 #pragma mark - Core Data
 
-- (void)cachePosts:(NSArray *)posts;
-- (void)cachePost:(FCPost *)post;
 - (NSUInteger)getDataPostCountByCategory:(NSString *)category;
 - (NSArray *)getDataPostsByCategory:(NSString *)category;
-- (NSArray *)getLatestDataPostsOnPage:(NSUInteger)pageNumber;
+- (NSArray *)getAllDataPosts;
 
 #pragma mark - Network
 

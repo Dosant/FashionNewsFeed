@@ -48,20 +48,14 @@
     return [persistencyManager getPostCountByCategory:category];
 }
 
-- (void)cachePosts:(NSArray *)posts {
-    
-    [persistencyManager setToDataPosts:posts];
-}
-
-
 - (NSArray *)getDataPostsByCategory:(NSString *)category {
     
     return [persistencyManager getPostsByCategory:category];
 }
 
-- (NSArray *)getLatestDataPostsOnPage:(NSUInteger)pageNumber {
+- (NSArray *)getAllDataPosts {
     
-    return [persistencyManager getPostsOnPageNumber:pageNumber];
+    return [persistencyManager getAllPosts];
 }
 
 #pragma mark - gets

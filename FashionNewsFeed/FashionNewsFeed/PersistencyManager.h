@@ -19,17 +19,16 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-//Methods return posts from Core Data
+//Get from Core Data
 - (UIImage *)getImageForUrl:(NSURL *)request;
 - (FCPost *)getPostById:(NSUInteger)postId;
-- (NSArray *)getPostsOnPageNumber:(NSUInteger)pageNumber;
+- (NSArray *)getAllPosts;
 - (NSArray *)getPostsByCategory:(NSString *)category;
 - (NSUInteger)getPostCountByCategory:(NSString *)category;
 
-//Method set post to Core Data
+//Set to Core Data
 - (void)cacheImage:(UIImage *)image forURL:(NSURL*)url;
 - (void)setToDataPosts:(NSArray *)post;
-- (void)cachePost:(FCPost *)post;
 - (void)addPostToQueue:(FCPost *)post;
 
 //Other

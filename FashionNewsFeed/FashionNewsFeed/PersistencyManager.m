@@ -84,11 +84,8 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         
         NSLog(@"%@", [requestError localizedDescription]);
         return nil;
-    } else if ([resultArray count] < 1) {
-        NSLog(@"0");
-        return nil;
     } else {
-        NSLog(@"1");
+        
         for (DataImage *dataImage in resultArray) {
             UIImage* image = [UIImage imageWithData: dataImage.image];
             return image;
@@ -127,7 +124,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                                       andNickName:dataPost.author.authorNickName
                                                         andAvatar:nil
                                                     andRegistered:dataPost.author.authorRegistered andMeta:nil];
-            NSLog(@"%@ %@ %lu %@", author.authorFirstName, author.authorLastName, (unsigned long)author.authorId, author.authorNickName);
+
             for (DataCategory *dataCategory in dataPost.term.categories) {
                 
                 FCCategory *category = [[FCCategory alloc] initCategoryWithId:[dataCategory.categoryId integerValue]
@@ -137,7 +134,6 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                                                       andLink:[NSURL URLWithString:dataCategory.categoryLink]
                                                                       andMeta:nil];
                 [categories addObject:category];
-                NSLog(@"%@ %@ %lu", category.categoryName, category.categoryTitle, (unsigned long)category.categoryId);
             }
             
             for (DataPostTag *dataPostTag in dataPost.term.postTags) {
@@ -148,7 +144,6 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                                                   andLink:[NSURL URLWithString:dataPostTag.postTagLink]
                                                                   andMeta:nil];
                 [postTags addObject:postTag];
-                NSLog(@"%@ %@ %lu", postTag.postTagLink, postTag.postTagName, (unsigned long)postTag.postTagId);
             }
             
             FCTerms *terms = [[FCTerms alloc] initTermsWithPostTag:postTags andCategory:categories];
@@ -171,7 +166,6 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                                   andMeta:nil
                                          andFeaturedImage:featuredImage
                                                  andTerms:terms];
-            NSLog(@"%@ %@ %@", post.postLink, post.postTitle, post.postContent);
             return post;
         }
     }
@@ -197,11 +191,11 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         return nil;
     }
     
-    
-    
     for (DataPost *dataPost in resultArray) {
+        
         NSMutableArray *categories = [NSMutableArray array];
         NSMutableArray *postTags = [NSMutableArray array];
+        
         for (DataCategory *categoryName in dataPost.term.categories) {
         
         if ([categoryName.categoryName isEqual:category]) {
@@ -265,17 +259,14 @@ NSUInteger const MAXNUMBERIMAGE = 100;
     return posts;
 }
 
-- (NSArray *)getPostsOnPageNumber:(NSUInteger)pageNumber {
+- (NSArray *)getAllPosts {
     
     NSMutableArray *posts = [NSMutableArray array];
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
                                                    inManagedObjectContext:self.managedObjectContext];
     [request setEntity:description];
-    
-    request.fetchOffset = pageNumber * 7;
-    request.fetchLimit = 7;
-    
+
     NSError* requestError = nil;
     NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
     
@@ -453,9 +444,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
     }
     
     if (resultArray.count == 0) {
-        
-        NSLog(@"CACHE POST");
-    
+
         DataAuthor *dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
                                                                inManagedObjectContext: self.managedObjectContext];
         
