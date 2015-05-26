@@ -23,7 +23,7 @@
 - (UIImage *)getImageForUrl:(NSURL *)request;
 - (FCPost *)getPostById:(NSUInteger)postId;
 - (NSArray *)getPostsOnPageNumber:(NSUInteger)pageNumber;
-- (NSArray *)getPostsByCategory:(NSString *)category pageNumber:(NSUInteger)pageNumber;
+- (NSArray *)getPostsByCategory:(NSString *)category;
 - (NSUInteger)getPostCountByCategory:(NSString *)category;
 
 //Method set post to Core Data

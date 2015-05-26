@@ -54,9 +54,9 @@
 }
 
 
-- (NSArray *)getDataPostsByCategory:(NSString *)category onPage:(NSUInteger)pageNumber {
+- (NSArray *)getDataPostsByCategory:(NSString *)category {
     
-    return [persistencyManager getPostsByCategory:category pageNumber:pageNumber];
+    return [persistencyManager getPostsByCategory:category];
 }
 
 - (NSArray *)getLatestDataPostsOnPage:(NSUInteger)pageNumber {

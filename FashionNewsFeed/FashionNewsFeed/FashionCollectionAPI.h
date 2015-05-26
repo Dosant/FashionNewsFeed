@@ -18,7 +18,7 @@
 - (void)cachePosts:(NSArray *)posts;
 - (void)cachePost:(FCPost *)post;
 - (NSUInteger)getDataPostCountByCategory:(NSString *)category;
-- (NSArray *)getDataPostsByCategory:(NSString *)category onPage:(NSUInteger)pageNumber;
+- (NSArray *)getDataPostsByCategory:(NSString *)category;
 - (NSArray *)getLatestDataPostsOnPage:(NSUInteger)pageNumber;
 
 #pragma mark - Network
