@@ -178,15 +178,16 @@ NSUInteger const MAXNUMBERIMAGE = 100;
     return nil;
 }
 
-- (NSArray *)getPostsByCategory:(NSString *)category pageNumber:(NSUInteger)pageNumber {
+- (NSArray *)getPostsByCategory:(NSString *)category {
 
     NSMutableArray *posts = [NSMutableArray array];
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     NSEntityDescription *description = [NSEntityDescription entityForName:@"DataPost"
                                                    inManagedObjectContext:self.managedObjectContext];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"postDate" ascending:NO];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     [request setEntity:description];
-    
-    
     
     NSError* requestError = nil;
     NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
@@ -452,6 +453,8 @@ NSUInteger const MAXNUMBERIMAGE = 100;
     }
     
     if (resultArray.count == 0) {
+        
+        NSLog(@"CACHE POST");
     
         DataAuthor *dataAuthor = [NSEntityDescription insertNewObjectForEntityForName:@"DataAuthor"
                                                                inManagedObjectContext: self.managedObjectContext];

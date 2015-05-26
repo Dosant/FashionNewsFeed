@@ -58,11 +58,11 @@
     <elements>
         <element name="DataAuthor" positionX="115" positionY="-396" width="119" height="148"/>
         <element name="DataCategory" positionX="124" positionY="-19" width="128" height="133"/>
+        <element name="DataFeaturedImage" positionX="-56" positionY="-414" width="128" height="133"/>
         <element name="DataImage" positionX="-621" positionY="-0" width="128" height="73"/>
         <element name="DataObject" positionX="-623" positionY="-178" width="128" height="43"/>
         <element name="DataPost" positionX="-380" positionY="-409" width="128" height="193"/>
         <element name="DataPostTag" positionX="-351" positionY="-18" width="128" height="118"/>
         <element name="DataTerms" positionX="-128" positionY="-189" width="128" height="103"/>
-        <element name="DataFeaturedImage" positionX="-56" positionY="-414" width="128" height="133"/>
     </elements>
 </model>

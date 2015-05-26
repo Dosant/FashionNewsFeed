@@ -130,8 +130,8 @@
     }
     
     
-    NSArray* posts = [[FashionCollectionAPI sharedInstance] getDataPostsByCategory:@"news" onPage:0];
-    postsToPresent = posts;
+    NSArray* posts = [[FashionCollectionAPI sharedInstance] getDataPostsByCategory:@"fashion"];
+    postsToPresent = [NSMutableArray arrayWithArray:posts];
     [self.tableView reloadData];
     
 }
