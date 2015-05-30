@@ -17,6 +17,8 @@
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <DateTools/DateTools.h>
 
+#import "RKDropdownAlert.h"
+
 @interface PageContentViewController ()
 
 @end
@@ -105,6 +107,9 @@
         isNetwork = [[FashionCollectionAPI sharedInstance] isNetwork];
         
         if (!isNetwork) {
+            if (change[@"new"] != change[@"old"]) {
+                [RKDropdownAlert title:@"Нет Интернета ..." time:3];
+            }
             [self loadCachePosts];
         }
     }
@@ -129,8 +134,7 @@
         [activityView removeFromSuperview];
     }
     
-    
-    NSArray* posts = [[FashionCollectionAPI sharedInstance] getDataPostsByCategory:@"fashion"];
+    NSArray* posts = [[FashionCollectionAPI sharedInstance] getDataPostsByCategory:_pageIndex];
     postsToPresent = [NSMutableArray arrayWithArray:posts];
     [self.tableView reloadData];
     
@@ -186,7 +190,7 @@
          
          //TODO
          
-         for (int i = 0 ; i < postsPerPage; i++) {
+         for (int i = 0 ; i < MIN(postsPerPage,posts.count); i++) {
              NSIndexPath* path = [NSIndexPath indexPathForRow:((page - 1)*postsPerPage + i) inSection:0];
               [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationMiddle];
          }
@@ -248,7 +252,7 @@
             cell.FCCellDate.text = date.timeAgoSinceNow;
             cell.FCCellCategory.text = post.getCategoriesString;
             
-            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
+            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource forIndexPath:indexPath];
             
             
             return cell;
@@ -264,7 +268,7 @@
             cell.FCCellDate.text = date.timeAgoSinceNow;
             cell.FCCellCategory.text = post.getCategoriesString;
             
-            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
+            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource forIndexPath:indexPath];
             
             
             
@@ -281,7 +285,7 @@
             cell.FCCellDate.text = date.timeAgoSinceNow;
             cell.FCCellCategory.text = post.getCategoriesString;
             
-            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource];
+            [self downloadImageToUIImageView:cell.FCCellFeaturedImage imageURL:featuredImage.imageSource forIndexPath:indexPath];
             
             return cell;
         }
@@ -294,9 +298,12 @@
 }
 
 - (NSInteger)whichCellToUse:(FCFeaturedImage*)featuredImage{
-//    if(!isNetwork){
-//        return 0;
-//    }
+    
+    if(!isNetwork){
+        
+        
+        
+    }
     
     if(featuredImage.imageWidth < 200) {
         // The image is small. Show only text cell.
@@ -338,11 +345,14 @@
             estHeight = 120;
             break;
         case 1:
-            estHeight = 150;
+            estHeight = 260;
+            break;
         case 2:
-            estHeight = 250;
+            estHeight = 360;
+            break;
         case 3:
-            estHeight = 400;
+            estHeight = 410;
+            break;
             
         default:
             break;
@@ -358,13 +368,13 @@
     cell.layer.shadowRadius = 0.2;
     
     if(isNetwork){
-    if ([postsToPresent count] - 3 <= indexPath.row){
-        
-        NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 3)/postsPerPage);
-        [self loadMorePostsFromPage:1 + (indexPath.row + 3)/postsPerPage];
-        
-        
-    }
+        if (postsToPresent.count - 3 <= indexPath.row){
+            if (postsToPresent.count < totalPosts) {
+            NSLog(@"loadnextpage = %lu", 1 + (indexPath.row + 3)/postsPerPage);
+            [self loadMorePostsFromPage:1 + (indexPath.row + 3)/postsPerPage];
+            }
+        }
+    
     }
     
 }
@@ -432,18 +442,23 @@
 
 
 -(void)downloadImageToUIImageView:(UIImageView*)imageView
-                         imageURL:(NSURL*)imageURL{
+                         imageURL:(NSURL*)imageURL
+                     forIndexPath:(NSIndexPath*)indexPath{
     
     imageView.alpha = 0.0;
     
     [[FashionCollectionAPI sharedInstance] getImageWithUrl:imageURL success:^(NSURLSessionDataTask *task, UIImage *image) {
-        
+        if(image != nil){
         
         imageView.image = image;
         
         [UIView animateWithDuration:0.3 animations:^{
             imageView.alpha = 1.0;
         }];
+        } else {
+            [self.tableView relo]
+            
+        }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog([error localizedDescription]);

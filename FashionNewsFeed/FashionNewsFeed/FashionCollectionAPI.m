@@ -48,9 +48,26 @@
     return [persistencyManager getPostCountByCategory:category];
 }
 
-- (NSArray *)getDataPostsByCategory:(NSString *)category {
-    
-    return [persistencyManager getPostsByCategory:category];
+- (NSArray *)getDataPostsByCategory:(NSUInteger)category {
+    switch (category) {
+        case 0:
+            return [persistencyManager getAllPosts];
+            break;
+        case 1:
+            return [persistencyManager getPostsByCategory:@"fashion"];
+            break;
+        case 2:
+            [persistencyManager getPostsByCategory:@"events"];
+            break;
+        case 3:
+            [persistencyManager getPostsByCategory:@"beauty_box"];
+            break;
+            
+        default:
+            return [NSArray array];
+            break;
+    }
+    return [NSArray array];
 }
 
 - (NSArray *)getAllDataPosts {

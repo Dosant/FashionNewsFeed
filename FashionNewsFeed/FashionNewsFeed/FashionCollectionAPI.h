@@ -16,8 +16,8 @@
 #pragma mark - Core Data
 
 - (NSUInteger)getDataPostCountByCategory:(NSString *)category;
-- (NSArray *)getDataPostsByCategory:(NSString *)category;
-- (NSArray *)getAllDataPosts;
+- (NSArray *)getDataPostsByCategory:(NSUInteger)category;
+
 
 #pragma mark - Network
 

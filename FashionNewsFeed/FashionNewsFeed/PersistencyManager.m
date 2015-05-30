@@ -275,11 +275,13 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         return nil;
     }
     
-    NSMutableArray *categories = [NSMutableArray array];
-    NSMutableArray *postTags = [NSMutableArray array];
+    
     
     for (DataPost *dataPost in resultArray) {
-                
+        
+        NSMutableArray *categories = [NSMutableArray array];
+        NSMutableArray *postTags = [NSMutableArray array];
+        
         FCAuthor *author = [[FCAuthor alloc] initAuthorWithId:[dataPost.author.authorId integerValue]
                                                   andUserName:dataPost.author.authorUserName
                                                  andFirstName:dataPost.author.authorFirstName

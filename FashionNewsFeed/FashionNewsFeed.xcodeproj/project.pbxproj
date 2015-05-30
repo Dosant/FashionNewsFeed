@@ -22,6 +22,8 @@
 		2DC159D202C8CAC677EFFD1D /* GTMNSStringHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC15A0C70A934F1AD8A2637 /* GTMNSStringHTML.m */; };
 		2DC15CD3732A1939372B52A6 /* GTMNSStringHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC15A0C70A934F1AD8A2637 /* GTMNSStringHTML.m */; };
 		34B828F12837BAB923F3D16B /* libPods-FashionNewsFeedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FDD1CC86E81D5154F3E3DAF /* libPods-FashionNewsFeedTests.a */; };
+		831680411B1913E9005B3866 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 831680401B1913E9005B3866 /* RKDropdownAlert.m */; };
+		831680441B1983CB005B3866 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831680431B1983CB005B3866 /* InformationViewController.m */; };
 		832922801AEBB57600FE6761 /* FCTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */; };
 		832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */; };
 		832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A8C1ACA922900D34619 /* NewsContentContoller.m */; };
@@ -119,6 +121,10 @@
 		2DC15A0C70A934F1AD8A2637 /* GTMNSStringHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMNSStringHTML.m; sourceTree = "<group>"; };
 		771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionNewsFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1612489324A6B0BE012158 /* Pods-FashionNewsFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionNewsFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionNewsFeed/Pods-FashionNewsFeed.debug.xcconfig"; sourceTree = "<group>"; };
+		8316803F1B1913E9005B3866 /* RKDropdownAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKDropdownAlert.h; sourceTree = "<group>"; };
+		831680401B1913E9005B3866 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKDropdownAlert.m; sourceTree = "<group>"; };
+		831680421B1983CB005B3866 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		831680431B1983CB005B3866 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		8329227E1AEBB57600FE6761 /* FCTableViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCTableViewCell2.h; sourceTree = "<group>"; };
 		8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCTableViewCell2.m; sourceTree = "<group>"; };
 		832B3A881ACA918B00D34619 /* SideBarMenuTableViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarMenuTableViewContoller.h; sourceTree = "<group>"; };
@@ -268,6 +274,8 @@
 				832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */,
 				832B3A8B1ACA922900D34619 /* NewsContentContoller.h */,
 				832B3A8C1ACA922900D34619 /* NewsContentContoller.m */,
+				831680421B1983CB005B3866 /* InformationViewController.h */,
+				831680431B1983CB005B3866 /* InformationViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -314,6 +322,15 @@
 				2A2512741AEEE6A50070A6DA /* FCResponseHeaders.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8316803B1B191392005B3866 /* DropdownAlert */ = {
+			isa = PBXGroup;
+			children = (
+				8316803F1B1913E9005B3866 /* RKDropdownAlert.h */,
+				831680401B1913E9005B3866 /* RKDropdownAlert.m */,
+			);
+			name = DropdownAlert;
 			sourceTree = "<group>";
 		};
 		835147421B024659007D4F51 /* Markdown */ = {
@@ -367,6 +384,7 @@
 		8362508C1AC5E39400370340 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8316803B1B191392005B3866 /* DropdownAlert */,
 				835147421B024659007D4F51 /* Markdown */,
 				83BFF22D1AFA9C2D0077C3E1 /* fonts */,
 				83AC6B801AC7E186001544A6 /* SWRevealViewController */,
@@ -550,7 +568,7 @@
 				TargetAttributes = {
 					836250881AC5E39400370340 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = WG58VW2S68;
+						DevelopmentTeam = MFAMB7792K;
 					};
 					836250A11AC5E39400370340 = {
 						CreatedOnToolsVersion = 6.2;
@@ -711,6 +729,7 @@
 				838A28C71ACBE48A004F3298 /* FashionCollectionAPI.m in Sources */,
 				2A88DA731AD32393007A618C /* FCTerms.m in Sources */,
 				83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */,
+				831680411B1913E9005B3866 /* RKDropdownAlert.m in Sources */,
 				836B8A091AE4CC6A002A37D2 /* newsFeaturedImageView.m in Sources */,
 				832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */,
 				83C2B5A61AFC0573009B1E08 /* MarkdownParser.m in Sources */,
@@ -725,6 +744,7 @@
 				2A88DA6A1AD32328007A618C /* FCAuthor.m in Sources */,
 				2AFD71741AD46B3300DA1FA2 /* FCPost.m in Sources */,
 				86AF5CF41B10982B0019C6E6 /* DataFeaturedImage.m in Sources */,
+				831680441B1983CB005B3866 /* InformationViewController.m in Sources */,
 				868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */,
 				86AF5CFA1B10982B0019C6E6 /* DataImage.m in Sources */,
 				2DC157CDB7A10163F1476296 /* NSStringHTML.m in Sources */,

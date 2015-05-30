@@ -104,6 +104,9 @@
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
         return;
     }
+    if (indexPath.row == 5) {
+        [self performSegueWithIdentifier:@"showInfo" sender:self];
+    }
     
     
     if([self.revealViewController.frontViewController isKindOfClass:[MainViewController class]]){
@@ -112,6 +115,8 @@
         [mvc showPageAtIndex:indexPath.row - 1];
         }
     }
+    
+    
     
     
     [self.revealViewController revealToggleAnimated:YES];
