@@ -10,6 +10,7 @@
 
 #import "ArticleView.h"
 #import <HTMLReader/HTMLReader.h>
+#import <GTScrollNavigationBar.h>
 
 
 
@@ -29,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     NSLog(@"%@",_post.postContent);
     
     isFramesBuilt = false;
@@ -59,6 +61,7 @@
 -(void)viewDidLayoutSubviews{
     if(!isFramesBuilt){
         [_articleView buildFrames];
+        self.navigationController.scrollNavigationBar.scrollView = _articleView.textView;
         isFramesBuilt = true;
     }
 }
@@ -70,6 +73,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+    [self.navigationController.scrollNavigationBar resetToDefaultPositionWithAnimation:NO];
 }
 
 

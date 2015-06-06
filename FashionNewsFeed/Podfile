@@ -5,6 +5,7 @@ target 'FashionNewsFeed' do
 pod 'AFNetworking', '~> 2.5.0'
 pod 'DateTools'
 pod 'HTMLReader'
+pod 'GTScrollNavigationBar'
 
 
 end
@@ -13,6 +14,8 @@ target 'FashionNewsFeedTests' do
 pod 'AFNetworking', '~> 2.5.0'
 pod 'DateTools'
 pod 'HTMLReader'
+pod 'GTScrollNavigationBar'
+
 end
 
 

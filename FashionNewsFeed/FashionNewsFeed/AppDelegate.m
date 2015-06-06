@@ -22,9 +22,13 @@
     [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:4.0 forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:4 forBarMetrics:UIBarMetricsDefault];
     
+    
     [[UINavigationBar appearance] setTitleTextAttributes:
     [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"PlayfairDisplay-Regular" size:18], NSFontAttributeName, nil]];
     
+    
+    
+
     NSArray *fontFamilies = [UIFont familyNames];
     
     for (int i = 0; i < [fontFamilies count]; i++)
@@ -37,7 +41,9 @@
     //PersistencyManager *manager = [[PersistencyManager alloc] init];
     //[manager deleteAllObjects];
     //NSLog(@"Count: %d", [manager getPostCountByCategory:@"lifestyle"]);
-    
+  
+
+  
   return YES;
 }
 

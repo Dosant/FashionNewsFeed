@@ -133,6 +133,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                                                      andCount:[dataCategory.categoryCount integerValue]
                                                                       andLink:[NSURL URLWithString:dataCategory.categoryLink]
                                                                       andMeta:nil];
+                NSLog(@"CATEGORY, %@",dataCategory.categoryName);
                 [categories addObject:category];
             }
             
@@ -198,6 +199,8 @@ NSUInteger const MAXNUMBERIMAGE = 100;
         
         for (DataCategory *categoryName in dataPost.term.categories) {
         
+            NSLog(@"CATEGORY to load %@",category);
+            NSLog(@"CATEGORY to find %@",categoryName.categoryName);
         if ([categoryName.categoryName isEqual:category]) {
         
             FCAuthor *author = [[FCAuthor alloc] initAuthorWithId:[dataPost.author.authorId integerValue]
@@ -210,12 +213,13 @@ NSUInteger const MAXNUMBERIMAGE = 100;
 
             for (DataCategory *dataCategory in dataPost.term.categories) {
                 
-                FCCategory *category = [[FCCategory alloc] initCategoryWithId:[dataCategory.categoryId integerValue]
+                 FCCategory *category = [[FCCategory alloc] initCategoryWithId:[dataCategory.categoryId integerValue]
                                                                       andName:dataCategory.categoryName
                                                                      andTitle:dataCategory.categoryTitle
                                                                      andCount:[dataCategory.categoryCount integerValue]
                                                                       andLink:[NSURL URLWithString:dataCategory.categoryLink]
                                                                       andMeta:nil];
+                
                 [categories addObject:category];
 
             }
@@ -390,7 +394,7 @@ NSUInteger const MAXNUMBERIMAGE = 100;
                                                              inManagedObjectContext: self.managedObjectContext];
 
         dataImage.url = [url absoluteString];
-        dataImage.image = UIImageJPEGRepresentation(image, 0.75);
+        dataImage.image = UIImagePNGRepresentation(image);
 
         [self saveContext];
     }

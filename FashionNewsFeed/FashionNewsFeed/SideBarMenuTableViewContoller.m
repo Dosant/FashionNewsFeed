@@ -22,8 +22,10 @@
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    //UIImageView* imageView = [[UIImageView alloc] initWithImage:
+     //[UIImage imageNamed:@"menubg.png"]];
     UIImageView* imageView = [[UIImageView alloc] initWithImage:
-     [UIImage imageNamed:@"menubg.png"]];
+                              [UIImage imageNamed:@"menubg2.png"]];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     
@@ -42,6 +44,9 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(BOOL)prefersStatusBarHidden{
+  return YES;
 }
 
 #pragma mark - Table view data source
@@ -105,7 +110,9 @@
         return;
     }
     if (indexPath.row == 5) {
-        [self performSegueWithIdentifier:@"showInfo" sender:self];
+        //[self performSegueWithIdentifier:@"showInfo" sender:self];
+        [self performSegueWithIdentifier:@"forteInfo" sender:self];
+        
     }
     
     

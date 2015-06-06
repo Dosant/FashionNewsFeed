@@ -44,6 +44,7 @@
 		838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28C91ACBE4AD004F3298 /* PersistencyManager.m */; };
 		838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */; };
 		838AE6141B0B1E6400EF0E17 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 838AE6131B0B1E6400EF0E17 /* MenuTableViewCell.m */; };
+		83A416721B1B176F009ED8FB /* ImageTransformUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A416711B1B176F009ED8FB /* ImageTransformUtility.m */; };
 		83AC6B831AC7E186001544A6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC6B821AC7E186001544A6 /* SWRevealViewController.m */; };
 		83B795E21AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 83B795D41AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black Italic.otf */; };
 		83B795E31AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 83B795D51AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black.otf */; };
@@ -73,6 +74,8 @@
 		83B796071AFD0A3C00EFDB33 /* PlayfairDisplaySC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83B795FB1AFD0A3C00EFDB33 /* PlayfairDisplaySC-Regular.ttf */; };
 		83C2B5A31AFBFD97009B1E08 /* ArticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2B5A21AFBFD97009B1E08 /* ArticleView.m */; };
 		83C2B5A61AFC0573009B1E08 /* MarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */; };
+		83E5F15D1B1D69F300706E38 /* ForteInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E5F15C1B1D69F300706E38 /* ForteInfo.xib */; };
+		83E5F1601B1D700F00706E38 /* ForteInfoViewContollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E5F15F1B1D700F00706E38 /* ForteInfoViewContollerViewController.m */; };
 		83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */; };
 		8505FBD5CEFF5EE843A393DD /* libPods-FashionNewsFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771DCDCF14237555CD2ADE17 /* libPods-FashionNewsFeed.a */; };
 		868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868C1E161AD85F4700AEEBFF /* coreData.xcdatamodeld */; };
@@ -165,6 +168,8 @@
 		838A28CC1ACBE4C4004F3298 /* FCHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCHTTPClient.m; sourceTree = "<group>"; };
 		838AE6121B0B1E6400EF0E17 /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
 		838AE6131B0B1E6400EF0E17 /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
+		83A416701B1B176F009ED8FB /* ImageTransformUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTransformUtility.h; sourceTree = "<group>"; };
+		83A416711B1B176F009ED8FB /* ImageTransformUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTransformUtility.m; sourceTree = "<group>"; };
 		83AC6B811AC7E186001544A6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		83AC6B821AC7E186001544A6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		83B795D41AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Black Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mark Simonson - Proxima Nova Black Italic.otf"; path = "fonts/ProximaNova/Mark Simonson - Proxima Nova Black Italic.otf"; sourceTree = "<group>"; };
@@ -197,6 +202,9 @@
 		83C2B5A21AFBFD97009B1E08 /* ArticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleView.m; sourceTree = "<group>"; };
 		83C2B5A41AFC0573009B1E08 /* MarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkdownParser.h; sourceTree = "<group>"; };
 		83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkdownParser.m; sourceTree = "<group>"; };
+		83E5F15C1B1D69F300706E38 /* ForteInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForteInfo.xib; sourceTree = "<group>"; };
+		83E5F15E1B1D700F00706E38 /* ForteInfoViewContollerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForteInfoViewContollerViewController.h; sourceTree = "<group>"; };
+		83E5F15F1B1D700F00706E38 /* ForteInfoViewContollerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForteInfoViewContollerViewController.m; sourceTree = "<group>"; };
 		83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarWithBottomStroke.h; sourceTree = "<group>"; };
 		83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarWithBottomStroke.m; sourceTree = "<group>"; };
 		866336C21AD85C02003CE4DC /* FCTableViewCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCTableViewCell1.h; path = View/FCTableViewCell1.h; sourceTree = "<group>"; };
@@ -384,6 +392,7 @@
 		8362508C1AC5E39400370340 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				83E5F1611B1D701C00706E38 /* ForteAdd */,
 				8316803B1B191392005B3866 /* DropdownAlert */,
 				835147421B024659007D4F51 /* Markdown */,
 				83BFF22D1AFA9C2D0077C3E1 /* fonts */,
@@ -392,6 +401,8 @@
 				836250991AC5E39400370340 /* Images.xcassets */,
 				8362508D1AC5E39400370340 /* Info.plist */,
 				8362508E1AC5E39400370340 /* main.m */,
+				83A416701B1B176F009ED8FB /* ImageTransformUtility.h */,
+				83A416711B1B176F009ED8FB /* ImageTransformUtility.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -471,6 +482,16 @@
 				83B795FB1AFD0A3C00EFDB33 /* PlayfairDisplaySC-Regular.ttf */,
 			);
 			name = Playfare;
+			sourceTree = "<group>";
+		};
+		83E5F1611B1D701C00706E38 /* ForteAdd */ = {
+			isa = PBXGroup;
+			children = (
+				83E5F15C1B1D69F300706E38 /* ForteInfo.xib */,
+				83E5F15E1B1D700F00706E38 /* ForteInfoViewContollerViewController.h */,
+				83E5F15F1B1D700F00706E38 /* ForteInfoViewContollerViewController.m */,
+			);
+			name = ForteAdd;
 			sourceTree = "<group>";
 		};
 		86628BB21ADB0C4600B56E0C /* CoreData */ = {
@@ -622,6 +643,7 @@
 				83B795FF1AFD0A3C00EFDB33 /* PlayfairDisplay-BoldItalic.ttf in Resources */,
 				83B795FD1AFD0A3C00EFDB33 /* PlayfairDisplay-BlackItalic.ttf in Resources */,
 				83B796011AFD0A3C00EFDB33 /* PlayfairDisplay-Regular.ttf in Resources */,
+				83E5F15D1B1D69F300706E38 /* ForteInfo.xib in Resources */,
 				83B795EC1AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Semibold Italic.otf in Resources */,
 				83B795E51AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Bold.otf in Resources */,
 				83B795E91AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Light.otf in Resources */,
@@ -710,7 +732,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A88DA6D1AD32352007A618C /* FCFeaturedImage.m in Sources */,
+				83E5F1601B1D700F00706E38 /* ForteInfoViewContollerViewController.m in Sources */,
 				836250951AC5E39400370340 /* MainViewController.m in Sources */,
+				83A416721B1B176F009ED8FB /* ImageTransformUtility.m in Sources */,
 				86AF5CF71B10982B0019C6E6 /* DataAuthor.m in Sources */,
 				2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */,
 				8373409F1AEFD5C1006A2B72 /* FCTableViewCell3.m in Sources */,
@@ -833,6 +857,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				MY_PARAM = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -869,6 +894,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MY_PARAM = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

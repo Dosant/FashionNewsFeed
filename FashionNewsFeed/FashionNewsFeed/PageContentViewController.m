@@ -18,6 +18,7 @@
 #import <DateTools/DateTools.h>
 
 #import "RKDropdownAlert.h"
+#import <GTScrollNavigationBar.h>
 
 @interface PageContentViewController ()
 
@@ -44,6 +45,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     isNetwork = [FashionCollectionAPI sharedInstance].isNetwork;
     
     
@@ -85,7 +89,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [[self delegate] setScrollEnabled:self enabled:YES];
-    
+    self.navigationController.scrollNavigationBar.scrollView = self.tableView;
     [[FashionCollectionAPI sharedInstance] addObserver:self forKeyPath:@"isNetwork" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     //[self.tableView reloadData];
     
@@ -206,10 +210,9 @@
         
     };
     
-    __weak void (^successWeak)(NSURLSessionDataTask *task, NSMutableArray *posts, FCResponseHeaders *headers) = success;
-    __weak void (^failureWeak)(NSURLSessionDataTask *task, NSError *error) = failure;
     
-        [[FashionCollectionAPI sharedInstance] getPostsForPageCategory:_pageIndex pageNumber:page postsPerPage:postsPerPage success:successWeak failure:failureWeak];
+    
+        [[FashionCollectionAPI sharedInstance] getPostsForPageCategory:_pageIndex pageNumber:page postsPerPage:postsPerPage success:success failure:failure];
     
     }
 }
@@ -456,7 +459,7 @@
             imageView.alpha = 1.0;
         }];
         } else {
-            [self.tableView relo]
+            
             
         }
         
@@ -464,6 +467,11 @@
         NSLog([error localizedDescription]);
               }];
     
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+    [self.navigationController.scrollNavigationBar resetToDefaultPositionWithAnimation:NO];
 }
 
 -(void)dealloc{

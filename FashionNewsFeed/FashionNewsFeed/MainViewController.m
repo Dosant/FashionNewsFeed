@@ -160,8 +160,8 @@
             isDisableScroll = YES;
             
             [overlayViewToDisableMainController addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-            
-            
+          
+          
             
             [pc.view addSubview:overlayViewToDisableMainController];
             

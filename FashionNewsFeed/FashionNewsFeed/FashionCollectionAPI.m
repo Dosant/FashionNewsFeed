@@ -8,6 +8,7 @@
 #import "FCCategory.h"
 #import "FCResponseHeaders.h"
 #import "PersistencyManager.h"
+#import "ImageTransformUtility.h"
 
 @interface FashionCollectionAPI () {
     FCHTTPClient *httpClient;
@@ -36,6 +37,10 @@
         _isNetwork = true;
         
     }
+    
+
+    
+    
     return self;
 }
 
@@ -57,10 +62,10 @@
             return [persistencyManager getPostsByCategory:@"fashion"];
             break;
         case 2:
-            [persistencyManager getPostsByCategory:@"events"];
+            return  [persistencyManager getPostsByCategory:@"events"];
             break;
         case 3:
-            [persistencyManager getPostsByCategory:@"beauty_box"];
+            return [persistencyManager getPostsByCategory:@"beauty_box"];
             break;
             
         default:
@@ -86,10 +91,11 @@
         if (cachedImaged == nil && _isNetwork) {
             [httpClient getImageWithURL:url success:
              ^(NSURLSessionDataTask *task, UIImage* image) {
-                 [persistencyManager cacheImage:image forURL:url];
                  
-                 success(task, image);
                  
+                 UIImage* resizeImage = [ImageTransformUtility resizeImage:image];
+                 [persistencyManager cacheImage:resizeImage forURL:url];
+                 success(task, resizeImage);
                  
              }failure: failure];
             

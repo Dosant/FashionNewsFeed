@@ -31,7 +31,7 @@
         
         bottomStroke = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.frame.size.height - 1.0, self.frame.size.width, 1.0)];
         bottomStroke.backgroundColor = [UIColor blackColor];
-        [self addSubview:bottomStroke];
+        //[self addSubview:bottomStroke];
     }
     
     

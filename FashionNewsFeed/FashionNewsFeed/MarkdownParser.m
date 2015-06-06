@@ -256,11 +256,12 @@
         return imageToResize;
     }
     
-    UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0);
     [imageToResize drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
     UIGraphicsEndImageContext();
-    return newImage;
+    return [UIImage imageWithData: UIImagePNGRepresentation(newImage)];
     
 }
 

@@ -9,6 +9,7 @@
 #import "InformationViewController.h"
 
 @interface InformationViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 
 @end
 
@@ -18,6 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+
 - (IBAction)closeInfo:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }

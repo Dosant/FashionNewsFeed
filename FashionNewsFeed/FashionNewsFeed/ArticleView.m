@@ -11,7 +11,7 @@
 @implementation ArticleView{
     
     NSLayoutManager *_layoutManager;
-    UITextView* _textView;
+    
     NSTextStorage* _textStorage;
     
     MarkdownParser* _parser;
@@ -62,10 +62,17 @@
     NSTextContainer *textcontainer = [[NSTextContainer alloc] initWithSize:CGSizeMake(contentWidth, FLT_MAX)];
     [_layoutManager addTextContainer:textcontainer];
     
-    _textView = [[UITextView alloc] initWithFrame:CGRectMake(2, 0, contentWidth, self.bounds.size.height) textContainer:textcontainer];
+    _textView = [[UITextView alloc] initWithFrame:CGRectMake(2, 0, contentWidth, self.bounds.size.height + 46) textContainer:textcontainer];
     _textView.scrollEnabled = true;
     _textView.editable = false;
     _textView.showsVerticalScrollIndicator = false;
+   
+    
+    [_textView setDataDetectorTypes:UIDataDetectorTypeNone];
+    [_textView setDataDetectorTypes:UIDataDetectorTypeAll];
+    _textView.editable = true;
+    _textView.editable = false;
+    
     
     [self addSubview:_textView];
     
@@ -75,8 +82,9 @@
 
 - (void)setHtmlStringWithPostContent:(NSString*)postContent postTitle:(NSString*)postTitle{
     
-    NSMutableString *htmlString = [NSMutableString stringWithString: @"<html><head><title></title></head><body>"];
+    NSMutableString *htmlString = [NSMutableString stringWithString: @"<html><head><title></title></head><body><p></p>"];
     //continue building the string
+    
     [htmlString appendString:@"<h1>"];
     [htmlString appendString:postTitle];
     [htmlString appendString:@"</h1>"];

@@ -12,6 +12,8 @@
 
 @interface ArticleView : UIView <MarkdownParserDelegate>
 
+@property (nonatomic,strong) UITextView* textView;
+
 -(instancetype)initWithFrame:(CGRect)frame htmlString:(NSString*)htmlString postTitle:(NSString*)postTitle;
 
 - (void)buildFrames;
