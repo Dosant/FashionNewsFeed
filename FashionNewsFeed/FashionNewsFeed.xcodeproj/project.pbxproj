@@ -136,7 +136,7 @@
 		832B3A8C1ACA922900D34619 /* NewsContentContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentContoller.m; sourceTree = "<group>"; };
 		835147431B0246CE007D4F51 /* MarkdownImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkdownImage.h; sourceTree = "<group>"; };
 		835147441B0246CE007D4F51 /* MarkdownImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkdownImage.m; sourceTree = "<group>"; };
-		836250891AC5E39400370340 /* FashionNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		836250891AC5E39400370340 /* TheGrape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGrape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8362508D1AC5E39400370340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8362508E1AC5E39400370340 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		836250901AC5E39400370340 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 		8362508A1AC5E39400370340 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				836250891AC5E39400370340 /* FashionNewsFeed.app */,
+				836250891AC5E39400370340 /* TheGrape.app */,
 				836250A21AC5E39400370340 /* FashionNewsFeedTests.xctest */,
 			);
 			name = Products;
@@ -555,7 +555,7 @@
 			);
 			name = FashionNewsFeed;
 			productName = FashionNewsFeed;
-			productReference = 836250891AC5E39400370340 /* FashionNewsFeed.app */;
+			productReference = 836250891AC5E39400370340 /* TheGrape.app */;
 			productType = "com.apple.product-type.application";
 		};
 		836250A11AC5E39400370340 /* FashionNewsFeedTests */ = {
@@ -589,7 +589,6 @@
 				TargetAttributes = {
 					836250881AC5E39400370340 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = MFAMB7792K;
 					};
 					836250A11AC5E39400370340 = {
 						CreatedOnToolsVersion = 6.2;
@@ -906,10 +905,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheGrape;
 			};
 			name = Debug;
 		};
@@ -918,11 +918,12 @@
 			baseConfigurationReference = 11172E0DC9B8ACB18D45F871 /* Pods-FashionNewsFeed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: eTest IT, Inc (WG58VW2S68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: eTest IT, Inc (WG58VW2S68)";
 				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheGrape;
 			};
 			name = Release;
 		};

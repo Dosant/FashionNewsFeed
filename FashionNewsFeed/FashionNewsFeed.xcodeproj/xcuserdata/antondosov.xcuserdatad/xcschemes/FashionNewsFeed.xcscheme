@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "836250881AC5E39400370340"
-               BuildableName = "FashionNewsFeed.app"
+               BuildableName = "TheGrape.app"
                BlueprintName = "FashionNewsFeed"
                ReferencedContainer = "container:FashionNewsFeed.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "836250881AC5E39400370340"
-            BuildableName = "FashionNewsFeed.app"
+            BuildableName = "TheGrape.app"
             BlueprintName = "FashionNewsFeed"
             ReferencedContainer = "container:FashionNewsFeed.xcodeproj">
          </BuildableReference>
@@ -79,7 +79,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "836250881AC5E39400370340"
-            BuildableName = "FashionNewsFeed.app"
+            BuildableName = "TheGrape.app"
             BlueprintName = "FashionNewsFeed"
             ReferencedContainer = "container:FashionNewsFeed.xcodeproj">
          </BuildableReference>
@@ -104,7 +104,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "836250881AC5E39400370340"
-            BuildableName = "FashionNewsFeed.app"
+            BuildableName = "TheGrape.app"
             BlueprintName = "FashionNewsFeed"
             ReferencedContainer = "container:FashionNewsFeed.xcodeproj">
          </BuildableReference>
@@ -115,6 +115,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "TheGrape"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
