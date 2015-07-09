@@ -10,6 +10,7 @@
 #import "FashionCollectionAPI.h"
 #import "FCTableViewCell1.h"
 #import "MenuTableViewCell.h"
+#import "NewsContentContoller.h"
 
 @interface SideBarMenuTableViewContoller ()
 
@@ -22,10 +23,10 @@
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    //UIImageView* imageView = [[UIImageView alloc] initWithImage:
-     //[UIImage imageNamed:@"menubg.png"]];
     UIImageView* imageView = [[UIImageView alloc] initWithImage:
-                              [UIImage imageNamed:@"menubg2.png"]];
+     [UIImage imageNamed:@"menubg.png"]];
+   // UIImageView* imageView = [[UIImageView alloc] initWithImage:
+    //                          [UIImage imageNamed:@"menubg2.png"]];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     
@@ -110,9 +111,7 @@
         return;
     }
     if (indexPath.row == 5) {
-        //[self performSegueWithIdentifier:@"showInfo" sender:self];
-        [self performSegueWithIdentifier:@"forteInfo" sender:self];
-        
+        [self performSegueWithIdentifier:@"showInfo" sender:self];
     }
     
     
@@ -171,14 +170,53 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+  
+  if ([segue.identifier isEqualToString:@"showInfo"]) {
+    
+    //Pass post to the contentView
+    NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
+    
+    
+    NSString* content = @"<h1>О Журнале</h1>\
+    <p>Fashion Collection Belarus</p>\
+    \
+    <p>Журнал Fashion Collection – уникальное явление в глянцевой прессе СНГ. Это первое издание о моде, созданное в России и получившее международное признание как один из ключевых игроков в своем сегменте – качественный глянец для образованных и взыскательных ценителей моды. Региональные версии журнала выходят в большинстве российских регионов, в Казахстане и Украине, представительства FC работают в Париже, Милане, Лондоне и Нью-Йорке.</p>\
+    \
+    <p>Концепция Fashion Collection заключается в построении контента, максимально учитывающего запросы и пристрастия местных читателей. Эксклюзивные интервью со значимыми фигурами в мире моды и искусства, аналитические статьи, обзоры примечательных тенденций, авторские фотоистории, прикладные мастер-классы от стилистов.</p>\
+    \
+    <h1>Свяжитесь с нами</h1>\
+    \
+    <p>Мы всегда рады сотрудничеству с интересными людьми, которые любят моду и умеют замечать красоту в повседневных вещах.</p>\
+    \
+    <p>Сотрудничество и размещение материалов и анонсов на сайте fcollection.by: шеф-редактор сайта Анастасия Соколовская, +375 29 392-53-50, anastasyasok@gmail.com, info@fcollection.by</p>\
+    \
+    <p>Сотрудничество и размещение материалов в печатной версии журнала: шеф-редактор Fashion Collection Виктория Янковская: yankovska.v@gmail.com</p>\
+    \
+    <p>Реклама в печатной версии журнала: Лелес Маргарита, +375 29 183-51-02, lylmag@gmail.com</p>\
+    \
+    <p>Реклама на сайте, распространение и приобретение журналов:  Терешкова Елена +375 29 181-12-32</p>\
+    \
+    <p>Заказ Fashion Collection Beauty Box: Елена, звонок/viber +375 33 698-36-84</p>\
+    \
+    <h1>Мы в Интернете</h1>\
+ \
+";
+    
+    NSURL* link = [NSURL URLWithString:@"http://fcollection.by/о-сайте"];
+    
+    FCPost* post = [[FCPost alloc] initPostWithId:0 andTitle:@"Fashion Collection" andAuthor:nil andContent:content andLink:link andDate:nil andDateModified:nil andExcerpt:nil andMeta:nil andFeaturedImage:nil andTerms:nil];
+    
+    dvt.post = post;
+    dvt.postImage = [UIImage imageNamed:@"MagazineCover"];
+    
+  }
+  
 }
-*/
+
 
 @end

@@ -9,7 +9,6 @@
 #import "InformationViewController.h"
 
 @interface InformationViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 
 @end
 
@@ -18,7 +17,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+  self.shareView.isInformationContoller = true;
+  self.tableView.contentInset = UIEdgeInsetsMake(450, 0, 30, 0);
 }
+
+
+
+-(void)addTableViewUnder:(UITableView *)tableView{
+  
+  [self.view insertSubview:tableView belowSubview:self.navBar];
+}
+
+-(CGRect)frameForShareView:(CGSize)size{
+  
+  return CGRectMake(0, size.height, size.width, 152);
+  
+  
+}
+
 
 
 - (IBAction)closeInfo:(id)sender {
@@ -32,22 +48,18 @@
 -(BOOL)prefersStatusBarHidden{
     return true;
 }
-- (IBAction)fb:(id)sender {
-    
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/FashionCollectionBY"]];
-    
+
+-(void)shareFb:(ShareFbVkView *)delegate{
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/FashionCollectionBY"]];
 }
-- (IBAction)vk:(id)sender {
-    
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://vk.com/fashioncollectionbelarus"]];
-    
-    
-    
+
+-(void)shareVk:(ShareFbVkView *)delegate{
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://vk.com/fashioncollectionbelarus"]];
 }
-- (IBAction)fc:(id)sender {
-    
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.fcollection.by"]];
-}
+
+
+
+
 /*
 #pragma mark - Navigation
 

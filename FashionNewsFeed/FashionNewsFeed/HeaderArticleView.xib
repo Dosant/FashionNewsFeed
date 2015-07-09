@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Mark Simonson - Proxima Nova Light.otf">
+            <string>ProximaNova-Light</string>
+        </mutableArray>
+        <mutableArray key="PlayfairDisplay-Regular.ttf">
+            <string>PlayfairDisplay-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleAspectFill" id="iN0-l3-epB" customClass="HeaderArticleView">
+            <rect key="frame" x="0.0" y="5" width="600" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MagazineCover" translatesAutoresizingMaskIntoConstraints="NO" id="IPQ-Ha-ufM">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HpW-v7-F3C" customClass="GradientView">
+                    <rect key="frame" x="0.0" y="120" width="600" height="180"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="iwh-8z-KHD"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="self.color">
+                            <color key="value" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="self.percentage">
+                            <real key="value" value="0.90000000000000002"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Article Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSu-TQ-SCz">
+                    <rect key="frame" x="8" y="236" width="584" height="30"/>
+                    <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="24"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories go here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpk-bV-rfq">
+                    <rect key="frame" x="8" y="274" width="109" height="18"/>
+                    <fontDescription key="fontDescription" name="PlayfairDisplay-Regular" family="Playfair Display" pointSize="13"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="IPQ-Ha-ufM" secondAttribute="trailing" id="5WH-78-anP"/>
+                <constraint firstItem="jSu-TQ-SCz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="9cV-37-8Ec"/>
+                <constraint firstAttribute="trailing" secondItem="HpW-v7-F3C" secondAttribute="trailing" id="Faq-Gf-fKY"/>
+                <constraint firstAttribute="bottom" secondItem="Wpk-bV-rfq" secondAttribute="bottom" constant="8" id="GjP-Kp-6bT"/>
+                <constraint firstItem="Wpk-bV-rfq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="GtA-xd-B9j"/>
+                <constraint firstItem="IPQ-Ha-ufM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jav-3f-Bnl"/>
+                <constraint firstAttribute="bottom" secondItem="HpW-v7-F3C" secondAttribute="bottom" id="Nv8-DU-ZPr"/>
+                <constraint firstItem="IPQ-Ha-ufM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OYV-G3-yNe"/>
+                <constraint firstItem="HpW-v7-F3C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SLL-ig-bxa"/>
+                <constraint firstItem="Wpk-bV-rfq" firstAttribute="top" secondItem="jSu-TQ-SCz" secondAttribute="bottom" constant="8" id="aZ9-Eo-Nu1"/>
+                <constraint firstAttribute="bottom" secondItem="IPQ-Ha-ufM" secondAttribute="bottom" id="hF2-of-hYW"/>
+                <constraint firstAttribute="trailing" secondItem="jSu-TQ-SCz" secondAttribute="trailing" constant="8" id="jg4-a1-Qkg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="articleCategories" destination="Wpk-bV-rfq" id="iih-SW-qbn"/>
+                <outlet property="articleImage" destination="IPQ-Ha-ufM" id="gLf-Hl-fOv"/>
+                <outlet property="articleTittle" destination="jSu-TQ-SCz" id="oCn-Tq-Mrx"/>
+            </connections>
+            <point key="canvasLocation" x="301" y="310"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="MagazineCover" width="1358" height="1754"/>
+    </resources>
+</document>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Mark Simonson - Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+            <string>ProximaNova-Bold</string>
+            <string>ProximaNova-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShareFbVkView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJW-zu-vor" userLabel="vk">
+                    <rect key="frame" x="8" y="52" width="343" height="36"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рассказать в ВКонтакте" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL1-Iq-eyp">
+                            <rect key="frame" x="52" y="0.0" width="192" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="d48-8u-2SD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nf-aM-KTg">
+                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="36" id="hyV-oy-lqs"/>
+                                <constraint firstAttribute="height" constant="36" id="i6C-Ab-zbq"/>
+                            </constraints>
+                            <state key="normal" image="VK">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="vkAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="lcb-ew-0qe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="OL1-Iq-eyp" firstAttribute="leading" secondItem="0nf-aM-KTg" secondAttribute="trailing" constant="16" id="HKU-HD-yRr"/>
+                        <constraint firstAttribute="height" constant="36" id="Kwm-Tb-UuA"/>
+                        <constraint firstItem="OL1-Iq-eyp" firstAttribute="leading" secondItem="0nf-aM-KTg" secondAttribute="trailing" constant="16" id="egi-CP-yc9"/>
+                        <constraint firstItem="OL1-Iq-eyp" firstAttribute="top" secondItem="oJW-zu-vor" secondAttribute="top" id="gFa-7k-AXT"/>
+                        <constraint firstAttribute="width" constant="343" id="gZ9-QY-HUf"/>
+                        <constraint firstItem="0nf-aM-KTg" firstAttribute="leading" secondItem="oJW-zu-vor" secondAttribute="leading" id="lab-az-jv3"/>
+                        <constraint firstItem="0nf-aM-KTg" firstAttribute="top" secondItem="oJW-zu-vor" secondAttribute="top" id="p2a-nq-CIa"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaH-jX-kMg" userLabel="fc">
+                    <rect key="frame" x="8" y="96" width="343" height="36"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpK-EN-072">
+                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="D0k-W2-Z3E"/>
+                                <constraint firstAttribute="width" constant="36" id="MZ2-kG-1bZ"/>
+                            </constraints>
+                            <state key="normal" image="FC">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="webAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="1nZ-6V-3SV"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Посмотреть на Сайте" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Arh-Ce-JgV">
+                            <rect key="frame" x="52" y="0.0" width="171" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="171" id="PVY-Te-bjx"/>
+                                <constraint firstAttribute="height" constant="21" id="qg6-Eu-3ZO"/>
+                                <constraint firstAttribute="height" constant="21" id="twT-tU-bvT"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="IpK-EN-072" firstAttribute="top" secondItem="vaH-jX-kMg" secondAttribute="top" id="2wu-v7-DEq"/>
+                        <constraint firstItem="Arh-Ce-JgV" firstAttribute="top" secondItem="vaH-jX-kMg" secondAttribute="top" id="Ut4-eh-cKu"/>
+                        <constraint firstItem="Arh-Ce-JgV" firstAttribute="leading" secondItem="IpK-EN-072" secondAttribute="trailing" constant="16" id="eeA-2U-cxI"/>
+                        <constraint firstAttribute="width" constant="343" id="gMf-Fe-ljg"/>
+                        <constraint firstAttribute="height" constant="36" id="hpB-LY-z4h"/>
+                        <constraint firstItem="IpK-EN-072" firstAttribute="leading" secondItem="vaH-jX-kMg" secondAttribute="leading" id="iD8-gL-W2x"/>
+                    </constraints>
+                    <variation key="widthClass=regular" ambiguous="YES">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="36"/>
+                    </variation>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZf-0q-6hu" userLabel="line">
+                    <rect key="frame" x="8" y="0.0" width="304" height="1"/>
+                    <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="UgS-8R-LRY"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1K-bM-SG4" userLabel="FB">
+                    <rect key="frame" x="8" y="8" width="343" height="36"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZw-bc-jep">
+                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="Hng-Ko-D4d"/>
+                                <constraint firstAttribute="width" constant="36" id="cUl-pm-w5o"/>
+                            </constraints>
+                            <state key="normal" image="FB">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="fbAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="DKp-0m-9p7"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поделиться в Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBq-sb-YaZ">
+                            <rect key="frame" x="52" y="0.0" width="191" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="7hI-jg-NLg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="343" id="872-cM-QXg"/>
+                        <constraint firstAttribute="height" constant="36" id="IZy-gk-Xv2"/>
+                        <constraint firstItem="dBq-sb-YaZ" firstAttribute="leading" secondItem="FZw-bc-jep" secondAttribute="trailing" constant="16" id="V4h-AF-L1l"/>
+                        <constraint firstItem="dBq-sb-YaZ" firstAttribute="leading" secondItem="FZw-bc-jep" secondAttribute="trailing" constant="16" id="hSD-bJ-Fgf"/>
+                        <constraint firstItem="FZw-bc-jep" firstAttribute="top" secondItem="x1K-bM-SG4" secondAttribute="top" id="oE0-cr-ptG"/>
+                        <constraint firstItem="FZw-bc-jep" firstAttribute="leading" secondItem="x1K-bM-SG4" secondAttribute="leading" id="vvu-Tt-gNy"/>
+                        <constraint firstItem="dBq-sb-YaZ" firstAttribute="top" secondItem="x1K-bM-SG4" secondAttribute="top" id="yu0-RI-yh7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="x1K-bM-SG4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="2Zd-10-CBR"/>
+                <constraint firstItem="kZf-0q-6hu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ev2-ka-Daz"/>
+                <constraint firstItem="kZf-0q-6hu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Fsb-MR-SRU"/>
+                <constraint firstItem="vaH-jX-kMg" firstAttribute="top" secondItem="oJW-zu-vor" secondAttribute="bottom" constant="8" id="I6n-QS-ykZ"/>
+                <constraint firstItem="oJW-zu-vor" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="O4j-Sa-C5H"/>
+                <constraint firstItem="oJW-zu-vor" firstAttribute="top" secondItem="x1K-bM-SG4" secondAttribute="bottom" constant="8" id="VBb-aD-If4"/>
+                <constraint firstItem="vaH-jX-kMg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="bLZ-Uq-9wN"/>
+                <constraint firstAttribute="trailing" secondItem="kZf-0q-6hu" secondAttribute="trailing" constant="8" id="fHO-0a-aAN"/>
+                <constraint firstItem="x1K-bM-SG4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="qlY-Fr-XYq"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="fbLabel" destination="dBq-sb-YaZ" id="Yh0-ND-DiU"/>
+                <outlet property="fbText" destination="x1K-bM-SG4" id="x9b-F5-9r2"/>
+                <outlet property="fcText" destination="vaH-jX-kMg" id="h9P-ed-D9t"/>
+                <outlet property="separatorLine" destination="kZf-0q-6hu" id="Erx-pc-87b"/>
+                <outlet property="vkLabel" destination="OL1-Iq-eyp" id="i2o-em-BzM"/>
+                <outlet property="vkText" destination="oJW-zu-vor" id="xji-c2-JeV"/>
+                <outlet property="webLabel" destination="Arh-Ce-JgV" id="vAu-eg-omO"/>
+            </connections>
+            <point key="canvasLocation" x="304" y="342"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="FB" width="36" height="36"/>
+        <image name="FC" width="36" height="36"/>
+        <image name="VK" width="36" height="36"/>
+    </resources>
+</document>

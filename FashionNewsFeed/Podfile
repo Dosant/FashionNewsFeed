@@ -6,7 +6,9 @@ pod 'AFNetworking', '~> 2.5.0'
 pod 'DateTools'
 pod 'HTMLReader'
 pod 'GTScrollNavigationBar'
-
+pod 'VK-ios-sdk'
+pod "FBSDKCoreKit"
+pod "FBSDKShareKit"
 
 end
 
@@ -15,6 +17,9 @@ pod 'AFNetworking', '~> 2.5.0'
 pod 'DateTools'
 pod 'HTMLReader'
 pod 'GTScrollNavigationBar'
+pod 'VK-ios-sdk'
+pod "FBSDKCoreKit"
+pod "FBSDKShareKit"
 
 end
 

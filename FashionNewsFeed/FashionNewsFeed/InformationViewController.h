@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsContentContoller.h"
+@interface InformationViewController : NewsContentContoller
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
-@interface InformationViewController : UIViewController
+
 
 @end

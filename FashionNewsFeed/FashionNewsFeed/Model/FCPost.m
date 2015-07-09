@@ -75,6 +75,11 @@
 }
 
 - (NSString *)getCategoriesString {
+  
+  if(self.postTerms == nil){
+    return @"";
+  }
+  
     NSMutableString *out = [NSMutableString stringWithString:@""];
     NSArray *categories = self.postTerms.termsCategory;
     NSUInteger limit = 0;

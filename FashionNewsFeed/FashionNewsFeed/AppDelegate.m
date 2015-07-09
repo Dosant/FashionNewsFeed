@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "PersistencyManager.h"
+#import <VK-ios-sdk/VKSdk.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 
 @interface AppDelegate ()
 
@@ -16,11 +19,16 @@
 @implementation AppDelegate
 
 
+
+
+
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
       
-    [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:4.0 forBarMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:4 forBarMetrics:UIBarMetricsDefault];
+    //[[UINavigationBar appearance] setTitleVerticalPositionAdjustment:4.0 forBarMetrics:UIBarMetricsDefault];
+    //[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:4 forBarMetrics:UIBarMetricsDefault];
     
     
     [[UINavigationBar appearance] setTitleTextAttributes:
@@ -43,7 +51,21 @@
     //NSLog(@"Count: %d", [manager getPostCountByCategory:@"lifestyle"]);
   
 
+  [VKSdk initializeWithDelegate:nil andAppId:@"4974675"];
   
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
+  
+  return YES;
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+  [VKSdk processOpenURL:url fromApplication:sourceApplication];
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                        openURL:url
+                                              sourceApplication:sourceApplication
+                                                     annotation:annotation];
   return YES;
 }
 

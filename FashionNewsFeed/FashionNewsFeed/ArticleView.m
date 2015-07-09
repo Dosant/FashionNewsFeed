@@ -43,7 +43,7 @@
         
         
         
-        _content = [_parser parseMarkdownHtmlString:_htmlString];
+      
         
         
     }
@@ -53,6 +53,8 @@
 }
 
 -(void)buildFrames{
+    _content = [_parser parseMarkdownHtmlString:_htmlString];
+  
      _textStorage = [[NSTextStorage alloc] init];
     [_textStorage setAttributedString:_content];
     _layoutManager = [[NSLayoutManager alloc] init];
@@ -72,12 +74,17 @@
     [_textView setDataDetectorTypes:UIDataDetectorTypeAll];
     _textView.editable = true;
     _textView.editable = false;
-    
+  _textView.scrollEnabled =true;
+  
     
     [self addSubview:_textView];
     
-    [_parser downloadImagesToAttribtutedString];
+    //[_parser downloadImagesToAttribtutedString];
     
+}
+
+-(void)downloadImages{
+  [_parser downloadImagesToAttribtutedString];
 }
 
 - (void)setHtmlStringWithPostContent:(NSString*)postContent postTitle:(NSString*)postTitle{
@@ -85,9 +92,9 @@
     NSMutableString *htmlString = [NSMutableString stringWithString: @"<html><head><title></title></head><body><p></p>"];
     //continue building the string
     
-    [htmlString appendString:@"<h1>"];
-    [htmlString appendString:postTitle];
-    [htmlString appendString:@"</h1>"];
+//    [htmlString appendString:@"<h1>"];
+//    [htmlString appendString:postTitle];
+//    [htmlString appendString:@"</h1>"];
     [htmlString appendString: postContent];
     [htmlString appendString:@"</body></html>"];
     
@@ -99,14 +106,22 @@
 
 - (void)markdownParserImageDownloaded:(MarkdownParser *)parser withTextAttachemnt:(NSTextAttachment*)textAttachment
                             WithRange:(NSRange)range{
+  
+    
+  
+    
     if(textAttachment == nil){
-        [_textStorage replaceCharactersInRange:range withString:@" "];
-        return;
+      [_textStorage replaceCharactersInRange:range withString:@" "];
+      
     }
-    
-    
-    [_textStorage replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
-    
+    else {
+      [_textStorage replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
+      
+      
+    }
+  
+  [_textView setNeedsLayout];
+  [self.delegate relayoutView:self];
     
 }
 

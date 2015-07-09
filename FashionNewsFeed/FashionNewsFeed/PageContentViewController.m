@@ -383,7 +383,53 @@
 }
 
 -(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell.imageView.image = nil;
+  
+  
+  
+  if ([cell isKindOfClass:[FCTableViewCell1 class]]){
+    FCTableViewCell1* c = (FCTableViewCell1*)cell;
+    UIImageView* im = c.FCCellFeaturedImage;
+    
+    if (im.image == nil){
+      NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+      FCPost* post = c.post;
+      [[FashionCollectionAPI sharedInstance] cancelDownloadForImageUrl:post.postFeaturedImage.imageSource];
+    } else {
+      c.FCCellFeaturedImage.image = nil;
+    }
+    
+  }
+  
+  
+  if ([cell isKindOfClass:[FCTableViewCell2 class]]){
+    FCTableViewCell2* c = (FCTableViewCell2*)cell;
+    UIImageView* im = c.FCCellFeaturedImage;
+    
+    if (im.image == nil){
+      FCPost* post = c.post;
+      [[FashionCollectionAPI sharedInstance] cancelDownloadForImageUrl:post.postFeaturedImage.imageSource];
+    } else {
+      c.FCCellFeaturedImage.image = nil;
+    }
+  }
+  
+  
+  if ([cell isKindOfClass:[FCTableViewCell4 class]]){
+    FCTableViewCell4* c = (FCTableViewCell4*)cell;
+    UIImageView* im = c.FCCellFeaturedImage;
+    
+    if (im.image == nil){
+      FCPost* post = c.post;
+      [[FashionCollectionAPI sharedInstance] cancelDownloadForImageUrl:post.postFeaturedImage.imageSource];
+    } else {
+      c.FCCellFeaturedImage.image = nil;
+    }
+  }
+  
+  
+ 
+  
+  
 }
 
 
@@ -400,6 +446,7 @@
         NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
         NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
         dvt.post = ((FCTableViewCell1*)[self.tableView cellForRowAtIndexPath:ip]).post;
+        dvt.postImage = ((FCTableViewCell2*)[self.tableView cellForRowAtIndexPath:ip]).FCCellFeaturedImage.image;
         
     }
     
@@ -413,6 +460,7 @@
         NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
         NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
         dvt.post = ((FCTableViewCell2*)[self.tableView cellForRowAtIndexPath:ip]).post;
+        dvt.postImage = ((FCTableViewCell2*)[self.tableView cellForRowAtIndexPath:ip]).FCCellFeaturedImage.image;
         
     }
     
@@ -426,7 +474,8 @@
         NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
         NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
         dvt.post = ((FCTableViewCell3*)[self.tableView cellForRowAtIndexPath:ip]).post;
-        
+        dvt.postImage = nil;
+      
     }
     
     if([segue.identifier isEqualToString: @"moveToContent4"]){
@@ -439,6 +488,7 @@
         NewsContentContoller* dvt = (NewsContentContoller*)[segue destinationViewController];
         NSIndexPath* ip = [self.tableView indexPathForSelectedRow];
         dvt.post = ((FCTableViewCell4*)[self.tableView cellForRowAtIndexPath:ip]).post;
+        dvt.postImage = ((FCTableViewCell4*)[self.tableView cellForRowAtIndexPath:ip]).FCCellFeaturedImage.image;
         
     }
 }
@@ -469,10 +519,17 @@
     
 }
 
+
+
+
+
+
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
 {
     [self.navigationController.scrollNavigationBar resetToDefaultPositionWithAnimation:NO];
 }
+
+
 
 -(void)dealloc{
     @try {

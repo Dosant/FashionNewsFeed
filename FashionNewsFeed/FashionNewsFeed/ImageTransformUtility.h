@@ -10,7 +10,9 @@
 
 @interface ImageTransformUtility : NSObject
 
-+(UIImage*)transformImageFromJpgToPng:(UIImage*)image;
-+(UIImage*)resizeImage:(UIImage*)imageToResize;
+-(UIImage*)transformImageFromJpgToPng:(UIImage*)image;
+-(UIImage*)resizeImage:(UIImage*)imageToResize;
+
+-(UIImage*)DarkenImage:(UIImage*)imageToDarken;
 
 @end

@@ -24,9 +24,14 @@
 		34B828F12837BAB923F3D16B /* libPods-FashionNewsFeedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FDD1CC86E81D5154F3E3DAF /* libPods-FashionNewsFeedTests.a */; };
 		831680411B1913E9005B3866 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 831680401B1913E9005B3866 /* RKDropdownAlert.m */; };
 		831680441B1983CB005B3866 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831680431B1983CB005B3866 /* InformationViewController.m */; };
+		831F0EA11B31587F00FEB6EF /* PendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 831F0EA01B31587F00FEB6EF /* PendingOperations.m */; };
+		831F0EA51B31597900FEB6EF /* ImageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 831F0EA41B31597900FEB6EF /* ImageRecord.m */; };
+		831F0EA81B315BAC00FEB6EF /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 831F0EA71B315BAC00FEB6EF /* ImageDownloader.m */; };
 		832922801AEBB57600FE6761 /* FCTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */; };
 		832B3A8A1ACA918B00D34619 /* SideBarMenuTableViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */; };
 		832B3A8D1ACA922900D34619 /* NewsContentContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B3A8C1ACA922900D34619 /* NewsContentContoller.m */; };
+		832EB7D61B4022400070EDEF /* ShareFbVkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 832EB7D51B4022400070EDEF /* ShareFbVkView.xib */; };
+		832EB7D91B40235C0070EDEF /* ShareFbVkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832EB7D81B40235C0070EDEF /* ShareFbVkView.m */; };
 		835147451B0246CE007D4F51 /* MarkdownImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 835147441B0246CE007D4F51 /* MarkdownImage.m */; };
 		8362508F1AC5E39400370340 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8362508E1AC5E39400370340 /* main.m */; };
 		836250921AC5E39400370340 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 836250911AC5E39400370340 /* AppDelegate.m */; };
@@ -74,6 +79,9 @@
 		83B796071AFD0A3C00EFDB33 /* PlayfairDisplaySC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83B795FB1AFD0A3C00EFDB33 /* PlayfairDisplaySC-Regular.ttf */; };
 		83C2B5A31AFBFD97009B1E08 /* ArticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2B5A21AFBFD97009B1E08 /* ArticleView.m */; };
 		83C2B5A61AFC0573009B1E08 /* MarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */; };
+		83C9B9EA1B3EB35B00988A36 /* HeaderArticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9B9E91B3EB35B00988A36 /* HeaderArticleView.m */; };
+		83C9B9EC1B3EB66F00988A36 /* HeaderArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C9B9EB1B3EB66F00988A36 /* HeaderArticleView.xib */; };
+		83C9B9EF1B3ECC0300988A36 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9B9EE1B3ECC0300988A36 /* GradientView.m */; };
 		83E5F15D1B1D69F300706E38 /* ForteInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E5F15C1B1D69F300706E38 /* ForteInfo.xib */; };
 		83E5F1601B1D700F00706E38 /* ForteInfoViewContollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E5F15F1B1D700F00706E38 /* ForteInfoViewContollerViewController.m */; };
 		83F4B3601ACEE6B60055E865 /* NavigationBarWithBottomStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */; };
@@ -128,12 +136,21 @@
 		831680401B1913E9005B3866 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKDropdownAlert.m; sourceTree = "<group>"; };
 		831680421B1983CB005B3866 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		831680431B1983CB005B3866 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		831F0E9F1B31587F00FEB6EF /* PendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOperations.h; sourceTree = "<group>"; };
+		831F0EA01B31587F00FEB6EF /* PendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOperations.m; sourceTree = "<group>"; };
+		831F0EA31B31597900FEB6EF /* ImageRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRecord.h; sourceTree = "<group>"; };
+		831F0EA41B31597900FEB6EF /* ImageRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRecord.m; sourceTree = "<group>"; };
+		831F0EA61B315BAC00FEB6EF /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
+		831F0EA71B315BAC00FEB6EF /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
 		8329227E1AEBB57600FE6761 /* FCTableViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCTableViewCell2.h; sourceTree = "<group>"; };
 		8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCTableViewCell2.m; sourceTree = "<group>"; };
 		832B3A881ACA918B00D34619 /* SideBarMenuTableViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarMenuTableViewContoller.h; sourceTree = "<group>"; };
 		832B3A891ACA918B00D34619 /* SideBarMenuTableViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarMenuTableViewContoller.m; sourceTree = "<group>"; };
 		832B3A8B1ACA922900D34619 /* NewsContentContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentContoller.h; sourceTree = "<group>"; };
 		832B3A8C1ACA922900D34619 /* NewsContentContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentContoller.m; sourceTree = "<group>"; };
+		832EB7D51B4022400070EDEF /* ShareFbVkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareFbVkView.xib; sourceTree = "<group>"; };
+		832EB7D71B40235C0070EDEF /* ShareFbVkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFbVkView.h; sourceTree = "<group>"; };
+		832EB7D81B40235C0070EDEF /* ShareFbVkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareFbVkView.m; sourceTree = "<group>"; };
 		835147431B0246CE007D4F51 /* MarkdownImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkdownImage.h; sourceTree = "<group>"; };
 		835147441B0246CE007D4F51 /* MarkdownImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkdownImage.m; sourceTree = "<group>"; };
 		836250891AC5E39400370340 /* TheGrape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGrape.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +219,11 @@
 		83C2B5A21AFBFD97009B1E08 /* ArticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleView.m; sourceTree = "<group>"; };
 		83C2B5A41AFC0573009B1E08 /* MarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkdownParser.h; sourceTree = "<group>"; };
 		83C2B5A51AFC0573009B1E08 /* MarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkdownParser.m; sourceTree = "<group>"; };
+		83C9B9E81B3EB35B00988A36 /* HeaderArticleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderArticleView.h; sourceTree = "<group>"; };
+		83C9B9E91B3EB35B00988A36 /* HeaderArticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderArticleView.m; sourceTree = "<group>"; };
+		83C9B9EB1B3EB66F00988A36 /* HeaderArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderArticleView.xib; sourceTree = "<group>"; };
+		83C9B9ED1B3ECC0300988A36 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		83C9B9EE1B3ECC0300988A36 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		83E5F15C1B1D69F300706E38 /* ForteInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForteInfo.xib; sourceTree = "<group>"; };
 		83E5F15E1B1D700F00706E38 /* ForteInfoViewContollerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForteInfoViewContollerViewController.h; sourceTree = "<group>"; };
 		83E5F15F1B1D700F00706E38 /* ForteInfoViewContollerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForteInfoViewContollerViewController.m; sourceTree = "<group>"; };
@@ -291,22 +313,9 @@
 		831008DE1ACADC7700270301 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */,
-				83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */,
-				866336C21AD85C02003CE4DC /* FCTableViewCell1.h */,
-				838A21271AF32DCE00BDC838 /* FCTableViewCell1.m */,
-				836B8A071AE4CC6A002A37D2 /* newsFeaturedImageView.h */,
-				836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */,
-				8329227E1AEBB57600FE6761 /* FCTableViewCell2.h */,
-				8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */,
-				8373409D1AEFD5C1006A2B72 /* FCTableViewCell3.h */,
-				8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */,
-				838A21241AF2697700BDC838 /* FCTableViewCell4.h */,
-				838A21251AF2697700BDC838 /* FCTableViewCell4.m */,
-				83C2B5A11AFBFD97009B1E08 /* ArticleView.h */,
-				83C2B5A21AFBFD97009B1E08 /* ArticleView.m */,
-				838AE6121B0B1E6400EF0E17 /* MenuTableViewCell.h */,
-				838AE6131B0B1E6400EF0E17 /* MenuTableViewCell.m */,
+				83C9B9E71B3EB32200988A36 /* SideMenu */,
+				83C9B9E61B3EB30E00988A36 /* Articleview */,
+				83C9B9E41B3EB29200988A36 /* PageControllerViews */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -339,6 +348,19 @@
 				831680401B1913E9005B3866 /* RKDropdownAlert.m */,
 			);
 			name = DropdownAlert;
+			sourceTree = "<group>";
+		};
+		831F0EA21B31595C00FEB6EF /* ImageDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				831F0E9F1B31587F00FEB6EF /* PendingOperations.h */,
+				831F0EA01B31587F00FEB6EF /* PendingOperations.m */,
+				831F0EA31B31597900FEB6EF /* ImageRecord.h */,
+				831F0EA41B31597900FEB6EF /* ImageRecord.m */,
+				831F0EA61B315BAC00FEB6EF /* ImageDownloader.h */,
+				831F0EA71B315BAC00FEB6EF /* ImageDownloader.m */,
+			);
+			name = ImageDownloader;
 			sourceTree = "<group>";
 		};
 		835147421B024659007D4F51 /* Markdown */ = {
@@ -392,6 +414,7 @@
 		8362508C1AC5E39400370340 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				831F0EA21B31595C00FEB6EF /* ImageDownloader */,
 				83E5F1611B1D701C00706E38 /* ForteAdd */,
 				8316803B1B191392005B3866 /* DropdownAlert */,
 				835147421B024659007D4F51 /* Markdown */,
@@ -482,6 +505,59 @@
 				83B795FB1AFD0A3C00EFDB33 /* PlayfairDisplaySC-Regular.ttf */,
 			);
 			name = Playfare;
+			sourceTree = "<group>";
+		};
+		83C9B9E41B3EB29200988A36 /* PageControllerViews */ = {
+			isa = PBXGroup;
+			children = (
+				83C9B9E51B3EB2C000988A36 /* Cells */,
+				836B8A071AE4CC6A002A37D2 /* newsFeaturedImageView.h */,
+				836B8A081AE4CC6A002A37D2 /* newsFeaturedImageView.m */,
+			);
+			name = PageControllerViews;
+			sourceTree = "<group>";
+		};
+		83C9B9E51B3EB2C000988A36 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				866336C21AD85C02003CE4DC /* FCTableViewCell1.h */,
+				838A21271AF32DCE00BDC838 /* FCTableViewCell1.m */,
+				8329227E1AEBB57600FE6761 /* FCTableViewCell2.h */,
+				8329227F1AEBB57600FE6761 /* FCTableViewCell2.m */,
+				8373409D1AEFD5C1006A2B72 /* FCTableViewCell3.h */,
+				8373409E1AEFD5C1006A2B72 /* FCTableViewCell3.m */,
+				838A21241AF2697700BDC838 /* FCTableViewCell4.h */,
+				838A21251AF2697700BDC838 /* FCTableViewCell4.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		83C9B9E61B3EB30E00988A36 /* Articleview */ = {
+			isa = PBXGroup;
+			children = (
+				83C2B5A11AFBFD97009B1E08 /* ArticleView.h */,
+				83C2B5A21AFBFD97009B1E08 /* ArticleView.m */,
+				83C9B9E81B3EB35B00988A36 /* HeaderArticleView.h */,
+				83C9B9E91B3EB35B00988A36 /* HeaderArticleView.m */,
+				83C9B9EB1B3EB66F00988A36 /* HeaderArticleView.xib */,
+				83C9B9ED1B3ECC0300988A36 /* GradientView.h */,
+				83C9B9EE1B3ECC0300988A36 /* GradientView.m */,
+				832EB7D51B4022400070EDEF /* ShareFbVkView.xib */,
+				832EB7D71B40235C0070EDEF /* ShareFbVkView.h */,
+				832EB7D81B40235C0070EDEF /* ShareFbVkView.m */,
+			);
+			name = Articleview;
+			sourceTree = "<group>";
+		};
+		83C9B9E71B3EB32200988A36 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				83F4B35E1ACEE6B60055E865 /* NavigationBarWithBottomStroke.h */,
+				83F4B35F1ACEE6B60055E865 /* NavigationBarWithBottomStroke.m */,
+				838AE6121B0B1E6400EF0E17 /* MenuTableViewCell.h */,
+				838AE6131B0B1E6400EF0E17 /* MenuTableViewCell.m */,
+			);
+			name = SideMenu;
 			sourceTree = "<group>";
 		};
 		83E5F1611B1D701C00706E38 /* ForteAdd */ = {
@@ -622,6 +698,7 @@
 			files = (
 				83B795EB1AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Regular.otf in Resources */,
 				83B795ED1AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Semibold.otf in Resources */,
+				83C9B9EC1B3EB66F00988A36 /* HeaderArticleView.xib in Resources */,
 				836250981AC5E39400370340 /* Main.storyboard in Resources */,
 				83B796071AFD0A3C00EFDB33 /* PlayfairDisplaySC-Regular.ttf in Resources */,
 				83B796001AFD0A3C00EFDB33 /* PlayfairDisplay-Italic.ttf in Resources */,
@@ -644,6 +721,7 @@
 				83B796011AFD0A3C00EFDB33 /* PlayfairDisplay-Regular.ttf in Resources */,
 				83E5F15D1B1D69F300706E38 /* ForteInfo.xib in Resources */,
 				83B795EC1AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Semibold Italic.otf in Resources */,
+				832EB7D61B4022400070EDEF /* ShareFbVkView.xib in Resources */,
 				83B795E51AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Bold.otf in Resources */,
 				83B795E91AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Light.otf in Resources */,
 				83B795EE1AFD0A2800EFDB33 /* Mark Simonson - Proxima Nova Thin Italic.otf in Resources */,
@@ -731,17 +809,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A88DA6D1AD32352007A618C /* FCFeaturedImage.m in Sources */,
+				832EB7D91B40235C0070EDEF /* ShareFbVkView.m in Sources */,
 				83E5F1601B1D700F00706E38 /* ForteInfoViewContollerViewController.m in Sources */,
 				836250951AC5E39400370340 /* MainViewController.m in Sources */,
 				83A416721B1B176F009ED8FB /* ImageTransformUtility.m in Sources */,
 				86AF5CF71B10982B0019C6E6 /* DataAuthor.m in Sources */,
 				2A88DA761AD323B7007A618C /* FCPostTag.m in Sources */,
+				83C9B9EA1B3EB35B00988A36 /* HeaderArticleView.m in Sources */,
 				8373409F1AEFD5C1006A2B72 /* FCTableViewCell3.m in Sources */,
 				838A28CA1ACBE4AD004F3298 /* PersistencyManager.m in Sources */,
 				2AFD71731AD46B3300DA1FA2 /* FCCategory.m in Sources */,
 				838AE6141B0B1E6400EF0E17 /* MenuTableViewCell.m in Sources */,
 				838A21281AF32DCE00BDC838 /* FCTableViewCell1.m in Sources */,
 				836B8A0B1AE94048002A37D2 /* PageContentViewController.m in Sources */,
+				831F0EA81B315BAC00FEB6EF /* ImageDownloader.m in Sources */,
 				2A2512751AEEE6A50070A6DA /* FCResponseHeaders.m in Sources */,
 				2AF330C81AD91E5E00E1CB68 /* ExampleContent in Sources */,
 				838A21261AF2697700BDC838 /* FCTableViewCell4.m in Sources */,
@@ -762,12 +843,15 @@
 				86AF5CEE1B10982B0019C6E6 /* DataCategory.m in Sources */,
 				83C2B5A31AFBFD97009B1E08 /* ArticleView.m in Sources */,
 				836250921AC5E39400370340 /* AppDelegate.m in Sources */,
+				83C9B9EF1B3ECC0300988A36 /* GradientView.m in Sources */,
 				838A28CD1ACBE4C4004F3298 /* FCHTTPClient.m in Sources */,
 				8362508F1AC5E39400370340 /* main.m in Sources */,
+				831F0EA51B31597900FEB6EF /* ImageRecord.m in Sources */,
 				2A88DA6A1AD32328007A618C /* FCAuthor.m in Sources */,
 				2AFD71741AD46B3300DA1FA2 /* FCPost.m in Sources */,
 				86AF5CF41B10982B0019C6E6 /* DataFeaturedImage.m in Sources */,
 				831680441B1983CB005B3866 /* InformationViewController.m in Sources */,
+				831F0EA11B31587F00FEB6EF /* PendingOperations.m in Sources */,
 				868C1E181AD85F4700AEEBFF /* coreData.xcdatamodeld in Sources */,
 				86AF5CFA1B10982B0019C6E6 /* DataImage.m in Sources */,
 				2DC157CDB7A10163F1476296 /* NSStringHTML.m in Sources */,
@@ -904,8 +988,8 @@
 			baseConfigurationReference = 7F1612489324A6B0BE012158 /* Pods-FashionNewsFeed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Anton Dosov (C6TTKFZKQX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anton Dosov (C6TTKFZKQX)";
 				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -918,8 +1002,8 @@
 			baseConfigurationReference = 11172E0DC9B8ACB18D45F871 /* Pods-FashionNewsFeed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: eTest IT, Inc (WG58VW2S68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: eTest IT, Inc (WG58VW2S68)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Anton Dosov (C6TTKFZKQX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anton Dosov (C6TTKFZKQX)";
 				INFOPLIST_FILE = FashionNewsFeed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

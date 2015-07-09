@@ -10,23 +10,40 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TheGrapeLaunch" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-oj-TGu">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menubg" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-oj-TGu">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOh-Bm-sCJ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="oZ4-0k-rnh"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="52" id="pwQ-sm-qvO"/>
+                    </constraints>
+                    <items>
+                        <navigationItem id="xex-Eb-bG4"/>
+                    </items>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="oZ4-0k-rnh"/>
+                        </mask>
+                    </variation>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="bOh-Bm-sCJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0JQ-Uz-7Xf"/>
+                <constraint firstAttribute="trailing" secondItem="bOh-Bm-sCJ" secondAttribute="trailing" id="7Vp-yD-ahR"/>
                 <constraint firstItem="sF6-oj-TGu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Gp1-gW-h6V"/>
+                <constraint firstItem="bOh-Bm-sCJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P0P-Li-lKh"/>
                 <constraint firstAttribute="bottom" secondItem="sF6-oj-TGu" secondAttribute="bottom" id="TeB-g9-sIb"/>
                 <constraint firstAttribute="trailing" secondItem="sF6-oj-TGu" secondAttribute="trailing" id="ccU-QI-Mfs"/>
                 <constraint firstItem="sF6-oj-TGu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oVd-1n-FKe"/>
             </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
     <resources>
-        <image name="TheGrapeLaunch" width="375" height="667"/>
+        <image name="menubg" width="375" height="667"/>
     </resources>
 </document>

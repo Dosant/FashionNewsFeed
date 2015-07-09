@@ -6,12 +6,14 @@
 #import <Foundation/Foundation.h>
 #import "FCPost.h"
 #import "FCResponseHeaders.h"
+#import "PendingOperations.h"
 
 @interface FashionCollectionAPI : NSObject
 
 + (FashionCollectionAPI *)sharedInstance;
 
 @property (nonatomic,assign) BOOL isNetwork;
+@property (nonatomic, strong) PendingOperations *pendingOperations;
 
 #pragma mark - Core Data
 
@@ -34,6 +36,10 @@
 - (NSArray *)getHardCodedCategories;
 
 - (void)cancelAllOperations;
+- (void)suspendAllOperations;
+- (void)resumeAllOperations;
+- (void)cancelDownloadForImageUrl:(NSURL*)url;
+
 
 @end
 
