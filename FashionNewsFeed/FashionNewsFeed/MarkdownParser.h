@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <HTMLReader/HTMLReader.h>
+#import <HTMLReader/HTMLTextNode.h>
 #import "FashionCollectionAPI.h"
 #import "MarkdownImage.h"
 
